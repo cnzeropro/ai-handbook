@@ -268,11 +268,9 @@ List<UserPO> users = this.list(queryWrapper);
 ```java
 // 推荐 ✅
 log.info("用户登录成功: userId={}, username={}", userId, username);
-log.error("处理失败: {}", e.getMessage(), e);
 
 // 不推荐 ❌
 log.info("用户登录成功: userId=" + userId + ", username=" + username);
-log.error("处理失败", e);
 ```
 
 ## 审查输出格式
