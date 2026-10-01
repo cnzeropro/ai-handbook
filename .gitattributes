@@ -1,2 +1,2 @@
-# 统一行尾为 LF，避免 Windows 与 Linux/macOS 之间 CRLF/LF 混用
+# 文本文件自动识别并统一以 LF 存入仓库
 * text=auto eol=lf
