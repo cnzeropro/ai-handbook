@@ -17,10 +17,11 @@
 .
 ├── ai-assistant-behavior-rules.md   # AI 助手行为约束规范（全局规则）
 ├── skills/                          # AI 助手 Skills 技能包
-│   ├── code-review/                 # 代码审查
-│   ├── db-design-standard/          # 数据库设计规范
-│   ├── feature-coding-standard/     # 功能模块开发规范
-│   └── method-ordering/             # 方法（接口）排序规则
+│   ├── java-coding-standard/            # Java 编码规范
+│   ├── java-feature-coding-standard/    # 功能模块开发规范
+│   ├── java-method-ordering/            # 方法（接口）排序规则
+│   ├── java-code-review/                # 代码审查
+│   └── db-design-standard/              # 数据库设计规范
 └── LICENSE                          # MIT 许可证
 ```
 
@@ -28,10 +29,11 @@
 
 | Skill | 用途 |
 | --- | --- |
-| `code-review` | 审查 Java 代码是否符合最佳实践、是否存在安全问题，以及是否遵循 Spring Framework 规范 |
+| `java-coding-standard` | Java 编码规范：命名、注释、导入、代码格式、常量与枚举、异常处理与日志 |
+| `java-feature-coding-standard` | 功能模块开发规范：分层架构、命名、对象模型、注解与事务 |
+| `java-method-ordering` | 统一接口/方法的排序规则（Controller/Service/Mapper/Feign/@HttpExchange） |
+| `java-code-review` | 审查 Java 代码是否符合最佳实践、是否存在安全问题，以及是否遵循 Spring Framework 规范 |
 | `db-design-standard` | 数据库脚本设计与规范检查，覆盖建表、结构变更与 SQL 生成 |
-| `feature-coding-standard` | 功能模块开发规范与代码风格指南 |
-| `method-ordering` | 统一接口/方法的排序规则（Controller/Service/Mapper/Feign/@HttpExchange） |
 
 ## 使用方法
 
@@ -44,7 +46,7 @@ Skills 采用 Claude Code 的 `SKILL.md` 格式编写，可直接复制到目标
 cp -r <本仓库路径>/skills/* .claude/skills/
 ```
 
-之后在会话中即可通过 `/code-review`、`/db-design-standard` 等命令直接调用。
+之后在会话中即可通过 `/java-code-review`、`/db-design-standard` 等命令直接调用。
 
 > 其他 AI 助手（如 Cursor、Copilot 等）可将各 SKILL.md 的内容作为规范文档，配置到对应的规则（Rules）机制中使用。
 

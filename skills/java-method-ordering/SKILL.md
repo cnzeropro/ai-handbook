@@ -1,5 +1,5 @@
 ---
-name: "method-ordering"
+name: "java-method-ordering"
 description: "统一接口/端点/契约方法的排序规则（Controller/Service/Mapper/Feign/@HttpExchange/Dubbo/gRPC 等）。当需要新建接口、重排方法顺序、统一各层代码结构、向现有接口添加方法或检查方法排序是否符合规范时使用。"
 ---
 
@@ -43,7 +43,7 @@ description: "统一接口/端点/契约方法的排序规则（Controller/Servi
 **远程契约层**
 
 - Feign Client（`@FeignClient`）
-- Spring 6 Declarative HTTP Client（`@HttpExchange` / `@GetExchange` / `@PostExchange` / `@PutExchange` / `@DeleteExchange`），例如 `InformationExchange`
+- Spring 6 Declarative HTTP Client（`@HttpExchange` / `@GetExchange` / `@PostExchange` / `@PutExchange` / `@DeleteExchange`），例如 `UserExchange`
 - Retrofit 等声明式 HTTP API 接口
 
 **消息与事件层**
@@ -130,7 +130,7 @@ description: "统一接口/端点/契约方法的排序规则（Controller/Servi
 
 补充规则：
 
-- 所有“状态变更”动作（启用/禁用/审批/发布/续期等）归**更新**，即使使用 `@PostMapping`
+- 所有“状态变更”动作（启用/禁用/审批/发布/续期等）归**更新**，与其 HTTP 注解无关
 - `import*` 归新增，`export*` 归其他
 - 无法判定语义时归“其他”，并尽量给出合理分组
 
@@ -286,13 +286,13 @@ Service 接口方法顺序与 Controller 保持一致（同一组 API 在 Contro
 ### 5. 分类判定：命名优先于注解
 
 ```java
-// ❌ 错误：enableById 使用了 @PostMapping，被误归为“新增”类
-// ✅ 正确：enableById 语义是状态变更，归“更新”类
-@PostMapping("/{id}/enable")
-public void enableById(Long id) { ... }
+// ❌ 错误：confirmById 命名不在常见前缀表中，被误归为“其他”类
+// ✅ 正确：状态变更语义归“更新”类；命名不清晰时可参考注解（@PutMapping）辅助判断
+@PutMapping("/{id}/confirm")
+public void confirmById(Long id) { ... }
 ```
 
-同理，`approveById`、`publishById`、`renewById`、`disableById` 等状态变更方法均归**更新**，与其 HTTP 注解无关。
+同理，`enableById`、`approveById`、`publishById`、`renewById`、`disableById` 等状态变更方法均归**更新**，与其 HTTP 注解无关。
 
 ### 6. Controller 完整对照
 

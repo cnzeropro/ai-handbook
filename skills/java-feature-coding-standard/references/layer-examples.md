@@ -1,10 +1,11 @@
 # 分层架构完整代码示例
 
 > 本文件为 `../SKILL.md` 的补充示例（默认以 Spring Boot + MyBatis-Plus 呈现）。核心规则见主文件“一、分层架构与职责”。
+> 示例业务域为占位的 Model（模型管理），实际开发替换为项目自身业务域。
 
 ## 1. Controller 完整示例
 
-方法顺序遵循 `method-ordering` skill（查询单条 → 列表 → 分页 → 更新 → 删除）。
+方法顺序遵循 `java-method-ordering` skill（查询单条 → 列表 → 分页 → 更新 → 删除）。
 
 ```java
 @RequiredArgsConstructor
@@ -15,7 +16,7 @@ public class ModelController {
 
     // 查询-单条
     @GetMapping("getWithUserById")
-    public Result<ModelGetWithUserVO> getWithUserById(@RequestParam String id) {
+    public Result<ModelGetWithUserVO> getWithUserById(@RequestParam Long id) {
         ModelGetWithUserVO model = modelService.getWithUserById(id);
         if (Objects.isNull(model)) {
             return Result.error("No data found");
@@ -38,14 +39,14 @@ public class ModelController {
     }
 
     // 更新-启用
-    @PostMapping("enableById")
+    @PutMapping("enableById")
     public Result<Void> enableById(@RequestBody ModelEnableByIdPO modelEnableByIdParam) {
         modelService.enableById(modelEnableByIdParam.getId());
         return Result.ok("Enabled");
     }
 
     // 删除
-    @PostMapping("removeById")
+    @DeleteMapping("removeById")
     public Result<Void> removeById(@RequestBody ModelRemoveByIdPO modelRemoveByIdParam) {
         modelService.removeById(modelRemoveByIdParam.getId());
         return Result.ok("Removed");
@@ -59,19 +60,19 @@ public class ModelController {
 
 ```java
 public interface ModelService extends IService<ModelPO> {
-    ModelGetWithUserVO getWithUserById(String id);
+    ModelGetWithUserVO getWithUserById(Long id);
 
     Collection<ModelListWithUserVO> listWithUser(ModelListWithUserPO modelListWithUserParam, Query query);
 
     IPage<ModelPageWithUserVO> pageWithUser(ModelPageWithUserPO modelPageWithUserParam, Query query);
 
-    void enableById(String id);
+    void enableById(Long id);
 
-    void disableById(String id);
+    void disableById(Long id);
 
-    boolean removeById(String id);
+    boolean removeById(Long id);
 
-    boolean removeByIds(Collection<String> ids);
+    boolean removeByIds(Collection<Long> ids);
 }
 ```
 
@@ -83,7 +84,7 @@ public interface ModelService extends IService<ModelPO> {
 public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implements ModelService {
 
     @Override
-    public ModelGetWithUserVO getWithUserById(String id) {
+    public ModelGetWithUserVO getWithUserById(Long id) {
         return this.getOptById(id).map(model -> BeanUtil.copyProperties(model, ModelGetWithUserVO.class))
                 .map(model -> {
                     UserInfoUtil.setCreator(model);
@@ -111,18 +112,18 @@ public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implemen
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean removeById(String id) {
+    public boolean removeById(Long id) {
         this.deleteModelFile(id);
         return super.removeById(id);
     }
 
     // 以下 private/protected 工具方法统一放文件末尾
 
-    protected Optional<ModelPO> getOptById(String id) {
+    protected Optional<ModelPO> getOptById(Long id) {
         return Optional.ofNullable(this.getById(id));
     }
 
-    protected void deleteModelFile(String id) {
+    protected void deleteModelFile(Long id) {
         // 删除相关逻辑
     }
 }
@@ -140,7 +141,7 @@ public interface ModelMapper extends BaseMapper<ModelPO> {
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.module.model.mapper.ModelMapper">
     <resultMap type="com.example.module.model.model.persistent.ModelPO" id="ModelMap">
-        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="id" column="id" jdbcType="BIGINT"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="VARCHAR"/>

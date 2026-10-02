@@ -1,20 +1,21 @@
 ---
-name: "feature-coding-standard"
-description: "提供 Java 后端功能模块开发规范：分层架构、命名约定、对象模型（PO/DTO/Param/VO）、注解风格、异常/日志/事务、数据更新策略与 Java 版本适配。适用于 Spring Boot/Spring MVC/MyBatis(-Plus)/JPA/Dubbo/Feign/MQ 等技术栈；当需要新建功能或模块、重构旧代码、统一编码风格或审查代码规范时使用。"
+name: "java-feature-coding-standard"
+description: "提供 Java 后端功能模块开发规范：分层架构、命名约定（包/类/方法/Param/VO）、对象模型（PO/DTO/Param/VO）、注解、事务管理、数据更新策略与开发流程。适用于 Spring Boot/Spring MVC/MyBatis(-Plus)/JPA/Dubbo/Feign/MQ 等技术栈；当需要新建功能或模块、重构旧代码、统一模块结构与命名时使用。语言级编码规范见 `java-coding-standard`。"
 ---
 
 # 功能模块开发规范
 
-此 skill 提供 Java 后端功能模块开发规范。核心规则见本文件；各层完整代码示例见 `references/`（按需读取，不默认加载）。
+此 skill 提供 Java 后端功能模块开发规范。核心规则见本文件；各层完整代码示例见 `references/`（按需读取，不默认加载）。语言级编码规范（注释、格式、常量枚举、异常、日志等）见 `java-coding-standard`。
+
+> 示例说明：本文及 `references/` 中的所有示例以"模型管理平台"业务域（Model + Job 任务调度 + Deployment 部署）演示语法与结构，`Model`/`Job` 均为占位业务名，实际开发时替换为项目自身的业务域。
 
 ## 何时使用
 
 - 新建功能模块或从零开发新功能
-- 重构旧代码、统一命名与编码风格
-- 代码审查时作为规范检查依据
-- 咨询命名（包/类/方法/变量/对象模型）或分层结构问题
+- 重构旧代码、统一模块结构、命名与分层风格
+- 代码审查时作为模块规范检查依据
+- 咨询命名（包/类/方法/Param/VO）或分层结构问题
 - 不确定 PO/Param/VO/DTO 该如何选择时
-- 不确定当前项目应使用哪种 Java 版本语法时
 
 ## 适用范围
 
@@ -22,7 +23,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 **技术栈**
 
-- 语言与基础库：Java 8 / 11 / 17 / 21（按项目版本使用最佳实践语法，见“四 → 6”）、Lombok、Hutool / Guava
+- 语言与基础库：Java 8 / 11 / 17 / 21（按项目版本使用最佳实践语法，见 `java-coding-standard`）、Lombok、Hutool / Guava
 - Web / 接口层：Spring Boot / Spring MVC / Spring WebFlux、Jakarta Validation
 - 持久层：MyBatis / MyBatis-Plus、Spring Data JPA / Hibernate、jOOQ、Spring JDBC
 - 远程调用：Spring Cloud OpenFeign、Spring 6 HTTP Interface（`@HttpExchange`）、Dubbo、gRPC、RestTemplate / WebClient
@@ -43,7 +44,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 **技术栈适配说明**
 
-核心规范（命名、分层职责、对象模型、异常/日志/事务、数据更新策略）与技术栈无关；示例默认以 Spring Boot + MyBatis-Plus 呈现，使用其他技术栈时按以下映射替换：
+核心规范（分层职责、对象模型、注解、事务、数据更新策略）与技术栈无关；示例默认以 Spring Boot + MyBatis-Plus 呈现，使用其他技术栈时按以下映射替换：
 
 | 概念 | MyBatis-Plus（示例默认） | 纯 MyBatis | Spring Data JPA |
 | --- | --- | --- | --- |
@@ -55,21 +56,22 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 ### 不适用（边界）
 
 - 非 Java 项目（前端、Python、Go 等）
-- 非分层架构的 Java 应用（纯脚本、CLI 工具，可参考命名与代码风格部分）
+- 非分层架构的 Java 应用（纯脚本、CLI 工具，编码规范参见 `java-coding-standard`）
 - 纯静态工具库、算法库
+- Java 语言层面的编码规范（命名、注释、格式、常量枚举、异常、日志、工具类等，参见 `java-coding-standard` skill）
 - 数据库表设计与 SQL 脚本规范（参见 `db-design-standard` skill）
-- 接口方法排序规则（参见 `method-ordering` skill）
-- 代码安全审查流程（参见 `code-review` skill）
+- 接口方法排序规则（参见 `java-method-ordering` skill）
+- 代码安全审查流程（参见 `java-code-review` skill）
 
 ## 核心工作流
 
 1. **模块确认**：确定功能所属模块，创建包结构（见“二、命名规范”）
-2. **常量枚举**：创建常量类与枚举（见“五”）
+2. **常量枚举**：创建常量类与枚举（规范见 `java-coding-standard`）
 3. **对象模型**：创建 PO → Param/VO → DTO（见“三”）
 4. **数据访问**：创建 Mapper/Repository 接口与 XML（见“一”）
 5. **业务逻辑**：创建 Service 接口与实现（见“一”）
 6. **接口层**：创建 Controller（见“一”）
-7. **规范自检**：逐条核对“十二、验收清单”
+7. **规范自检**：逐条核对“八、验收清单”
 
 ## 一、分层架构与职责
 
@@ -84,18 +86,20 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 1. 使用 `@RequiredArgsConstructor` 构造器注入依赖
 2. 使用 `@RestController` 和 `@RequestMapping` 注解
 3. 方法返回统一使用 `Result` 包装类；下载（导出）相关方法除外，需使用 `ResponseEntity`
-4. 接口风格：仅使用 `@GetMapping`（查询）和 `@PostMapping`（修改），不强制遵循 RESTful 风格
+4. 接口风格：遵循 RESTful 风格——查询用 `@GetMapping`，新增用 `@PostMapping`，更新用 `@PutMapping`（部分更新可用 `@PatchMapping`），删除用 `@DeleteMapping`
 5. 参数使用 `@RequestParam` 或 `@RequestBody`
-6. 方法顺序遵循 `method-ordering` skill（查询 → 新增 → 更新 → 删除 → 其他）
+6. 方法顺序遵循 `java-method-ordering` skill（查询 → 新增 → 更新 → 删除 → 其他）
+7. 异常交由全局异常处理器统一处理，不逐接口堆叠 try-catch（异常书写规范见 `java-coding-standard`）
 
 ### 2. Service 层规范
 
 1. Service 接口：MyBatis-Plus 项目继承 `IService<PO>`；其他技术栈使用普通接口
 2. Service 实现：MyBatis-Plus 项目继承 `ServiceImpl<Mapper, PO>`；其他技术栈使用普通 `@Service` 实现类，注入 Mapper/Repository
-3. 使用 `@Transactional` 管理事务（见“八”）
+3. 使用 `@Transactional` 管理事务（见“五、事务管理规范”）
 4. 使用 `Optional` 处理可能为 null 的值
 5. 使用 `Wrappers` 构建查询条件（MyBatis-Plus）
-6. 方法顺序遵循 `method-ordering` skill，与 Controller 上下对齐
+6. 方法顺序遵循 `java-method-ordering` skill，与 Controller 上下对齐
+7. 业务异常直接抛出，不吞异常（见 `java-coding-standard`）
 
 ### 3. Mapper / Repository 层规范
 
@@ -171,12 +175,12 @@ package com.example.module.project.model.view;
 
 ```java
 // ❌ 错误：接口直接暴露持久化对象 / 实现类命名不符约定
-public Result<ModelPO> getById(@RequestParam String id) { ... }
+public Result<ModelPO> getById(@RequestParam Long id) { ... }
 public class ModelControllerImpl { ... }   // Controller 不需要 Impl
 public class ModelDao { ... }              // 应使用 Mapper
 
 // ✅ 正确：接口使用 Param/VO，命名符合约定
-public Result<ModelGetByIdVO> getById(@RequestParam String id) { ... }
+public Result<ModelGetByIdVO> getById(@RequestParam Long id) { ... }
 public class ModelController { ... }
 public interface ModelMapper extends BaseMapper<ModelPO> { ... }
 ```
@@ -211,26 +215,17 @@ public interface ModelMapper extends BaseMapper<ModelPO> { ... }
 
 ```java
 // ❌ 错误：命名不体现语义
-ModelGetWithUserVO getModelInfo(String id);        // 无法看出是 ById 还是 With 信息
+ModelGetWithUserVO getModelInfo(Long id);        // 无法看出是 ById 还是 With 信息
 List<ModelListVO> queryAll();                      // 应使用 list
-boolean deleteModelById(String id);                // 应使用 removeById
+boolean deleteModelById(Long id);                // 应使用 removeById
 
 // ✅ 正确
-ModelGetWithUserVO getWithUserById(String id);
+ModelGetWithUserVO getWithUserById(Long id);
 Collection<ModelListVO> list(ModelListPO param);
-boolean removeById(String id);
+boolean removeById(Long id);
 ```
 
-### 4. 变量命名
-
-- 驼峰命名法（camelCase）；避免缩写（除非通用缩写）；使用有意义的名称
-
-```java
-// ✅ private final ModelService modelService; private String modelId;
-// ❌ private final ModelService ms;         private String mid;
-```
-
-### 5. Param（请求参数对象）命名规则
+### 4. Param（请求参数对象）命名规则
 
 - 列表查询：`{Entity}ListPO`
 - 带其他信息的列表查询：`{Entity}ListWith{Info}PO`
@@ -259,7 +254,7 @@ boolean removeById(String id);
 // ✅ public Result<Void> updateById(@RequestBody ModelUpdateByIdPO modelUpdateByIdParam) { ... }
 ```
 
-### 6. VO（响应视图对象）命名规则
+### 5. VO（响应视图对象）命名规则
 
 - 列表视图：`{Entity}ListVO`
 - 带其他信息的列表视图：`{Entity}ListWith{Info}VO`
@@ -272,9 +267,9 @@ boolean removeById(String id);
 
 ```java
 // ❌ public Result<List<UserVO>> list() { ... }                 // 应使用 ModelListVO
-// ❌ public Result<ModelVO> getWithUserById(String id) { ... }  // 应使用 ModelGetByIdWithUserVO
+// ❌ public Result<ModelVO> getWithUserById(Long id) { ... }  // 应使用 ModelGetByIdWithUserVO
 // ✅ public Result<Collection<ModelListVO>> list(ModelListPO param) { ... }
-// ✅ public Result<ModelGetByIdWithUserVO> getWithUserById(String id) { ... }
+// ✅ public Result<ModelGetByIdWithUserVO> getWithUserById(Long id) { ... }
 ```
 
 ## 三、对象模型规范（PO/DTO/Param/VO）
@@ -289,22 +284,23 @@ boolean removeById(String id);
 ### 1. PO（持久化对象）
 
 - `@TableName` 指定表名、`@TableId` 指定主键、`@TableField` 指定字段映射（JPA 项目对应 `@Entity` / `@Id` / `@Column`）
-- 逻辑删除字段用 `@TableLogic`（`isDeleted`）
+- 主键 `id` 用 `Long` + `@TableId(type = IdType.ASSIGN_ID)`（应用层雪花 ID，与 `db-design-standard` 主键规则对应）
+- 逻辑删除字段用 `@TableLogic`（`isDeleted`）：数据库 `is_deleted` 与属性 `isDeleted` 为下划线转驼峰自动映射，布尔/标志字段使用 `Integer` / `Boolean` 包装类型
 - 使用 lombok 注解
 
 ### 2. DTO（数据传输对象）
 
-- 位于 `common` 模块，用于模块间数据传输
+- 微服务多模块架构中位于 `common` 公共模块（供模块间共享）；单体应用放在对应业务模块。用于模块间数据传输
 - 使用 lombok 注解
 
 ### 3. Param（请求参数对象）
 
-- 位于 `common` 模块，用于接收请求参数
+- 微服务多模块架构中位于 `common` 公共模块；单体应用放在对应业务模块。用于接收请求参数
 - 使用 lombok 注解
 
 ### 4. VO（响应视图对象）
 
-- 位于 `common` 模块，用于复杂视图展示
+- 微服务多模块架构中位于 `common` 公共模块；单体应用放在对应业务模块。用于复杂视图展示
 - 包含多个表的关联数据、额外的计算字段或展示字段
 - 使用 lombok 注解
 
@@ -312,17 +308,17 @@ boolean removeById(String id);
 
 ```java
 // ❌ 错误：Controller 入参出参直接用 PO/DTO
-public Result<ModelPO> getById(@RequestParam String id) { ... }
+public Result<ModelPO> getById(@RequestParam Long id) { ... }
 public Result<ModelDTO> sync(ModelDTO dto) { ... }     // 接口层不应暴露 DTO
 
 // ✅ 正确：接口用 Param/VO，DTO 仅用于模块间（Feign/RPC）传输
-public Result<ModelGetByIdVO> getById(@RequestParam String id) { ... }
+public Result<ModelGetByIdVO> getById(@RequestParam Long id) { ... }
 public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 ```
 
 完整类定义见 `references/object-model-examples.md`。
 
-## 四、注解与代码风格
+## 四、注解规范
 
 ### 1. Lombok 注解
 
@@ -330,6 +326,8 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 - Service 实现：`@Slf4j`
 - 对象类（PO/DTO/Param/VO）：`@Data` + `@SuperBuilder(toBuilder = true)` + `@NoArgsConstructor` + `@AllArgsConstructor`
 - 枚举：`@Getter`
+
+> 注：`@SuperBuilder` 需 Lombok 1.18.2+；使用旧版 Lombok 的项目可退回 `@Builder`
 
 ```java
 // ❌ @Autowired 字段注入（难以测试、隐藏依赖）
@@ -343,166 +341,9 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 - Mapper：`@Mapper`（可选）
 - 事务：`@Transactional(rollbackFor = Exception.class)`；只读：`@Transactional(readOnly = true)`
 
-完整示例见 `references/style-examples.md`。
+完整示例见 `references/annotation-examples.md`。
 
-### 3. 注释规范
-
-- **文档注释**：类、方法、字段必须包含 Javadoc
-- **方法内注释**：`//` 或 `/* ... */`
-- **独立成行**：注释另起一行；**禁止尾随注释**
-
-```java
-// ❌ return BeanUtil.copyProperties(model, ModelGetByIdVO.class); // 转换为视图对象（尾随注释）
-// ❌ 类、方法缺少 Javadoc
-// ✅ 注释独立成行，类与方法均有 Javadoc
-```
-
-完整示例见 `references/style-examples.md`。
-
-### 4. 导入顺序
-
-三组依次排列，组间空一行：
-
-1. JDK 标准库
-2. 第三方库
-3. 项目内部
-
-```java
-// ❌ 三组混排
-// ✅ java.util.* → cn.hutool.* / org.springframework.* → com.example.*
-```
-
-### 5. 代码格式
-
-- 4 空格缩进；大括号不换行；方法之间空一行；类成员变量之间空一行
-
-### 6. Java 版本适配（按项目 Java 版本使用最佳实践语法）
-
-- **以项目声明的 Java 版本为准**（`pom.xml` 的 `java.version` / `maven.compiler.source` / `build.gradle` 的 `sourceCompatibility`）：只使用该版本及以下支持的语言特性，禁止越级使用更高版本语法（否则编译失败）
-- 示例代码默认以 Java 8 语法呈现；当项目版本更高时，应主动采用对应版本的最佳实践语法
-
-| Java 版本 | 推荐使用的语言特性 | 说明 |
-| --- | --- | --- |
-| Java 8 | Lambda、Stream、Optional、方法引用、`LocalDateTime` | 示例代码默认使用的语法 |
-| Java 11 | `var` 局部变量类型推断、`List.of/Set.of/Map.of`、`String.isBlank`、`Optional.isEmpty` | 适度使用，不滥用 `var` |
-| Java 17 | record、sealed class、switch 表达式、文本块、`Stream.toList()` | record 优先用于 DTO/VO 等不可变数据载体，替代简单 `@Data` 类 |
-| Java 21 | record pattern、switch 模式匹配、虚拟线程（`Thread.ofVirtual`） | 高并发 IO 场景考虑虚拟线程 |
-
-**正反例（假设项目为 Java 17）：**
-
-```java
-// ❌ 错误：项目已支持 Java 17，仍使用低版本的冗长写法
-@Data
-@AllArgsConstructor
-public class ModelDTO {
-    private String id;
-    private String name;
-}
-
-// ✅ 正确：使用 Java 17 最佳实践语法
-public record ModelDTO(String id, String name) {
-}
-```
-
-**正反例（假设项目为 Java 8）：**
-
-```java
-// ❌ 错误：使用了高于项目版本的语法，编译失败
-public record ModelDTO(String id) {}      // Java 14+ 语法
-List<String> list = List.of("a", "b");    // Java 9+ 语法
-
-// ✅ 正确：Java 8 语法
-public class ModelDTO {
-    private final String id;
-    // ...
-}
-List<String> list = Arrays.asList("a", "b");
-```
-
-## 五、常量与枚举规范
-
-### 1. 枚举
-
-- 使用 `@Getter` 注解；枚举值全大写、下划线分隔
-- 状态、类型等字段使用英文字符串值（见名知意），取值与枚举名一一对应
-
-**第一设计（默认）：英文字符串值**
-
-```java
-// 存储/传输使用枚举名
-String status = ModelStatus.WAITING.name();          // 枚举 → 字符串（"WAITING"）
-ModelStatus status = ModelStatus.valueOf(statusStr); // 字符串 → 枚举
-```
-
-**第二设计（备选）**：确有需要时（如历史兼容）才使用数字值（`ordinal()` 或 int 成员变量），数据库字段从 0 开始编号
-
-```java
-// ❌ 错误：状态存数字值，见名不知意，需查文档才能理解
-model.setStatus(1);
-
-// ✅ 正确：状态存英文字符串（枚举名），见名知意
-model.setStatus(ModelStatus.WAITING.name());
-```
-
-### 2. 常量
-
-- `public static final` 修饰；全大写、下划线分隔；集中管理在常量类中
-
-```java
-// ❌ 错误：魔法值散落在业务代码中
-if ("lookalike".equals(model.getType())) { ... }
-// ✅ 正确：使用常量
-if (ModelConstants.MODEL_TYPE_LOOKALIKE.equals(model.getType())) { ... }
-```
-
-完整示例见 `references/style-examples.md`。
-
-## 六、异常处理规范
-
-### 1. 自定义异常
-
-- 继承 `RuntimeException` 或项目基础异常类
-- 提供有意义的错误信息
-
-### 2. 异常处理
-
-- Service 层抛出业务异常
-- Controller 层捕获并返回错误信息（或由全局异常处理器统一处理）
-- 使用 `Optional` 避免 NPE
-
-```java
-// ❌ 错误：Service 层吞掉异常返回 null，调用方无法区分"不存在"与"系统错误"
-// ❌ 错误：Controller 层堆叠 try-catch，逐接口重复处理
-// ✅ 正确：Service 抛业务异常，Controller 简洁，交由全局异常处理器兜底
-```
-
-完整示例（含 `ExampleException` 类定义）见 `references/style-examples.md`。
-
-## 七、日志规范
-
-### 1. 日志注解与级别
-
-- 使用 `@Slf4j` 注解，使用 `log` 变量记录日志
-- **DEBUG**：调试信息；**INFO**：重要业务流程；**WARN**：警告信息；**ERROR**：错误信息
-
-### 2. 日志格式
-
-- 使用占位符而非字符串拼接
-- 包含必要的上下文信息
-- 异常日志包含堆栈信息
-- 关键业务流程记录日志
-
-```java
-// ❌ 错误：字符串拼接（即使不输出也计算成本）、异常无堆栈、无上下文
-// ❌ 错误：敏感信息直接入日志（如 password）
-// ✅ 正确：占位符 + 上下文 + 堆栈
-log.info("Model job ran successfully: jobId={}", id);
-log.error("Model job failed: jobId={}", id, e);
-```
-
-完整示例见 `references/style-examples.md`。
-
-## 八、事务管理规范
+## 五、事务管理规范
 
 - 使用 `@Transactional` 注解
 - 指定 `rollbackFor = Exception.class`
@@ -514,25 +355,9 @@ log.error("Model job failed: jobId={}", id, e);
 // ✅ 正确：写操作 rollbackFor = Exception.class；查询标注 readOnly = true
 ```
 
-完整示例见 `references/style-examples.md`。
+完整示例见 `references/annotation-examples.md`。
 
-## 九、工具类使用
-
-### 1. Hutool 工具类
-
-- `BeanUtil`：对象属性拷贝；`CollUtil`：集合操作；`CharSequenceUtil`：字符串操作
-- `ArrayUtil`：数组操作；`DateUtil`：日期操作；`JSONUtil`：JSON 操作
-- 注：`Optional` 为 JDK 标准库（`java.util.Optional`），不属于 Hutool
-
-### 2. 项目工具类
-
-以下仅为示例，实际开发以项目内已有的工具类为准：
-
-- `CodeUtil`：编码生成；`UserInfoUtil`：用户信息设置；`CollectionUtil`：集合工具；`JobClientUtil`：任务调度客户端
-
-完整示例见 `references/style-examples.md`。
-
-## 十、数据与数据库变更规范
+## 六、数据与数据库变更规范
 
 ### 1. 关联数据全量更新策略
 
@@ -558,12 +383,11 @@ log.error("Model job failed: jobId={}", id, e);
 
 ### 3. 数据库变更规范
 
-- **多数据库支持**：必须同时提供 MySQL 和 GaussDB 的脚本
-- **增量脚本**：必须包含数据迁移逻辑（如 `UPDATE` 旧数据），不能只修改表结构
+- **多数据库支持**：项目同时使用多种数据库时，每种目标数据库的脚本均需提供（单库项目仅需该库脚本）
 - **默认值安全**：新增字段时，默认值应设为 `NULL` 或安全值，避免影响历史数据
 - **逻辑删除**：所有实体表应包含 `is_deleted` 字段，并使用逻辑删除而非物理删除
 
-## 十一、最佳实践与常见错误规避
+## 七、最佳实践与常见错误规避
 
 ### 1. 性能优化
 
@@ -590,7 +414,7 @@ log.error("Model job failed: jobId={}", id, e);
 
 - **风格一致性**：在维护遗留模块时，优先遵循该模块现有的命名风格（如 DTO vs PO），除非进行全面重构
 
-## 十二、验收清单
+## 八、验收清单
 
 ### 开发流程自检
 
@@ -604,20 +428,20 @@ log.error("Model job failed: jobId={}", id, e);
 
 ### 代码规范自检
 
-- [ ] 遵循命名规范（包/类/方法/变量/Param/VO）
-- [ ] 遵循代码风格（4 空格缩进、导入顺序、注释规范）
+- [ ] 遵循命名规范（包/类/方法/Param/VO）
+- [ ] 代码风格与编码规范遵循 `java-coding-standard`（注释、导入、格式、常量枚举、工具类等）
 - [ ] 按项目 Java 版本使用最佳实践语法（不越级使用高版本特性）
 - [ ] 使用正确的注解（构造器注入、`@Slf4j`、`@Transactional(rollbackFor = Exception.class)`）
 - [ ] 事务管理正确（写操作回滚、只读事务标注 `readOnly`）
-- [ ] 异常处理完善（Service 抛业务异常，不吞异常）
+- [ ] 异常处理完善（Service 抛业务异常，不吞异常；记录与抛出择一，无重复日志）
 - [ ] 日志记录规范（占位符、上下文、堆栈、无敏感信息）
 - [ ] 关联数据更新遵循 null/[]/非空列表语义
 - [ ] 级联删除同步删除子实体
-- [ ] 数据库变更提供 MySQL 与 GaussDB 脚本，增量脚本含数据迁移
+- [ ] 数据库变更为每种目标数据库提供脚本
 - [ ] 使用 `git add <file>` 精确添加，提交前 `git status` 检查
 
 ## References（完整代码示例）
 
 - `references/layer-examples.md` — 分层架构各层完整代码（Controller/Service/ServiceImpl/Mapper/XML）
 - `references/object-model-examples.md` — PO/DTO/Param/VO 完整类定义与 Lombok 示例
-- `references/style-examples.md` — Spring 注解、注释、导入顺序、枚举常量、异常、日志、事务、工具类完整示例
+- `references/annotation-examples.md` — Spring 注解、字段注入、事务管理完整示例

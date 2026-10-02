@@ -1,59 +1,9 @@
-# 注解与代码风格完整示例
+# 编码风格完整示例
 
-> 本文件为 `../SKILL.md` 的补充示例。核心规则见主文件“四、注解与代码风格”至“九、工具类使用”。
+> 本文件为 `../SKILL.md` 的补充示例。核心规则见主文件“二、注释规范”至“九、工具类使用”。
+> 示例业务名（Model 等）为占位，实际开发替换为项目自身业务名。
 
-## 1. Spring 注解完整示例
-
-```java
-// Controller
-@RestController
-@RequestMapping("model")
-public class ModelController {
-}
-
-// Service 接口
-public interface ModelService extends IService<ModelPO> {
-}
-
-// Service 实现
-@Service
-public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implements ModelService {
-}
-
-// Mapper
-public interface ModelMapper extends BaseMapper<ModelPO> {
-}
-
-// 事务
-@Transactional(rollbackFor = Exception.class)
-public boolean saveWithJob(ModelSaveWithJobPO modelSaveWithJobParam) {
-}
-
-// 只读事务
-@Transactional(readOnly = true)
-public Collection<ModelPO> list(ModelListPO modelListParam, Query query) {
-}
-```
-
-**字段注入正反例：**
-
-```java
-// ❌ 错误：字段注入（难以测试、隐藏依赖）
-@RestController
-public class ModelController {
-    @Autowired
-    private ModelService modelService;
-}
-
-// ✅ 正确：构造器注入
-@RequiredArgsConstructor
-@RestController
-public class ModelController {
-    private final ModelService modelService;
-}
-```
-
-## 2. 注释规范完整示例
+## 1. 注释规范完整示例
 
 ```java
 /**
@@ -71,9 +21,9 @@ public class ModelServiceImpl implements ModelService {
      * @return 模型视图对象
      */
     @Override
-    public ModelGetByIdVO getById(String id) {
+    public ModelGetByIdVO getById(Long id) {
         // 校验 ID 是否为空
-        if (StrUtil.isBlank(id)) {
+        if (Objects.isNull(id)) {
             return null;
         }
 
@@ -97,7 +47,7 @@ return BeanUtil.copyProperties(model, ModelGetByIdVO.class); // 转换为视图�
 // ❌ 错误：类、方法缺少 Javadoc
 @Service
 public class ModelServiceImpl implements ModelService {
-    public ModelGetByIdVO getById(String id) { ... }
+    public ModelGetByIdVO getById(Long id) { ... }
 }
 
 // ✅ 正确：注释独立成行，类与方法均有 Javadoc
@@ -111,14 +61,14 @@ public class ModelServiceImpl implements ModelService {
      * 根据 ID 获取模型
      */
     @Override
-    public ModelGetByIdVO getById(String id) {
+    public ModelGetByIdVO getById(Long id) {
         // 转换为视图对象
         return BeanUtil.copyProperties(this.getOne(id), ModelGetByIdVO.class);
     }
 }
 ```
 
-## 3. 导入顺序完整示例
+## 2. 导入顺序完整示例
 
 ```java
 // 1. JDK 标准库
@@ -153,7 +103,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.module.model.service.ModelService;
 ```
 
-## 4. 代码格式完整示例
+## 3. 代码格式完整示例
 
 ```java
 @Service
@@ -162,7 +112,7 @@ public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implemen
     private final ModelJobService modelJobService;
 
     @Override
-    public ModelGetWithUserVO getWithUserById(String id) {
+    public ModelGetWithUserVO getWithUserById(Long id) {
         return this.getOptById(id).map(model -> BeanUtil.copyProperties(model, ModelGetWithUserVO.class))
                 .map(model -> {
                     UserInfoUtil.setCreator(model);
@@ -171,13 +121,13 @@ public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implemen
                 .orElse(null);
     }
 
-    protected Optional<ModelPO> getOptById(String id) {
+    protected Optional<ModelPO> getOptById(Long id) {
         return Optional.ofNullable(this.getById(id));
     }
 }
 ```
 
-## 5. 枚举与常量完整示例
+## 4. 枚举与常量完整示例
 
 ### 枚举
 
@@ -232,10 +182,10 @@ model.setStatus(ModelStatus.WAITING.name());           // "WAITING"
 
 ```java
 public class ModelConstants {
-    public static final String MODEL_TYPE_LOOKALIKE = "lookalike";
-    public static final String MODEL_TYPE_RS = "rs";
-    public static final Integer MODEL_TYPE_LOOKALIKE_VALUE = 1;
-    public static final Integer MODEL_TYPE_RS_VALUE = 2;
+    public static final String MODEL_TYPE_PREDICTION = "prediction";
+    public static final String MODEL_TYPE_CLASSIFICATION = "classification";
+    public static final Integer MODEL_TYPE_PREDICTION_VALUE = 1;
+    public static final Integer MODEL_TYPE_CLASSIFICATION_VALUE = 2;
 }
 ```
 
@@ -243,15 +193,15 @@ public class ModelConstants {
 
 ```java
 // ❌ 错误：魔法值散落在业务代码中
-if ("lookalike".equals(model.getType())) { ... }
+if ("prediction".equals(model.getType())) { ... }
 model.setStatus(1);
 
 // ✅ 正确：使用常量
-if (ModelConstants.MODEL_TYPE_LOOKALIKE.equals(model.getType())) { ... }
+if (ModelConstants.MODEL_TYPE_PREDICTION.equals(model.getType())) { ... }
 model.setStatus(ModelStatus.STAGED.name());
 ```
 
-## 6. 异常处理完整示例
+## 5. 异常处理完整示例
 
 ### 自定义异常
 
@@ -271,10 +221,10 @@ public class ExampleException extends RuntimeException {
 
 ```java
 // Service 层：抛出业务异常
-public void enableById(String id) {
+public void deployById(Long id) {
     ModelPO model = this.getOptById(id)
             .map(m -> {
-                m.setStatus(true);
+                m.setStatus(ModelStatus.DEPLOYED.name());
                 return m;
             })
             .orElseThrow(() -> new ExampleException("Model not found"));
@@ -286,7 +236,7 @@ public void enableById(String id) {
 
 ```java
 // ❌ 错误：Service 层吞掉异常返回 null，调用方无法区分"不存在"与"系统错误"
-public ModelPO getById(String id) {
+public ModelPO getById(Long id) {
     try {
         return this.getById(id);
     } catch (Exception e) {
@@ -296,7 +246,7 @@ public ModelPO getById(String id) {
 
 // ❌ 错误：Controller 层堆叠 try-catch，逐接口重复处理
 @GetMapping("getById")
-public Result<ModelGetByIdVO> getById(@RequestParam String id) {
+public Result<ModelGetByIdVO> getById(@RequestParam Long id) {
     try {
         ModelGetByIdVO model = modelService.getById(id);
         return Result.ok(model);
@@ -307,24 +257,39 @@ public Result<ModelGetByIdVO> getById(@RequestParam String id) {
 
 // ✅ 正确：Service 抛业务异常，Controller 简洁，交由全局异常处理器兜底
 @GetMapping("getById")
-public Result<ModelGetByIdVO> getById(@RequestParam String id) {
+public Result<ModelGetByIdVO> getById(@RequestParam Long id) {
     ModelGetByIdVO model = modelService.getById(id);
     if (Objects.isNull(model)) {
         return Result.error("No data found");
     }
     return Result.ok("Query succeeded", model);
 }
+
+// ❌ 错误：既记录日志又抛出（含包装抛出），上层处理器会再记录一次，形成重复日志
+try {
+    // ...
+} catch (Exception e) {
+    log.error("Deploy model failed: modelId={}", id, e);
+    throw new ExampleException("Deploy failed");
+}
+
+// ✅ 正确：记录与抛出择一——抛出（含包装，保留 cause）时不记录日志，由全局异常处理器统一记录
+try {
+    // ...
+} catch (Exception e) {
+    throw new ExampleException("Deploy failed: modelId=" + id, e);
+}
 ```
 
-## 7. 日志完整示例
+## 6. 日志完整示例
 
 ```java
 @Slf4j
-@Service("modelService")
+@Service
 public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implements ModelService {
 
     @Override
-    public void run(String id) {
+    public void run(Long id) {
         log.info("Start running model job: jobId={}", id);
         try {
             this.getOptById(id).map(ModelPO::getCode)
@@ -333,8 +298,8 @@ public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implemen
                         log.info("Model job ran successfully: jobId={}", id);
                     });
         } catch (Exception e) {
-            log.error("Model job failed: jobId={}", id, e);
-            throw new ExampleException("Model job failed");
+            // 抛出时不记录日志（记录与抛出择一），由全局异常处理器统一记录；包装时保留 cause
+            throw new ExampleException("Model job failed: jobId=" + id, e);
         }
     }
 }
@@ -359,46 +324,7 @@ log.info("Model job ran successfully: jobId={}", id);
 log.error("Model job failed: jobId={}", id, e);
 ```
 
-## 8. 事务管理完整示例
-
-```java
-@Override
-@Transactional(rollbackFor = Exception.class)
-public boolean saveWithInfo(ModelSavePO param) {
-    ModelPO model = BeanUtil.copyProperties(param, ModelPO.class);
-    String code = CodeUtil.createCode(CodeUtil.CodeType.MODEL);
-    model.setCode(code);
-    boolean saved = super.save(model);
-    return saved;
-}
-
-@Override
-@Transactional(readOnly = true)
-public Collection<ModelPO> list(ModelListPO param, Query query) {
-    // 查询逻辑
-}
-```
-
-**正反例：**
-
-```java
-// ❌ 错误：不指定 rollbackFor，受检异常与 RuntimeException 之外的异常不触发回滚
-@Transactional
-public boolean saveWithInfo(ModelSavePO param) { ... }
-
-// ❌ 错误：写操作标注 readOnly，事务无效或行为异常
-@Transactional(readOnly = true)
-public boolean removeById(String id) { ... }
-
-// ✅ 正确
-@Transactional(rollbackFor = Exception.class)
-public boolean saveWithInfo(ModelSavePO param) { ... }
-
-@Transactional(readOnly = true)
-public ModelGetByIdVO getById(String id) { ... }
-```
-
-## 9. 工具类使用完整示例
+## 7. 工具类使用完整示例
 
 ### Hutool 工具类
 
@@ -422,8 +348,8 @@ if (ArrayUtil.isEmpty(ids)) {
 }
 
 // 日期操作
-Date startTime = DateUtil.beginOfDay(param.getStartTime());
-Date endTime = DateUtil.endOfDay(param.getEndTime());
+LocalDateTime startTime = LocalDateTimeUtil.beginOfDay(param.getStartTime());
+LocalDateTime endTime = LocalDateTimeUtil.endOfDay(param.getEndTime());
 
 // JSON 操作
 JSONObject config = JSONUtil.parseObj(configStr);
@@ -445,7 +371,7 @@ String code = CodeUtil.createCode(CodeUtil.CodeType.MODEL);
 UserInfoUtil.setCreator(models);
 
 // 集合工具
-List<String> ids = CollectionUtil.mapDistinct(models, ModelGetWithUserVO::getId);
+List<Long> ids = CollectionUtil.mapDistinct(models, ModelGetWithUserVO::getId);
 
 // 任务调度客户端
 JobClientUtil.sendRunRequest(jobCode);

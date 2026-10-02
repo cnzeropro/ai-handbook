@@ -1,6 +1,7 @@
 # 对象模型完整类定义
 
 > 本文件为 `../SKILL.md` 的补充示例。核心规则见主文件“三、对象模型规范”。
+> 示例业务域为占位的 Model（模型管理），实际开发替换为项目自身业务域。
 
 ## 1. PO（持久化对象）完整示例
 
@@ -12,12 +13,12 @@
 @TableName("example_model")
 public class ModelPO {
     @TableId(type = IdType.ASSIGN_ID)
-    private String id;
+    private Long id;
 
     private String code;
     private String name;
     private String description;
-    private String jobId;
+    private Long jobId;
     private String type;
     private String status;
     private String config;
@@ -26,9 +27,9 @@ public class ModelPO {
     private Integer isDeleted;
 
     private String createBy;
-    private Date createAt;
+    private LocalDateTime createAt;
     private String updateBy;
-    private Date updateAt;
+    private LocalDateTime updateAt;
 }
 ```
 
@@ -40,7 +41,7 @@ public class ModelPO {
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModelDTO {
-    private String id;
+    private Long id;
     private String code;
     private String name;
     private String description;
@@ -61,8 +62,8 @@ public class ModelListPO {
     private String code;
     private String name;
     private String status;
-    private Date startDeploymentTime;
-    private Date endDeploymentTime;
+    private LocalDateTime startDeploymentTime;
+    private LocalDateTime endDeploymentTime;
 }
 
 @Data
@@ -87,22 +88,22 @@ public class ModelSavePO {
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModelGetWithUserVO {
-    private String id;
+    private Long id;
     private String code;
     private String name;
     private String description;
-    private String groupId;
+    private Long groupId;
     private String groupName;   // 关联的组名称
     private String type;
     private String status;
     private String jobStatus;   // 任务执行状态
-    private Date executionTime; // 任务执行时间
+    private LocalDateTime executionTime; // 任务执行时间
     private String config;
     private String createBy;
     private String createByName; // 创建人姓名
-    private Date createAt;
+    private LocalDateTime createAt;
     private String updateBy;
-    private Date updateAt;
+    private LocalDateTime updateAt;
 }
 ```
 
@@ -110,12 +111,12 @@ public class ModelGetWithUserVO {
 
 ```java
 // ❌ 错误：Controller 入参出参直接用 PO/DTO
-public Result<ModelPO> getById(@RequestParam String id) { ... }
+public Result<ModelPO> getById(@RequestParam Long id) { ... }
 public Result<Void> save(@RequestBody ModelPO model) { ... }
 public Result<ModelDTO> sync(ModelDTO dto) { ... }     // 接口层不应暴露 DTO
 
 // ✅ 正确：接口用 Param/VO，DTO 仅用于模块间（Feign/RPC）传输
-public Result<ModelGetByIdVO> getById(@RequestParam String id) { ... }
+public Result<ModelGetByIdVO> getById(@RequestParam Long id) { ... }
 public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 ```
 

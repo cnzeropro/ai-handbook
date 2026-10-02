@@ -1,5 +1,5 @@
 ---
-name: "code-review"
+name: "java-code-review"
 description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA、Lombok、Hutool 等技术栈）的安全性、框架最佳实践、代码质量与性能。当用户请求审查、分析或审计代码、检查最佳实践时使用。"
 ---
 
@@ -21,7 +21,7 @@ description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA
 
 **技术栈**
 
-- Java 8 / 11 / 17 / 21（按项目版本评估语法使用是否得当，见 `feature-coding-standard`）
+- Java 8 / 11 / 17 / 21（按项目版本评估语法使用是否得当，见 `java-coding-standard`）
 - Spring Boot / Spring MVC
 - 持久层：MyBatis / MyBatis-Plus、Spring Data JPA / Hibernate
 - Lombok、Hutool / Guava 等常用工具库
@@ -36,22 +36,23 @@ description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA
 
 - 提交前代码审查（PR review）
 - 安全审计
-- 规范符合性检查（以 `feature-coding-standard`、`method-ordering`、`db-design-standard` 为检查依据）
+- 规范符合性检查（以 `java-coding-standard`、`java-feature-coding-standard`、`java-method-ordering`、`db-design-standard` 为检查依据）
 - 重构前的代码健康度评估
 
 ### 不适用（边界）
 
 - 非 Java 项目（前端、Python、Go 等）
 - 数据库表设计与 SQL 脚本审查（参见 `db-design-standard` skill）
-- 编码规范与命名约定本身（参见 `feature-coding-standard` skill）
-- 接口方法排序检查（参见 `method-ordering` skill）
+- 编码规范本身（参见 `java-coding-standard` skill）
+- 模块结构、对象模型与命名约定本身（参见 `java-feature-coding-standard` skill）
+- 接口方法排序检查（参见 `java-method-ordering` skill）
 - 运行时故障排查（线上问题定位、JVM 调优）
 
 ## 核心工作流
 
 1. **阅读代码**：先理解业务场景与调用链，避免脱离上下文提建议
 2. **逐项检查**：按“一、审查维度”逐项核对（安全 → 框架 → 质量 → 性能 → 持久层 → 日志）
-3. **规范比对**：结合项目实际技术栈，参照 `feature-coding-standard` 等 skill 判断符合性
+3. **规范比对**：结合项目实际技术栈，参照 `java-coding-standard`、`java-feature-coding-standard` 等 skill 判断符合性
 4. **输出报告**：按“二、审查输出格式”组织结果，严重问题优先
 
 ## 一、审查维度
@@ -61,7 +62,7 @@ description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA
 #### SQL 注入防护
 
 - 检查是否使用参数化查询
-- 验证 MyBatis Mapper XML 中是否使用 `${}`（危险）而非 `#{}`（安全）
+- 验证 MyBatis Mapper XML 中是否使用 `#{}`（安全）而非 `${}`（危险）
 - 检查 JPA/MyBatis 查询是否正确处理用户输入
 
 **示例：**
@@ -78,7 +79,7 @@ User findByName(@Param("name") String name);
 #### XSS 防护
 
 - 检查输出到前端的用户输入是否经过转义
-- 验证是否使用 Spring 的 `@ResponseBody` 或模板引擎的自动转义
+- 模板引擎（如 Thymeleaf）是否启用自动 HTML 转义；`@ResponseBody` 返回 JSON 本身不做 HTML 转义，前端渲染侧需安全处理
 
 #### 敏感信息泄露
 
@@ -147,7 +148,7 @@ public boolean saveWithInfo(UserSavePO userSaveParam) {
 #### Controller 层设计
 
 - 检查是否使用 `@RestController` 或 `@Controller`
-- 验证是否使用 `@RequestMapping` 或其变体（`@GetMapping`, `@PostMapping` 等）
+- 验证是否使用 `@RequestMapping` 或其变体（`@GetMapping`、`@PostMapping`、`@PutMapping`、`@DeleteMapping` 等）
 - 检查返回值是否统一使用 `Result` 包装类
 - 检查 Controller 是否只做参数校验与转发，不含业务逻辑
 
@@ -156,7 +157,7 @@ public boolean saveWithInfo(UserSavePO userSaveParam) {
 ```java
 // ✅ 推荐
 @GetMapping("getWithInfo")
-public Result<UserGetWithInfoVO> getWithInfo(@RequestParam String id) {
+public Result<UserGetWithInfoVO> getWithInfo(@RequestParam Long id) {
     Optional<UserGetWithInfoVO> userOpt = userService.getOptWithInfo(id);
     if (userOpt.isPresent()) {
         return Result.ok("Query succeeded", userOpt.get());
@@ -177,13 +178,13 @@ public Result<UserGetWithInfoVO> getWithInfo(@RequestParam String id) {
 
 ```java
 // ✅ 推荐
-public Optional<UserGetWithInfoVO> getOptWithInfo(String id) {
+public Optional<UserGetWithInfoVO> getOptWithInfo(Long id) {
     return Optional.ofNullable(this.getById(id))
             .map(user -> BeanUtil.copyProperties(user, UserGetWithInfoVO.class));
 }
 
 // ❌ 不推荐：可能 NPE
-public UserGetWithInfoVO getWithInfo(String id) {
+public UserGetWithInfoVO getWithInfo(Long id) {
     UserPO user = this.getById(id);
     return BeanUtil.copyProperties(user, UserGetWithInfoVO.class);
 }
@@ -212,16 +213,32 @@ return userService.listByIds(userIds);
 
 - 检查是否捕获了过于宽泛的异常（如 `Exception`）
 - 验证是否正确处理业务异常（不吞异常、不返回 null 掩盖错误）
+- 检查是否存在既记录日志又抛出的情形（记录与抛出择一，避免重复日志）
 - 检查是否在适当的地方抛出自定义异常
 
 **示例：**
 
 ```java
-// ✅ 推荐：业务异常直接抛出，系统异常记录堆栈后包装抛出
+// ✅ 推荐：业务异常直接抛出；系统异常包装后抛出（保留 cause）——抛出时不记录日志，
+// 由全局异常处理器统一记录，避免重复日志
 try {
     // 业务逻辑
 } catch (BusinessException e) {
     throw e;
+} catch (Exception e) {
+    throw new ExampleException("System error, please contact administrator", e);
+}
+
+// ✅ 推荐：可自行处理（无需向上传播）时，记录日志后不再抛出
+try {
+    // 业务逻辑
+} catch (Exception e) {
+    log.error("System error, fallback applied", e);
+}
+
+// ❌ 不推荐：既记录日志又抛出（含包装抛出），上层处理器会再记录一次，形成重复日志
+try {
+    // 业务逻辑
 } catch (Exception e) {
     log.error("System error", e);
     throw new ExampleException("System error, please contact administrator");
@@ -403,7 +420,7 @@ log.info("User login succeeded: userId=" + userId);
 - [ ] 安全：SQL 注入（`#{}` vs `${}`）、XSS、敏感信息泄露、认证与授权
 - [ ] Spring 框架：依赖注入（构造器优先）、事务管理（`rollbackFor`）、Service/Controller 分层职责
 - [ ] 空指针异常防护（`Optional`、空值检查）
-- [ ] 异常处理（不吞异常、不返回 null 掩盖错误、异常含堆栈）
+- [ ] 异常处理（不吞异常、不返回 null 掩盖错误、记录与抛出择一、异常含堆栈）
 - [ ] 集合操作（遍历前判空、Stream 使用）
 - [ ] 命名规范（类/方法/变量、无缩写）
 - [ ] 代码重复（提取公共方法/工具类）
@@ -412,7 +429,7 @@ log.info("User login succeeded: userId=" + userId);
 - [ ] 性能（N+1 查询、批量操作、内存、并发）
 - [ ] 持久层（`resultMap`、动态 SQL、Lambda 查询构造）
 - [ ] 日志规范（`@Slf4j`、级别、占位符、堆栈、无敏感信息）
-- [ ] 项目规范符合性（对照 `feature-coding-standard` / `method-ordering` / `db-design-standard`）
+- [ ] 项目规范符合性（对照 `java-coding-standard` / `java-feature-coding-standard` / `java-method-ordering` / `db-design-standard`）
 
 ## 四、注意事项
 
