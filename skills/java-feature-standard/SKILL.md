@@ -1,6 +1,6 @@
 ---
-name: "java-feature-coding-standard"
-description: "提供 Java 后端功能模块开发规范：分层架构、命名约定（包/类/方法/Param/VO）、对象模型（PO/DTO/Param/VO）、注解、事务管理、数据更新策略与开发流程。适用于 Spring Boot/Spring MVC/MyBatis(-Plus)/JPA/Dubbo/Feign/MQ 等技术栈；当需要新建功能或模块、重构旧代码、统一模块结构与命名时使用。语言级编码规范见 `java-coding-standard`。"
+name: "java-feature-standard"
+description: "提供 Java 后端功能模块开发规范：分层架构、命名约定、对象模型、注解与事务、接口设计、二方库与依赖管理。适用于 Spring Boot/MyBatis(-Plus)/JPA/Dubbo/Feign/MQ 等技术栈；当需要新建功能或模块、重构旧代码、统一模块结构与命名时使用。语言级编码规范见 `java-coding-standard`。"
 ---
 
 # 功能模块开发规范
@@ -14,8 +14,8 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 - 新建功能模块或从零开发新功能
 - 重构旧代码、统一模块结构、命名与分层风格
 - 代码审查时作为模块规范检查依据
-- 咨询命名（包/类/方法/Param/VO）或分层结构问题
-- 不确定 PO/Param/VO/DTO 该如何选择时
+- 咨询命名（包/类/方法/PO(Param)/VO）或分层结构问题
+- 不确定 PO(Persistent)/PO(Param)/VO/DTO 该如何选择时
 
 ## 适用范围
 
@@ -25,7 +25,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 - 语言与基础库：Java 8 / 11 / 17 / 21（按项目版本使用最佳实践语法，见 `java-coding-standard`）、Lombok、Hutool / Guava
 - Web / 接口层：Spring Boot / Spring MVC / Spring WebFlux、Jakarta Validation
-- 持久层：MyBatis / MyBatis-Plus、Spring Data JPA / Hibernate、jOOQ、Spring JDBC
+- 持久层：MyBatis / MyBatis-Plus / MyBatis-Flex、Spring Data JPA / Hibernate、jOOQ、Spring JDBC
 - 远程调用：Spring Cloud OpenFeign、Spring 6 HTTP Interface（`@HttpExchange`）、Dubbo、gRPC、RestTemplate / WebClient
 - 消息与任务：RocketMQ / Kafka / RabbitMQ、XXL-Job、Spring `@Scheduled`
 - 缓存与基础设施：Redis、Nacos / Consul、SLF4J + Logback
@@ -39,19 +39,19 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 **代码对象**
 
 - Controller / Service 接口 / ServiceImpl / Mapper 接口 / Mapper XML（或 Repository）
-- PO（持久化对象）/ DTO（数据传输对象）/ Param（请求参数对象）/ VO（响应视图对象）
+- PO(Persistent)（持久化对象）/ DTO（数据传输对象）/ PO(Param)（请求参数对象）/ VO（响应视图对象）
 - 枚举、常量类、自定义业务异常
 
 **技术栈适配说明**
 
 核心规范（分层职责、对象模型、注解、事务、数据更新策略）与技术栈无关；示例默认以 Spring Boot + MyBatis-Plus 呈现，使用其他技术栈时按以下映射替换：
 
-| 概念 | MyBatis-Plus（示例默认） | 纯 MyBatis | Spring Data JPA |
-| --- | --- | --- | --- |
-| 持久化对象 | `{Entity}PO` + `@TableName` | 同左 | `{Entity}PO` + `@Entity` / `@Table` |
-| 数据访问接口 | `{Entity}Mapper extends BaseMapper<PO>` | `{Entity}Mapper`（注解或 XML） | `{Entity}Repository extends JpaRepository<PO, ID>` |
-| Service 基类 | `IService<PO>` / `ServiceImpl<Mapper, PO>` | 普通接口 + `@Service` 实现类 | 普通接口 + `@Service` 实现类（注入 Repository） |
-| 分页返回 | `IPage<T>` | `PageInfo<T>`（PageHelper） | `Page<T>`（Spring Data） |
+| 概念 | MyBatis-Plus（示例默认） | MyBatis-Flex | 纯 MyBatis | Spring Data JPA |
+| --- | --- | --- | --- | --- |
+| 持久化对象 | `{Entity}PO` + `@TableName` | `{Entity}PO` + `@Table` / `@Id(keyType)` / `@Column` | 同 MyBatis-Plus 列 | `{Entity}PO` + `@Entity` / `@Table` |
+| 数据访问接口 | `{Entity}Mapper extends BaseMapper<PO>` | `{Entity}Mapper extends BaseMapper<PO>`（flex core） | `{Entity}Mapper`（注解或 XML） | `{Entity}Repository extends JpaRepository<PO, ID>` |
+| Service 基类 | `IService<PO>` / `ServiceImpl<Mapper, PO>` | `IService<PO>` / `ServiceImpl<Mapper, PO>`（flex core service） | 普通接口 + `@Service` 实现类 | 普通接口 + `@Service` 实现类（注入 Repository） |
+| 分页返回 | `IPage<T>` | `Page<T>`（flex paginate） | `PageInfo<T>`（PageHelper） | `Page<T>`（Spring Data） |
 
 ### 不适用（边界）
 
@@ -67,11 +67,11 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 1. **模块确认**：确定功能所属模块，创建包结构（见“二、命名规范”）
 2. **常量枚举**：创建常量类与枚举（规范见 `java-coding-standard`）
-3. **对象模型**：创建 PO → Param/VO → DTO（见“三”）
+3. **对象模型**：创建 PO(Persistent) → PO(Param)/VO → DTO（见“三”）
 4. **数据访问**：创建 Mapper/Repository 接口与 XML（见“一”）
 5. **业务逻辑**：创建 Service 接口与实现（见“一”）
 6. **接口层**：创建 Controller（见“一”）
-7. **规范自检**：逐条核对“八、验收清单”
+7. **规范自检**：逐条核对“九、验收清单”
 
 ## 一、分层架构与职责
 
@@ -85,11 +85,13 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 1. 使用 `@RequiredArgsConstructor` 构造器注入依赖
 2. 使用 `@RestController` 和 `@RequestMapping` 注解
-3. 方法返回统一使用 `Result` 包装类；下载（导出）相关方法除外，需使用 `ResponseEntity`
+3. 方法返回统一使用项目响应包装类（示例名 `Result`，含 `ok` / `error` 方法，实际按项目统一组件命名）；下载（导出）相关方法除外，需使用 `ResponseEntity`
 4. 接口风格：遵循 RESTful 风格——查询用 `@GetMapping`，新增用 `@PostMapping`，更新用 `@PutMapping`（部分更新可用 `@PatchMapping`），删除用 `@DeleteMapping`
 5. 参数使用 `@RequestParam` 或 `@RequestBody`
 6. 方法顺序遵循 `java-method-ordering` skill（查询 → 新增 → 更新 → 删除 → 其他）
 7. 异常交由全局异常处理器统一处理，不逐接口堆叠 try-catch（异常书写规范见 `java-coding-standard`）
+8. 响应 JSON 的 key 使用 lowerCamelCase（如 `errorCode` / `menuList`），禁止全大写或下划线命名
+9. 接口设计（参数校验、幂等、空列表返回、错误响应、路径风格）遵循 `references/interface-design.md`
 
 ### 2. Service 层规范
 
@@ -105,7 +107,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 1. MyBatis-Plus 项目：Mapper 接口继承 `BaseMapper<PO>`；JPA 项目：`Repository` 继承 `JpaRepository<PO, ID>`
 2. 使用 `@Mapper` 注解（可选，MyBatis-Plus 会自动扫描）；JPA 项目使用 `@Repository`
-3. XML 文件位于 `mapper/xml/` 目录下
+3. XML 文件位于 `mapper/impl/` 目录下（位于 Java 源码目录时，需在构建配置中将该目录下的 XML 纳入资源）
 4. 使用 `resultMap` 映射结果集
 5. 除基本 CRUD 外，大部分联表查询语句在 Mapper XML 中编写
 
@@ -130,7 +132,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 | 服务包 | `com.example.module.{module-name}.service` |
 | 服务实现包 | `com.example.module.{module-name}.service.impl` |
 | Mapper 包 | `com.example.module.{module-name}.mapper` |
-| Mapper XML 包 | `com.example.module.{module-name}.mapper.xml` |
+| Mapper XML 包 | `com.example.module.{module-name}.mapper.impl` |
 | 工具类包 | `com.example.module.{module-name}.util` |
 | 持久化对象包 | `com.example.module.{module-name}.model.persistent` |
 | 数据传输对象包 | `com.example.module.{module-name}.model.transfer` |
@@ -159,17 +161,17 @@ package com.example.module.project.model.view;
 | Service 实现 | `{Entity}ServiceImpl` | `ModelServiceImpl`, `ModelJobServiceImpl` |
 | Mapper 接口 | `{Entity}Mapper` | `ModelMapper`, `ModelJobMapper` |
 | Mapper XML | `{Entity}Mapper.xml` | `ModelMapper.xml`, `ModelJobMapper.xml` |
-| PO（持久化对象） | `{Entity}PO` | `ModelPO`, `ModelJobPO` |
+| PO(Persistent)（持久化对象） | `{Entity}PO` | `ModelPO`, `ModelJobPO` |
 | DTO（数据传输对象） | `{Entity}DTO` | `ModelDTO`, `ModelJobDTO` |
-| Param（请求参数对象） | `{Entity}{Operation}PO` | `ModelListPO`, `ModelListWithUserPO`, `ModelSavePO` |
+| PO(Param)（请求参数对象） | `{Entity}{Operation}PO` | `ModelListPO`, `ModelListWithUserPO`, `ModelSavePO` |
 | VO（响应视图对象） | `{Entity}{Operation}VO` | `ModelListVO`, `ModelListWithUserVO` |
 | 枚举 | `{Entity}Status`, `{Entity}Type` | `ModelStatus`, `ModelJobStatus` |
 
 **重要规则：**
 
-- 任何接口都必须有自己的 Param（请求参数对象）和 View（响应视图对象，如果存在返回值）
+- 参数复杂时必须有自己的 PO(Param)（请求参数对象），单字段（如编号）可直接使用 `@RequestParam`；任何接口必须有 VO（响应视图对象，如果存在返回值）
 - 禁止在接口中直接使用持久化对象
-- 因此持久化对象可以放在各自的微服务模块中，无需放在 `common` 模块
+- 持久化对象的存放位置按项目实际情况而定
 
 **正反例：**
 
@@ -179,7 +181,7 @@ public Result<ModelPO> getById(@RequestParam Long id) { ... }
 public class ModelControllerImpl { ... }   // Controller 不需要 Impl
 public class ModelDao { ... }              // 应使用 Mapper
 
-// ✅ 正确：接口使用 Param/VO，命名符合约定
+// ✅ 正确：接口使用 PO(Param)/VO，命名符合约定
 public Result<ModelGetByIdVO> getById(@RequestParam Long id) { ... }
 public class ModelController { ... }
 public interface ModelMapper extends BaseMapper<ModelPO> { ... }
@@ -211,6 +213,8 @@ public interface ModelMapper extends BaseMapper<ModelPO> { ... }
 | 暂存 | `stage` | `stage` |
 | 部署 | `deploy` | `deploy` |
 
+> 注：表中 `stage`（暂存）/ `deploy`（部署）/ `importJob`（导入任务）等为示例业务域（模型管理）的动作命名，实际按项目业务域设计动作。
+
 **正反例：**
 
 ```java
@@ -225,25 +229,25 @@ Collection<ModelListVO> list(ModelListPO param);
 boolean removeById(Long id);
 ```
 
-### 4. Param（请求参数对象）命名规则
+### 4. PO(Param)（请求参数对象）命名规则
 
 - 列表查询：`{Entity}ListPO`
 - 带其他信息的列表查询：`{Entity}ListWith{Info}PO`
 - 分页查询：`{Entity}PagePO`
 - 带其他信息的分页查询：`{Entity}PageWith{Info}PO`
-- 根据 ID 查询：`{Entity}GetByIdPO`
-- 带其他信息的根据 ID 查询：`{Entity}GetByIdWith{Info}PO`
+- 根据编号查询：`{Entity}GetByIdPO`
+- 带其他信息的根据编号查询：`{Entity}GetByIdWith{Info}PO`
 - 统计：`{Entity}CountPO`
 - 保存：`{Entity}SavePO`
 - 带其他信息的保存：`{Entity}SaveWith{Info}PO`
-- 通过 ID 更新：`{Entity}UpdateByIdPO`
-- 带其他信息通过 ID 更新：`{Entity}UpdateByIdWith{Info}PO`
-- 通过 ID 启用：`{Entity}EnableByIdPO`
-- 通过 ID 停用：`{Entity}DisableByIdPO`
-- 通过 ID 删除：`{Entity}RemoveByIdPO`
-- 批量 ID 删除：`{Entity}RemoveByIdsPO`
-- 带其他信息通过 ID 删除：`{Entity}RemoveByIdWith{Info}PO`
-- 带其他信息批量 ID 删除：`{Entity}RemoveByIdsWith{Info}PO`
+- 通过编号更新：`{Entity}UpdateByIdPO`
+- 带其他信息通过编号更新：`{Entity}UpdateByIdWith{Info}PO`
+- 通过编号启用：`{Entity}EnableByIdPO`
+- 通过编号停用：`{Entity}DisableByIdPO`
+- 通过编号删除：`{Entity}RemoveByIdPO`
+- 批量编号删除：`{Entity}RemoveByIdsPO`
+- 带其他信息通过编号删除：`{Entity}RemoveByIdWith{Info}PO`
+- 带其他信息批量编号删除：`{Entity}RemoveByIdsWith{Info}PO`
 
 **正反例：**
 
@@ -272,37 +276,40 @@ boolean removeById(Long id);
 // ✅ public Result<ModelGetByIdWithUserVO> getWithUserById(Long id) { ... }
 ```
 
-## 三、对象模型规范（PO/DTO/Param/VO）
+## 三、对象模型规范（PO(Persistent)/DTO/PO(Param)/VO）
 
 | 对象 | 目录 | 用途 | 命名 |
 | --- | --- | --- | --- |
-| PO（持久化对象） | `model/persistent/` | 对应数据库表 | `{Entity}PO` |
+| PO(Persistent)（持久化对象） | `model/persistent/` | 对应数据库表 | `{Entity}PO` |
 | DTO（数据传输对象） | `model/transfer/` | 模块间数据传输 | `{Entity}DTO` |
-| Param（请求参数对象） | `model/param/` | 接收请求参数 | `{Entity}{Operation}PO` |
+| PO(Param)（请求参数对象） | `model/param/` | 接收请求参数 | `{Entity}{Operation}PO` |
 | VO（响应视图对象） | `model/view/` | 复杂视图展示 | `{Entity}{Operation}VO` |
 
-### 1. PO（持久化对象）
+### 1. PO(Persistent)（持久化对象）
 
-- `@TableName` 指定表名、`@TableId` 指定主键、`@TableField` 指定字段映射（JPA 项目对应 `@Entity` / `@Id` / `@Column`）
-- 主键 `id` 用 `Long` + `@TableId(type = IdType.ASSIGN_ID)`（应用层雪花 ID，与 `db-design-standard` 主键规则对应）
-- 逻辑删除字段用 `@TableLogic`（`isDeleted`）：数据库 `is_deleted` 与属性 `isDeleted` 为下划线转驼峰自动映射，布尔/标志字段使用 `Integer` / `Boolean` 包装类型
+- `@TableName` 指定表名、`@TableId` 指定主键、`@TableField` 指定字段映射（JPA 项目对应 `@Entity` / `@Id` / `@Column`；MyBatis-Flex 项目对应 `@Table` / `@Id(keyType)` / `@Column`，主键应用层生成时 `keyType = KeyType.None`）
+- 主键 `id` 用 `Long` + `@TableId(type = IdType.ASSIGN_ID)`（应用层雪花编号，与 `db-design-standard` 主键规则对应）
+- 逻辑删除字段用 `@TableLogic`（`isDeleted`）：数据库 `is_deleted` 与属性 `isDeleted` 为下划线转驼峰自动映射，布尔/标志字段使用 `Integer` / `Boolean` 包装类型（MyBatis-Flex 对应 `@Column(isLogicDelete = true)`；乐观锁 `@Column(version = true)`、字段填充 `@Column(onInsertValue / onUpdateValue)`）
+- 状态枚举与 String 字段的映射统一配置（MyBatis-Plus 用 `@EnumValue` 或类型处理器），避免各模块各自为政
 - 使用 lombok 注解
 
 ### 2. DTO（数据传输对象）
 
-- 微服务多模块架构中位于 `common` 公共模块（供模块间共享）；单体应用放在对应业务模块。用于模块间数据传输
+- 存放位置按项目实际情况而定（如微服务架构中供模块间共享的可放公共模块）。用于模块间数据传输
+- 远程契约接口（Feign / Dubbo / gRPC）使用 DTO 传输；接口命名遵循“二、命名规范”，方法排序遵循 `java-method-ordering`
 - 使用 lombok 注解
 
-### 3. Param（请求参数对象）
+### 3. PO(Param)（请求参数对象）
 
-- 微服务多模块架构中位于 `common` 公共模块；单体应用放在对应业务模块。用于接收请求参数
+- 存放位置按项目实际情况而定。用于接收请求参数
 - 使用 lombok 注解
 
 ### 4. VO（响应视图对象）
 
-- 微服务多模块架构中位于 `common` 公共模块；单体应用放在对应业务模块。用于复杂视图展示
+- 存放位置按项目实际情况而定。用于复杂视图展示
 - 包含多个表的关联数据、额外的计算字段或展示字段
 - 使用 lombok 注解
+- 序列化细节：时间字段统一 `@JsonFormat`；敏感字段加 `@JsonIgnore` 或脱敏序列化器（见 `references/interface-design.md`）
 
 ### 5. 使用边界正反例
 
@@ -311,7 +318,7 @@ boolean removeById(Long id);
 public Result<ModelPO> getById(@RequestParam Long id) { ... }
 public Result<ModelDTO> sync(ModelDTO dto) { ... }     // 接口层不应暴露 DTO
 
-// ✅ 正确：接口用 Param/VO，DTO 仅用于模块间（Feign/RPC）传输
+// ✅ 正确：接口用 PO(Param)/VO，DTO 仅用于模块间（Feign/RPC）传输
 public Result<ModelGetByIdVO> getById(@RequestParam Long id) { ... }
 public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 ```
@@ -324,10 +331,12 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 
 - Controller：`@RequiredArgsConstructor`（构造器注入）
 - Service 实现：`@Slf4j`
-- 对象类（PO/DTO/Param/VO）：`@Data` + `@SuperBuilder(toBuilder = true)` + `@NoArgsConstructor` + `@AllArgsConstructor`
+- 对象类（PO(Persistent)/DTO/PO(Param)/VO）：`@Data` + `@SuperBuilder(toBuilder = true)` + `@NoArgsConstructor` + `@AllArgsConstructor`
 - 枚举：`@Getter`
 
 > 注：`@SuperBuilder` 需 Lombok 1.18.2+；使用旧版 Lombok 的项目可退回 `@Builder`
+> 注：JPA 实体（延迟加载代理）场景避免 `@Data`（其 equals/hashCode 重写在代理下有已知风险），改用 `@Getter` + `@Setter`
+> 注：对象转换优先编译期方案（MapStruct，类型安全），反射拷贝（`BeanUtil` / Spring `BeanUtils`）仅用于简单场景
 
 ```java
 // ❌ @Autowired 字段注入（难以测试、隐藏依赖）
@@ -339,7 +348,7 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 - Controller：`@RestController` + `@RequestMapping("{entity}")`
 - Service 实现：`@Service`
 - Mapper：`@Mapper`（可选）
-- 事务：`@Transactional(rollbackFor = Exception.class)`；只读：`@Transactional(readOnly = true)`
+- 事务注解见“五、事务管理规范”
 
 完整示例见 `references/annotation-examples.md`。
 
@@ -348,6 +357,8 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 - 使用 `@Transactional` 注解
 - 指定 `rollbackFor = Exception.class`
 - 只读事务使用 `readOnly = true`
+- 禁止同类内部自调用（`this.xxx()` 不经过代理，事务注解失效；需要时注入自身代理或拆分到独立 Bean）
+- 事务内避免远程调用与长耗时操作（长事务持锁与连接，应拆分或移出事务）
 
 ```java
 // ❌ 错误：不指定 rollbackFor，受检异常与 RuntimeException 之外的异常不触发回滚
@@ -383,15 +394,14 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 
 ### 3. 数据库变更规范
 
-- **多数据库支持**：项目同时使用多种数据库时，每种目标数据库的脚本均需提供（单库项目仅需该库脚本）
-- **默认值安全**：新增字段时，默认值应设为 `NULL` 或安全值，避免影响历史数据
-- **逻辑删除**：所有实体表应包含 `is_deleted` 字段，并使用逻辑删除而非物理删除
+表结构变更（DDL）遵循 `db-design-standard`（多数据库脚本、默认值安全、DDL 变更流程：备份/评审/在线变更）；启用逻辑删除的表必须包含 `is_deleted` 字段，删除操作走逻辑删除而非物理删除
 
 ## 七、最佳实践与常见错误规避
 
 ### 1. 性能优化
 
 - 使用批量操作减少数据库访问
+- 禁止循环内逐条查询（`getById`），批量场景用批量方法（`listByIds` / `selectBatchIds`）或一次查询组装
 - 合理使用缓存提高查询性能
 - 异步处理耗时操作
 - 分页查询大数据量
@@ -414,13 +424,39 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 
 - **风格一致性**：在维护遗留模块时，优先遵循该模块现有的命名风格（如 DTO vs PO），除非进行全面重构
 
-## 八、验收清单
+### 5. OOP 设计原则
+
+- 组合优于继承；使用继承必须符合里氏代换原则（父类出现处子类一定能出现）
+- 依赖抽象类与接口（依赖倒置原则），便于扩展与解耦
+- 对扩展开放、对修改闭合（开闭原则）
+- 共性逻辑抽取公共方法/模块/组件，消除重复代码（DRY）
+
+### 6. 消息与任务处理
+
+- 消息消费者必须幂等（重复消费防护：业务唯一键去重、状态机校验）
+- 消息消费失败有重试与兜底方案（死信队列、补偿任务）；定时任务同样考虑幂等与重入
+
+### 7. 测试
+
+- 核心业务增量必须附带单元测试并通过；覆盖率不低于 70%（核心模块分支覆盖 100%）
+- 测试遵守 AIR 原则（自动化、独立、可重复），审查细则见 `java-code-review`
+
+## 八、二方库与依赖管理
+
+- 版本号规则：`主版本号.次版本号.修订号`，起始版本 `1.0.0`；线上禁止依赖 `SNAPSHOT`
+- 二方库接口返回值不允许使用枚举类型（参数可以使用）
+- 同族依赖使用统一版本变量；禁止相同 GroupId + ArtifactId 出现不同 Version；版本仲裁放 `<dependencyManagement>`
+- 二方库不包含日志实现与配置项，只依赖日志门面（SLF4J）
+
+> 详细规则（依赖仲裁比对、发布约束等）见 `references/dependency-management.md`。
+
+## 九、验收清单
 
 ### 开发流程自检
 
 - [ ] 包结构符合 `com.example.module.{module-name}.*` 约定
 - [ ] 常量与枚举已创建（状态/类型字段用英文字符串值，见名知意）
-- [ ] PO → Param/VO 对象模型已创建，接口未直接暴露 PO
+- [ ] PO(Persistent) → PO(Param)/VO 对象模型已创建，接口未直接暴露 PO(Persistent)
 - [ ] Mapper/Repository 接口与 XML 已创建
 - [ ] Service 接口与实现已创建，方法顺序与 Controller 对齐
 - [ ] Controller 已创建，只做参数校验与转发
@@ -428,20 +464,22 @@ public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 
 ### 代码规范自检
 
-- [ ] 遵循命名规范（包/类/方法/Param/VO）
-- [ ] 代码风格与编码规范遵循 `java-coding-standard`（注释、导入、格式、常量枚举、工具类等）
-- [ ] 按项目 Java 版本使用最佳实践语法（不越级使用高版本特性）
-- [ ] 使用正确的注解（构造器注入、`@Slf4j`、`@Transactional(rollbackFor = Exception.class)`）
+- [ ] 遵循命名规范（包/类/方法/PO(Param)/VO）
+- [ ] 语言级编码规范遵循 `java-coding-standard`（命名、格式、异常、日志、工具类等）
+- [ ] 使用正确的注解（构造器注入、`@Slf4j`）
 - [ ] 事务管理正确（写操作回滚、只读事务标注 `readOnly`）
-- [ ] 异常处理完善（Service 抛业务异常，不吞异常；记录与抛出择一，无重复日志）
-- [ ] 日志记录规范（占位符、上下文、堆栈、无敏感信息）
 - [ ] 关联数据更新遵循 null/[]/非空列表语义
 - [ ] 级联删除同步删除子实体
-- [ ] 数据库变更为每种目标数据库提供脚本
-- [ ] 使用 `git add <file>` 精确添加，提交前 `git status` 检查
+- [ ] 数据库变更遵循 `db-design-standard`（多库脚本、DDL 变更流程）
+- [ ] 接口设计合规（`@Valid` 校验、写接口幂等、空列表返回 `[]`、错误响应四要素、JSON key lowerCamelCase）
+- [ ] 时间字段 `@JsonFormat` 统一格式；敏感字段已 `@JsonIgnore` 或脱敏
+- [ ] 消息消费者幂等；重复消费有防护
+- [ ] 二方库版本与依赖管理合规（禁 SNAPSHOT、统一版本变量、无枚举返回值）
 
-## References（完整代码示例）
+## References（完整代码示例与补充规范）
 
 - `references/layer-examples.md` — 分层架构各层完整代码（Controller/Service/ServiceImpl/Mapper/XML）
-- `references/object-model-examples.md` — PO/DTO/Param/VO 完整类定义与 Lombok 示例
+- `references/object-model-examples.md` — PO(Persistent)/DTO/PO(Param)/VO 完整类定义与 Lombok 示例
 - `references/annotation-examples.md` — Spring 注解、字段注入、事务管理完整示例
+- `references/interface-design.md` — 接口设计规范（参数校验、幂等、空列表、错误响应、路径风格、分页边界、序列化）
+- `references/dependency-management.md` — 二方库与依赖管理规范

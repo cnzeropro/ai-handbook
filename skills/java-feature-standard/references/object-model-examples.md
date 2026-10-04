@@ -2,8 +2,9 @@
 
 > 本文件为 `../SKILL.md` 的补充示例。核心规则见主文件“三、对象模型规范”。
 > 示例业务域为占位的 Model（模型管理），实际开发替换为项目自身业务域。
+> 示例为聚焦类结构省略 Javadoc，实际编码按 `java-coding-standard` 补充类与字段注释。
 
-## 1. PO（持久化对象）完整示例
+## 1. PO(Persistent)（持久化对象）完整示例
 
 ```java
 @Data
@@ -26,10 +27,10 @@ public class ModelPO {
     @TableLogic
     private Integer isDeleted;
 
-    private String createBy;
-    private LocalDateTime createAt;
-    private String updateBy;
-    private LocalDateTime updateAt;
+    private String createdBy;
+    private LocalDateTime createdAt;
+    private String updatedBy;
+    private LocalDateTime updatedAt;
 }
 ```
 
@@ -51,7 +52,7 @@ public class ModelDTO {
 }
 ```
 
-## 3. Param（请求参数对象）完整示例
+## 3. PO(Param)（请求参数对象）完整示例
 
 ```java
 @Data
@@ -99,11 +100,11 @@ public class ModelGetWithUserVO {
     private String jobStatus;   // 任务执行状态
     private LocalDateTime executionTime; // 任务执行时间
     private String config;
-    private String createBy;
-    private String createByName; // 创建人姓名
-    private LocalDateTime createAt;
-    private String updateBy;
-    private LocalDateTime updateAt;
+    private String createdBy;
+    private String createdByName; // 创建人姓名
+    private LocalDateTime createdAt;
+    private String updatedBy;
+    private LocalDateTime updatedAt;
 }
 ```
 
@@ -115,7 +116,7 @@ public Result<ModelPO> getById(@RequestParam Long id) { ... }
 public Result<Void> save(@RequestBody ModelPO model) { ... }
 public Result<ModelDTO> sync(ModelDTO dto) { ... }     // 接口层不应暴露 DTO
 
-// ✅ 正确：接口用 Param/VO，DTO 仅用于模块间（Feign/RPC）传输
+// ✅ 正确：接口用 PO(Param)/VO，DTO 仅用于模块间（Feign/RPC）传输
 public Result<ModelGetByIdVO> getById(@RequestParam Long id) { ... }
 public Result<Void> save(@RequestBody ModelSavePO modelSaveParam) { ... }
 ```
@@ -138,6 +139,7 @@ public class ModelServiceImpl extends ServiceImpl<ModelMapper, ModelPO> implemen
 @Getter
 public enum ModelStatus {
     WAITING,
-    RUNNING,
+    STAGED,
+    DEPLOYED,
 }
 ```

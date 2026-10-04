@@ -2,6 +2,8 @@
 
 > 本文件为 `../SKILL.md` 的补充示例（默认以 Spring Boot + MyBatis-Plus 呈现）。核心规则见主文件“一、分层架构与职责”。
 > 示例业务域为占位的 Model（模型管理），实际开发替换为项目自身业务域。
+> 示例中的 `Query`（分页/排序参数封装，含 `Query.Collation`）、`UserInfoUtil` 等为示例项目组件，实际开发替换为项目自身的对应组件。
+> 示例为聚焦分层结构省略 Javadoc，实际编码按 `java-coding-standard` 补充类与方法注释。
 
 ## 1. Controller 完整示例
 
@@ -40,15 +42,15 @@ public class ModelController {
 
     // 更新-启用
     @PutMapping("enableById")
-    public Result<Void> enableById(@RequestBody ModelEnableByIdPO modelEnableByIdParam) {
-        modelService.enableById(modelEnableByIdParam.getId());
+    public Result<Void> enableById(@RequestParam Long id) {
+        modelService.enableById(id);
         return Result.ok("Enabled");
     }
 
-    // 删除
+    // 删除（单字段使用 @RequestParam；部分网关会丢弃 DELETE body）
     @DeleteMapping("removeById")
-    public Result<Void> removeById(@RequestBody ModelRemoveByIdPO modelRemoveByIdParam) {
-        modelService.removeById(modelRemoveByIdParam.getId());
+    public Result<Void> removeById(@RequestParam Long id) {
+        modelService.removeById(id);
         return Result.ok("Removed");
     }
 }
