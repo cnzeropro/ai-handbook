@@ -4,7 +4,7 @@
 
 **所有行动之前，都必须先参照并遵守本规范。**
 
-规范文件：[rules.md](https://raw.githubusercontent.com/cnzeropro/ai-playbook/main/rules.md)
+规范文件：[rules.md](https://raw.githubusercontent.com/cnzeropro/ai-handbook/main/rules.md)
 
 要求：
 

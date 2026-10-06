@@ -1,4 +1,4 @@
-# AI Playbook
+# AI Handbook
 
 > AI 助手行为约束规范与 Skills 技能集合。
 
@@ -55,17 +55,17 @@ Skills 采用 Claude Code 的 `SKILL.md` 格式编写，可通过以下任一方
 
 ```bash
 # 从 GitHub 仓库安装（交互式选择 Symlink 或 Copy；CLI 会自动检测已安装的 agent）
-npx skills add cnzeropro/ai-playbook
+npx skills add cnzeropro/ai-handbook
 
 # 或从本地路径安装
 npx skills add <本仓库路径>
 
 # 仅安装指定 skill / 安装到用户级（跨项目）
-npx skills add cnzeropro/ai-playbook --skill db-design-standard
-npx skills add cnzeropro/ai-playbook -g
+npx skills add cnzeropro/ai-handbook --skill db-design-standard
+npx skills add cnzeropro/ai-handbook -g
 
 # 指定目标 agent（默认全装到检测到的 agent；支持 claude-code / codex / cursor / pi / opencode 等 25+ 种）
-npx skills add cnzeropro/ai-playbook -a claude-code -a codex -a pi
+npx skills add cnzeropro/ai-handbook -a claude-code -a codex -a pi
 ```
 
 **方式二：直接复制（按目标 agent 的目录）**
