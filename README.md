@@ -13,12 +13,12 @@
   - **工具清单**：[`tools.md`](catalog/tools.md) — 收录 **Windows / macOS / Linux** 三平台下各 AI 编程工具的官方安装命令、依赖环境与默认安装路径。一级按「本地模型运行时 / 编程工具 / 编排与网关」分类，二级为出品方，三级为发行形态（Agent CLI / IDE 插件 / Desktop App / Web / 移动端 / 服务网关 / 容器镜像 / SDK）；命令与路径均取自官方文档或官方安装脚本原文。
   - **技能清单**：[`skills.md`](catalog/skills.md) — 外部 Agent Skills 的安装清单：`npx skills` 命令、全局 / 项目级的层级建议，以及每个 skill 的作用。注意与下方 `skills/`（本仓库自带的技能包）区分。
   - **插件清单**：[`plugins.md`](catalog/plugins.md) — 各 AI 客户端的插件与插件市场，目前收录 Claude Code，结构已预留 Codex / Pi 等客户端的扩展位置。
-- **指令文件模板**：[`references/`](references/) — 提供 `CLAUDE.md` 与 `AGENTS.md` 两份等效模板，复制到项目或全局配置后，AI 助手即可在行动前加载并遵守上述行为约束规范。
+- **指令文件模板**：[`references/`](references/) — `AGENTS.md` 与 `CLAUDE.md` 两份等效模板，写入 agent 的指令文件后，AI 助手会在行动前获取最新规范。推荐装到全局（用户级），安装命令见[应用行为规范](#应用行为规范)。
 - **Skills**：[`skills/`](skills/) — 可复用技能包，以开放的 Agent Skills（`SKILL.md`）格式组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手，覆盖代码审查、数据库设计、功能编码等高频开发场景。
 
 ## 目录结构
 
-```
+```text
 .
 ├── rules.md                         # AI 助手行为约束规范（全局规则）
 ├── catalog/                         # 外部资源清单（工具 / 技能 / 插件）
@@ -31,7 +31,7 @@
 │   ├── java-method-ordering/        # 方法（接口）排序规则
 │   ├── java-code-review/            # 代码审查
 │   └── db-design-standard/          # 数据库设计规范
-├── references/                      # 指令文件模板（CLAUDE.md / AGENTS.md）
+├── references/                      # 指令文件模板（AGENTS.md / CLAUDE.md）
 └── LICENSE                          # MIT 许可证
 ```
 
@@ -45,13 +45,13 @@
 | `java-code-review` | Java 代码审查：安全（含深度清单）、框架最佳实践、代码质量、性能、并发、持久层、日志 + Java 语言陷阱清单，附三级问题输出模板 |
 | `db-design-standard` | 关系型数据库表设计与 SQL 脚本规范：10 条设计规则、SQL 编写规约、辅助索引设计指南、DDL 变更规范、多库适配映射与验收清单 |
 
-> 五个 skill 的分工：`java-coding-standard` 管"语言怎么写"，`java-feature-standard` 管"模块怎么搭"，`java-method-ordering` 管"方法怎么排"，`java-code-review` 管"问题怎么查"，`db-design-standard` 管"库表怎么建"。
+> 五个 skill 的分工：`java-coding-standard` 管「语言怎么写」，`java-feature-standard` 管「模块怎么搭」，`java-method-ordering` 管「方法怎么排」，`java-code-review` 管「问题怎么查」，`db-design-standard` 管「库表怎么建」。
 
 ## 使用方法
 
-### 在 Claude Code 中使用 Skills
+### 安装 Skills
 
-Skills 采用 Claude Code 的 `SKILL.md` 格式编写，可通过以下任一方式安装：
+Skills 采用开放的 Agent Skills（`SKILL.md`）格式编写，可通过以下任一方式安装：
 
 **方式一：`npx skills`（推荐，支持符号链接与更新管理）**
 
@@ -70,7 +70,7 @@ npx skills add cnzeropro/ai-handbook -g
 npx skills add cnzeropro/ai-handbook -a claude-code -a codex -a pi
 ```
 
-**方式二：直接复制（按目标 agent 的目录）**
+**方式二：直接复制（按目标 agent 的目录，目标目录需已存在）**
 
 | Agent | 项目级目录 | 用户级目录（跨项目） |
 | --- | --- | --- |
@@ -93,9 +93,48 @@ cp -r <本仓库路径>/skills/* ~/.codex/skills/
 
 ### 应用行为规范
 
-将 [`rules.md`](rules.md) 的内容合并到全局 `~/.claude/CLAUDE.md` 或项目的 `CLAUDE.md` 中，即可让 AI 助手遵守对应的行为约束。
+[`references/`](references/) 下的 `AGENTS.md` 与 `CLAUDE.md` 内容等效（前者为跨 agent 通用格式），写入 agent 的指令文件后，AI 助手会在行动前获取最新 [`rules.md`](rules.md) 并遵守。也可以直接把 [`rules.md`](rules.md) 合并进现有指令文件（完全离线，但规范更新后需手动重新合并）。
 
-也可以将 [`references/`](references/) 下的模板复制到项目根目录或全局配置：Claude Code 使用 `CLAUDE.md`，其他 agents（Codex、Cursor 等）使用 `AGENTS.md`，两者内容等效；模板会让 AI 助手在行动前通过 GitHub 地址获取最新规范并遵守。
+**推荐装到全局（用户级）配置**，一次配置对所有项目生效；也可以只放进单个项目：
+
+| Agent | 全局（推荐） | 项目级（可选） |
+| --- | --- | --- |
+| Claude Code | `~/.claude/CLAUDE.md` | `<项目>/AGENTS.md`（v2.1.277+，需项目内无 `CLAUDE.md`） |
+| Codex | `~/.codex/AGENTS.md` | `<项目>/AGENTS.md` |
+| Cursor | 设置 → Rules → User Rules | `<项目>/AGENTS.md` |
+| Pi | `~/.pi/agent/AGENTS.md` | `<项目>/AGENTS.md` |
+
+> Claude Code 的 `AGENTS.md` 仅在项目级生效，且默认在项目已有 `CLAUDE.md` 时整体失效（可在 `/config` → Project instructions 切换为两者并用）；用户级仍只有 `~/.claude/CLAUDE.md`。
+
+下面以 Codex 全局文件为例，三种写法各一行、任选其一（目录需已存在）；换其他 agent 只需改每行开头的目标路径。Claude Code 用户级改用 `references/CLAUDE.md` 与 `~/.claude/CLAUDE.md`。
+
+**macOS / Linux / Git Bash**
+
+```bash
+# 覆盖
+P=~/.codex/AGENTS.md; curl -fsSL https://raw.githubusercontent.com/cnzeropro/ai-handbook/main/references/AGENTS.md -o "$P"
+
+# 追加到开头
+P=~/.codex/AGENTS.md; touch "$P" && { curl -fsSL https://raw.githubusercontent.com/cnzeropro/ai-handbook/main/references/AGENTS.md; printf '\n'; cat "$P"; } > "$P.new" && mv "$P.new" "$P"
+
+# 追加到末尾
+P=~/.codex/AGENTS.md; { printf '\n'; curl -fsSL https://raw.githubusercontent.com/cnzeropro/ai-handbook/main/references/AGENTS.md; } >> "$P"
+```
+
+**Windows（PowerShell 7+）**
+
+```powershell
+# 注：PowerShell 5.1 中 curl 是 Invoke-WebRequest 的别名，故统一使用 curl.exe
+
+# 覆盖
+$p = "$home\.codex\AGENTS.md"; curl.exe -fsSL https://raw.githubusercontent.com/cnzeropro/ai-handbook/main/references/AGENTS.md -o $p
+
+# 追加到开头
+$p = "$home\.codex\AGENTS.md"; curl.exe -fsSL https://raw.githubusercontent.com/cnzeropro/ai-handbook/main/references/AGENTS.md -o "${p}.new"; Set-Content $p -Encoding utf8 -Value ((Get-Content "${p}.new" -Raw) + "`n" + (Get-Content $p -Raw -ErrorAction SilentlyContinue)); Remove-Item "${p}.new" -Force
+
+# 追加到末尾
+$p = "$home\.codex\AGENTS.md"; curl.exe -fsSL https://raw.githubusercontent.com/cnzeropro/ai-handbook/main/references/AGENTS.md -o "${p}.new"; Add-Content $p -Encoding utf8 -Value ("`n" + (Get-Content "${p}.new" -Raw)); Remove-Item "${p}.new" -Force
+```
 
 ## 贡献
 
