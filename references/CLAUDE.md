@@ -4,7 +4,7 @@
 
 **所有行动之前，都必须先参照并遵守本规范。**
 
-规范文件：[ai-assistant-behavior-rules.md](https://raw.githubusercontent.com/cnzeropro/ai-playbook/main/ai-assistant-behavior-rules.md)
+规范文件：[rules.md](https://raw.githubusercontent.com/cnzeropro/ai-playbook/main/rules.md)
 
 要求：
 
@@ -19,7 +19,7 @@
 
 **在遵守上述规范的基础上，当任务涉及编码（读写代码）时，同时参照并遵守本准则（减少 LLM 常见编码错误）。**
 
-准则文件：[andrej-karpathy-skills/CLAUDE.md](https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md)
+准则文件：[andrej-karpathy-skills/CLAUDE.md](https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/main/CLAUDE.md)
 
 要求：
 

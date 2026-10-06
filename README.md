@@ -8,8 +8,10 @@
 
 本仓库收录了一套面向 AI 编程助手的**行为约束规范**与**可复用技能（Skills）**，目标是让 AI 助手在软件开发任务中输出稳定、规范、安全的结果。
 
-- **行为规范**：[`ai-assistant-behavior-rules.md`](ai-assistant-behavior-rules.md) — 定义 AI 助手的语言要求、环境变量管理、文件系统边界、依赖管理、隐私与安全底线等行为准则。
-- **工具清单**：[`ai-tools.md`](ai-tools.md) — 收录 **Windows / macOS / Linux** 三平台下各 AI 编程工具的官方安装命令、依赖环境与默认安装路径。一级按「本地模型运行时 / 编程工具 / 编排与网关」分类，二级为出品方，三级为发行形态（Agent CLI / IDE 插件 / Desktop App / Web / 移动端 / 服务网关 / 容器镜像 / SDK）；命令与路径均取自官方文档或官方安装脚本原文。
+- **行为规范**：[`rules.md`](rules.md) — 定义 AI 助手的语言要求、环境变量管理、文件系统边界、依赖管理、隐私与安全底线等行为准则。
+- **工具清单**：[`tools.md`](tools.md) — 收录 **Windows / macOS / Linux** 三平台下各 AI 编程工具的官方安装命令、依赖环境与默认安装路径。一级按「本地模型运行时 / 编程工具 / 编排与网关」分类，二级为出品方，三级为发行形态（Agent CLI / IDE 插件 / Desktop App / Web / 移动端 / 服务网关 / 容器镜像 / SDK）；命令与路径均取自官方文档或官方安装脚本原文。
+- **技能清单**：[`skills.md`](skills.md) — 外部 Agent Skills 的安装清单：`npx skills` 命令、全局 / 项目级的层级建议，以及每个 skill 的作用。注意与下方 `skills/`（本仓库自带的技能包）区分。
+- **插件清单**：[`plugins.md`](plugins.md) — 各 AI 客户端的插件与插件市场，目前收录 Claude Code，结构已预留 Codex / Pi 等客户端的扩展位置。
 - **指令文件模板**：[`references/`](references/) — 提供 `CLAUDE.md` 与 `AGENTS.md` 两份等效模板，复制到项目或全局配置后，AI 助手即可在行动前加载并遵守上述行为约束规范。
 - **Skills**：[`skills/`](skills/) — 可复用技能包，以开放的 Agent Skills（`SKILL.md`）格式组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手，覆盖代码审查、数据库设计、功能编码等高频开发场景。
 
@@ -17,9 +19,11 @@
 
 ```
 .
-├── ai-assistant-behavior-rules.md   # AI 助手行为约束规范（全局规则）
-├── ai-tools.md                      # AI 编程工具清单（三平台官方安装命令 / 依赖环境 / 安装路径）
-├── skills/                          # AI 助手 Skills 技能包
+├── rules.md                         # AI 助手行为约束规范（全局规则）
+├── tools.md                         # AI 编程工具清单（三平台官方安装命令 / 依赖环境 / 安装路径）
+├── skills.md                        # 外部 Agent Skills 安装清单（npx skills）
+├── plugins.md                       # AI 客户端插件与插件市场清单
+├── skills/                          # AI 助手 Skills 技能包（本仓库自带）
 │   ├── java-coding-standard/        # Java 编码规范（语言级）
 │   ├── java-feature-standard/       # 功能模块开发规范（模块级）
 │   ├── java-method-ordering/        # 方法（接口）排序规则
@@ -87,7 +91,7 @@ cp -r <本仓库路径>/skills/* ~/.codex/skills/
 
 ### 应用行为规范
 
-将 [`ai-assistant-behavior-rules.md`](ai-assistant-behavior-rules.md) 的内容合并到全局 `~/.claude/CLAUDE.md` 或项目的 `CLAUDE.md` 中，即可让 AI 助手遵守对应的行为约束。
+将 [`rules.md`](rules.md) 的内容合并到全局 `~/.claude/CLAUDE.md` 或项目的 `CLAUDE.md` 中，即可让 AI 助手遵守对应的行为约束。
 
 也可以将 [`references/`](references/) 下的模板复制到项目根目录或全局配置：Claude Code 使用 `CLAUDE.md`，其他 agents（Codex、Cursor 等）使用 `AGENTS.md`，两者内容等效；模板会让 AI 助手在行动前通过 GitHub 地址获取最新规范并遵守。
 

@@ -7,13 +7,11 @@
 
 **一级：类型**
 
-
 | 一级        | 说明                    |
 | --------- | --------------------- |
 | 一、本地模型运行时 | 模型跑在你自己机器上，对外提供本地推理服务 |
 | 二、编程工具    | 直接读写代码的 agent         |
 | 三、编排与网关   | 自身不写代码，调度其他工具或接入聊天客户端 |
-
 
 **二级：出品方**（标注「模型厂商 / 第三方」）　**三级：形态**
 
@@ -44,9 +42,9 @@ Linux｜依赖：仅需 curl；zstd 可选（缺失时脚本自行下载）
 curl -LsSf https://llama.app/install.sh | sh
 ```
 
-**安装路径**：Windows 可执行 `%LOCALAPPDATA%\Microsoft\WindowsApps\llama.exe`（脚本**不改 PATH**，依赖该目录默认在 PATH 中）、暂存 `%LOCALAPPDATA%\llama-app`｜Linux 可执行 `~/.local/bin/llama`、暂存 `~/.llama-app`
-
-#### IDE 插件
+**安装路径**
+- Windows 可执行 `%LOCALAPPDATA%\Microsoft\WindowsApps\llama.exe`（脚本**不改 PATH**，依赖该目录默认在 PATH 中）、暂存 `%LOCALAPPDATA%\llama-app`
+- Linux 可执行 `~/.local/bin/llama`、暂存 `~/.llama-app`
 
 #### Desktop App
 
@@ -64,11 +62,9 @@ brew install --cask llama-app
 
 或 `.dmg`：`https://github.com/ggml-org/Llama-macOS/releases/latest/download/Llama.dmg`
 
-**安装路径**：macOS `/Applications/Llama.app`；配置 `~/.config/llama/models.user.ini`（应用只读该文件并合并进它生成的 `models.ini`）｜Windows 设置与日志 `%LOCALAPPDATA%\Llama`
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
+**安装路径**
+- macOS `/Applications/Llama.app`；配置 `~/.config/llama/models.user.ini`（应用只读该文件并合并进它生成的 `models.ini`）
+- Windows 设置与日志 `%LOCALAPPDATA%\Llama`
 
 #### 服务 / 网关（自托管）
 
@@ -77,8 +73,6 @@ brew install --cask llama-app
 #### 容器镜像（Docker）
 
 `ghcr.io/ggml-org/llama.cpp`（属 llama.cpp 项目）
-
-#### SDK / 库
 
 **其他说明**：模型统一存放 Hugging Face 缓存，与 llama.cpp 及其他工具共享（Windows `%USERPROFILE%\.cache\huggingface\hub`）。⚠️ 官网「Package managers」链接指向的是 **llama.cpp** 文档——`winget install llama.cpp`、`brew install llama.cpp` 装的是 llama.cpp 本体，**不是 llama.app**，两者是不同项目、不同仓库。
 
@@ -109,7 +103,10 @@ curl -fsSL https://ollama.com/install.sh | sh
 curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.5.7 sh
 ```
 
-**安装路径**：Windows 二进制 `%LOCALAPPDATA%\Programs\Ollama`（安装器加入用户 PATH）｜macOS 应用 `/Applications/Ollama.app` + 软链 `/usr/local/bin/ollama`｜Linux 二进制为 PATH 中首个命中的 `/usr/local/bin`、`/usr/bin`、`/bin` 下，库文件在 `$OLLAMA_INSTALL_DIR/lib/ollama`
+**安装路径**
+- Windows 二进制 `%LOCALAPPDATA%\Programs\Ollama`（安装器加入用户 PATH）
+- macOS 应用 `/Applications/Ollama.app` + 软链 `/usr/local/bin/ollama`
+- Linux 二进制为 PATH 中首个命中的 `/usr/local/bin`、`/usr/bin`、`/bin` 下，库文件在 `$OLLAMA_INSTALL_DIR/lib/ollama`
 
 #### IDE 插件
 
@@ -130,10 +127,6 @@ https://ollama.com/download/OllamaSetup.exe
 ```
 
 （支持 `/DIR="d:\some\location"` 自定义目录；Linux 无官方桌面端）
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
 
 #### 服务 / 网关（自托管）
 
@@ -255,7 +248,10 @@ echo "https://downloads.claude.ai/claude-code/apk/stable" >> /etc/apk/repositori
 apk add claude-code
 ```
 
-**安装路径**：Windows 可执行 `%USERPROFILE%\.local\bin\claude.exe`、版本 `%USERPROFILE%\.local\share\claude`｜macOS / Linux `~/.local/bin/claude`（软链指向 `~/.local/share/claude/versions/`）｜配置 `~/.claude` 与 `~/.claude.json`，项目级 `.claude`、`.mcp.json`。原生安装**后台自动更新**；WinGet / Homebrew 需手动升级。
+**安装路径**
+- Windows 可执行 `%USERPROFILE%\.local\bin\claude.exe`、版本 `%USERPROFILE%\.local\share\claude`
+- macOS / Linux `~/.local/bin/claude`（软链指向 `~/.local/share/claude/versions/`）
+- 配置 `~/.claude` 与 `~/.claude.json`，项目级 `.claude`、`.mcp.json`。原生安装**后台自动更新**；WinGet / Homebrew 需手动升级
 
 #### IDE 插件
 
@@ -327,7 +323,10 @@ npm（跨平台）｜依赖：Node.js >= 16（该包 engines 原文）
 npm install -g @openai/codex
 ```
 
-**安装路径**：Windows 可见 bin `%LOCALAPPDATA%\Programs\OpenAI\Codex\bin`（junction，`CODEX_INSTALL_DIR` 可改），实体在 `%USERPROFILE%\.codex\packages\standalone\releases\<版本>-<target>\`，`current` 为 junction｜macOS / Linux 可执行 `~/.local/bin/codex`，版本包 `~/.codex/packages/standalone/releases/<版本>-<target>`｜配置 `~/.codex/config.toml`（`CODEX_HOME` 可改），系统级 `/etc/codex/config.toml`（Unix）
+**安装路径**
+- Windows 可见 bin `%LOCALAPPDATA%\Programs\OpenAI\Codex\bin`（junction，`CODEX_INSTALL_DIR` 可改），实体在 `%USERPROFILE%\.codex\packages\standalone\releases\<版本>-<target>\`，`current` 为 junction
+- macOS / Linux 可执行 `~/.local/bin/codex`，版本包 `~/.codex/packages/standalone/releases/<版本>-<target>`
+- 配置 `~/.codex/config.toml`（`CODEX_HOME` 可改），系统级 `/etc/codex/config.toml`（Unix）
 
 #### IDE 插件
 
@@ -354,8 +353,6 @@ Codex Remote —— 用 ChatGPT 手机 App 配对电脑
 #### 服务 / 网关（自托管）
 
 `codex app-server`（JSON-RPC）
-
-#### 容器镜像（Docker）
 
 #### SDK / 库
 
@@ -390,19 +387,10 @@ macOS / Linux｜依赖：curl 或 wget；tar、sed；校验用 shasum / sha512su
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
 
-**安装路径**：Windows `%LOCALAPPDATA%\agy\bin\agy.exe`（`-d` / `--dir` 可改，脚本**不改 PATH**）｜macOS / Linux `~/.local/bin/agy`、暂存 `~/.cache/antigravity/staging`｜配置 `~/.gemini/antigravity-cli/settings.json`、`keybindings.json`；凭据存于系统 keyring（Keychain / Secret Service / Windows Credential Manager）
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
+**安装路径**
+- Windows `%LOCALAPPDATA%\agy\bin\agy.exe`（`-d` / `--dir` 可改，脚本**不改 PATH**）
+- macOS / Linux `~/.local/bin/agy`、暂存 `~/.cache/antigravity/staging`
+- 配置 `~/.gemini/antigravity-cli/settings.json`、`keybindings.json`；凭据存于系统 keyring（Keychain / Secret Service / Windows Credential Manager）
 
 #### SDK / 库
 
@@ -431,21 +419,10 @@ macOS / Linux / Git Bash｜依赖：curl 或 wget（至少其一）；zstd 可�
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-**安装路径**：Windows `%USERPROFILE%\.grok\bin`（`GROK_BIN_DIR` 可改，写入用户级 PATH）；MinGit 解压到 `%LOCALAPPDATA%\grok\git\<版本>\`｜macOS / Linux `~/.grok/bin`（落为 `grok-<platform>` 并软链 `grok`、`agent`；bin 目录不在 PATH 时会软链到 `~/.local/bin` 或 `/usr/local/bin`）｜配置 `~/.grok/config.toml`；凭据 `~/.grok/auth.json`；补全 `~/.grok/completions/`
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
-
-#### SDK / 库
+**安装路径**
+- Windows `%USERPROFILE%\.grok\bin`（`GROK_BIN_DIR` 可改，写入用户级 PATH）；MinGit 解压到 `%LOCALAPPDATA%\grok\git\<版本>\`
+- macOS / Linux `~/.grok/bin`（落为 `grok-<platform>` 并软链 `grok`、`agent`；bin 目录不在 PATH 时会软链到 `~/.local/bin` 或 `/usr/local/bin`）
+- 配置 `~/.grok/config.toml`；凭据 `~/.grok/auth.json`；补全 `~/.grok/completions/`
 
 **其他说明**：另有 WinGet 包 `xAI.GrokBuild`、`winget upgrade --id xAI.GrokBuild -e`。指定版本先设 `$env:GROK_VERSION`，渠道变量 `GROK_CHANNEL`（默认 `stable`）。源码构建需 Rust（rustup）+ DotSlash + protoc，且**仅支持 macOS / Linux 宿主**，Windows 构建为 best-effort 且未测试。官方渠道**未提供 Homebrew / npm / Docker**。
 
@@ -477,7 +454,10 @@ npm install -g @moonshot-ai/kimi-code
 pnpm add -g @moonshot-ai/kimi-code
 ```
 
-**安装路径**：Windows `%USERPROFILE%\.kimi-code\bin\kimi.exe`（`KIMI_INSTALL_DIR` 可改）｜macOS / Linux `~/.kimi-code/bin/kimi`｜配置与数据 `~/.kimi-code/`（`KIMI_CODE_HOME` 可改），含 `config.toml`、会话、日志；脚本写 `region` 标记文件。脚本会向 `~/.zshrc` / `~/.bashrc` / fish 配置追加 PATH（`KIMI_NO_MODIFY_PATH` 可跳过）。
+**安装路径**
+- Windows `%USERPROFILE%\.kimi-code\bin\kimi.exe`（`KIMI_INSTALL_DIR` 可改）
+- macOS / Linux `~/.kimi-code/bin/kimi`
+- 配置与数据 `~/.kimi-code/`（`KIMI_CODE_HOME` 可改），含 `config.toml`、会话、日志；脚本写 `region` 标记文件。脚本会向 `~/.zshrc` / `~/.bashrc` / fish 配置追加 PATH（`KIMI_NO_MODIFY_PATH` 可跳过）
 
 #### IDE 插件
 
@@ -485,17 +465,11 @@ VS Code 扩展 `moonshot-ai.kimi-code`｜Zed 官方扩展（`MoonshotAI/kimi-cod
 
 #### Desktop App
 
-`KimiCode-mac-arm64.dmg` / `-mac-x64.dmg` / `-win-x64.exe`（`code.kimi.com/kimi-code/desktop/download/…`）｜依赖：Kimi 账号；落盘官方未说明
+`KimiCode-mac-arm64.dmg` / `-mac-x64.dmg` / `-win-x64.exe`（`code.kimi.com/kimi-code/desktop/download/…`）｜依赖：Kimi 账号｜落盘由安装器决定
 
 #### Web 应用 / 云端 Agent
 
 `kimi web` → `127.0.0.1:58627`；Remote Control 网页 `code-rc.kimi.com`（付费）
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
 
 #### SDK / 库
 
@@ -536,7 +510,10 @@ Homebrew（macOS / Linux，社区维护）
 brew install qwen-code
 ```
 
-**安装路径**：Windows `%LOCALAPPDATA%\qwen-code\bin\qwen.cmd`（`QWEN_INSTALL_ROOT` 可改）｜macOS / Linux 可执行 `~/.local/bin/qwen`、程序本体 `~/.local/lib/qwen-code`｜配置 `~/.qwen/`（含 `source.json`）、项目级 `<project>/.qwen/`
+**安装路径**
+- Windows `%LOCALAPPDATA%\qwen-code\bin\qwen.cmd`（`QWEN_INSTALL_ROOT` 可改）
+- macOS / Linux 可执行 `~/.local/bin/qwen`、程序本体 `~/.local/lib/qwen-code`
+- 配置 `~/.qwen/`（含 `source.json`）、项目级 `<project>/.qwen/`
 
 #### IDE 插件
 
@@ -544,11 +521,7 @@ VS Code 扩展 `qwenlm.qwen-code-vscode-ide-companion`（VS Code ≥ 1.96）｜Z
 
 #### Desktop App
 
-[https://github.com/QwenLM/qwen-code/releases/tag/desktop-latest](https://github.com/QwenLM/qwen-code/releases/tag/desktop-latest)（desktop-v0.0.5；dmg / exe / AppImage）｜落盘官方未说明
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
+[https://github.com/QwenLM/qwen-code/releases/tag/desktop-latest](https://github.com/QwenLM/qwen-code/releases/tag/desktop-latest)（desktop-v0.0.5；dmg / exe / AppImage）｜落盘由安装器决定
 
 #### 服务 / 网关（自托管）
 
@@ -562,7 +535,7 @@ VS Code 扩展 `qwenlm.qwen-code-vscode-ide-companion`（VS Code ≥ 1.96）｜Z
 
 `@qwen-code/sdk`（TS）、`qwen-code-sdk`（Python，alpha）、`com.alibaba:qwencode-sdk:0.1.0-alpha`（Java）
 
-**其他说明**：脚本向 `~/.zshrc` / `~/.bashrc` / fish 配置追加带标记的 PATH 块（`--no-modify-path` 可跳过）。npm 路径**不会**代为安装 Node，也不会改 npm config；用脚本时默认 registry 为 `registry.npmmirror.com`。⚠️ **Qwen OAuth 已于 2026-04-15 停止服务**。
+**其他说明**：脚本向 `~/.zshrc` / `~/.bashrc` / fish 配置追加带标记的 PATH 块（`--no-modify-path` 可跳过）。npm 路径**不会**代为安装 Node，也不会改 npm config；用脚本时默认 registry 为 `registry.npmmirror.com`。⚠️ **Qwen OAuth 免费层已于 2026-04-15 停止服务**。
 
 ### Xiaomi MiMo（模型厂商）
 
@@ -591,23 +564,20 @@ npm（跨平台）｜依赖：npm（包内 `engines` / `os` / `cpu` **均未声�
 npm install -g @mimo-ai/cli
 ```
 
-**安装路径**：Windows `%USERPROFILE%\.mimocode\bin\mimo.exe`（`MIMOCODE_INSTALL_DIR` 可改；默认前插用户 PATH，`-NoModifyPath` 可跳过）｜macOS / Linux `~/.mimocode/bin/mimo`｜配置 `~/.config/mimocode/mimocode.jsonc`（Windows 落在 `%LOCALAPPDATA%\mimocode\`）、项目级 `.mimocode/mimocode.jsonc`｜数据 macOS `~/Library/Application Support/mimocode/`、Linux `~/.local/share/mimocode/`｜凭据 `~/.local/share/mimocode/auth.json`（`MIMOCODE_HOME` 可重定位全部路径）
-
-#### IDE 插件
+**安装路径**
+- Windows `%USERPROFILE%\.mimocode\bin\mimo.exe`（`MIMOCODE_INSTALL_DIR` 可改；默认前插用户 PATH，`-NoModifyPath` 可跳过）
+- macOS / Linux `~/.mimocode/bin/mimo`
+- 配置 `~/.config/mimocode/mimocode.jsonc`（Windows 落在 `%LOCALAPPDATA%\mimocode\`）、项目级 `.mimocode/mimocode.jsonc`
+- 数据 macOS `~/Library/Application Support/mimocode/`、Linux `~/.local/share/mimocode/`
+- 凭据 `~/.local/share/mimocode/auth.json`（`MIMOCODE_HOME` 可重定位全部路径）
 
 #### Desktop App
 
-暂列于 [https://mimo.xiaomimimo.com/desktop/](https://mimo.xiaomimimo.com/desktop/)（win-x64 setup.exe、mac-arm64 dmg）。⚠️ 口径有争议：官方 README 称 "powered by MiMo Code as its core engine"，桌面页仅称「Xiaomi MiMo 桌面客户端」，**是否属于 MiMo Code 自身的桌面端未确认**
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
+暂列于 [https://mimo.xiaomimimo.com/desktop/](https://mimo.xiaomimimo.com/desktop/)（win-x64 setup.exe、mac-arm64 dmg）。官方 README 称其 "powered by MiMo Code as its core engine"
 
 #### 服务 / 网关（自托管）
 
 `mimo serve --port 4096` + `mimo attach http://127.0.0.1:4096`；`mimo run` 为无头模式
-
-#### 容器镜像（Docker）
 
 #### SDK / 库
 
@@ -649,23 +619,15 @@ macOS Homebrew（社区维护）
 brew install --cask devin-cli
 ```
 
-**安装路径**：Windows `%LOCALAPPDATA%\devin\cli\bin\devin.exe`，版本体 `%LOCALAPPDATA%\devin\cli\_versions\<版本>\`｜macOS / Linux `~/.local/bin/devin`（软链 → `${XDG_DATA_HOME:-~/.local/share}/devin/cli/_versions/<版本>/bin/devin`，`current` 为当前版本链接；man page 在 `${XDG_DATA_HOME}/man/man1`）｜配置 Windows `%APPDATA%\devin\config.json` 与 `mcp_config.json`、macOS / Linux `~/.config/devin/config.json` 与 `AGENTS.md`；项目级 `.devin/config.json`｜日志 Windows `%APPDATA%\devin\cli\logs\`
+**安装路径**
+- Windows `%LOCALAPPDATA%\devin\cli\bin\devin.exe`，版本体 `%LOCALAPPDATA%\devin\cli\_versions\<版本>\`
+- macOS / Linux `~/.local/bin/devin`（软链 → `${XDG_DATA_HOME:-~/.local/share}/devin/cli/_versions/<版本>/bin/devin`，`current` 为当前版本链接；man page 在 `${XDG_DATA_HOME}/man/man1`）
+- 配置 Windows `%APPDATA%\devin\config.json` 与 `mcp_config.json`、macOS / Linux `~/.config/devin/config.json` 与 `AGENTS.md`；项目级 `.devin/config.json`
+- 日志 Windows `%APPDATA%\devin\cli\logs\`
 
 #### IDE 插件
 
 JetBrains / Zed / Xcode 的 ACP 接入
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
-
-#### SDK / 库
 
 **其他说明**：执行策略报错时用 `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`。企业客户可随 Devin Desktop 捆绑安装（限 Legacy Windsurf Enterprise / Devin Enterprise，需管理员先在团队设置开启 "Install Devin CLI in Devin Desktop"）。收费 Free $0 / Pro $20 / Max $200（每月）。
 
@@ -684,15 +646,16 @@ Windows｜依赖：PowerShell 7+；安装器**全托管** Python 3.14、Node.js�
 iex (irm https://hermes-agent.nousresearch.com/install.ps1)
 ```
 
-macOS / Linux / WSL2｜依赖：Git、curl、tar、SHA-256 工具；**Python 3.14**（`pyproject.toml` 区间 `>=3.11,<3.15`）；glibc Linux 下托管 Node 需 `libatomic.so.1`
+macOS / Linux / WSL2｜依赖：Git、curl、tar、SHA-256 工具；**Python 3.14**（当前一源代码的运行版本）；glibc Linux 下托管 Node 需 `libatomic.so.1`
 
 ```bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
 
-**安装路径**：Windows 代码 `%LOCALAPPDATA%\hermes\hermes-agent\`、入口与运行时 `%LOCALAPPDATA%\hermes\bin\`、数据 `%LOCALAPPDATA%\hermes\`｜macOS / Linux 代码 `~/.hermes/hermes-agent/`、入口 `~/.local/bin/hermes`、数据 `~/.hermes/`（`HERMES_HOME` 可选，`--dir` / `-HermesHome` / `-InstallDir` 可覆盖）｜配置 `~/.hermes/config.yaml`；凭据 `~/.hermes/auth.json`；日志 `logs/install.log`
-
-#### IDE 插件
+**安装路径**
+- Windows 代码 `%LOCALAPPDATA%\hermes\hermes-agent\`、入口与运行时 `%LOCALAPPDATA%\hermes\bin\`、数据 `%LOCALAPPDATA%\hermes\`
+- macOS / Linux 代码 `~/.hermes/hermes-agent/`、入口 `~/.local/bin/hermes`、数据 `~/.hermes/`（`HERMES_HOME` 可选，`--dir` / `-HermesHome` / `-InstallDir` 可覆盖）
+- 配置 `~/.hermes/config.yaml`；凭据 `~/.hermes/auth.json`；日志 `logs/install.log`
 
 #### Desktop App
 
@@ -709,8 +672,6 @@ Windows `Hermes-Setup.exe` / `.appinstaller`｜Linux 无安装包（用 `hermes 
 
 Web Dashboard `hermes dashboard` → `127.0.0.1:9119`；云托管 [https://portal.nousresearch.com/cloud](https://portal.nousresearch.com/cloud)
 
-#### 移动端 App
-
 #### 服务 / 网关（自托管）
 
 `hermes gateway install`（systemd / launchd / 计划任务）；macOS plist `~/Library/LaunchAgents/ai.hermes.gateway.plist`，日志 `~/.hermes/logs/gateway.log`；API Server `127.0.0.1:8642/v1`
@@ -719,9 +680,7 @@ Web Dashboard `hermes dashboard` → `127.0.0.1:9119`；云托管 [https://porta
 
 `nousresearch/hermes-agent`｜落盘：代码 `/opt/hermes/`，数据挂载 `/opt/data/`；⚠️ 官方注明 "Docker installs do not support `hermes update`"
 
-#### SDK / 库
-
-**其他说明**：⚠️ **本清单中唯一硬性要求 Python 的工具**，且明确**不支持** `uv tool install` / `pip install` / `brew install`。可选组件用 `-SkipBrowser` / `-SkipComputerUse` 跳过（会被记住）。Termux（Android，仅 aarch64）渠道已官方签名，但官方明确警告该包「does not work right now」。Windows Defender 可能误报 `bin\uv.exe`。
+**其他说明**：⚠️ Python 应用（当前一源代码运行于 Python 3.14），明确**不支持** `uv tool install` / `pip install` / `brew install`。可选组件用 `-SkipBrowser` / `-SkipComputerUse` 跳过（会被记住）。Termux（Android，仅 aarch64）渠道已官方签名，但官方明确警告该包「does not work right now」。Windows Defender 可能误报 `bin\uv.exe`。
 
 ### Anysphere（第三方）
 
@@ -744,21 +703,10 @@ macOS / Linux / WSL｜依赖：bash、curl、tar、uname、ln、mv；仅支持 x
 curl https://cursor.com/install -fsS | bash
 ```
 
-**安装路径**：Windows `%LOCALAPPDATA%\cursor-agent\`，版本在 `versions\<版本号>\`，主命令 `agent.exe`（由 `cursor-agent.exe` 复制出别名）；脚本**每次安装会先递归删除该目录**，并写入用户级 PATH｜macOS / Linux `~/.local/share/cursor-agent/versions/<版本号>/`，软链 `~/.local/bin/agent` 与 `~/.local/bin/cursor-agent`｜配置 `~/.cursor/cli-config.json`（`CURSOR_CONFIG_DIR` 可改；Linux/BSD 支持 `XDG_CONFIG_HOME`），项目级 `<project>/.cursor/cli.json`（仅可配 permissions）
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
-
-#### SDK / 库
+**安装路径**
+- Windows `%LOCALAPPDATA%\cursor-agent\`，版本在 `versions\<版本号>\`，主命令 `agent`（脚本通过复制生成该别名）；脚本**每次安装会先递归删除该目录**，并写入用户级 PATH
+- macOS / Linux `~/.local/share/cursor-agent/versions/<版本号>/`，软链 `~/.local/bin/agent` 与 `~/.local/bin/cursor-agent`
+- 配置 `~/.cursor/cli-config.json`（`CURSOR_CONFIG_DIR` 可改；Linux/BSD 支持 `XDG_CONFIG_HOME`），项目级 `<project>/.cursor/cli.json`（仅可配 permissions）
 
 **其他说明**：验证 `agent --version`，更新 `agent update`（默认自动更新）。需把 `~/.local/bin` 加入 PATH。收费 Hobby 免费 / Individual $20 / Teams $40（每人每月）。
 
@@ -783,21 +731,10 @@ macOS / Linux｜依赖：curl、gzip、tar、sha256sum 或 shasum；`python3` �
 sh -c "$(curl -fsSL https://trae.cn/trae-cli/install_v2.sh)"
 ```
 
-**安装路径**：Windows `%LOCALAPPDATA%\Programs\TraeCLI\bin`（internal 通道为 `Programs\TraeX\bin`）、状态 `%LOCALAPPDATA%\TraeCLI`｜macOS / Linux 可执行 `${TRAECLI_INSTALL_DIR:-${XDG_BIN_HOME:-~/.local/bin}}`（主程序 `traex`，另有 `traecli` / `trae-cli` / `trae-agent` / `ta` 链接）、状态 `${XDG_DATA_HOME:-~/.local/share}/traecli`｜全局配置 `trae_cli.yaml`：Windows `%APPDATA%\trae_cli\`、macOS `~/Library/Application Support/trae_cli/`、Linux `$XDG_CONFIG_HOME/trae_cli/` 或 `~/.config/trae_cli/`；用户级 `~/.trae/traecli.toml`
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
-
-#### SDK / 库
+**安装路径**
+- Windows `%LOCALAPPDATA%\Programs\TraeCLI\bin`（internal 通道为 `Programs\TraeX\bin`）、状态 `%LOCALAPPDATA%\TraeCLI`
+- macOS / Linux 可执行 `${TRAECLI_INSTALL_DIR:-${XDG_BIN_HOME:-~/.local/bin}}`（主程序 `traex`，另有 `traecli` / `trae-cli` / `trae-agent` / `ta` 链接）、状态 `${XDG_DATA_HOME:-~/.local/share}/traecli`
+- 全局配置 `trae_cli.yaml`：Windows `%APPDATA%\trae_cli\`、macOS `~/Library/Application Support/trae_cli/`、Linux `$XDG_CONFIG_HOME/trae_cli/` 或 `~/.config/trae_cli/`；用户级 `~/.trae/traecli.toml`
 
 **其他说明**：⚠️ **旧版 `install.ps1` 仍在线但已非官方推荐**（旧版装到 `%LOCALAPPDATA%\trae-cli\bin\trae-cli.exe`，路径与可执行文件名都不同）。⚠️ **国际版 docs.trae.ai 的 CLI 页面已 302 重定向下线**（跳向 TRAE SOLO 公告页），目前只有中国版 docs.trae.cn 维护 CLI 文档。登录：`traecli login status`，或用 `TRAECLI_PERSONAL_ACCESS_TOKEN` + `traecli login --with-trae-pat`。
 
@@ -824,27 +761,18 @@ macOS｜依赖：curl 或 wget、shasum、`hdiutil` / `ditto`；临时目录需 
 curl -fsSL https://cli.kiro.dev/install | bash
 ```
 
-Linux｜依赖：curl 或 wget、unzip、sha256sum；**glibc 2.34+**，低于门槛自动改用 musl 变体
+Linux｜依赖：curl 或 wget、unzip、sha256sum；**glibc 2.34+**（文档口径；脚本按架构区分：x86_64 ≥ 2.34、aarch64 ≥ 2.39），低于门槛自动改用 musl 变体
 
 ```bash
 curl -fsSL https://cli.kiro.dev/install | bash
 ```
 
-**安装路径**：Windows `C:\Program Files\Kiro-Cli\`｜macOS 为 app bundle，用 `ditto` 复制到 `/Applications`（安装后 `open -g -a ... --no-dashboard`）｜Linux `~/.local/bin`（`kiro-cli`、`kiro-cli-chat`）｜配置全局 `~/.kiro/`（Windows 即 `%USERPROFILE%\.kiro`；`KIRO_HOME` 可整体重定向），含 `settings/cli.json`、`settings/mcp.json`、`agents/`、`steering/`、`skills/`、`hooks/`｜日志：Windows `%TEMP%\kiro-log\logs\kiro-chat.log`、macOS `$TMPDIR/kiro-log/kiro-chat.log`、Linux `$XDG_RUNTIME_DIR/kiro-log/kiro-chat.log`
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
-
-#### SDK / 库
+**安装路径**
+- Windows `%LOCALAPPDATA%\Kiro-Cli\`（MSI 按用户安装；安装脚本完成提示里写的 `C:\Program Files\Kiro-Cli\` 是已知的错误文本，见 issue #11581）
+- macOS 为 app bundle，用 `ditto` 复制到 `/Applications`（安装后 `open -g -a ... --no-dashboard`）
+- Linux `~/.local/bin`（`kiro-cli`、`kiro-cli-chat`）
+- 配置全局 `~/.kiro/`（Windows 即 `%USERPROFILE%\.kiro`；`KIRO_HOME` 可整体重定向），含 `settings/cli.json`、`settings/mcp.json`、`agents/`、`steering/`、`skills/`、`hooks/`
+- 日志：Windows `%TEMP%\kiro-log\logs\kiro-chat.log`、macOS `$TMPDIR/kiro-log/kiro-chat.log`、Linux `$XDG_RUNTIME_DIR/kiro-log/kiro-chat.log`
 
 **其他说明**：无官方 Homebrew 方式；脚本不捆绑运行时，也不需要 Node / Python。登录 `kiro-cli login`，排障 `kiro-cli doctor`。收费 Free $0（50 credits）/ Pro $20 / Pro+ $40 / Pro Max $100 / Power $200（每用户每月）。Kiro IDE / Web / Mobile / Crew 属其他产品，与本 CLI 共用 `.kiro` 配置。
 
@@ -857,13 +785,15 @@ curl -fsSL https://cli.kiro.dev/install | bash
 
 #### Agent CLI（含 TUI）
 
-全平台｜依赖：**Node.js 20+（推荐 22）**
+全平台｜依赖：npm（官方安装文档写 Node.js 20+、推荐 22；**当前 3.x 包未声明 `engines`**）
 
 ```bash
 npm install -g cline
 ```
 
-**安装路径**：可执行由 **npm 全局前缀**决定（Windows `%APPDATA%\npm`，全局包在 `%APPDATA%\npm\node_modules`，可执行 shim 直接在 `%APPDATA%\npm` 且需在 PATH 中）｜数据与配置 `~/.cline`（`CLINE_DATA_DIR` 或 `--data-dir` 可改；`--config` 默认 `~/.cline/data/settings`；hooks 默认 `~/.cline/hooks`）
+**安装路径**
+- 可执行由 **npm 全局前缀**决定（Windows `%APPDATA%\npm`，全局包在 `%APPDATA%\npm\node_modules`，可执行 shim 直接在 `%APPDATA%\npm` 且需在 PATH 中）
+- 数据与配置 `~/.cline`（`CLINE_DATA_DIR` 或 `--data-dir` 可改；`--config` 默认 `~/.cline/data/settings`；hooks 默认 `~/.cline/hooks`）
 
 #### IDE 插件
 
@@ -872,15 +802,7 @@ JetBrains [https://plugins.jetbrains.com/plugin/28247-cline](https://plugins.jet
 
 #### Desktop App
 
-[https://cline.bot/desktop](https://cline.bot/desktop)（beta v0.0.43）｜依赖：macOS 与 Windows（Windows 当前 beta，Linux 未提及）；落盘官方未说明
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
+[https://cline.bot/desktop](https://cline.bot/desktop)（beta v0.0.43）｜依赖：macOS 与 Windows（Windows 当前 beta，Linux 未提及）；落盘由安装器决定
 
 #### SDK / 库
 
@@ -917,13 +839,14 @@ bun add -g @kilocode/cli
 brew install Kilo-Org/tap/kilo
 ```
 
-**安装路径**：Windows 由 npm 全局前缀决定｜macOS / Linux `~/.kilo/bin/kilo`｜全局配置 `~/.config/kilo/kilo.json[c]`（旧名 `opencode.json[c]`）、`tui.jsonc`——⚠️ 官方注明 **"Windows config dir may vary"**；项目级 `./kilo.json[c]` 或 `./.kilo/`（兼容 `./.kilocode/`）
+**安装路径**
+- Windows 由 npm 全局前缀决定
+- macOS / Linux `~/.kilo/bin/kilo`
+- 全局配置 `~/.config/kilo/kilo.json[c]`（旧名 `opencode.json[c]`）、`tui.jsonc`——⚠️ 官方注明 **"Windows config dir may vary"**；项目级 `./kilo.json[c]` 或 `./.kilo/`（兼容 `./.kilocode/`）
 
 #### IDE 插件
 
 VS Code `kilocode.kilo-code`（Marketplace + Open VSX）｜JetBrains [https://plugins.jetbrains.com/plugin/28350-kilo-code](https://plugins.jetbrains.com/plugin/28350-kilo-code)（原生 Swing，无需 Node）｜Neovim `Kilo-Org/kilo.nvim`（Neovim 0.11+）
-
-#### Desktop App
 
 #### Web 应用 / 云端 Agent
 
@@ -936,8 +859,6 @@ VS Code `kilocode.kilo-code`（Marketplace + Open VSX）｜JetBrains [https://pl
 #### 服务 / 网关（自托管）
 
 `kilo serve` / `kilo daemon`（Kilo Console 官方标注 Deprecated）
-
-#### 容器镜像（Docker）
 
 #### SDK / 库
 
@@ -972,23 +893,18 @@ npm（跨平台）｜依赖：Node.js 20+
 npm i -g @continuedev/cli
 ```
 
-**安装路径**：CLI 落 npm 全局前缀 `<prefix>/bin`，全局前缀不可写时脚本把 prefix 改为 `~/.npm-global`｜fnm 与托管 Node：macOS / Linux `~/.local/share/fnm`、Windows `%LOCALAPPDATA%\fnm`｜配置 `~/.continue/config.yaml`（Windows `%USERPROFILE%\.continue\config.yaml`）
+**安装路径**
+- CLI 落 npm 全局前缀 `<prefix>/bin`，全局前缀不可写时脚本把 prefix 改为 `~/.npm-global`
+- fnm 与托管 Node：macOS / Linux `~/.local/share/fnm`、Windows `%LOCALAPPDATA%\fnm`
+- 配置 `~/.continue/config.yaml`（Windows `%USERPROFILE%\.continue\config.yaml`）
 
 #### IDE 插件
 
 VS Code `Continue.continue`｜JetBrains [https://plugins.jetbrains.com/plugin/22707-continue](https://plugins.jetbrains.com/plugin/22707-continue)（官方现推荐改用 CLI）
 
-#### Desktop App
-
 #### Web 应用 / 云端 Agent
 
 Web 版当前不可用（hub 页 404）
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
 
 #### SDK / 库
 
@@ -1011,23 +927,19 @@ Web 版当前不可用（hub 页 404）
 npm install -g @augmentcode/auggie
 ```
 
-**安装路径**：可执行由 npm 全局前缀决定｜用户级配置 `~/.augment/settings.json`（Windows `C:\Users\<用户名>\.augment\settings.json`）｜项目级 `<workspace>/.augment/settings.json` 与 `.augment/settings.local.json`｜管理级只读 `/etc/augment/settings.json`（macOS / Linux）、`C:\ProgramData\augment\settings.json`（Windows）
+**安装路径**
+- 可执行由 npm 全局前缀决定
+- 用户级配置 `~/.augment/settings.json`（Windows `C:\Users\<用户名>\.augment\settings.json`）
+- 项目级 `<workspace>/.augment/settings.json` 与 `.augment/settings.local.json`
+- 管理级只读 `/etc/augment/settings.json`（macOS / Linux）、`C:\ProgramData\augment\settings.json`（Windows）
 
 #### IDE 插件
 
 Zed 官方扩展 `augmentcode/auggie-zed-extension`。⚠️ Augment 的 VS Code / JetBrains 扩展属**另一个产品**（官方原文把 IDE agent 与 Auggie 并列），不计入本条目
 
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
 #### 服务 / 网关（自托管）
 
 daemon：`npm install -g @augmentcode/auggie@daemon` + `auggie daemon`（会话 `~/.augment/session.json`）
-
-#### 容器镜像（Docker）
 
 #### SDK / 库
 
@@ -1075,13 +987,15 @@ winget install GitHub.Copilot
 brew install --cask copilot-cli
 ```
 
-**安装路径**：npm / WinGet / Homebrew 各自目录决定｜脚本方式：root 默认 `/usr/local/bin`，非 root 默认 `$HOME/.local/bin`（`PREFIX` 可改）｜配置 `~/.copilot`（Windows `%USERPROFILE%\.copilot`；`COPILOT_HOME` 可改，优先级 `--config-dir` > `COPILOT_HOME` > 默认），含 `settings.json`、`mcp-config.json`、`permissions-config.json`、`session-state/`、`skills/`、`hooks/`｜缓存 Windows `%LOCALAPPDATA%\copilot`
+**安装路径**
+- npm / WinGet / Homebrew 各自目录决定
+- 脚本方式：root 默认 `/usr/local/bin`，非 root 默认 `$HOME/.local/bin`（`PREFIX` 可改）
+- 配置 `~/.copilot`（Windows `%USERPROFILE%\.copilot`；`COPILOT_HOME` 可改，优先级 `--config-dir` > `COPILOT_HOME` > 默认），含 `settings.json`、`mcp-config.json`、`permissions-config.json`、`session-state/`、`skills/`、`hooks/`
+- 缓存 Windows `%LOCALAPPDATA%\copilot`
 
 #### IDE 插件
 
 GitHub Copilot 的 IDE 扩展属其他产品形态，不计入本条目
-
-#### Desktop App
 
 #### Web 应用 / 云端 Agent
 
@@ -1120,13 +1034,16 @@ Windows｜依赖：Windows PowerShell；脚本会做 SHA-256 校验
 powershell -c "irm https://ampcode.com/install.ps1 | iex"
 ```
 
-macOS / Linux / WSL｜依赖：curl 或 wget、shasum 或 sha256sum、uname / mktemp / chmod / mkdir / rm（官方文档同时保留「Windows 经 WSL 运行」的口径）
+macOS / Linux / WSL｜依赖：curl 或 wget、shasum 或 sha256sum、uname / mktemp / chmod / mkdir / rm
 
 ```bash
 curl -fsSL https://ampcode.com/install.sh | bash
 ```
 
-**安装路径**：Windows `%USERPROFILE%\.amp\bin`（`AMP_HOME` 可改）｜macOS / Linux `$AMP_HOME/bin/amp`（默认 `~/.amp/bin`），并在 `~/.local/bin` / `~/bin` / `~/.bin` 中首个在 PATH 可见的目录建软链｜配置 `~/.config/amp/settings.json` 或 `.jsonc`；工作区 `.amp/settings.json`；企业托管文件 macOS `/Library/Application Support/ampcode/managed-settings.json`、Linux `/etc/ampcode/managed-settings.json`
+**安装路径**
+- Windows `%USERPROFILE%\.amp\bin`（`AMP_HOME` 可改）
+- macOS / Linux `$AMP_HOME/bin/amp`（默认 `~/.amp/bin`），并在 `~/.local/bin` / `~/bin` / `~/.bin` 中首个在 PATH 可见的目录建软链
+- 配置 `~/.config/amp/settings.json` 或 `.jsonc`；工作区 `.amp/settings.json`；企业托管文件 macOS `/Library/Application Support/ampcode/managed-settings.json`、Linux `/etc/ampcode/managed-settings.json`
 
 #### IDE 插件
 
@@ -1156,13 +1073,11 @@ https://testflight.apple.com/join/Skjdm6qe
 
 见「Web 应用 / 云端 Agent」的 runners
 
-#### 容器镜像（Docker）
-
 #### SDK / 库
 
 `@ampcode/sdk` / `amp-sdk`
 
-**其他说明**：⚠️ **npm 包已由 `@sourcegraph/amp` 更名为 `@ampcode/cli`**（旧名兼容至 2026-06-15）；官方公告建议改用直接安装脚本。⚠️ 官方文档正文仍保留「经 WSL 运行」的旧措辞，但**同页已正式收录原生 Windows 命令**（该命令由前端动态渲染，直接抓 HTML 看不到）。不支持 Linux riscv64。官方建议 Windows 用 WezTerm / Alacritty 而非 Windows Terminal。收费 Hobby 免费 / Individual $20（每月）。
+**其他说明**：⚠️ **npm 包已由 `@sourcegraph/amp` 更名为 `@ampcode/cli`**（官方公告称旧名保留至 2026-06-15）；官方公告建议改用直接安装脚本。⚠️ 官方文档同时保留「Windows 经 WSL 运行」与上表原生 Windows 命令两种口径。不支持 Linux riscv64。官方建议 Windows 用 WezTerm / Alacritty 而非 Windows Terminal。收费 Hobby 免费 / Individual $20（每月）。
 
 ### Factory AI（第三方）
 
@@ -1192,7 +1107,12 @@ brew install --cask droid
 npm install -g droid
 ```
 
-**安装路径**：Windows `%USERPROFILE%\bin\droid.exe`（脚本会创建该目录并写用户级 PATH）｜macOS / Linux `$HOME/.local/bin/droid`（脚本**只打印** PATH 建议，不自动改 rc 文件）｜配置 `~/.factory/settings.json`（Windows `%USERPROFILE%\.factory\settings.json`，首次运行自动生成）、覆盖文件 `~/.factory/settings.local.json`、项目级 `<project>/.factory/settings.local.json`｜Spec 默认目录 `~/.factory/specs`｜worktree `~/.factory/worktrees`
+**安装路径**
+- Windows `%USERPROFILE%\bin\droid.exe`（脚本会创建该目录并写用户级 PATH）
+- macOS / Linux `$HOME/.local/bin/droid`（脚本**只打印** PATH 建议，不自动改 rc 文件）
+- 配置 `~/.factory/settings.json`（Windows `%USERPROFILE%\.factory\settings.json`，首次运行自动生成）、覆盖文件 `~/.factory/settings.local.json`、项目级 `<project>/.factory/settings.local.json`
+- Spec 默认目录 `~/.factory/specs`
+- worktree `~/.factory/worktrees`
 
 #### IDE 插件
 
@@ -1206,7 +1126,7 @@ VS Code `Factory.factory-vscode-extension`（需先装 CLI）｜JetBrains 2025.3
 https://app.factory.ai/api/desktop?platform=darwin&architecture=arm64
 ```
 
-（另有 win32 等平台参数）｜落盘官方未说明
+（另有 win32 等平台参数）｜落盘由安装器决定
 
 #### Web 应用 / 云端 Agent
 
@@ -1215,10 +1135,6 @@ https://app.factory.ai/api/desktop?platform=darwin&architecture=arm64
 #### 移动端 App
 
 仅手机浏览器版（见上），**无独立 App**
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
 
 #### SDK / 库
 
@@ -1277,23 +1193,16 @@ gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
 sudo yum install crush
 ```
 
-**安装路径**：可执行由各包管理器决定（npm 包本身是**下载器**，postinstall 才拉平台二进制）｜配置查找顺序 `./.crushrc` → `./crushrc` → `~/.config/crush/crushrc`（Windows `%USERPROFILE%\.config\crush\crushrc`）｜数据 `~/.local/share/crush/crush.json`（Windows `%LOCALAPPDATA%\crush\crush.json`；`CRUSH_GLOBAL_CONFIG` / `CRUSH_GLOBAL_DATA` 可改）｜日志 `./.crush/logs/crush.log`｜全局上下文 `~/.config/crush/CRUSH.md`、`~/.config/AGENTS.md`
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
+**安装路径**
+- 可执行由各包管理器决定（npm 包本身是**下载器**，postinstall 才拉平台二进制）
+- 配置查找顺序 `./.crushrc` → `./crushrc` → `~/.config/crush/crushrc`（Windows `%USERPROFILE%\.config\crush\crushrc`）
+- 数据 `~/.local/share/crush/crush.json`（Windows `%LOCALAPPDATA%\crush\crush.json`；`CRUSH_GLOBAL_CONFIG` / `CRUSH_GLOBAL_DATA` 可改）
+- 日志 `./.crush/logs/crush.log`
+- 全局上下文 `~/.config/crush/CRUSH.md`、`~/.config/AGENTS.md`
 
 #### 服务 / 网关（自托管）
 
-`crush serve`（多 TUI 共享后端，SSE 事件流、`POST /v1/workspaces`）—— 依据较弱，仅 README 举例
-
-#### 容器镜像（Docker）
-
-#### SDK / 库
+`crush serve`（多 TUI 共享后端，SSE 事件流、`POST /v1/workspaces`）
 
 **其他说明**：FreeBSD 用 `pkg install crush`。Go 方式需 Go ≥ 1.27.0。⚠️ README 提示 `crushrc` 与 `crush.json` **均可执行代码**，须视为可信代码。
 
@@ -1330,7 +1239,12 @@ bun install -g --trust @opencode/cli
 pnpm add -g --allow-build=@opencode/cli @opencode/cli
 ```
 
-**安装路径**：curl 脚本落 `$HOME/.opencode/bin/opencode`（并写入 shell 配置或 `$GITHUB_PATH`）｜npm / bun / pnpm 由各自全局前缀决定｜全局配置 `~/.config/opencode/opencode.json(c)`；项目级 `opencode.json(c)` 或 `.opencode/opencode.json(c)`｜数据 `~/.local/share/opencode/`（`opencode.db`、`auth.json`、`log/`）｜服务状态 `~/.local/state/opencode/service.json`（可用 `opencode path` 查询各类目录）
+**安装路径**
+- curl 脚本落 `$HOME/.opencode/bin/opencode`（并写入 shell 配置或 `$GITHUB_PATH`）
+- npm / bun / pnpm 由各自全局前缀决定
+- 全局配置 `~/.config/opencode/opencode.json(c)`；项目级 `opencode.json(c)` 或 `.opencode/opencode.json(c)`
+- 数据 `~/.local/share/opencode/`（`opencode.db`、`auth.json`、`log/`）
+- 服务状态 `~/.local/state/opencode/service.json`（可用 `opencode path` 查询各类目录）
 
 #### IDE 插件
 
@@ -1350,8 +1264,6 @@ brew install --cask opencode-desktop
 
 `opencode web`（本机服务自动开浏览器）；`/share` 生成 opncd.ai 分享页
 
-#### 移动端 App
-
 #### 服务 / 网关（自托管）
 
 `opencode serve`（headless HTTP，OpenAPI 3.1，`OPENCODE_SERVER_PASSWORD`）
@@ -1366,7 +1278,7 @@ docker run -it --rm ghcr.io/anomalyco/opencode
 
 `@opencode-ai/sdk`（默认连 `localhost:4096`）
 
-**其他说明**：⚠️ **包名分代** —— 稳定版文档当前推荐 `opencode-ai`（v1，latest 1.18.34），v2 为 `@opencode/cli`（latest 2.0.24）；两包都暴露 `opencode` 命令，**v1 与 v2 默认不能并存**，v2 的 curl 安装器会覆盖 v1 二进制，迁移需先卸载 v1。⚠️ v2 文档写 "Windows package managers are not supported"，而稳定版文档明确列出 choco / scoop / npm 等原生方式——**两版文档口径不同**。官方另注明 "Support for installing OpenCode on Windows using Bun is currently in progress."
+**其他说明**：⚠️ **包名分代** —— 稳定版文档当前推荐 `opencode-ai`（v1，latest 1.18.34），v2 为 `@opencode/cli`（latest 2.0.24）；两包都暴露 `opencode` 命令，**v1 与 v2 默认不能并存**，v2 的 curl 安装器会覆盖 v1 二进制，迁移需先卸载 v1。⚠️ v2 文档写 "Windows package managers are not supported"，稳定版文档则列出 choco / scoop / npm 等原生方式。官方另注明 "Support for installing OpenCode on Windows using Bun is currently in progress."
 
 ### Earendil（第三方）
 
@@ -1401,19 +1313,10 @@ Nix
 nix profile add github:earendil-works/pi/stable
 ```
 
-**安装路径**：Windows 启动器 `%USERPROFILE%\.pi\agent\bin`、托管安装 `%USERPROFILE%\.pi\agent\install`、设置 `.pi\agent\settings.json`、自动装的 Node `%LOCALAPPDATA%\pi-node`｜macOS / Linux Agent 目录 `~/.pi/agent`（`PI_CODING_AGENT_DIR` 可改）、托管安装 `~/.pi/agent/install/releases/<版本>/`、自带 Node `${XDG_DATA_HOME:-~/.local/share}/pi-node/current/bin`｜项目设置 `<项目>/.pi/settings.json`
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
+**安装路径**
+- Windows 启动器 `%USERPROFILE%\.pi\agent\bin`、托管安装 `%USERPROFILE%\.pi\agent\install`、设置 `.pi\agent\settings.json`、自动装的 Node `%LOCALAPPDATA%\pi-node`
+- macOS / Linux Agent 目录 `~/.pi/agent`（`PI_CODING_AGENT_DIR` 可改）、托管安装 `~/.pi/agent/install/releases/<版本>/`、自带 Node `${XDG_DATA_HOME:-~/.local/share}/pi-node/current/bin`
+- 项目设置 `<项目>/.pi/settings.json`
 
 #### SDK / 库
 
@@ -1451,25 +1354,19 @@ nix run github:can1357/oh-my-pi
 mise use -g github:can1357/oh-my-pi
 ```
 
-**安装路径**：Windows `%LOCALAPPDATA%\omp\omp.exe`（`PI_INSTALL_DIR` 可改，写入用户级 PATH）｜macOS / Linux `${PI_INSTALL_DIR:-~/.local/bin}/omp`｜设置 `~/.omp/agent/settings.json`｜配置 `~/.omp/agent/config.yml`（默认模型角色）、`~/.omp/agent/models.yml`（自定义 provider）｜会话 `~/.omp/agent/sessions/`；命名 profile `~/.omp/profiles/<name>/agent/sessions/`｜项目配置 `<cwd>/.omp/config.yml`（`PI_CODING_AGENT_DIR`、`PI_CONFIG_DIR`、`OMP_PROFILE` 可改）
-
-#### IDE 插件
-
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
-
-#### 容器镜像（Docker）
+**安装路径**
+- Windows `%LOCALAPPDATA%\omp\omp.exe`（`PI_INSTALL_DIR` 可改，写入用户级 PATH）
+- macOS / Linux `${PI_INSTALL_DIR:-~/.local/bin}/omp`
+- 设置 `~/.omp/agent/settings.json`
+- 配置 `~/.omp/agent/config.yml`（默认模型角色）、`~/.omp/agent/models.yml`（自定义 provider）
+- 会话 `~/.omp/agent/sessions/`；命名 profile `~/.omp/profiles/<name>/agent/sessions/`
+- 项目配置 `<cwd>/.omp/config.yml`（`PI_CODING_AGENT_DIR`、`PI_CONFIG_DIR`、`OMP_PROFILE` 可改）
 
 #### SDK / 库
 
 `@oh-my-pi/pi-coding-agent`（bun ≥ 1.3.14）
 
-**其他说明**：⚠️ **本条目已合并原清单的两条记录** —— `irm https://omp.sh/install.ps1 | iex` 与 `bun install -g @oh-my-pi/pi-coding-agent` 是**同一工具的两种安装方式**。`--source` 会在缺 bun 时自动装 bun（此时另需 git）；`--ref` 源码安装需 `git`（`git-lfs` 可选）。无 npm 安装方式。另有非 8 类形态的 Chrome 扩展「OMP Browser Relay」（`omp browser-relay install` + Load unpacked，落盘 `~/.omp/browser-relay/extension`，**无商店入口**）。
+**其他说明**：⚠️ `irm https://omp.sh/install.ps1 | iex` 与 `bun install -g @oh-my-pi/pi-coding-agent` 是**同一工具的两种安装方式**。`--source` 会在缺 bun 时自动装 bun（此时另需 git）；`--ref` 源码安装需 `git`（`git-lfs` 可选）。无 npm 安装方式。另有非 8 类形态的 Chrome 扩展「OMP Browser Relay」（`omp browser-relay install` + Load unpacked，落盘 `~/.omp/browser-relay/extension`，**无商店入口**）。
 
 ### Gitlawb（第三方）
 
@@ -1492,25 +1389,18 @@ Arch（社区维护 AUR）
 paru -S openclaude
 ```
 
-**安装路径**：可执行由 npm 全局前缀决定｜配置 `~/.openclaude` 与 `~/.openclaude.json`（`OPENCLAUDE_CONFIG_DIR` 可改；**`CLAUDE_CONFIG_DIR` 被忽略**）｜后台会话 `~/.openclaude/bg-sessions/`（终止状态在 `bg-sessions/terminal/`）
+**安装路径**
+- 可执行由 npm 全局前缀决定
+- 配置 `~/.openclaude` 与 `~/.openclaude.json`（`OPENCLAUDE_CONFIG_DIR` 可改；**`CLAUDE_CONFIG_DIR` 被忽略**）
+- 后台会话 `~/.openclaude/bg-sessions/`（终止状态在 `bg-sessions/terminal/`）
 
 #### IDE 插件
 
 VS Code 扩展在仓库内（`vscode-extension/openclaude-vscode/`），**无 Marketplace / VSIX 分发**，需 `npm run package` 自打包；依赖 VS Code ≥ 1.95 且 PATH 中有 `openclaude`
 
-#### Desktop App
-
-#### Web 应用 / 云端 Agent
-
-#### 移动端 App
-
 #### 服务 / 网关（自托管）
 
 gRPC 服务：`npm run dev:grpc`（源码运行，默认 `localhost:50051`；官方警告绑定 `0.0.0.0` 且无认证 "not recommended"）
-
-#### 容器镜像（Docker）
-
-#### SDK / 库
 
 **其他说明**：**无官方 curl / Homebrew / 原生安装包**，三平台都只有 npm。**不读取** `~/.claude` 或 `CLAUDE_CONFIG_DIR`，无需预装 Claude Code。与 Anthropic 无隶属或背书关系。源码构建需 Node >= 22.0.0 + Bun >= 1.3.13。README 注明 "OpenClaude does not infer POSIX signal names on Windows"。
 
@@ -1551,19 +1441,15 @@ python -m pip install aider-install
 aider-install
 ```
 
-**安装路径**：Windows `%USERPROFILE%\.local\bin\aider.exe`（uv 默认；若环境已有 `XDG_BIN_HOME` / `UV_TOOL_BIN_DIR` 会变）｜macOS / Linux `~/.local/bin/aider`｜工具环境：以 `uv tool dir` 实测为准｜配置 `aider.conf.yml` 按 **主目录 → git 仓库根 → 当前目录**顺序查找（后者优先，`--config` 可指定唯一文件）；`.env`、`.aiderignore`、`.aider.input.history`、`.aider.chat.history.md` 默认在 git 根
-
-#### IDE 插件
-
-#### Desktop App
+**安装路径**
+- Windows `%USERPROFILE%\.local\bin\aider.exe`（uv 默认；若环境已有 `XDG_BIN_HOME` / `UV_TOOL_BIN_DIR` 会变）
+- macOS / Linux `~/.local/bin/aider`
+- 工具环境：以 `uv tool dir` 实测为准
+- 配置 `aider.conf.yml` 按 **主目录 → git 仓库根 → 当前目录**顺序查找（后者优先，`--config` 可指定唯一文件）；`.env`、`.aiderignore`、`.aider.input.history`、`.aider.chat.history.md` 默认在 git 根
 
 #### Web 应用 / 云端 Agent
 
 浏览器 UI（experimental）：`aider --browser`（`--gui` 为别名）
-
-#### 移动端 App
-
-#### 服务 / 网关（自托管）
 
 #### 容器镜像（Docker）
 
@@ -1574,8 +1460,6 @@ docker pull paulgauthier/aider-full
 ```
 
 ⚠️ 官方文档只说 "available as 2 docker images"，**未使用「官方镜像」措辞**，且位于作者个人命名空间 `paulgauthier/`。容器内无全局 git 配置，需先 `git config user.email` / `user.name`；须在 git 仓库根目录运行。
-
-#### SDK / 库
 
 **其他说明**：官方**明确不建议用系统包管理器**（"they often install aider with incorrect dependencies"）。Python 版本官方两处不一致：安装页写 3.8–3.13，PyPI 元数据为 `>=3.10,<3.13`（pipx / pip 路线为 3.9–3.12）。找不到命令时可用 `python -m aider`。
 
@@ -1599,9 +1483,10 @@ npm install -g @getpaseo/cli
 paseo
 ```
 
-**安装路径**：可执行由 npm 全局前缀决定｜配置与状态 `~/.paseo`（`PASEO_HOME` 或 `--home` 可改），含 `config.json`、`worktrees/`、`daemon.log`｜默认监听 `ws://127.0.0.1:6767/ws`
-
-#### IDE 插件
+**安装路径**
+- 可执行由 npm 全局前缀决定
+- 配置与状态 `~/.paseo`（`PASEO_HOME` 或 `--home` 可改），含 `config.json`、`worktrees/`、`daemon.log`
+- 默认监听 `ws://127.0.0.1:6767/ws`
 
 #### Desktop App
 
@@ -1678,13 +1563,16 @@ npm i -g openclaw
 pnpm add -g --allow-build=openclaw openclaw@latest
 ```
 
-**安装路径**：状态目录 `~/.openclaw`（`OPENCLAW_STATE_DIR`）；主配置 `~/.openclaw/openclaw.json`（JSON5，`OPENCLAW_CONFIG_PATH` 可改）｜工作区 `~/.openclaw/workspace`（`agents.defaults.workspace` 可改），含 `AGENTS.md`、`SOUL.md`、`IDENTITY.md`、`USER.md`、`MEMORY.md`、`memory/`｜`~/.openclaw/credentials/`、`~/.openclaw/state/openclaw.sqlite`、`~/.openclaw/agents/<agentId>/`｜shell 安装的入口 `~/.local/bin/openclaw`（npm 方式由 npm 前缀决定，必要时脚本把前缀切到 `~/.npm-global`）｜自定义 profile 为 `~/.openclaw-<profile>/`
-
-#### IDE 插件
+**安装路径**
+- 状态目录 `~/.openclaw`（`OPENCLAW_STATE_DIR`）；主配置 `~/.openclaw/openclaw.json`（JSON5，`OPENCLAW_CONFIG_PATH` 可改）
+- 工作区 `~/.openclaw/workspace`（`agents.defaults.workspace` 可改），含 `AGENTS.md`、`SOUL.md`、`IDENTITY.md`、`USER.md`、`MEMORY.md`、`memory/`
+- `~/.openclaw/credentials/`、`~/.openclaw/state/openclaw.sqlite`、`~/.openclaw/agents/<agentId>/`
+- shell 安装的入口 `~/.local/bin/openclaw`（npm 方式由 npm 前缀决定，必要时脚本把前缀切到 `~/.npm-global`）
+- 自定义 profile 为 `~/.openclaw-<profile>/`
 
 #### Desktop App
 
-macOS `OpenClaw-<version>.dmg`（preferred，15+）或 `.zip`｜Windows `OpenClawCompanion-Setup-x64.exe` / `-arm64.exe`｜Linux `.deb` / `.AppImage`（glibc 2.35+）——均在 [https://github.com/openclaw/openclaw/releases](https://github.com/openclaw/openclaw/releases)｜落盘：macOS 仅注明 "Device preferences stay on this Mac"，其余官方未说明
+macOS `OpenClaw-<version>.dmg`（preferred，15+）或 `.zip`｜Windows `OpenClawCompanion-Setup-x64.exe` / `-arm64.exe`｜Linux `.deb` / `.AppImage`（glibc 2.35+）——均在 [https://github.com/openclaw/openclaw/releases](https://github.com/openclaw/openclaw/releases)｜落盘：macOS 仅注明 "Device preferences stay on this Mac"；其余由安装器决定
 
 #### Web 应用 / 云端 Agent
 
@@ -1711,4 +1599,4 @@ macOS 用 LaunchAgent、Linux / WSL2 用 systemd、Windows 用计划任务。维
 
 Plugin SDK + `@openclaw/gateway-client` / `@openclaw/gateway-protocol`（均来自主仓库 `packages/gateway-client`，非独立仓库）
 
-**其他说明**：Beta 通道 `curl -fsSL https://openclaw.ai/install.sh | bash -s -- --beta`；源码安装 `... | bash -s -- --install-method git`（需 git、corepack、pnpm）。脚本会校验 node:sqlite 能力（"SQLite 3.51.3+, 3.50.7+ within 3.50.x, or 3.44.6+ within 3.44.x is required"）。终端安装器支持 Debian、Ubuntu、Fedora、Arch、Raspberry Pi OS。iOS 独立仓库未确认。
+**其他说明**：Beta 通道 `curl -fsSL https://openclaw.ai/install.sh | bash -s -- --beta`；源码安装 `... | bash -s -- --install-method git`（需 git、corepack、pnpm）。脚本会校验 node:sqlite 能力（"SQLite 3.51.3+, 3.50.7+ within 3.50.x, or 3.44.6+ within 3.44.x is required"）。终端安装器支持 Debian、Ubuntu、Fedora、Arch、Raspberry Pi OS。
