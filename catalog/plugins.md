@@ -70,9 +70,9 @@ claude plugin enable <plugin>
 
 以下按插件市场列出本清单收录的插件。
 
-### `claude-plugins-official`（官方内置市场）
+### [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)（官方内置市场）
 
-Anthropic 官方市场，仓库为 [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)，**首次启动交互式会话时自动添加**，常规使用无需手动 `add`。内容规模：**315 个插件条目** = Anthropic 自研 39 个（含 15 个语言服务器插件）+ 合作方内嵌 14 个 + 远程引用 262 个；**默认开启自动更新**（其他第三方市场默认关闭）。
+Anthropic 官方市场，市场名 `claude-plugins-official`，**首次启动交互式会话时自动添加**，常规使用无需手动 `add`。内容规模：**315 个插件条目** = Anthropic 自研 39 个（含 15 个语言服务器插件）+ 合作方内嵌 14 个 + 远程引用 262 个；**默认开启自动更新**（其他第三方市场默认关闭）。
 
 仅在从未运行过交互式会话的机器上（如 CI 环境）需要显式添加：
 
@@ -160,9 +160,9 @@ claude plugins install skill-creator@claude-plugins-official
 claude plugins install mattpocock-skills@claude-plugins-official
 ```
 
-### `anthropic-agent-skills`（anthropics/skills）
+### [anthropics/skills](https://github.com/anthropics/skills)
 
-Anthropic 官方市场，仓库为 [anthropics/skills](https://github.com/anthropics/skills)，含 5 个插件；本清单安装 `document-skills`，其余（`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）可按需安装。
+Anthropic 官方市场，市场名 `anthropic-agent-skills`，含 5 个插件；本清单安装 `document-skills`，其余（`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）可按需安装。
 
 添加市场（仅需执行一次）：
 
@@ -181,9 +181,9 @@ claude plugins marketplace add anthropics/skills
 claude plugins install document-skills@anthropic-agent-skills
 ```
 
-### `karpathy-skills`（multica-ai/andrej-karpathy-skills）
+### [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
 
-仓库为 [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)，仅提供 `andrej-karpathy-skills` 一个插件。
+市场名 `karpathy-skills`，仅提供 `andrej-karpathy-skills` 一个插件。
 
 添加市场（仅需执行一次）：
 
@@ -202,9 +202,9 @@ claude plugins marketplace add multica-ai/andrej-karpathy-skills
 claude plugins install andrej-karpathy-skills@karpathy-skills
 ```
 
-### `ui-ux-pro-max-skill`（nextlevelbuilder/ui-ux-pro-max-skill）
+### [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
 
-仓库为 [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)，仅提供 `ui-ux-pro-max` 一个插件。
+市场名 `ui-ux-pro-max-skill`，仅提供 `ui-ux-pro-max` 一个插件。
 
 添加市场（仅需执行一次）：
 
@@ -223,9 +223,9 @@ claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
 ```
 
-### `ecc`（affaan-m/ECC）
+### [affaan-m/ECC](https://github.com/affaan-m/ECC)
 
-仓库为 [affaan-m/ECC](https://github.com/affaan-m/ECC)，仅提供 `ecc` 一个插件。
+市场名 `ecc`，仅提供同名插件。
 
 添加市场（仅需执行一次）：
 
@@ -244,9 +244,9 @@ claude plugins marketplace add https://github.com/affaan-m/ECC
 claude plugins install ecc@ecc
 ```
 
-### `openai-codex`（openai/codex-plugin-cc）
+### [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)
 
-仓库为 [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)，仅提供 `codex` 一个插件。
+OpenAI 官方市场，市场名 `openai-codex`，仅提供 `codex` 一个插件。
 
 添加市场（仅需执行一次）：
 
