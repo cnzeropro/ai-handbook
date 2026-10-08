@@ -21,9 +21,7 @@
 npx skills add vercel-labs/skills -g
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `find-skills` | 用户问「怎么做 X」「有没有现成技能」时，帮助发现并安装相应 skill |
+- **`find-skills`**：用户问「怎么做 X」「有没有现成技能」时，帮助发现并安装相应 skill
 
 #### anthropics/skills
 
@@ -32,14 +30,12 @@ npx skills add anthropics/skills --skill skill-creator --skill mcp-builder -g
 npx skills add anthropics/skills --skill xlsx --skill docx --skill pdf --skill pptx -g
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `skill-creator` | 创建新 skill、改进已有 skill、运行 eval 与方差基准、优化触发描述 |
-| `mcp-builder` | 构建高质量 MCP server（Python FastMCP 或 Node / TypeScript SDK） |
-| `xlsx` | 电子表格读写与清洗（.xlsx / .xlsm / .csv），公式、格式化、图表 |
-| `docx` | 创建 / 编辑 Word（.docx），含目录、页码、页眉、修订、批注、查找替换 |
-| `pptx` | 创建 / 解析 / 编辑 PowerPoint（.pptx），模板、版式、演讲者备注 |
-| `pdf` | PDF 读取、合并拆分、旋转、水印、表单填写、加解密、抽图、OCR |
+- **`skill-creator`**：创建新 skill、改进已有 skill、运行 eval 与方差基准、优化触发描述
+- **`mcp-builder`**：构建高质量 MCP server（Python FastMCP 或 Node / TypeScript SDK）
+- **`xlsx`**：电子表格读写与清洗（.xlsx / .xlsm / .csv），公式、格式化、图表
+- **`docx`**：创建 / 编辑 Word（.docx），含目录、页码、页眉、修订、批注、查找替换
+- **`pptx`**：创建 / 解析 / 编辑 PowerPoint（.pptx），模板、版式、演讲者备注
+- **`pdf`**：PDF 读取、合并拆分、旋转、水印、表单填写、加解密、抽图、OCR
 
 #### stablyai/orca
 
@@ -47,11 +43,9 @@ npx skills add anthropics/skills --skill xlsx --skill docx --skill pdf --skill p
 npx skills add stablyai/orca --skill orca-cli --skill computer-use --skill orchestration -g
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `orca-cli` | 用 `orca` CLI 操作 worktree、文件夹上下文、终端、仓库、自动化、artifact、内嵌浏览器 |
-| `computer-use` | 通过 `orca computer` 驱动本地可见窗口 GUI（无障碍树、点击、输入、菜单、截图） |
-| `orchestration` | 协调受监督的 Orca worker：线程消息、阻塞式 ask/reply、任务派发、任务 DAG、决策门、coordinator 循环 |
+- **`orca-cli`**：用 `orca` CLI 操作 worktree、文件夹上下文、终端、仓库、自动化、artifact、内嵌浏览器
+- **`computer-use`**：通过 `orca computer` 驱动本地可见窗口 GUI（无障碍树、点击、输入、菜单、截图）
+- **`orchestration`**：协调受监督的 Orca worker：线程消息、阻塞式 ask/reply、任务派发、任务 DAG、决策门、coordinator 循环
 
 #### huggingface/skills
 
@@ -59,9 +53,7 @@ npx skills add stablyai/orca --skill orca-cli --skill computer-use --skill orche
 npx skills add huggingface/skills --skill hf-cli -g
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `hf-cli` | Hugging Face Hub CLI：下载 / 上传模型、数据集、Spaces、buckets、repos、papers、jobs |
+- **`hf-cli`**：Hugging Face Hub CLI：下载 / 上传模型、数据集、Spaces、buckets、repos、papers、jobs
 
 #### multica-ai/andrej-karpathy-skills
 
@@ -69,9 +61,7 @@ npx skills add huggingface/skills --skill hf-cli -g
 npx skills add multica-ai/andrej-karpathy-skills -g
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `karpathy-guidelines` | 减少 LLM 编码通病的四条准则：先想后写 / 简单优先 / 外科式改动 / 目标驱动执行 |
+- **`karpathy-guidelines`**：减少 LLM 编码通病的四条准则：先想后写 / 简单优先 / 外科式改动 / 目标驱动执行
 
 ### 项目级
 
@@ -81,9 +71,7 @@ npx skills add multica-ai/andrej-karpathy-skills -g
 npx skills add anthropics/skills --skill frontend-design
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `frontend-design` | 新建或重塑 UI 时的视觉设计指导，避免模板化的 AI 味 |
+- **`frontend-design`**：新建或重塑 UI 时的视觉设计指导，避免模板化的 AI 味
 
 #### microsoft/playwright-cli
 
@@ -91,9 +79,7 @@ npx skills add anthropics/skills --skill frontend-design
 npx skills add microsoft/playwright-cli --skill playwright-cli
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `playwright-cli` | 浏览器自动化、测试 Web 页面、编写 Playwright 测试 |
+- **`playwright-cli`**：浏览器自动化、测试 Web 页面、编写 Playwright 测试
 
 #### mattpocock/skills
 
@@ -101,12 +87,10 @@ npx skills add microsoft/playwright-cli --skill playwright-cli
 npx skills add mattpocock/skills --skill grill-me --skill grill-with-docs --skill improve-codebase-architecture --skill tdd
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `tdd` | 测试驱动开发（red-green-refactor、集成测试） |
-| `grill-me` | 就方案或设计对你锲而不舍地追问，把方案打磨清楚 |
-| `grill-with-docs` | 与 `grill-me` 相同，但顺带产出文档（ADR 与术语表） |
-| `improve-codebase-architecture` | 扫描代码库找「深化」机会 → 输出可视化 HTML 报告 → 挑一个继续 grill |
+- **`tdd`**：测试驱动开发（red-green-refactor、集成测试）
+- **`grill-me`**：就方案或设计对你锲而不舍地追问，把方案打磨清楚
+- **`grill-with-docs`**：与 `grill-me` 相同，但顺带产出文档（ADR 与术语表）
+- **`improve-codebase-architecture`**：扫描代码库找「深化」机会 → 输出可视化 HTML 报告 → 挑一个继续 grill
 
 #### nextlevelbuilder/ui-ux-pro-max-skill
 
@@ -114,9 +98,7 @@ npx skills add mattpocock/skills --skill grill-me --skill grill-with-docs --skil
 npx skills add nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
 ```
 
-| Skill | 作用 |
-| --- | --- |
-| `ui-ux-pro-max` | UI/UX 设计智能：79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈的本地可检索数据 |
+- **`ui-ux-pro-max`**：UI/UX 设计智能：79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈的本地可检索数据
 
 ## 注意事项
 

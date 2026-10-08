@@ -41,13 +41,11 @@ claude plugin marketplace add anthropics/claude-plugins-official
 
 #### 第三方市场
 
-| 市场仓库 | 市场名（`@` 后用的名字） | 提供的插件 |
-| --- | --- | --- |
-| `anthropics/skills` | `anthropic-agent-skills` | `document-skills`、`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`（共 5 个） |
-| `multica-ai/andrej-karpathy-skills` | `karpathy-skills` | `andrej-karpathy-skills` |
-| `nextlevelbuilder/ui-ux-pro-max-skill` | `ui-ux-pro-max-skill` | `ui-ux-pro-max` |
-| `affaan-m/ECC` | `ecc` | `ecc` |
-| `openai/codex-plugin-cc` | `openai-codex` | `codex` |
+- **`anthropic-agent-skills`**（仓库 `anthropics/skills`）：提供 `document-skills`、`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`（共 5 个）
+- **`karpathy-skills`**（仓库 `multica-ai/andrej-karpathy-skills`）：提供 `andrej-karpathy-skills`
+- **`ui-ux-pro-max-skill`**（仓库 `nextlevelbuilder/ui-ux-pro-max-skill`）：提供 `ui-ux-pro-max`
+- **`ecc`**（仓库 `affaan-m/ECC`）：提供 `ecc`
+- **`openai-codex`**（仓库 `openai/codex-plugin-cc`）：提供 `codex`
 
 ### 插件清单
 
@@ -65,15 +63,13 @@ claude plugins install skill-creator@claude-plugins-official
 claude plugins install mattpocock-skills@claude-plugins-official
 ```
 
-| 插件 | 提供方 | 作用 |
-| --- | --- | --- |
-| `superpowers` | 第三方作者（obra） | 教 Claude 头脑风暴、子代理驱动开发（内置代码审查）、系统化调试、red/green TDD，以及如何编写与测试新 skill |
-| `code-review` | Anthropic | PR 自动代码审查：多个专职 agent + 基于置信度的打分以过滤误报（Commands） |
-| `code-simplifier` | Anthropic | 在保持功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents） |
-| `context7` | Upstash | Context7 MCP：拉取版本相关的官方文档与代码示例进上下文，连接远程 MCP，**无需本地 Node / npx**（可匿名使用，设 `CONTEXT7_API_KEY` 提高限流） |
-| `frontend-design` | Anthropic | 生成有设计感、敢做取舍的前端界面，避免通用的 AI 审美（Skills） |
-| `skill-creator` | Anthropic | 创建新 skill、改进已有 skill、跑 eval 与方差基准（Skills） |
-| `mattpocock-skills` | Matt Pocock | 工程向 skills 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等 |
+- **`superpowers`**（第三方作者 obra）：教 Claude 头脑风暴、子代理驱动开发（内置代码审查）、系统化调试、red/green TDD，以及如何编写与测试新 skill
+- **`code-review`**（Anthropic）：PR 自动代码审查：多个专职 agent + 基于置信度的打分以过滤误报（Commands）
+- **`code-simplifier`**（Anthropic）：在保持功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents）
+- **`context7`**（Upstash）：Context7 MCP：拉取版本相关的官方文档与代码示例进上下文，连接远程 MCP，**无需本地 Node / npx**（可匿名使用，设 `CONTEXT7_API_KEY` 提高限流）
+- **`frontend-design`**（Anthropic）：生成有设计感、敢做取舍的前端界面，避免通用的 AI 审美（Skills）
+- **`skill-creator`**（Anthropic）：创建新 skill、改进已有 skill、跑 eval 与方差基准（Skills）
+- **`mattpocock-skills`**（Matt Pocock）：工程向 skills 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等
 
 #### 来自第三方市场
 
@@ -97,13 +93,11 @@ claude plugins install ecc@ecc
 claude plugins install codex@openai-codex
 ```
 
-| 插件 | 来源市场 | 提供方 | 作用 |
-| --- | --- | --- | --- |
-| `document-skills` | `anthropic-agent-skills` | Anthropic | 文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF |
-| `andrej-karpathy-skills` | `karpathy-skills` | multica-ai | 减少 LLM 编码常见错误的行为准则：先想后写、简单优先、外科式改动、目标驱动执行 |
-| `ui-ux-pro-max` | `ui-ux-pro-max-skill` | nextlevelbuilder | UI/UX 设计智能：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南 |
-| `ecc` | `ecc` | affaan-m | Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描 |
-| `codex` | `openai-codex` | OpenAI | 在 Claude Code 内调用 Codex 做代码审查或把任务委派给它（`/codex:review`、`/codex:adversarial-review`、`/codex:rescue`、`/codex:transfer` 等）；需 ChatGPT 订阅或 OpenAI API key，Node ≥ 18.18 |
+- **`document-skills`**（`anthropic-agent-skills`，Anthropic）：文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF
+- **`andrej-karpathy-skills`**（`karpathy-skills`，multica-ai）：减少 LLM 编码常见错误的行为准则：先想后写、简单优先、外科式改动、目标驱动执行
+- **`ui-ux-pro-max`**（`ui-ux-pro-max-skill`，nextlevelbuilder）：UI/UX 设计智能：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
+- **`ecc`**（`ecc`，affaan-m）：Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描
+- **`codex`**（`openai-codex`，OpenAI）：在 Claude Code 内调用 Codex 做代码审查或把任务委派给它（`/codex:review`、`/codex:adversarial-review`、`/codex:rescue`、`/codex:transfer` 等）；需 ChatGPT 订阅或 OpenAI API key，Node ≥ 18.18
 
 > `codex` 插件装完需执行 `/reload-plugins`，再跑一次 `/codex:setup` 完成配置。
 
