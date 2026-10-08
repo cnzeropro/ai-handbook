@@ -26,6 +26,50 @@ Claude Code 的插件体系围绕四个概念展开：
 - 同一插件存在于多个 scope 时优先级：`local` > `project` > `user`。
 - **落盘目录**：插件根目录 `~/.claude/plugins`（可用 `CLAUDE_CODE_PLUGIN_CACHE_DIR` 改），下含 `cache/<marketplace>/<plugin>/<version>/`、`marketplaces/<name>/`、`data/<plugin-id>/`、`installed_plugins.json`、`known_marketplaces.json`。
 
+**常用命令**
+
+```bash
+# 市场
+claude plugin marketplace add <owner/repo | URL | 本地路径>
+claude plugin marketplace list
+claude plugin marketplace update [name]        # 只刷新市场目录，不更新已装插件版本
+claude plugin marketplace remove <name>        # 会连带卸载从该市场装的插件
+
+# 插件
+claude plugin install <plugin>@<marketplace> [--scope user|project|local]
+claude plugin list [--json]
+claude plugin update <plugin> [-y]
+claude plugin uninstall <plugin> [--keep-data]
+claude plugin disable <plugin> | claude plugin disable --all
+claude plugin enable <plugin>
+```
+
+会话内等价形式（`/plugin`、`/plugins`、`/marketplace` 互为别名）：
+
+```text
+/plugin                              打开面板（Discover 标签）
+/plugin list                         列出已装插件
+/plugin install <插件>               打开该插件详情
+/plugin marketplace add <source>     添加市场
+/reload-plugins [--force]            把待生效的变更应用到当前会话
+```
+
+一次性「加市场 + 装插件」（需 v2.1.275+）：
+
+```bash
+/plugin install <plugin> --marketplace <source>
+```
+
+**注意事项**
+
+- ⚠️ **插件是有成本的**：启用后，其每个 skill / agent / command 的**名称与描述会进入每一轮上下文**（正文只在真正使用时加载）。`claude plugin details <name>` 可查看 `Always-on` token 数与逐组件成本。
+- ⚠️ 市场名 `claude-plugins-official`、`anthropic-agent-skills` 等**官方名被保留**，第三方冒用会报 `The name '<name>' is reserved for official Anthropic marketplaces`。
+- 官方**不维护「市场内插件清单」文档页**（"The catalog changes often, so this page doesn't list it"）。查最新清单用会话内 `/plugin` 的 **Discover** 标签，或网页版 <https://claude.com/marketplace/plugins>。
+- `marketplace remove` 用 **`marketplace.json` 里的 `name` 字段**，不是当初传给 `add` 的 source（两者可能不同，例如 `anthropics/skills` 的市场名是 `anthropic-agent-skills`）。
+- 卸载时若该插件仍被另一个已启用插件依赖，会被拒绝并给出链式命令。
+- 从**本地路径**添加的市场中的插件是就地加载，改源码下次会话即生效，**不需要升版本号**；其他市场插件会复制到 `~/.claude/plugins/cache/` 后加载。
+- 云会话（含浏览器里的 claude.ai/code）**不加载**本地设置中的插件。
+
 以下按插件市场列出本清单收录的插件。
 
 ### `claude-plugins-official`（官方内置市场）
@@ -209,50 +253,6 @@ claude plugins install codex@openai-codex
 ```
 
 > `codex` 装完需先执行 `/reload-plugins`，再跑一次 `/codex:setup` 完成配置。
-
-**常用命令**
-
-```bash
-# 市场
-claude plugin marketplace add <owner/repo | URL | 本地路径>
-claude plugin marketplace list
-claude plugin marketplace update [name]        # 只刷新市场目录，不更新已装插件版本
-claude plugin marketplace remove <name>        # 会连带卸载从该市场装的插件
-
-# 插件
-claude plugin install <plugin>@<marketplace> [--scope user|project|local]
-claude plugin list [--json]
-claude plugin update <plugin> [-y]
-claude plugin uninstall <plugin> [--keep-data]
-claude plugin disable <plugin> | claude plugin disable --all
-claude plugin enable <plugin>
-```
-
-会话内等价形式（`/plugin`、`/plugins`、`/marketplace` 互为别名）：
-
-```text
-/plugin                              打开面板（Discover 标签）
-/plugin list                         列出已装插件
-/plugin install <插件>               打开该插件详情
-/plugin marketplace add <source>     添加市场
-/reload-plugins [--force]            把待生效的变更应用到当前会话
-```
-
-一次性「加市场 + 装插件」（需 v2.1.275+）：
-
-```bash
-/plugin install <plugin> --marketplace <source>
-```
-
-**注意事项**
-
-- ⚠️ **插件是有成本的**：启用后，其每个 skill / agent / command 的**名称与描述会进入每一轮上下文**（正文只在真正使用时加载）。`claude plugin details <name>` 可查看 `Always-on` token 数与逐组件成本。
-- ⚠️ 市场名 `claude-plugins-official`、`anthropic-agent-skills` 等**官方名被保留**，第三方冒用会报 `The name '<name>' is reserved for official Anthropic marketplaces`。
-- 官方**不维护「市场内插件清单」文档页**（"The catalog changes often, so this page doesn't list it"）。查最新清单用会话内 `/plugin` 的 **Discover** 标签，或网页版 <https://claude.com/marketplace/plugins>。
-- `marketplace remove` 用 **`marketplace.json` 里的 `name` 字段**，不是当初传给 `add` 的 source（两者可能不同，例如 `anthropics/skills` 的市场名是 `anthropic-agent-skills`）。
-- 卸载时若该插件仍被另一个已启用插件依赖，会被拒绝并给出链式命令。
-- 从**本地路径**添加的市场中的插件是就地加载，改源码下次会话即生效，**不需要升版本号**；其他市场插件会复制到 `~/.claude/plugins/cache/` 后加载。
-- 云会话（含浏览器里的 claude.ai/code）**不加载**本地设置中的插件。
 
 ---
 
