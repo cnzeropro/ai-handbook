@@ -1,21 +1,21 @@
 # AI 编程工具清单
 
 > 收录各 AI 编程工具在 **Windows / macOS / Linux** 上的官方安装方式、依赖环境与默认安装路径。
-> 命令与路径均取自官方文档或官方安装脚本原文；三级形态中该厂商**没有的留空**。
+> 命令与路径均取自官方文档或官方安装脚本原文；厂商未提供的形态不列出。
 
 ## 分类
 
-**一级：类型**
+一级为类型：
 
 | 一级        | 说明                    |
 | --------- | --------------------- |
-| 一、本地模型运行时 | 模型跑在你自己机器上，对外提供本地推理服务 |
+| 一、本地模型运行时 | 模型运行在本地机器上，对外提供本地推理服务 |
 | 二、编程工具    | 直接读写代码的 agent         |
 | 三、编排与网关   | 自身不写代码，调度其他工具或接入聊天客户端 |
 
-**二级：出品方**（标注「模型厂商 / 第三方」）　**三级：形态**
+二级为出品方（标注「模型厂商 / 第三方」），三级为形态。
 
-Agent CLI（含 TUI）· IDE 插件 · Desktop App · Web 应用 / 云端 Agent · 移动端 App · 服务 / 网关（自托管）· 容器镜像（Docker）· SDK / 库
+形态共 8 类：Agent CLI（含 TUI）、IDE 插件、Desktop App、Web 应用 / 云端 Agent、移动端 App、服务 / 网关（自托管）、容器镜像（Docker）、SDK / 库。
 
 ---
 
@@ -23,10 +23,9 @@ Agent CLI（含 TUI）· IDE 插件 · Desktop App · Web 应用 / 云端 Agent 
 
 ### ggml-org
 
-**官网**：[https://llama.app/](https://llama.app/)
-**GitHub**：`ggml-org/llama.cpp`（引擎源码）· `ggml-org/Llama-Windows`（Windows 端源码，**无 LICENSE 文件**）· `ggml-org/Llama-macOS`（macOS 端源码）· `ggml-org/llama-install.sh`（安装脚本仓库，MIT）
-
-**作用**：由 **llama.cpp 团队（ggml-org）与 Hugging Face** 联合出品的本地模型运行时（llama.cpp 引擎）。Windows 11 / macOS 是桌面托盘应用，Linux 仅命令行；对外提供本地 OpenAI / Anthropic 兼容 API。**不是 Meta 的 Llama 工具**。
+- **官网**：[https://llama.app/](https://llama.app/)
+- **GitHub**：`ggml-org/llama.cpp`（引擎源码）· `ggml-org/Llama-Windows`（Windows 端源码，**无 LICENSE 文件**）· `ggml-org/Llama-macOS`（macOS 端源码）· `ggml-org/llama-install.sh`（安装脚本仓库，MIT）
+- **作用**：由 **llama.cpp 团队（ggml-org）与 Hugging Face** 联合出品的本地模型运行时（llama.cpp 引擎）。Windows 11 / macOS 是桌面托盘应用，Linux 仅命令行；对外提供本地 OpenAI / Anthropic 兼容 API，并非 Meta 的 Llama 相关工具。
 
 #### Agent CLI（含 TUI）
 
@@ -74,14 +73,13 @@ brew install --cask llama-app
 
 `ghcr.io/ggml-org/llama.cpp`（属 llama.cpp 项目）
 
-**其他说明**：模型统一存放 Hugging Face 缓存，与 llama.cpp 及其他工具共享（Windows `%USERPROFILE%\.cache\huggingface\hub`）。⚠️ 官网「Package managers」链接指向的是 **llama.cpp** 文档——`winget install llama.cpp`、`brew install llama.cpp` 装的是 llama.cpp 本体，**不是 llama.app**，两者是不同项目、不同仓库。
+**其他说明**：模型统一存放 Hugging Face 缓存，与 llama.cpp 及其他工具共享（Windows `%USERPROFILE%\.cache\huggingface\hub`）。⚠️ 官网「Package managers」链接指向 **llama.cpp** 文档：`winget install llama.cpp`、`brew install llama.cpp` 安装的是 llama.cpp 本体而非 llama.app，两者为不同项目、不同仓库。
 
 ### Ollama（模型厂商）
 
-**官网**：[https://ollama.com/](https://ollama.com/)
-**GitHub**：`ollama/ollama`（主源码，Go / MIT）· `ollama/ollama-python`、`ollama/ollama-js`（官方 SDK）
-
-**作用**：本地大模型运行时，常驻服务 API `http://localhost:11434`；本地 GGUF 模型免费，云模型（`:cloud` 后缀）需 `ollama signin`。
+- **官网**：[https://ollama.com/](https://ollama.com/)
+- **GitHub**：`ollama/ollama`（主源码，Go / MIT）· `ollama/ollama-python`、`ollama/ollama-js`（官方 SDK）
+- **作用**：本地大模型运行时，常驻服务 API `http://localhost:11434`；本地 GGUF 模型免费，云模型（`:cloud` 后缀）需 `ollama signin`。
 
 #### Agent CLI（含 TUI）
 
@@ -165,10 +163,9 @@ npm i ollama
 
 ### Anthropic（模型厂商）
 
-**官网**：[https://claude.com/product/claude-code](https://claude.com/product/claude-code)　文档 [https://code.claude.com/docs/en/overview](https://code.claude.com/docs/en/overview)
-**GitHub**：`anthropics/claude-code`（**非源码仓库**，仅文档 + 插件示例 + devcontainer + issue 跟踪；LICENSE 为 "© Anthropic PBC. All rights reserved." 专有许可）· `anthropics/claude-agent-sdk-typescript`、`anthropics/claude-agent-sdk-python`（SDK 源码）
-
-**作用**：Anthropic 官方 agentic coding CLI（命令 `claude`）。需 Pro / Max / Team / Enterprise 或 Console 账号，**免费版 claude.ai 计划不含 Claude Code**。
+- **官网**：[https://claude.com/product/claude-code](https://claude.com/product/claude-code)　文档 [https://code.claude.com/docs/en/overview](https://code.claude.com/docs/en/overview)
+- **GitHub**：`anthropics/claude-code`（**非源码仓库**，仅文档 + 插件示例 + devcontainer + issue 跟踪；LICENSE 为 "© Anthropic PBC. All rights reserved." 专有许可）· `anthropics/claude-agent-sdk-typescript`、`anthropics/claude-agent-sdk-python`（SDK 源码）
+- **作用**：Anthropic 官方 agentic coding CLI（命令 `claude`）。需 Pro / Max / Team / Enterprise 或 Console 账号，**免费版 claude.ai 计划不含 Claude Code**。
 
 #### Agent CLI（含 TUI）
 
@@ -292,20 +289,19 @@ Claude 的 iOS / Android App 内含 Code 标签。官方原文："Claude Code do
 
 ### OpenAI（模型厂商）
 
-**官网**：[https://chatgpt.com/codex](https://chatgpt.com/codex)　文档 [https://learn.chatgpt.com/docs](https://learn.chatgpt.com/docs)
-**GitHub**：`openai/codex`（**主源码**，Rust / JS，Apache-2.0）· `openai/codex-universal`（基础镜像仓库，不含 CLI）
-
-**作用**：OpenAI 官方编码 agent。用 ChatGPT 订阅登录或 API key 计费。
+- **官网**：[https://chatgpt.com/codex](https://chatgpt.com/codex)　文档 [https://learn.chatgpt.com/docs](https://learn.chatgpt.com/docs)
+- **GitHub**：`openai/codex`（**主源码**，Rust / JS，Apache-2.0）· `openai/codex-universal`（基础镜像仓库，不含 CLI）
+- **作用**：OpenAI 官方编码 agent。用 ChatGPT 订阅登录或 API key 计费。
 
 #### Agent CLI（含 TUI）
 
-Windows｜依赖：Windows PowerShell（脚本需绕过执行策略）；原生 Windows 是官方一等路径
+Windows｜依赖：Windows PowerShell（脚本需绕过执行策略）；原生 Windows 为官方一级支持路径
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
 ```
 
-强制走 GitHub Releases：
+强制使用 GitHub Releases：
 
 ```powershell
 $env:CODEX_INSTALLER_USE_RELEASES_OPENAI_COM='false'; irm https://chatgpt.com/codex/install.ps1 | iex
@@ -362,10 +358,9 @@ Codex Remote —— 用 ChatGPT 手机 App 配对电脑
 
 ### Google（模型厂商）
 
-**官网**：[https://antigravity.google/](https://antigravity.google/)　文档 [https://antigravity.google/docs/cli/overview](https://antigravity.google/docs/cli/overview)
-**GitHub**：`google-antigravity/antigravity-cli`（**非源码仓库**，仅 issue 模板 + examples + CHANGELOG；**CLI 自身源码仓库未确认**）· `google-antigravity/antigravity-sdk-python`（SDK 源码）
-
-**作用**：Google agentic 开发平台的终端 CLI，二进制名 `agy`；支持 shell 命令与后台 subagent。
+- **官网**：[https://antigravity.google/](https://antigravity.google/)　文档 [https://antigravity.google/docs/cli/overview](https://antigravity.google/docs/cli/overview)
+- **GitHub**：`google-antigravity/antigravity-cli`（**非源码仓库**，仅 issue 模板 + examples + CHANGELOG；**CLI 自身源码仓库未确认**）· `google-antigravity/antigravity-sdk-python`（SDK 源码）
+- **作用**：Google agentic 开发平台的终端 CLI，二进制名 `agy`；支持 shell 命令与后台 subagent。
 
 #### Agent CLI（含 TUI）
 
@@ -400,10 +395,9 @@ curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 ### SpaceXAI（模型厂商）
 
-**官网**：[https://x.ai/cli](https://x.ai/cli)　文档 [https://docs.x.ai/build/overview](https://docs.x.ai/build/overview)
-**GitHub**：`xai-org/grok-build`（**源码仓库**，Rust / Apache-2.0）
-
-**作用**：Grok Build —— 全屏 TUI 编码 agent（命令 `grok`）；支持交互、headless（CI）与编辑器 ACP 嵌入。
+- **官网**：[https://x.ai/cli](https://x.ai/cli)　文档 [https://docs.x.ai/build/overview](https://docs.x.ai/build/overview)
+- **GitHub**：`xai-org/grok-build`（**源码仓库**，Rust / Apache-2.0）
+- **作用**：Grok Build —— 全屏 TUI 编码 agent（命令 `grok`）；支持交互、headless（CI）与编辑器 ACP 嵌入。
 
 #### Agent CLI（含 TUI）
 
@@ -413,7 +407,7 @@ Windows｜依赖：Windows PowerShell（强制 TLS 1.2）；仅对 MinGit 压缩
 irm https://x.ai/cli/install.ps1 | iex
 ```
 
-macOS / Linux / Git Bash｜依赖：curl 或 wget（至少其一）；zstd 可选（缺失退 gzip，再退未压缩）；**不做校验和验证**
+macOS / Linux / Git Bash｜依赖：curl 或 wget（至少其一）；zstd 可选（缺失时回退 gzip，再回退未压缩）；**不做校验和验证**
 
 ```bash
 curl -fsSL https://x.ai/cli/install.sh | bash
@@ -428,10 +422,9 @@ curl -fsSL https://x.ai/cli/install.sh | bash
 
 ### Moonshot AI（模型厂商）
 
-**官网**：[https://www.kimi.com/code](https://www.kimi.com/code)
-**GitHub**：`MoonshotAI/kimi-code`（现行主源码，TS / MIT）· `MoonshotAI/kimi-cli`（**已归档只读**）· `MoonshotAI/kimi-agent-sdk`、`MoonshotAI/kimi-code-zed-extension`、`MoonshotAI/kimi-agent-rs`
-
-**作用**：Kimi Code CLI（命令 `kimi`）；支持 MCP 对话式配置、子 Agent 并行、ACP 集成；订阅制。
+- **官网**：[https://www.kimi.com/code](https://www.kimi.com/code)
+- **GitHub**：`MoonshotAI/kimi-code`（现行主源码，TS / MIT）· `MoonshotAI/kimi-cli`（**已归档只读**）· `MoonshotAI/kimi-agent-sdk`、`MoonshotAI/kimi-code-zed-extension`、`MoonshotAI/kimi-agent-rs`
+- **作用**：Kimi Code CLI（命令 `kimi`）；支持 MCP 对话式配置、子 Agent 并行、ACP 集成；订阅制。
 
 #### Agent CLI（含 TUI）
 
@@ -479,10 +472,9 @@ VS Code 扩展 `moonshot-ai.kimi-code`｜Zed 官方扩展（`MoonshotAI/kimi-cod
 
 ### Qwen（模型厂商）
 
-**官网**：[https://qwenlm.github.io/qwen-code-docs/](https://qwenlm.github.io/qwen-code-docs/)
-**GitHub**：`QwenLM/qwen-code`（**主源码 monorepo**，TS / Apache-2.0，桌面端与 SDK 同仓发布）· `QwenLM/qwen-code-docs`（文档站源码）· `QwenLM/qwen-code-action`
-
-**作用**：阿里巴巴 Qwen 团队的开源终端编码 agent（命令 `qwen`），自带 Auto-Memory / SubAgents / Agent Teams / MCP / Plan Mode / LSP / Sandbox；可接 OpenAI、Anthropic、Gemini、Qwen 及本地 Ollama / vLLM。
+- **官网**：[https://qwenlm.github.io/qwen-code-docs/](https://qwenlm.github.io/qwen-code-docs/)
+- **GitHub**：`QwenLM/qwen-code`（**主源码 monorepo**，TS / Apache-2.0，桌面端与 SDK 同仓发布）· `QwenLM/qwen-code-docs`（文档站源码）· `QwenLM/qwen-code-action`
+- **作用**：阿里巴巴 Qwen 团队的开源终端编码 agent（命令 `qwen`），自带 Auto-Memory / SubAgents / Agent Teams / MCP / Plan Mode / LSP / Sandbox；可接 OpenAI、Anthropic、Gemini、Qwen 及本地 Ollama / vLLM。
 
 #### Agent CLI（含 TUI）
 
@@ -535,14 +527,13 @@ VS Code 扩展 `qwenlm.qwen-code-vscode-ide-companion`（VS Code ≥ 1.96）｜Z
 
 `@qwen-code/sdk`（TS）、`qwen-code-sdk`（Python，alpha）、`com.alibaba:qwencode-sdk:0.1.0-alpha`（Java）
 
-**其他说明**：脚本向 `~/.zshrc` / `~/.bashrc` / fish 配置追加带标记的 PATH 块（`--no-modify-path` 可跳过）。npm 路径**不会**代为安装 Node，也不会改 npm config；用脚本时默认 registry 为 `registry.npmmirror.com`。⚠️ **Qwen OAuth 免费层已于 2026-04-15 停止服务**。
+**其他说明**：脚本向 `~/.zshrc` / `~/.bashrc` / fish 配置追加带标记的 PATH 块（`--no-modify-path` 可跳过）。npm 路径**不会**代为安装 Node，也不会修改 npm config；使用脚本安装时默认 registry 为 `registry.npmmirror.com`。⚠️ **Qwen OAuth 免费层已于 2026-04-15 停止服务**。
 
 ### Xiaomi MiMo（模型厂商）
 
-**官网**：[https://mimo.xiaomi.com/mimocode](https://mimo.xiaomi.com/mimocode)
-**GitHub**：`XiaomiMiMo/MiMo-Code`（**源码仓库**，TS / MIT，OpenCode fork，SDK 同仓）· `XiaomiMiMo/MiMo-Skills` · `XiaomiMiMo/awesome-mimo-agent`（非源码，策展文档）
-
-**作用**：MiMo Code（命令 `mimo`）——终端 AI 编程助手；持久记忆（SQLite FTS5）、多 Agent、宣称无限上下文。许可证 MIT **附带 `USE_RESTRICTIONS.md` 使用限制**。
+- **官网**：[https://mimo.xiaomi.com/mimocode](https://mimo.xiaomi.com/mimocode)
+- **GitHub**：`XiaomiMiMo/MiMo-Code`（**源码仓库**，TS / MIT，OpenCode fork，SDK 同仓）· `XiaomiMiMo/MiMo-Skills` · `XiaomiMiMo/awesome-mimo-agent`（非源码，策展文档）
+- **作用**：MiMo Code（命令 `mimo`）——终端 AI 编程助手；持久记忆（SQLite FTS5）、多 Agent、宣称无限上下文。许可证 MIT **附带 `USE_RESTRICTIONS.md` 使用限制**。
 
 #### Agent CLI（含 TUI）
 
@@ -583,14 +574,13 @@ npm install -g @mimo-ai/cli
 
 `@mimo-ai/sdk`
 
-**其他说明**：macOS 内置 Terminal.app **不支持**，需 iTerm2 或 VS Code 终端；WSL 剪贴板可能需 `xsel`。首启可选 Xiaomi MiMo Platform（OAuth）、Codex、从 Claude Code 导入或自定义 provider。
+**其他说明**：macOS 内置 Terminal.app **不支持**，需 iTerm2 或 VS Code 终端；WSL 剪贴板可能需 `xsel`。首次启动可选择 Xiaomi MiMo Platform（OAuth）、Codex、从 Claude Code 导入或自定义 provider。
 
 ### Cognition（模型厂商）
 
-**官网**：[https://cli.devin.ai](https://cli.devin.ai)（301 → docs.devin.ai/cli，无独立营销站）
-**GitHub**：`CognitionAI/devin-cli`（**非源码仓库**，仅标题式 README + workflows/scripts，2 个提交、无 LICENSE）；**产品无公开源码仓库**
-
-**作用**：Devin CLI（命令 `devin`）——本地命令行编码 agent，"Devin for Terminal"。**与云 VM 里的 Devin 是两个不同产品**。
+- **官网**：[https://cli.devin.ai](https://cli.devin.ai)（301 → docs.devin.ai/cli，无独立营销站）
+- **GitHub**：`CognitionAI/devin-cli`（**非源码仓库**，仅标题式 README + workflows/scripts，2 个提交、无 LICENSE）；**产品无公开源码仓库**
+- **作用**：Devin CLI（命令 `devin`）——本地命令行编码 agent，"Devin for Terminal"。与云 VM 中的 Devin 为两个不同产品。
 
 #### Agent CLI（含 TUI）
 
@@ -633,10 +623,9 @@ JetBrains / Zed / Xcode 的 ACP 接入
 
 ### Nous Research（模型厂商）
 
-**官网**：[https://hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com)
-**GitHub**：`NousResearch/hermes-agent`（**完整源码仓库**，MIT，含 `docker/`、`Dockerfile`、`flake.nix`）
-
-**作用**：Hermes Agent —— 自改进 AI agent；TUI + 单网关接入 Telegram / Discord / Slack / WhatsApp / Signal。
+- **官网**：[https://hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com)
+- **GitHub**：`NousResearch/hermes-agent`（**完整源码仓库**，MIT，含 `docker/`、`Dockerfile`、`flake.nix`）
+- **作用**：Hermes Agent —— 自改进 AI agent；TUI + 单网关接入 Telegram / Discord / Slack / WhatsApp / Signal。
 
 #### Agent CLI（含 TUI）
 
@@ -684,10 +673,9 @@ Web Dashboard `hermes dashboard` → `127.0.0.1:9119`；云托管 [https://porta
 
 ### Anysphere（第三方）
 
-**官网**：[https://cursor.com/cli](https://cursor.com/cli)　文档 [https://cursor.com/docs/cli/overview](https://cursor.com/docs/cli/overview)
-**GitHub**：**无公开源码仓库**（`cursor/cursor` 为元 / 反馈仓库，仅 issue 模板与 README）
-
-**作用**：Cursor CLI —— 命令为 **`agent`**；支持 Agent / Plan / Ask 模式与 print 非交互模式（`agent -p`）。
+- **官网**：[https://cursor.com/cli](https://cursor.com/cli)　文档 [https://cursor.com/docs/cli/overview](https://cursor.com/docs/cli/overview)
+- **GitHub**：**无公开源码仓库**（`cursor/cursor` 为元 / 反馈仓库，仅 issue 模板与 README）
+- **作用**：Cursor CLI —— 命令为 **`agent`**；支持 Agent / Plan / Ask 模式与 print 非交互模式（`agent -p`）。
 
 #### Agent CLI（含 TUI）
 
@@ -708,14 +696,13 @@ curl https://cursor.com/install -fsS | bash
 - macOS / Linux `~/.local/share/cursor-agent/versions/<版本号>/`，软链 `~/.local/bin/agent` 与 `~/.local/bin/cursor-agent`
 - 配置 `~/.cursor/cli-config.json`（`CURSOR_CONFIG_DIR` 可改；Linux/BSD 支持 `XDG_CONFIG_HOME`），项目级 `<project>/.cursor/cli.json`（仅可配 permissions）
 
-**其他说明**：验证 `agent --version`，更新 `agent update`（默认自动更新）。需把 `~/.local/bin` 加入 PATH。收费 Hobby 免费 / Individual $20 / Teams $40（每人每月）。
+**其他说明**：验证 `agent --version`，更新 `agent update`（默认自动更新）。需将 `~/.local/bin` 加入 PATH。收费 Hobby 免费 / Individual $20 / Teams $40（每人每月）。
 
 ### TRAE（第三方）
 
-**官网**：[https://trae.cn/trae-cli](https://trae.cn/trae-cli)　文档 [https://docs.trae.cn/cli\_get-started-with-trae-code-cli-2](https://docs.trae.cn/cli_get-started-with-trae-code-cli-2)
-**GitHub**：**未找到官方源码仓库**（`bytedance/trae-agent` 是另一个研究项目，不计）
-
-**作用**：字节跳动的 Trae CLI（命令 `traecli`，实际二进制 `traex`）—— TUI 交互式编码；仅调用内置模型消耗积分，自定义模型不消耗。
+- **官网**：[https://trae.cn/trae-cli](https://trae.cn/trae-cli)　文档 [https://docs.trae.cn/cli\_get-started-with-trae-code-cli-2](https://docs.trae.cn/cli_get-started-with-trae-code-cli-2)
+- **GitHub**：**未找到官方源码仓库**（`bytedance/trae-agent` 是另一个研究项目，不计）
+- **作用**：字节跳动的 Trae CLI（命令 `traecli`，实际二进制 `traex`）—— TUI 交互式编码；仅调用内置模型消耗积分，自定义模型不消耗。
 
 #### Agent CLI（含 TUI）
 
@@ -736,14 +723,13 @@ sh -c "$(curl -fsSL https://trae.cn/trae-cli/install_v2.sh)"
 - macOS / Linux 可执行 `${TRAECLI_INSTALL_DIR:-${XDG_BIN_HOME:-~/.local/bin}}`（主程序 `traex`，另有 `traecli` / `trae-cli` / `trae-agent` / `ta` 链接）、状态 `${XDG_DATA_HOME:-~/.local/share}/traecli`
 - 全局配置 `trae_cli.yaml`：Windows `%APPDATA%\trae_cli\`、macOS `~/Library/Application Support/trae_cli/`、Linux `$XDG_CONFIG_HOME/trae_cli/` 或 `~/.config/trae_cli/`；用户级 `~/.trae/traecli.toml`
 
-**其他说明**：⚠️ **旧版 `install.ps1` 仍在线但已非官方推荐**（旧版装到 `%LOCALAPPDATA%\trae-cli\bin\trae-cli.exe`，路径与可执行文件名都不同）。⚠️ **国际版 docs.trae.ai 的 CLI 页面已 302 重定向下线**（跳向 TRAE SOLO 公告页），目前只有中国版 docs.trae.cn 维护 CLI 文档。登录：`traecli login status`，或用 `TRAECLI_PERSONAL_ACCESS_TOKEN` + `traecli login --with-trae-pat`。
+**其他说明**：⚠️ **旧版 `install.ps1` 仍可访问但已非官方推荐**（旧版安装到 `%LOCALAPPDATA%\trae-cli\bin\trae-cli.exe`，路径与可执行文件名均不同）。⚠️ **国际版 docs.trae.ai 的 CLI 页面已 302 重定向下线**（重定向至 TRAE SOLO 公告页），目前只有中国版 docs.trae.cn 维护 CLI 文档。登录：`traecli login status`，或用 `TRAECLI_PERSONAL_ACCESS_TOKEN` + `traecli login --with-trae-pat`。
 
 ### Amazon Web Services（第三方）
 
-**官网**：[https://kiro.dev](https://kiro.dev)｜CLI 落地页 [https://cli.kiro.dev](https://cli.kiro.dev)
-**GitHub**：`kirodotdev/Kiro`（**仅 issue / 反馈跟踪，明确不含源码** —— README 原文 "The Kiro product source code is not hosted here."）
-
-**作用**：Kiro CLI（命令 `kiro-cli`）—— Rust 原生二进制，非 Node 应用。
+- **官网**：[https://kiro.dev](https://kiro.dev)｜CLI 落地页 [https://cli.kiro.dev](https://cli.kiro.dev)
+- **GitHub**：`kirodotdev/Kiro`（**仅 issue / 反馈跟踪，明确不含源码** —— README 原文 "The Kiro product source code is not hosted here."）
+- **作用**：Kiro CLI（命令 `kiro-cli`）—— Rust 原生二进制，非 Node 应用。
 
 #### Agent CLI（含 TUI）
 
@@ -778,10 +764,9 @@ curl -fsSL https://cli.kiro.dev/install | bash
 
 ### Cline Bot（第三方）
 
-**官网**：[https://cline.bot](https://cline.bot)　文档 [https://docs.cline.bot](https://docs.cline.bot)
-**GitHub**：`cline/cline`（**完整源码 monorepo**，Apache-2.0；`apps/cli`、`sdk/` 在顶层）· `cline/kanban`（research preview）· `cline/homebrew-cline`（官方 tap）
-
-**作用**：Cline —— 命令行 TUI + headless JSON 模式（CI/CD）。软件免费，仅按推理用量付费。
+- **官网**：[https://cline.bot](https://cline.bot)　文档 [https://docs.cline.bot](https://docs.cline.bot)
+- **GitHub**：`cline/cline`（**完整源码 monorepo**，Apache-2.0；`apps/cli`、`sdk/` 在顶层）· `cline/kanban`（research preview）· `cline/homebrew-cline`（官方 tap）
+- **作用**：Cline —— 命令行 TUI + headless JSON 模式（CI/CD）。软件免费，仅按推理用量付费。
 
 #### Agent CLI（含 TUI）
 
@@ -808,14 +793,13 @@ JetBrains [https://plugins.jetbrains.com/plugin/28247-cline](https://plugins.jet
 
 `@cline/sdk`（Node ≥ 22）；另有 Kanban（preview）`npx kanban`，依赖 Node.js 18+
 
-**其他说明**：官方**没有** curl 安装脚本、Homebrew 或系统包管理器方式，三平台都只有 npm。
+**其他说明**：官方未提供 curl 安装脚本、Homebrew 或系统包管理器方式，三平台均仅有 npm。
 
 ### Kilo（第三方）
 
-**官网**：[https://kilo.ai](https://kilo.ai)　文档 [https://kilo.ai/docs](https://kilo.ai/docs)
-**GitHub**：`Kilo-Org/kilocode`（**完整源码仓库**，TS / MIT；`packages/` 含 opencode 运行时、tui、kilo-vscode、kilo-jetbrains、sdk、server，**无单独 CLI 仓库**）· `Kilo-Org/kilo.nvim`（官方 Neovim 插件源码）· `Kilo-Org/homebrew-tap`
-
-**作用**：Kilo CLI（已被 Anaconda 收购）—— OpenCode 的 fork；500+ 模型、零加价 BYOK、并行多 Agent、`/sandbox` 沙箱。
+- **官网**：[https://kilo.ai](https://kilo.ai)　文档 [https://kilo.ai/docs](https://kilo.ai/docs)
+- **GitHub**：`Kilo-Org/kilocode`（**完整源码仓库**，TS / MIT；`packages/` 含 opencode 运行时、tui、kilo-vscode、kilo-jetbrains、sdk、server，**无单独 CLI 仓库**）· `Kilo-Org/kilo.nvim`（官方 Neovim 插件源码）· `Kilo-Org/homebrew-tap`
+- **作用**：Kilo CLI（已被 Anaconda 收购）—— OpenCode 的 fork；500+ 模型、零加价 BYOK、并行多 Agent、`/sandbox` 沙箱。
 
 #### Agent CLI（含 TUI）
 
@@ -868,10 +852,9 @@ VS Code `kilocode.kilo-code`（Marketplace + Open VSX）｜JetBrains [https://pl
 
 ### Continue Dev（第三方）
 
-**官网**：[https://continue.dev](https://continue.dev)（**静态归档页**，官方仓库描述原文 "Static archive of continue.dev (acquired by Cursor)"）｜文档 [https://docs.continue.dev](https://docs.continue.dev)
-**GitHub**：`continuedev/continue`（**仍托管完整源码但官方宣布只读**，Apache-2.0，最近仍推送；无独立 CLI 仓库、无公开 hub 仓库）
-
-**作用**：Continue CLI（命令 `cn`）—— 与 VS Code / JetBrains 插件共用同一份 `config.yaml`。
+- **官网**：[https://continue.dev](https://continue.dev)（**静态归档页**，官方仓库描述原文 "Static archive of continue.dev (acquired by Cursor)"）｜文档 [https://docs.continue.dev](https://docs.continue.dev)
+- **GitHub**：`continuedev/continue`（**仍托管完整源码但官方宣布只读**，Apache-2.0，最近仍推送；无独立 CLI 仓库、无公开 hub 仓库）
+- **作用**：Continue CLI（命令 `cn`）—— 与 VS Code / JetBrains 插件共用同一份 `config.yaml`。
 
 #### Agent CLI（含 TUI）
 
@@ -914,10 +897,9 @@ Web 版当前不可用（hub 页 404）
 
 ### Augment Code（第三方）
 
-**官网**：[https://www.augmentcode.com](https://www.augmentcode.com)　文档 [https://docs.augmentcode.com](https://docs.augmentcode.com)
-**GitHub**：`augmentcode/auggie`（**非源码仓库**，仅 issue / 文档 / 示例；许可证原文 "Custom Proprietary License for Augment CLI"，**禁止再分发**）· `augmentcode/auggie-zed-extension`（Zed 扩展官方源码）；**SDK 无独立公开仓库**
-
-**作用**：Auggie CLI（命令 `auggie`）—— 带 Context Engine 语义代码理解、Sub / Parallel Agents。
+- **官网**：[https://www.augmentcode.com](https://www.augmentcode.com)　文档 [https://docs.augmentcode.com](https://docs.augmentcode.com)
+- **GitHub**：`augmentcode/auggie`（**非源码仓库**，仅 issue / 文档 / 示例；许可证原文 "Custom Proprietary License for Augment CLI"，**禁止再分发**）· `augmentcode/auggie-zed-extension`（Zed 扩展官方源码）；**SDK 无独立公开仓库**
+- **作用**：Auggie CLI（命令 `auggie`）—— 带 Context Engine 语义代码理解、Sub / Parallel Agents。
 
 #### Agent CLI（含 TUI）
 
@@ -949,10 +931,9 @@ daemon：`npm install -g @augmentcode/auggie@daemon` + `auggie daemon`（会话 
 
 ### GitHub（第三方）
 
-**官网**：[https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
-**GitHub**：`github/copilot-cli`（**非源码仓库**，仅 `.github` / LICENSE / README / changelog / install.sh，**CLI 闭源**）· `github/copilot-sdk`（**独立源码仓库**，六语言，MIT）
-
-**作用**：Copilot CLI（命令 `copilot`）—— Plan / Autopilot 模式；提示词前缀 `&` 可委派云端 agent。
+- **官网**：[https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
+- **GitHub**：`github/copilot-cli`（**非源码仓库**，仅 `.github` / LICENSE / README / changelog / install.sh，**CLI 闭源**）· `github/copilot-sdk`（**独立源码仓库**，六语言，MIT）
+- **作用**：Copilot CLI（命令 `copilot`）—— Plan / Autopilot 模式；提示词前缀 `&` 可委派云端 agent。
 
 #### Agent CLI（含 TUI）
 
@@ -999,7 +980,7 @@ GitHub Copilot 的 IDE 扩展属其他产品形态，不计入本条目
 
 #### Web 应用 / 云端 Agent
 
-`copilot --remote` 由 github.com 接管会话；非仓库会话 [https://github.com/copilot/agents](https://github.com/copilot/agents)；`&`（=/delegate）交 Copilot cloud agent 开 draft PR
+`copilot --remote` 由 github.com 接管会话；非仓库会话 [https://github.com/copilot/agents](https://github.com/copilot/agents)；`&`（=/delegate）交由 Copilot cloud agent 创建 draft PR
 
 #### 移动端 App
 
@@ -1021,10 +1002,9 @@ GitHub Mobile 远程控制（官方 GA 于 "GitHub Mobile and github.com"）
 
 ### Amp Labs（第三方）
 
-**官网**：[https://ampcode.com](https://ampcode.com)　文档 [https://ampcode.com/docs](https://ampcode.com/docs)
-**GitHub**：**无 Amp 主体公开源码仓库**（`ampcode/amp` 404；SDK 的 repository 字段指向不可公开访问的仓库，许可为 "Amp Commercial License"）· `ampcode/amp.nvim`（**插件源码**，Lua / Apache-2.0）· `ampcode/official-plugins`
-
-**作用**：Amp CLI（命令 `amp`）—— 编码 agent 与开发环境；支持 orbs 云端执行单元、runners、Streaming JSON。
+- **官网**：[https://ampcode.com](https://ampcode.com)　文档 [https://ampcode.com/docs](https://ampcode.com/docs)
+- **GitHub**：**无 Amp 主体公开源码仓库**（`ampcode/amp` 404；SDK 的 repository 字段指向不可公开访问的仓库，许可为 "Amp Commercial License"）· `ampcode/amp.nvim`（**插件源码**，Lua / Apache-2.0）· `ampcode/official-plugins`
+- **作用**：Amp CLI（命令 `amp`）—— 编码 agent 与开发环境；支持 orbs 云端执行单元、runners、Streaming JSON。
 
 #### Agent CLI（含 TUI）
 
@@ -1077,14 +1057,13 @@ https://testflight.apple.com/join/Skjdm6qe
 
 `@ampcode/sdk` / `amp-sdk`
 
-**其他说明**：⚠️ **npm 包已由 `@sourcegraph/amp` 更名为 `@ampcode/cli`**（官方公告称旧名保留至 2026-06-15）；官方公告建议改用直接安装脚本。⚠️ 官方文档同时保留「Windows 经 WSL 运行」与上表原生 Windows 命令两种口径。不支持 Linux riscv64。官方建议 Windows 用 WezTerm / Alacritty 而非 Windows Terminal。收费 Hobby 免费 / Individual $20（每月）。
+**其他说明**：⚠️ **npm 包已由 `@sourcegraph/amp` 更名为 `@ampcode/cli`**（官方公告称旧名保留至 2026-06-15）；官方公告建议改用直接安装脚本。⚠️ 官方文档同时保留「Windows 经 WSL 运行」与上文原生 Windows 命令两种口径。不支持 Linux riscv64。官方建议 Windows 用 WezTerm / Alacritty 而非 Windows Terminal。收费 Hobby 免费 / Individual $20（每月）。
 
 ### Factory AI（第三方）
 
-**官网**：[https://factory.com](https://factory.com)（factory.ai 307 跳转）　文档 [https://docs.factory.com](https://docs.factory.com)
-**GitHub**：`Factory-AI/factory`（**非源码仓库**，仅 `.github` / docs / README，无开源许可证，"All rights reserved."）· `Factory-AI/droid-sdk-typescript`、`Factory-AI/droid-sdk-python`（Apache-2.0）· `Factory-AI/examples`（MIT）
-
-**作用**：Factory Droid（命令 `droid` / `droid exec`）—— 终端 AI 编程 Agent，支持 BYOK 与大量托管模型。闭源。
+- **官网**：[https://factory.com](https://factory.com)（factory.ai 307 跳转）　文档 [https://docs.factory.com](https://docs.factory.com)
+- **GitHub**：`Factory-AI/factory`（**非源码仓库**，仅 `.github` / docs / README，无开源许可证，"All rights reserved."）· `Factory-AI/droid-sdk-typescript`、`Factory-AI/droid-sdk-python`（Apache-2.0）· `Factory-AI/examples`（MIT）
+- **作用**：Factory Droid（命令 `droid` / `droid exec`）—— 终端 AI 编程 Agent，支持 BYOK 与大量托管模型。闭源。
 
 #### Agent CLI（含 TUI）
 
@@ -1109,7 +1088,7 @@ npm install -g droid
 
 **安装路径**
 - Windows `%USERPROFILE%\bin\droid.exe`（脚本会创建该目录并写用户级 PATH）
-- macOS / Linux `$HOME/.local/bin/droid`（脚本**只打印** PATH 建议，不自动改 rc 文件）
+- macOS / Linux `$HOME/.local/bin/droid`（脚本**只打印** PATH 建议，不自动修改 rc 文件）
 - 配置 `~/.factory/settings.json`（Windows `%USERPROFILE%\.factory\settings.json`，首次运行自动生成）、覆盖文件 `~/.factory/settings.local.json`、项目级 `<project>/.factory/settings.local.json`
 - Spec 默认目录 `~/.factory/specs`
 - worktree `~/.factory/worktrees`
@@ -1144,10 +1123,9 @@ https://app.factory.ai/api/desktop?platform=darwin&architecture=arm64
 
 ### Charmbracelet（第三方）
 
-**官网**：[https://charm.land/crush](https://charm.land/crush)
-**GitHub**：`charmbracelet/crush`（**完整源码仓库**，Go，**许可证为 FSL-1.1-MIT**，不是 MIT）
-
-**作用**：Crush —— 终端 TUI 编码 Agent（Go 单二进制）；多模型（含本地 ollama / lmstudio / llamacpp）、LSP 增强、MCP。
+- **官网**：[https://charm.land/crush](https://charm.land/crush)
+- **GitHub**：`charmbracelet/crush`（**完整源码仓库**，Go，**许可证为 FSL-1.1-MIT**，不是 MIT）
+- **作用**：Crush —— 终端 TUI 编码 Agent（Go 单二进制）；多模型（含本地 ollama / lmstudio / llamacpp）、LSP 增强、MCP。
 
 #### Agent CLI（含 TUI）
 
@@ -1208,10 +1186,9 @@ sudo yum install crush
 
 ### Anomaly（第三方）
 
-**官网**：[https://opencode.ai](https://opencode.ai)
-**GitHub**：`anomalyco/opencode`（**完整源码 monorepo**，MIT；`sst/opencode` 会自动重定向至此；v2 在 `tree/v2` 分支）
-
-**作用**：OpenCode —— 开源 AI 编码 Agent，终端 + 桌面（beta）+ Web 三形态；内置 build / plan 两个 Agent。
+- **官网**：[https://opencode.ai](https://opencode.ai)
+- **GitHub**：`anomalyco/opencode`（**完整源码 monorepo**，MIT；`sst/opencode` 会自动重定向至此；v2 在 `tree/v2` 分支）
+- **作用**：OpenCode —— 开源 AI 编码 Agent，终端 + 桌面（beta）+ Web 三形态；内置 build / plan 两个 Agent。
 
 #### Agent CLI（含 TUI）
 
@@ -1282,10 +1259,9 @@ docker run -it --rm ghcr.io/anomalyco/opencode
 
 ### Earendil（第三方）
 
-**官网**：[https://pi.dev](https://pi.dev)
-**GitHub**：`earendil-works/pi`（**完整源码 monorepo**，MIT；旧地址 `badlogic/pi-mono` 重定向至此）
-
-**作用**：Pi（命令 `pi`）—— 极简 agent harness；可扩展（TS 扩展、skills、prompts、themes、包目录）；支持 15+ provider。
+- **官网**：[https://pi.dev](https://pi.dev)
+- **GitHub**：`earendil-works/pi`（**完整源码 monorepo**，MIT；旧地址 `badlogic/pi-mono` 重定向至此）
+- **作用**：Pi（命令 `pi`）—— 极简 agent harness；可扩展（TS 扩展、skills、prompts、themes、包目录）；支持 15+ provider。
 
 #### Agent CLI（含 TUI）
 
@@ -1322,14 +1298,13 @@ nix profile add github:earendil-works/pi/stable
 
 `@earendil-works/pi-coding-agent`（`import { createAgentSession }`；Node ≥ 22.19）
 
-**其他说明**：⚠️ 与 oh-my-pi 是**两个不同项目**（oh-my-pi 是 Pi 的 fork），勿混装。`--ignore-scripts` 是官方要求（Pi 不需要依赖生命周期脚本），npm 方式不锁定传递依赖。`pi update` **无法更新 Nix 安装**，需 `nix profile upgrade pi`。
+**其他说明**：⚠️ 与 oh-my-pi 是**两个不同项目**（oh-my-pi 是 Pi 的 fork），不应同时安装。`--ignore-scripts` 是官方要求（Pi 不需要依赖生命周期脚本），npm 方式不锁定传递依赖。`pi update` **无法更新 Nix 安装**，需 `nix profile upgrade pi`。
 
 ### Stencil Labs（第三方）
 
-**官网**：[https://omp.sh](https://omp.sh)
-**GitHub**：`can1357/oh-my-pi`（**完整源码 monorepo**，MIT；Rust crates + 约 16 个 `@oh-my-pi/*` 包 + `sdk/`；无其它官方仓库）
-
-**作用**：oh-my-pi（命令 `omp`，Pi 的下游 fork）—— 31 个内置工具、LSP / DAP 真调试、60+ providers；主打 "Windows-native, skip the WSL"。
+- **官网**：[https://omp.sh](https://omp.sh)
+- **GitHub**：`can1357/oh-my-pi`（**完整源码 monorepo**，MIT；Rust crates + 约 16 个 `@oh-my-pi/*` 包 + `sdk/`；无其它官方仓库）
+- **作用**：oh-my-pi（命令 `omp`，Pi 的下游 fork）—— 31 个内置工具、LSP / DAP 真调试、60+ providers；定位 "Windows-native, skip the WSL"。
 
 #### Agent CLI（含 TUI）
 
@@ -1370,10 +1345,9 @@ mise use -g github:can1357/oh-my-pi
 
 ### Gitlawb（第三方）
 
-**官网**：[https://openclaude.gitlawb.com](https://openclaude.gitlawb.com)
-**GitHub**：`Twigpine/openclaude`（`Gitlawb/openclaude` 实际解析至此；**完整源码仓库**，含 src / bin / vscode-extension / web）——⚠️ 许可证特殊：LICENSE 实为 NOTICE，**MIT 仅覆盖贡献者修改的部分**，并声明 "Copyright (c) Anthropic PBC. All rights reserved."
-
-**作用**：OpenClaude（命令 `openclaude`）—— 把 Claude Code 式工作流开放给任意 LLM；支持 200+ 模型，配置与 `~/.claude` 完全隔离。
+- **官网**：[https://openclaude.gitlawb.com](https://openclaude.gitlawb.com)
+- **GitHub**：`Twigpine/openclaude`（`Gitlawb/openclaude` 实际解析至此；**完整源码仓库**，含 src / bin / vscode-extension / web）——⚠️ 许可证特殊：LICENSE 实为 NOTICE，**MIT 仅覆盖贡献者修改的部分**，并声明 "Copyright (c) Anthropic PBC. All rights reserved."
+- **作用**：OpenClaude（命令 `openclaude`）—— 把 Claude Code 式工作流开放给任意 LLM；支持 200+ 模型，配置与 `~/.claude` 完全隔离。
 
 #### Agent CLI（含 TUI）
 
@@ -1406,10 +1380,9 @@ gRPC 服务：`npm run dev:grpc`（源码运行，默认 `localhost:50051`；官
 
 ### Aider-AI（第三方）
 
-**官网**：[https://aider.chat](https://aider.chat)
-**GitHub**：`Aider-AI/aider`（**源码仓库**，Python，Apache-2.0）· `aider-install`、`conventions`、`grep-ast` 及各 benchmark 仓库
-
-**作用**：Aider —— 终端 AI 结对编程（Python 应用），以 git 仓库为单位工作并自动提交。
+- **官网**：[https://aider.chat](https://aider.chat)
+- **GitHub**：`Aider-AI/aider`（**源码仓库**，Python，Apache-2.0）· `aider-install`、`conventions`、`grep-ast` 及各 benchmark 仓库
+- **作用**：Aider —— 终端 AI 结对编程（Python 应用），以 git 仓库为单位工作并自动提交。
 
 #### Agent CLI（含 TUI）
 
@@ -1461,7 +1434,7 @@ docker pull paulgauthier/aider-full
 
 ⚠️ 官方文档只说 "available as 2 docker images"，**未使用「官方镜像」措辞**，且位于作者个人命名空间 `paulgauthier/`。容器内无全局 git 配置，需先 `git config user.email` / `user.name`；须在 git 仓库根目录运行。
 
-**其他说明**：官方**明确不建议用系统包管理器**（"they often install aider with incorrect dependencies"）。Python 版本官方两处不一致：安装页写 3.8–3.13，PyPI 元数据为 `>=3.10,<3.13`（pipx / pip 路线为 3.9–3.12）。找不到命令时可用 `python -m aider`。
+**其他说明**：官方**明确不建议用系统包管理器**（"they often install aider with incorrect dependencies"）。Python 版本官方两处不一致：安装页写 3.8–3.13，PyPI 元数据为 `>=3.10,<3.13`（pipx / pip 路线为 3.9–3.12）。无法找到命令时可使用 `python -m aider`。
 
 ---
 
@@ -1469,10 +1442,9 @@ docker pull paulgauthier/aider-full
 
 ### Paseo（第三方）
 
-**官网**：[https://paseo.sh](https://paseo.sh)（⚠️ `getpaseo.com` 非官方，勿用）
-**GitHub**：`getpaseo/paseo`（**源码仓库**，TS / Apache-2.0；桌面 / 移动 / SDK 均在 monorepo）· `getpaseo/plugins`、`getpaseo/hub`、`getpaseo/paseo-relay`
-
-**作用**：多 Agent 编排工具 —— 守护进程驱动其他 Agent CLI（Claude Code、Codex、Copilot、OpenCode、Pi、Antigravity、Muse Code），**本身不调模型**。
+- **官网**：[https://paseo.sh](https://paseo.sh)（⚠️ `getpaseo.com` 非官方站点，请勿使用）
+- **GitHub**：`getpaseo/paseo`（**源码仓库**，TS / Apache-2.0；桌面 / 移动 / SDK 均在 monorepo）· `getpaseo/plugins`、`getpaseo/hub`、`getpaseo/paseo-relay`
+- **作用**：多 Agent 编排工具 —— 守护进程驱动其他 Agent CLI（Claude Code、Codex、Copilot、OpenCode、Pi、Antigravity、Muse Code），**本身不调用模型**。
 
 #### Agent CLI（含 TUI）
 
@@ -1531,10 +1503,9 @@ docker run -d --name paseo -p 6767:6767 -e PASEO_PASSWORD=change-me -v "$PWD/pas
 
 ### OpenClaw Foundation（第三方）
 
-**官网**：[https://openclaw.ai](https://openclaw.ai)　文档 [https://docs.openclaw.ai/](https://docs.openclaw.ai/)
-**GitHub**：`openclaw/openclaw`（**源码仓库**，MIT）· `openclaw/openclaw-windows-node`（**Windows Hub 源码仓库**，.NET / WinUI，含 `installer.iss`）· `openclaw/homebrew-tap`、`openclaw/clawhub`
-
-**作用**：开源自托管的 AI 助手 / 代理网关，接入 WhatsApp、Telegram、Discord、Slack、Teams、iMessage、Signal 等聊天 App。MIT，无企业版、无付费版。
+- **官网**：[https://openclaw.ai](https://openclaw.ai)　文档 [https://docs.openclaw.ai/](https://docs.openclaw.ai/)
+- **GitHub**：`openclaw/openclaw`（**源码仓库**，MIT）· `openclaw/openclaw-windows-node`（**Windows Hub 源码仓库**，.NET / WinUI，含 `installer.iss`）· `openclaw/homebrew-tap`、`openclaw/clawhub`
+- **作用**：开源自托管的 AI 助手 / 代理网关，接入 WhatsApp、Telegram、Discord、Slack、Teams、iMessage、Signal 等聊天 App。MIT，无企业版、无付费版。
 
 #### Agent CLI（含 TUI）
 
@@ -1567,7 +1538,7 @@ pnpm add -g --allow-build=openclaw openclaw@latest
 - 状态目录 `~/.openclaw`（`OPENCLAW_STATE_DIR`）；主配置 `~/.openclaw/openclaw.json`（JSON5，`OPENCLAW_CONFIG_PATH` 可改）
 - 工作区 `~/.openclaw/workspace`（`agents.defaults.workspace` 可改），含 `AGENTS.md`、`SOUL.md`、`IDENTITY.md`、`USER.md`、`MEMORY.md`、`memory/`
 - `~/.openclaw/credentials/`、`~/.openclaw/state/openclaw.sqlite`、`~/.openclaw/agents/<agentId>/`
-- shell 安装的入口 `~/.local/bin/openclaw`（npm 方式由 npm 前缀决定，必要时脚本把前缀切到 `~/.npm-global`）
+- shell 安装的入口 `~/.local/bin/openclaw`（npm 方式由 npm 前缀决定，必要时脚本将前缀切换为 `~/.npm-global`）
 - 自定义 profile 为 `~/.openclaw-<profile>/`
 
 #### Desktop App
