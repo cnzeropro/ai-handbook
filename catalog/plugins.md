@@ -84,9 +84,10 @@ claude plugin marketplace add anthropics/claude-plugins-official
 
 #### `superpowers`
 
-**提供方**：obra（第三方作者）
-**作用**：为 Claude 提供头脑风暴、子代理驱动开发（内置代码审查）、系统化调试、red/green TDD 等 skill，以及编写与测试新 skill 的方法
-**安装**：
+- **提供方**：obra（第三方作者）
+- **作用**：为 Claude 提供头脑风暴、子代理驱动开发（内置代码审查）、系统化调试、red/green TDD 等 skill，以及编写与测试新 skill 的方法
+
+安装：
 
 ```bash
 claude plugins install superpowers@claude-plugins-official
@@ -94,9 +95,10 @@ claude plugins install superpowers@claude-plugins-official
 
 #### `code-review`
 
-**提供方**：Anthropic
-**作用**：PR 自动代码审查：多个专职 agent + 基于置信度的打分以过滤误报（Commands）
-**安装**：
+- **提供方**：Anthropic
+- **作用**：PR 自动代码审查：多个专职 agent + 基于置信度的打分以过滤误报（Commands）
+
+安装：
 
 ```bash
 claude plugins install code-review@claude-plugins-official
@@ -104,9 +106,10 @@ claude plugins install code-review@claude-plugins-official
 
 #### `code-simplifier`
 
-**提供方**：Anthropic
-**作用**：在保持功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents）
-**安装**：
+- **提供方**：Anthropic
+- **作用**：在保持功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents）
+
+安装：
 
 ```bash
 claude plugins install code-simplifier@claude-plugins-official
@@ -114,9 +117,10 @@ claude plugins install code-simplifier@claude-plugins-official
 
 #### `context7`
 
-**提供方**：Upstash
-**作用**：Context7 MCP：拉取版本相关的官方文档与代码示例进上下文，连接远程 MCP，**无需本地 Node / npx**（可匿名使用，设 `CONTEXT7_API_KEY` 提高限流）
-**安装**：
+- **提供方**：Upstash
+- **作用**：Context7 MCP：拉取版本相关的官方文档与代码示例进上下文，连接远程 MCP，**无需本地 Node / npx**（可匿名使用，设 `CONTEXT7_API_KEY` 提高限流）
+
+安装：
 
 ```bash
 claude plugins install context7@claude-plugins-official
@@ -124,9 +128,10 @@ claude plugins install context7@claude-plugins-official
 
 #### `frontend-design`
 
-**提供方**：Anthropic
-**作用**：生成有设计感、敢做取舍的前端界面，避免通用的 AI 审美（Skills）
-**安装**：
+- **提供方**：Anthropic
+- **作用**：生成有设计感、敢做取舍的前端界面，避免通用的 AI 审美（Skills）
+
+安装：
 
 ```bash
 claude plugins install frontend-design@claude-plugins-official
@@ -134,9 +139,10 @@ claude plugins install frontend-design@claude-plugins-official
 
 #### `skill-creator`
 
-**提供方**：Anthropic
-**作用**：创建新 skill、改进已有 skill、跑 eval 与方差基准（Skills）
-**安装**：
+- **提供方**：Anthropic
+- **作用**：创建新 skill、改进已有 skill、跑 eval 与方差基准（Skills）
+
+安装：
 
 ```bash
 claude plugins install skill-creator@claude-plugins-official
@@ -144,9 +150,10 @@ claude plugins install skill-creator@claude-plugins-official
 
 #### `mattpocock-skills`
 
-**提供方**：Matt Pocock
-**作用**：工程向 skills 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等
-**安装**：
+- **提供方**：Matt Pocock
+- **作用**：工程向 skills 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等
+
+安装：
 
 ```bash
 claude plugins install mattpocock-skills@claude-plugins-official
@@ -164,9 +171,10 @@ claude plugins marketplace add anthropics/skills
 
 #### `document-skills`
 
-**提供方**：Anthropic
-**作用**：文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF
-**安装**：
+- **提供方**：Anthropic
+- **作用**：文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF
+
+安装：
 
 ```bash
 claude plugins install document-skills@anthropic-agent-skills
@@ -184,9 +192,10 @@ claude plugins marketplace add multica-ai/andrej-karpathy-skills
 
 #### `andrej-karpathy-skills`
 
-**提供方**：multica-ai
-**作用**：减少 LLM 编码常见错误的行为准则：先想后写、简单优先、外科式改动、目标驱动执行
-**安装**：
+- **提供方**：multica-ai
+- **作用**：减少 LLM 编码常见错误的行为准则：先想后写、简单优先、外科式改动、目标驱动执行
+
+安装：
 
 ```bash
 claude plugins install andrej-karpathy-skills@karpathy-skills
@@ -204,9 +213,10 @@ claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 
 #### `ui-ux-pro-max`
 
-**提供方**：nextlevelbuilder
-**作用**：UI/UX 设计智能：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
-**安装**：
+- **提供方**：nextlevelbuilder
+- **作用**：UI/UX 设计智能：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
+
+安装：
 
 ```bash
 claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
@@ -224,9 +234,10 @@ claude plugins marketplace add https://github.com/affaan-m/ECC
 
 #### `ecc`
 
-**提供方**：affaan-m
-**作用**：Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描
-**安装**：
+- **提供方**：affaan-m
+- **作用**：Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描
+
+安装：
 
 ```bash
 claude plugins install ecc@ecc
@@ -244,9 +255,10 @@ claude plugins marketplace add openai/codex-plugin-cc
 
 #### `codex`
 
-**提供方**：OpenAI
-**作用**：在 Claude Code 内调用 Codex 做代码审查或把任务委派给它（`/codex:review`、`/codex:adversarial-review`、`/codex:rescue`、`/codex:transfer` 等）；需 ChatGPT 订阅或 OpenAI API key，Node ≥ 18.18
-**安装**：
+- **提供方**：OpenAI
+- **作用**：在 Claude Code 内调用 Codex 做代码审查或把任务委派给它（`/codex:review`、`/codex:adversarial-review`、`/codex:rescue`、`/codex:transfer` 等）；需 ChatGPT 订阅或 OpenAI API key，Node ≥ 18.18
+
+安装：
 
 ```bash
 claude plugins install codex@openai-codex
