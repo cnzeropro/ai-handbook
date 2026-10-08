@@ -95,7 +95,6 @@ claude plugins install superpowers@claude-plugins-official
 
 #### `code-review`
 
-- **提供方**：Anthropic
 - **作用**：对 PR 做自动代码审查，由多个专职 agent 审查并按置信度过滤误报（Commands）
 
 安装：
@@ -106,7 +105,6 @@ claude plugins install code-review@claude-plugins-official
 
 #### `code-simplifier`
 
-- **提供方**：Anthropic
 - **作用**：在功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents）
 
 安装：
@@ -129,7 +127,6 @@ claude plugins install context7@claude-plugins-official
 
 #### `frontend-design`
 
-- **提供方**：Anthropic
 - **作用**：生成有设计感、敢于取舍的前端界面，避免模板化的 AI 审美（Skills）
 
 安装：
@@ -140,7 +137,6 @@ claude plugins install frontend-design@claude-plugins-official
 
 #### `skill-creator`
 
-- **提供方**：Anthropic
 - **作用**：创建与改进 skill，运行 eval 与方差基准（Skills）
 
 安装：
@@ -175,7 +171,6 @@ claude plugins marketplace add anthropics/skills
 
 #### `document-skills`
 
-- **提供方**：Anthropic
 - **作用**：文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF
 
 安装：
@@ -198,7 +193,6 @@ claude plugins marketplace add multica-ai/andrej-karpathy-skills
 
 #### `andrej-karpathy-skills`
 
-- **提供方**：multica-ai
 - **作用**：减少 LLM 编码常见错误的行为准则：先想后写、简单优先、外科式改动、目标驱动执行
 
 安装：
@@ -221,7 +215,6 @@ claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 
 #### `ui-ux-pro-max`
 
-- **提供方**：nextlevelbuilder
 - **作用**：UI/UX 设计知识库：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
 
 安装：
@@ -244,7 +237,6 @@ claude plugins marketplace add https://github.com/affaan-m/ECC
 
 #### `ecc`
 
-- **提供方**：affaan-m
 - **作用**：Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描
 
 安装：
@@ -267,7 +259,6 @@ claude plugins marketplace add openai/codex-plugin-cc
 
 #### `codex`
 
-- **提供方**：OpenAI
 - **作用**：在 Claude Code 内调用 Codex 做代码审查或委派任务（`/codex:review`、`/codex:rescue` 等）；需 ChatGPT 订阅或 OpenAI API key（Node ≥ 18.18）
 
 安装：
