@@ -163,7 +163,7 @@ claude plugins install mattpocock-skills@claude-plugins-official
 
 Anthropic 官方市场，市场名 `anthropic-agent-skills`，含 5 个插件；本清单安装 `document-skills`，其余（`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）可按需安装。
 
-添加市场（仅需执行一次）：
+添加市场：
 
 ```bash
 claude plugins marketplace add anthropics/skills
@@ -184,7 +184,7 @@ claude plugins install document-skills@anthropic-agent-skills
 
 市场名 `karpathy-skills`，仅提供 `andrej-karpathy-skills` 一个插件。
 
-添加市场（仅需执行一次）：
+添加市场：
 
 ```bash
 claude plugins marketplace add multica-ai/andrej-karpathy-skills
@@ -205,7 +205,7 @@ claude plugins install andrej-karpathy-skills@karpathy-skills
 
 市场名 `ui-ux-pro-max-skill`，仅提供 `ui-ux-pro-max` 一个插件。
 
-添加市场（仅需执行一次）：
+添加市场：
 
 ```bash
 claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
@@ -226,7 +226,7 @@ claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
 
 市场名 `ecc`，仅提供同名插件。
 
-添加市场（仅需执行一次）：
+添加市场：
 
 ```bash
 claude plugins marketplace add https://github.com/affaan-m/ECC
@@ -247,7 +247,7 @@ claude plugins install ecc@ecc
 
 OpenAI 官方市场，市场名 `openai-codex`，仅提供 `codex` 一个插件。
 
-添加市场（仅需执行一次）：
+添加市场：
 
 ```bash
 claude plugins marketplace add openai/codex-plugin-cc
