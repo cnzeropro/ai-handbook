@@ -93,9 +93,9 @@ claude plugin marketplace add anthropics/claude-plugins-official
 claude plugins install superpowers@claude-plugins-official
 ```
 
-#### `code-review`
+#### `code-review`（Commands）
 
-- **作用**：对 PR 做自动代码审查，由多个专职 agent 审查并按置信度过滤误报（Commands）
+- **作用**：对 PR 做自动代码审查，由多个专职 agent 审查并按置信度过滤误报
 
 安装：
 
@@ -103,9 +103,9 @@ claude plugins install superpowers@claude-plugins-official
 claude plugins install code-review@claude-plugins-official
 ```
 
-#### `code-simplifier`
+#### `code-simplifier`（Agents）
 
-- **作用**：在功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents）
+- **作用**：在功能不变的前提下简化与精炼代码，聚焦最近修改的部分
 
 安装：
 
@@ -125,9 +125,9 @@ claude plugins install code-simplifier@claude-plugins-official
 claude plugins install context7@claude-plugins-official
 ```
 
-#### `frontend-design`
+#### `frontend-design`（Skills）
 
-- **作用**：生成有设计感、敢于取舍的前端界面，避免模板化的 AI 审美（Skills）
+- **作用**：生成有设计感、敢于取舍的前端界面，避免模板化的 AI 审美
 
 安装：
 
@@ -135,9 +135,9 @@ claude plugins install context7@claude-plugins-official
 claude plugins install frontend-design@claude-plugins-official
 ```
 
-#### `skill-creator`
+#### `skill-creator`（Skills）
 
-- **作用**：创建与改进 skill，运行 eval 与方差基准（Skills）
+- **作用**：创建与改进 skill，运行 eval 与方差基准
 
 安装：
 
