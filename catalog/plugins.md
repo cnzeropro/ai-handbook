@@ -4,7 +4,7 @@
 
 ## Claude Code
 
-Claude Code 的插件体系围绕四个概念展开：
+**插件说明**
 
 | 概念 | 是什么 |
 | --- | --- |
@@ -13,7 +13,7 @@ Claude Code 的插件体系围绕四个概念展开：
 | **Plugin** | **打包与分发单元**：把 skills / agents / hooks / MCP servers / commands / LSP / 主题 打成一个可安装单元 |
 | **Marketplace** | 含 `.claude-plugin/marketplace.json` 的仓库或目录，**是目录不是商店**，只声明「去哪取」 |
 
-插件可安装到三个层级（scope）：
+**安装层级（scope）**
 
 | scope | 写入的 settings 文件 | 生效范围 |
 | --- | --- | --- |
