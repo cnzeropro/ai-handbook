@@ -12,7 +12,7 @@
 - **资源清单**：[`catalog/`](catalog/) — 收录外部生态的「有哪些、怎么装」类清单，与本仓库自有的规则、技能包相区分：
   - **工具清单**：[`tools.md`](catalog/tools.md) — 收录 **Windows / macOS / Linux** 三平台下各 AI 编程工具的官方安装命令、依赖环境与默认安装路径。一级按「本地模型运行时 / 编程工具 / 编排与网关」分类，二级为出品方，三级为发行形态（Agent CLI / IDE 插件 / Desktop App / Web / 移动端 / 服务网关 / 容器镜像 / SDK）；命令与路径均取自官方文档或官方安装脚本原文。
   - **技能清单**：[`skills.md`](catalog/skills.md) — 外部 Agent Skills 的安装清单：`npx skills` 命令、全局 / 项目级的层级建议，以及每个 skill 的作用。注意与下方 `skills/`（本仓库自带的技能包）区分。
-  - **插件清单**：[`plugins.md`](catalog/plugins.md) — 各 AI 客户端的插件与插件市场，目前收录 Claude Code，结构已预留 Codex / Pi 等客户端的扩展位置。
+  - **插件清单**：[`plugins.md`](catalog/plugins.md) — 各 AI agent 工具的插件与插件市场。一级为 AI agent 工具，二级为插件市场（无市场概念的工具层级上提），三级为插件；目前收录 Claude Code，Codex、Pi 待补充。
 - **指令文件模板**：[`references/`](references/) — `AGENTS.md` 与 `CLAUDE.md` 两份等效模板，写入 agent 的指令文件后，AI 助手会在行动前获取最新规范。推荐装到全局（用户级），安装命令见[应用行为规范](#应用行为规范)。
 - **Skills**：[`skills/`](skills/) — 可复用技能包，以开放的 Agent Skills（`SKILL.md`）格式组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手，覆盖代码审查、数据库设计、功能编码等高频开发场景。
 
