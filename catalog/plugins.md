@@ -6,10 +6,10 @@
 
 **插件说明**
 
-- **Skill**：一个或多个 `SKILL.md`，Claude 按需加载的指令；可独立放在 `~/.claude/skills/`，不需要插件
-- **MCP server**：提供外部系统工具的服务器，声明在 `.mcp.json`；可独立配置，不需要插件
-- **Plugin**：打包与分发单元，把 skills / agents / hooks / MCP servers / commands / LSP / 主题 打成一个可安装单元
-- **Marketplace**：含 `.claude-plugin/marketplace.json` 的仓库或目录，声明可安装的插件及其获取来源
+- **Skill**：`SKILL.md` 形式的指令文件，Claude 按需加载；可独立放在 `~/.claude/skills/`，无需插件
+- **MCP server**：提供外部工具的服务器，在 `.mcp.json` 中声明；可独立配置，无需插件
+- **Plugin**：把 skills / agents / hooks / MCP servers / commands / LSP / 主题等组件打包成的可安装单元，用于统一分发与管理
+- **Marketplace**：包含 `.claude-plugin/marketplace.json` 的仓库或目录，登记可用插件及其获取位置
 
 **安装层级（scope）**
 
