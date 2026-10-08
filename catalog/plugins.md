@@ -8,7 +8,6 @@
 
 - **Plugin**：把 skills / agents / hooks / MCP servers / commands / LSP / 主题等组件打包成的可安装单元，用于统一分发与管理
 - **Marketplace**：包含 `.claude-plugin/marketplace.json` 的仓库或目录，登记可用插件及其获取位置
-- **Skill / MCP server**：可独立使用，无需插件（Skill 直接放在 `~/.claude/skills/`，MCP server 直接声明在 `.mcp.json`）；插件的意义在于把这类组件打包分发
 
 **安装层级（scope）**
 
