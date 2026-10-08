@@ -6,12 +6,10 @@
 
 **插件说明**
 
-| 概念 | 是什么 |
-| --- | --- |
-| **Skill** | 一个或多个 `SKILL.md`，Claude 按需加载的指令；可独立放在 `~/.claude/skills/`，不需要插件 |
-| **MCP server** | 提供外部系统工具的服务器，声明在 `.mcp.json`；可独立配置，不需要插件 |
-| **Plugin** | **打包与分发单元**：把 skills / agents / hooks / MCP servers / commands / LSP / 主题 打成一个可安装单元 |
-| **Marketplace** | 含 `.claude-plugin/marketplace.json` 的仓库或目录，声明可安装的插件及其获取来源 |
+- **Skill**：一个或多个 `SKILL.md`，Claude 按需加载的指令；可独立放在 `~/.claude/skills/`，不需要插件
+- **MCP server**：提供外部系统工具的服务器，声明在 `.mcp.json`；可独立配置，不需要插件
+- **Plugin**：打包与分发单元，把 skills / agents / hooks / MCP servers / commands / LSP / 主题 打成一个可安装单元
+- **Marketplace**：含 `.claude-plugin/marketplace.json` 的仓库或目录，声明可安装的插件及其获取来源
 
 **安装层级（scope）**
 
@@ -74,7 +72,7 @@ claude plugin enable <plugin>
 
 ### `claude-plugins-official`（官方内置市场）
 
-Anthropic 官方市场，仓库为 `anthropics/claude-plugins-official`，**首次启动交互式会话时自动添加**，常规使用无需手动 `add`。内容规模：**315 个插件条目** = Anthropic 自研 39 个（含 15 个语言服务器插件）+ 合作方内嵌 14 个 + 远程引用 262 个；**默认开启自动更新**（其他第三方市场默认关闭）。
+Anthropic 官方市场，仓库为 [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)，**首次启动交互式会话时自动添加**，常规使用无需手动 `add`。内容规模：**315 个插件条目** = Anthropic 自研 39 个（含 15 个语言服务器插件）+ 合作方内嵌 14 个 + 远程引用 262 个；**默认开启自动更新**（其他第三方市场默认关闭）。
 
 仅在从未运行过交互式会话的机器上（如 CI 环境）需要显式添加：
 
@@ -85,7 +83,8 @@ claude plugin marketplace add anthropics/claude-plugins-official
 #### `superpowers`
 
 - **提供方**：obra（第三方作者）
-- **作用**：为 Claude 提供头脑风暴、子代理驱动开发（内置代码审查）、系统化调试、red/green TDD 等 skill，以及编写与测试新 skill 的方法
+- **仓库**：[obra/superpowers](https://github.com/obra/superpowers)
+- **作用**：提供头脑风暴、子代理驱动开发（内置代码审查）、系统化调试、red/green TDD 等 skill，以及编写与测试新 skill 的方法
 
 安装：
 
@@ -96,7 +95,7 @@ claude plugins install superpowers@claude-plugins-official
 #### `code-review`
 
 - **提供方**：Anthropic
-- **作用**：PR 自动代码审查：多个专职 agent + 基于置信度的打分以过滤误报（Commands）
+- **作用**：对 PR 做自动代码审查，由多个专职 agent 审查并按置信度过滤误报（Commands）
 
 安装：
 
@@ -107,7 +106,7 @@ claude plugins install code-review@claude-plugins-official
 #### `code-simplifier`
 
 - **提供方**：Anthropic
-- **作用**：在保持功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents）
+- **作用**：在功能不变的前提下简化与精炼代码，聚焦最近修改的部分（Agents）
 
 安装：
 
@@ -118,7 +117,8 @@ claude plugins install code-simplifier@claude-plugins-official
 #### `context7`
 
 - **提供方**：Upstash
-- **作用**：Context7 MCP：拉取版本相关的官方文档与代码示例进上下文，连接远程 MCP，**无需本地 Node / npx**（可匿名使用，设 `CONTEXT7_API_KEY` 提高限流）
+- **仓库**：[upstash/context7](https://github.com/upstash/context7)
+- **作用**：将版本匹配的官方文档与代码示例注入上下文；连接远程 MCP，无需本地 Node / npx
 
 安装：
 
@@ -129,7 +129,7 @@ claude plugins install context7@claude-plugins-official
 #### `frontend-design`
 
 - **提供方**：Anthropic
-- **作用**：生成有设计感、敢做取舍的前端界面，避免通用的 AI 审美（Skills）
+- **作用**：生成有设计感、敢于取舍的前端界面，避免模板化的 AI 审美（Skills）
 
 安装：
 
@@ -140,7 +140,7 @@ claude plugins install frontend-design@claude-plugins-official
 #### `skill-creator`
 
 - **提供方**：Anthropic
-- **作用**：创建新 skill、改进已有 skill、跑 eval 与方差基准（Skills）
+- **作用**：创建与改进 skill，运行 eval 与方差基准（Skills）
 
 安装：
 
@@ -151,7 +151,8 @@ claude plugins install skill-creator@claude-plugins-official
 #### `mattpocock-skills`
 
 - **提供方**：Matt Pocock
-- **作用**：工程向 skills 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等
+- **仓库**：[mattpocock/skills](https://github.com/mattpocock/skills)
+- **作用**：工程向 skill 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等
 
 安装：
 
@@ -161,7 +162,7 @@ claude plugins install mattpocock-skills@claude-plugins-official
 
 ### `anthropic-agent-skills`（anthropics/skills）
 
-Anthropic 官方 skills 仓库提供的市场，含 5 个插件；本清单安装 `document-skills`，其余（`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）按需安装。
+Anthropic 官方市场，仓库为 [anthropics/skills](https://github.com/anthropics/skills)，含 5 个插件；本清单安装 `document-skills`，其余（`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）可按需安装。
 
 添加市场（仅需执行一次）：
 
@@ -182,7 +183,7 @@ claude plugins install document-skills@anthropic-agent-skills
 
 ### `karpathy-skills`（multica-ai/andrej-karpathy-skills）
 
-该市场仅提供 `andrej-karpathy-skills` 一个插件。
+仓库为 [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)，仅提供 `andrej-karpathy-skills` 一个插件。
 
 添加市场（仅需执行一次）：
 
@@ -203,7 +204,7 @@ claude plugins install andrej-karpathy-skills@karpathy-skills
 
 ### `ui-ux-pro-max-skill`（nextlevelbuilder/ui-ux-pro-max-skill）
 
-该市场仅提供 `ui-ux-pro-max` 一个插件。
+仓库为 [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)，仅提供 `ui-ux-pro-max` 一个插件。
 
 添加市场（仅需执行一次）：
 
@@ -214,7 +215,7 @@ claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 #### `ui-ux-pro-max`
 
 - **提供方**：nextlevelbuilder
-- **作用**：UI/UX 设计智能：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
+- **作用**：UI/UX 设计知识库：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
 
 安装：
 
@@ -224,7 +225,7 @@ claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
 
 ### `ecc`（affaan-m/ECC）
 
-该市场仅提供 `ecc` 一个插件。
+仓库为 [affaan-m/ECC](https://github.com/affaan-m/ECC)，仅提供 `ecc` 一个插件。
 
 添加市场（仅需执行一次）：
 
@@ -245,7 +246,7 @@ claude plugins install ecc@ecc
 
 ### `openai-codex`（openai/codex-plugin-cc）
 
-该市场仅提供 `codex` 一个插件。
+仓库为 [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)，仅提供 `codex` 一个插件。
 
 添加市场（仅需执行一次）：
 
@@ -256,7 +257,7 @@ claude plugins marketplace add openai/codex-plugin-cc
 #### `codex`
 
 - **提供方**：OpenAI
-- **作用**：在 Claude Code 内调用 Codex 做代码审查或把任务委派给它（`/codex:review`、`/codex:adversarial-review`、`/codex:rescue`、`/codex:transfer` 等）；需 ChatGPT 订阅或 OpenAI API key，Node ≥ 18.18
+- **作用**：在 Claude Code 内调用 Codex 做代码审查或委派任务（`/codex:review`、`/codex:rescue` 等）；需 ChatGPT 订阅或 OpenAI API key（Node ≥ 18.18）
 
 安装：
 
