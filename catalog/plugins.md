@@ -81,7 +81,7 @@ claude plugin enable <plugin>
 claude plugin marketplace add anthropics/claude-plugins-official
 ```
 
-#### `superpowers`
+#### `superpowers`（Skills + Hooks）
 
 - **提供方**：obra（第三方作者）
 - **仓库**：[obra/superpowers](https://github.com/obra/superpowers)
@@ -113,7 +113,7 @@ claude plugins install code-review@claude-plugins-official
 claude plugins install code-simplifier@claude-plugins-official
 ```
 
-#### `context7`
+#### `context7`（MCP server）
 
 - **提供方**：Upstash
 - **仓库**：[upstash/context7](https://github.com/upstash/context7)
@@ -145,7 +145,7 @@ claude plugins install frontend-design@claude-plugins-official
 claude plugins install skill-creator@claude-plugins-official
 ```
 
-#### `mattpocock-skills`
+#### `mattpocock-skills`（Skills）
 
 - **提供方**：Matt Pocock
 - **仓库**：[mattpocock/skills](https://github.com/mattpocock/skills)
@@ -169,7 +169,7 @@ claude plugins install mattpocock-skills@claude-plugins-official
 claude plugins marketplace add anthropics/skills
 ```
 
-#### `document-skills`
+#### `document-skills`（Skills）
 
 - **作用**：文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF
 
@@ -191,7 +191,7 @@ claude plugins install document-skills@anthropic-agent-skills
 claude plugins marketplace add multica-ai/andrej-karpathy-skills
 ```
 
-#### `andrej-karpathy-skills`
+#### `andrej-karpathy-skills`（Skills）
 
 - **作用**：减少 LLM 编码常见错误的行为准则：先想后写、简单优先、外科式改动、目标驱动执行
 
@@ -213,7 +213,7 @@ claude plugins install andrej-karpathy-skills@karpathy-skills
 claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 ```
 
-#### `ui-ux-pro-max`
+#### `ui-ux-pro-max`（Skills）
 
 - **作用**：UI/UX 设计知识库：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
 
@@ -235,7 +235,7 @@ claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
 claude plugins marketplace add https://github.com/affaan-m/ECC
 ```
 
-#### `ecc`
+#### `ecc`（Skills + Agents + Hooks + Commands）
 
 - **作用**：Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描
 
@@ -257,7 +257,7 @@ claude plugins install ecc@ecc
 claude plugins marketplace add openai/codex-plugin-cc
 ```
 
-#### `codex`
+#### `codex`（Skills + Agents + Hooks + Commands）
 
 - **作用**：在 Claude Code 内调用 Codex 做代码审查或委派任务（`/codex:review`、`/codex:rescue` 等）；需 ChatGPT 订阅或 OpenAI API key（Node ≥ 18.18）
 
