@@ -68,9 +68,12 @@ claude plugin enable <plugin>
 
 以下按插件市场列出本清单收录的插件。
 
-### [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)（官方内置市场）
+### [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)
 
-Anthropic 官方市场，市场名 `claude-plugins-official`，**首次启动交互式会话时自动添加**，常规使用无需手动 `add`。内容规模：**315 个插件条目** = Anthropic 自研 39 个（含 15 个语言服务器插件）+ 合作方内嵌 14 个 + 远程引用 262 个；**默认开启自动更新**（其他第三方市场默认关闭）。
+- **提供方**：Anthropic
+- **市场名**：`claude-plugins-official`
+- **规模**：315 个插件条目——Anthropic 自研 39 个（含 15 个语言服务器插件）、合作方内嵌 14 个、远程引用 262 个
+- **特性**：首次启动交互式会话时自动添加，无需手动 `add`；默认开启自动更新（第三方市场默认关闭）
 
 仅在从未运行过交互式会话的机器上（如 CI 环境）需要显式添加：
 
@@ -160,7 +163,9 @@ claude plugins install mattpocock-skills@claude-plugins-official
 
 ### [anthropics/skills](https://github.com/anthropics/skills)
 
-Anthropic 官方市场，市场名 `anthropic-agent-skills`，含 5 个插件；本清单安装 `document-skills`，其余（`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）可按需安装。
+- **提供方**：Anthropic
+- **市场名**：`anthropic-agent-skills`
+- **规模**：5 个插件（`document-skills`、`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）
 
 添加市场：
 
@@ -181,7 +186,9 @@ claude plugins install document-skills@anthropic-agent-skills
 
 ### [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
 
-市场名 `karpathy-skills`，仅提供 `andrej-karpathy-skills` 一个插件。
+- **提供方**：multica-ai
+- **市场名**：`karpathy-skills`
+- **规模**：仅 `andrej-karpathy-skills` 一个插件
 
 添加市场：
 
@@ -202,7 +209,9 @@ claude plugins install andrej-karpathy-skills@karpathy-skills
 
 ### [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
 
-市场名 `ui-ux-pro-max-skill`，仅提供 `ui-ux-pro-max` 一个插件。
+- **提供方**：nextlevelbuilder
+- **市场名**：`ui-ux-pro-max-skill`
+- **规模**：仅 `ui-ux-pro-max` 一个插件
 
 添加市场：
 
@@ -223,7 +232,9 @@ claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
 
 ### [affaan-m/ECC](https://github.com/affaan-m/ECC)
 
-市场名 `ecc`，仅提供同名插件。
+- **提供方**：affaan-m
+- **市场名**：`ecc`
+- **规模**：仅 `ecc` 一个插件
 
 添加市场：
 
@@ -244,7 +255,9 @@ claude plugins install ecc@ecc
 
 ### [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)
 
-OpenAI 官方市场，市场名 `openai-codex`，仅提供 `codex` 一个插件。
+- **提供方**：OpenAI
+- **市场名**：`openai-codex`
+- **规模**：仅 `codex` 一个插件
 
 添加市场：
 
