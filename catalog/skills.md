@@ -35,7 +35,7 @@ npx skills find [关键词]                  # 搜索技能
 
 #### [mattpocock/skills](https://github.com/mattpocock/skills)
 
-- **规模**：38 个 skill，本清单安装 4 个
+- **规模**：38 个 skill
 
 安装：
 
@@ -52,7 +52,7 @@ npx skills add mattpocock/skills --skill grill-me --skill grill-with-docs --skil
 
 #### [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
 
-- **规模**：仅 `karpathy-guidelines` 一个 skill
+- **规模**：1 个 skill
 
 安装：
 
@@ -64,7 +64,7 @@ npx skills add multica-ai/andrej-karpathy-skills -g
 
 #### [anthropics/skills](https://github.com/anthropics/skills)
 
-- **规模**：20 个 skill，本清单安装 7 个（全局 6 个、项目级 1 个），其余（`webapp-testing`、`web-artifacts-builder`、`theme-factory`、`canvas-design` 等）可按需安装
+- **规模**：20 个 skill
 
 安装：
 
@@ -84,7 +84,7 @@ npx skills add anthropics/skills --skill frontend-design
 
 #### [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
 
-- **规模**：7 个 skill，本清单安装 `ui-ux-pro-max`
+- **规模**：7 个 skill
 
 安装：
 
@@ -96,7 +96,7 @@ npx skills add nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
 
 #### [stablyai/orca](https://github.com/stablyai/orca)
 
-- **规模**：8 个 skill，本清单安装 3 个
+- **规模**：8 个 skill
 
 安装：
 
@@ -110,7 +110,7 @@ npx skills add stablyai/orca --skill orca-cli --skill computer-use --skill orche
 
 #### [vercel-labs/skills](https://github.com/vercel-labs/skills)
 
-- **规模**：`npx skills` CLI 本身的仓库，仅 `find-skills` 一个 skill
+- **规模**：1 个 skill；该仓库为 `npx skills` CLI 本身
 
 安装：
 
@@ -122,7 +122,7 @@ npx skills add vercel-labs/skills -g
 
 #### [microsoft/playwright-cli](https://github.com/microsoft/playwright-cli)
 
-- **规模**：2 个 skill（`playwright-cli`、`dev`），本清单安装 `playwright-cli`
+- **规模**：2 个 skill
 
 安装：
 
@@ -134,7 +134,7 @@ npx skills add microsoft/playwright-cli --skill playwright-cli
 
 #### [huggingface/skills](https://github.com/huggingface/skills)
 
-- **规模**：25 个 skill，本清单仅安装入口 `hf-cli`，其余（`huggingface-datasets`、`huggingface-spaces`、`transformers-js`、`trl-training` 等）可按需安装
+- **规模**：25 个 skill
 
 安装：
 
