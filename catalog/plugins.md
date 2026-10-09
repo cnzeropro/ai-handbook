@@ -131,17 +131,6 @@ claude plugins install context7@claude-plugins-official
 claude plugins install code-review@claude-plugins-official
 ```
 
-#### `code-simplifier`
-
-- **组件**：Agents
-- **作用**：在功能不变的前提下简化与精炼代码，聚焦最近修改的部分
-
-安装：
-
-```bash
-claude plugins install code-simplifier@claude-plugins-official
-```
-
 #### `frontend-design`
 
 - **组件**：Skills
@@ -162,6 +151,17 @@ claude plugins install frontend-design@claude-plugins-official
 
 ```bash
 claude plugins install skill-creator@claude-plugins-official
+```
+
+#### `code-simplifier`
+
+- **组件**：Agents
+- **作用**：在功能不变的前提下简化与精炼代码，聚焦最近修改的部分
+
+安装：
+
+```bash
+claude plugins install code-simplifier@claude-plugins-official
 ```
 
 ### [affaan-m/ECC](https://github.com/affaan-m/ECC)
@@ -379,14 +379,14 @@ codex plugin add gmail@openai-curated-remote
 codex plugin add google-drive@openai-curated-remote
 ```
 
-#### `slack`
+#### `github`
 
-- **作用**：接入 Slack 工作区，如汇总频道消息、起草回复
+- **作用**：接入 GitHub
 
 安装：
 
 ```bash
-codex plugin add slack@openai-curated-remote
+codex plugin add github@openai-curated-remote
 ```
 
 #### `notion`
@@ -399,14 +399,14 @@ codex plugin add slack@openai-curated-remote
 codex plugin add notion@openai-curated-remote
 ```
 
-#### `github`
+#### `slack`
 
-- **作用**：接入 GitHub
+- **作用**：接入 Slack 工作区，如汇总频道消息、起草回复
 
 安装：
 
 ```bash
-codex plugin add github@openai-curated-remote
+codex plugin add slack@openai-curated-remote
 ```
 
 ### [openai/plugins](https://github.com/openai/plugins)（官方市场仓库）
