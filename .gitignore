@@ -10,3 +10,7 @@
 # 本地个人配置与文档，勿提交
 .claude/settings.local.json
 CLAUDE.local.md
+
+### Pi
+# 本地任务输出与运行数据
+.pi/
