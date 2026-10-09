@@ -315,32 +315,152 @@ codex plugin remove <plugin>
 - IDE 扩展不支持插件；插件的浏览与安装在 Codex CLI 与 ChatGPT 桌面 App 中进行。
 - 以 API key 登录 Codex 时，依赖 OAuth 连接流程的插件不可安装。
 
-### 官方默认市场
+### openai-primary-runtime（本地捆绑市场）
 
 - **提供方**：OpenAI
-- **市场名**：内置市场由 `codex plugin marketplace list` 列出（隐式发现、无需添加）——`openai-curated`（ChatGPT 登录）、`openai-api-curated`（API key 登录）、`openai-bundled`（随 CLI 捆绑）；统一插件目录以 `openai-curated-remote` 远程市场呈现（名称取自 openai/codex 源码常量）
-- **规模**：ChatGPT 与 Codex 共用的统一插件目录，含 OpenAI 官方与合作方插件
-- **安装**：统一目录插件经会话内 `/plugins` 浏览器搜索安装（官方推荐路径）；CLI 形式为 `codex plugin add <插件ID>@<市场名>`，插件 ID 以 `codex plugin list` 输出为准
+- **市场名**：`openai-primary-runtime`，由 `codex plugin marketplace list` 列出，隐式发现、无需添加
+- **规模**：5 个插件，随 Codex 运行时捆绑，默认已安装并启用
 
-#### Codex Security
+#### `documents`
 
-- **作用**：扫描授权代码并确认可疑漏洞，支持深度扫描、代码变更审查、漏洞分级与修复
-- **安装**：会话内 `/plugins` 搜索 **Codex Security** 并选择 Install plugin；装后 `/new` 开新会话生效
+- **组件**：Skills
+- **作用**：创建与编辑文档工件，含 Word 与 Google Docs
+- **安装**：随运行时捆绑，默认已启用
 
-#### Gmail
+#### `pdf`
+
+- **组件**：Skills
+- **作用**：PDF 的读取、创建、检查、渲染与校验
+- **安装**：随运行时捆绑，默认已启用
+
+#### `spreadsheets`
+
+- **组件**：Skills
+- **作用**：创建、编辑、分析、可视化与导出表格（Excel / Google Sheets 工作簿）
+- **安装**：随运行时捆绑，默认已启用
+
+#### `presentations`
+
+- **组件**：Skills
+- **作用**：创建、编辑、渲染、校验与导出演示文稿（PPTX / Google Slides）
+- **安装**：随运行时捆绑，默认已启用
+
+#### `template-creator`
+
+- **组件**：Skills
+- **作用**：从文件、ImageGen / Product Design 图片、邮件与 Slack 消息创建个人模板
+- **安装**：随运行时捆绑，默认已启用
+
+### openai-curated-remote（远程统一目录）
+
+- **提供方**：OpenAI 与合作方
+- **市场名**：`openai-curated-remote`，远程市场、无需添加；ChatGPT 与 Codex 共用的统一插件目录
+- **规模**：40 余个命名插件（另含若干未命名的 `app-*` 条目）；连接型插件在安装或首次使用时按提示连接对应服务
+
+#### `gmail`
 
 - **作用**：处理 Gmail 邮件，如汇总未读会话、检索邮件内容
-- **安装**：会话内 `/plugins` 搜索 **Gmail** 安装；安装或首次使用时按提示连接 Google 账号
 
-#### Google Drive
+安装：
+
+```bash
+codex plugin add gmail@openai-curated-remote
+```
+
+#### `google-drive`
 
 - **作用**：访问 Drive、Docs、Sheets 与 Slides 文件，如拉取指定文档的最新内容
-- **安装**：会话内 `/plugins` 搜索 **Google Drive** 安装；安装或首次使用时按提示连接 Google 账号
 
-#### Slack
+安装：
+
+```bash
+codex plugin add google-drive@openai-curated-remote
+```
+
+#### `slack`
 
 - **作用**：接入 Slack 工作区，如汇总频道消息、起草回复
-- **安装**：会话内 `/plugins` 搜索 **Slack** 安装；安装或首次使用时按提示连接 Slack 工作区
+
+安装：
+
+```bash
+codex plugin add slack@openai-curated-remote
+```
+
+#### `notion`
+
+- **作用**：接入 Notion 工作区
+
+安装：
+
+```bash
+codex plugin add notion@openai-curated-remote
+```
+
+#### `github`
+
+- **作用**：接入 GitHub
+
+安装：
+
+```bash
+codex plugin add github@openai-curated-remote
+```
+
+### [openai/plugins](https://github.com/openai/plugins)（官方市场仓库）
+
+- **提供方**：OpenAI
+- **市场名**：`openai-curated`
+- **规模**：65 个插件（gmail、slack、github、figma、canva、cloudflare、sentry、codex-security、superpowers 等）
+
+添加市场：
+
+```bash
+codex plugin marketplace add openai/plugins
+```
+
+> ⚠️ Windows 上需先启用 git 长路径支持（`git config --global core.longpaths true`），否则仓库内深层资源文件因路径超过 260 字符导致 checkout 失败、市场添加报错。
+
+#### `codex-security`
+
+- **作用**：扫描代码漏洞并确认可疑发现，支持深度扫描与代码变更审查
+
+安装：
+
+```bash
+codex plugin add codex-security@openai-curated
+```
+
+#### `figma`
+
+- **作用**：设计落地实现、Code Connect 模板与设计系统规则生成
+
+安装：
+
+```bash
+codex plugin add figma@openai-curated
+```
+
+#### `linear`
+
+- **作用**：检索、创建与更新 Linear 的 issue 与项目，起草 PRD 与进展更新
+
+安装：
+
+```bash
+codex plugin add linear@openai-curated
+```
+
+#### `superpowers`
+
+- **提供方**：obra（第三方作者）
+- **作用**：提供规划、TDD、调试与协作工作流的 agentic skills 框架与开发方法论
+
+安装：
+
+```bash
+codex plugin add superpowers@openai-curated
+```
 
 ## Pi
 
