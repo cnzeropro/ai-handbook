@@ -41,7 +41,7 @@ npx skills find [关键词]                  # 搜索技能
 
 #### `tdd`
 
-- **作用**：测试驱动开发（red-green-refactor、集成测试）
+作用：测试驱动开发（red-green-refactor、集成测试）
 
 安装：
 
@@ -51,7 +51,7 @@ npx skills add mattpocock/skills --skill tdd
 
 #### `grill-me`
 
-- **作用**：针对方案或设计持续追问，帮助完善方案
+作用：针对方案或设计持续追问，帮助完善方案
 
 安装：
 
@@ -61,7 +61,7 @@ npx skills add mattpocock/skills --skill grill-me
 
 #### `grill-with-docs`
 
-- **作用**：与 `grill-me` 相同，并产出文档（ADR 与术语表）
+作用：与 `grill-me` 相同，并产出文档（ADR 与术语表）
 
 安装：
 
@@ -71,7 +71,7 @@ npx skills add mattpocock/skills --skill grill-with-docs
 
 #### `improve-codebase-architecture`
 
-- **作用**：扫描代码库寻找「深化」机会 → 输出可视化 HTML 报告 → 选择一项继续深入追问
+作用：扫描代码库寻找「深化」机会 → 输出可视化 HTML 报告 → 选择一项继续深入追问
 
 安装：
 
@@ -85,7 +85,7 @@ npx skills add mattpocock/skills --skill improve-codebase-architecture
 
 #### `karpathy-guidelines`
 
-- **作用**：减少 LLM 编码通病的四条准则：先想后写 / 简单优先 / 外科式改动 / 目标驱动执行
+作用：减少 LLM 编码通病的四条准则：先想后写 / 简单优先 / 外科式改动 / 目标驱动执行
 
 安装：
 
@@ -99,7 +99,7 @@ npx skills add multica-ai/andrej-karpathy-skills -g
 
 #### `skill-creator`
 
-- **作用**：创建新 skill、改进已有 skill、运行 eval 与方差基准、优化触发描述
+作用：创建新 skill、改进已有 skill、运行 eval 与方差基准、优化触发描述
 
 安装：
 
@@ -109,7 +109,7 @@ npx skills add anthropics/skills --skill skill-creator -g
 
 #### `mcp-builder`
 
-- **作用**：构建高质量 MCP server（Python FastMCP 或 Node / TypeScript SDK）
+作用：构建高质量 MCP server（Python FastMCP 或 Node / TypeScript SDK）
 
 安装：
 
@@ -119,7 +119,7 @@ npx skills add anthropics/skills --skill mcp-builder -g
 
 #### `xlsx`
 
-- **作用**：电子表格读写与清洗（.xlsx / .xlsm / .csv），公式、格式化、图表
+作用：电子表格读写与清洗（.xlsx / .xlsm / .csv），公式、格式化、图表
 
 安装：
 
@@ -129,7 +129,7 @@ npx skills add anthropics/skills --skill xlsx -g
 
 #### `docx`
 
-- **作用**：创建 / 编辑 Word（.docx），含目录、页码、页眉、修订、批注、查找替换
+作用：创建 / 编辑 Word（.docx），含目录、页码、页眉、修订、批注、查找替换
 
 安装：
 
@@ -139,7 +139,7 @@ npx skills add anthropics/skills --skill docx -g
 
 #### `pptx`
 
-- **作用**：创建 / 解析 / 编辑 PowerPoint（.pptx），模板、版式、演讲者备注
+作用：创建 / 解析 / 编辑 PowerPoint（.pptx），模板、版式、演讲者备注
 
 安装：
 
@@ -149,7 +149,7 @@ npx skills add anthropics/skills --skill pptx -g
 
 #### `pdf`
 
-- **作用**：PDF 读取、合并拆分、旋转、水印、表单填写、加解密、抽图、OCR
+作用：PDF 读取、合并拆分、旋转、水印、表单填写、加解密、抽图、OCR
 
 安装：
 
@@ -159,7 +159,7 @@ npx skills add anthropics/skills --skill pdf -g
 
 #### `frontend-design`
 
-- **作用**：新建或重塑 UI 时的视觉设计指导，避免模板化的 AI 味
+作用：新建或重塑 UI 时的视觉设计指导，避免模板化的 AI 味
 
 安装：
 
@@ -173,7 +173,7 @@ npx skills add anthropics/skills --skill frontend-design
 
 #### `ui-ux-pro-max`
 
-- **作用**：UI/UX 设计知识库：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
+作用：UI/UX 设计知识库：本地可检索的 79 种风格、192 套配色、74 组字体搭配、25 类图表、22 个技术栈指南
 
 安装：
 
@@ -187,7 +187,7 @@ npx skills add nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
 
 #### `orca-cli`
 
-- **作用**：用 `orca` CLI 操作 worktree、文件夹上下文、终端、仓库、自动化、artifact、内嵌浏览器
+作用：用 `orca` CLI 操作 worktree、文件夹上下文、终端、仓库、自动化、artifact、内嵌浏览器
 
 安装：
 
@@ -197,7 +197,7 @@ npx skills add stablyai/orca --skill orca-cli -g
 
 #### `computer-use`
 
-- **作用**：通过 `orca computer` 驱动本地可见窗口 GUI（无障碍树、点击、输入、菜单、截图）
+作用：通过 `orca computer` 驱动本地可见窗口 GUI（无障碍树、点击、输入、菜单、截图）
 
 安装：
 
@@ -207,7 +207,7 @@ npx skills add stablyai/orca --skill computer-use -g
 
 #### `orchestration`
 
-- **作用**：协调受监督的 Orca worker：线程消息、阻塞式 ask/reply、任务派发、任务 DAG、决策门、coordinator 循环
+作用：协调受监督的 Orca worker：线程消息、阻塞式 ask/reply、任务派发、任务 DAG、决策门、coordinator 循环
 
 安装：
 
@@ -221,7 +221,7 @@ npx skills add stablyai/orca --skill orchestration -g
 
 #### `find-skills`
 
-- **作用**：用户问「怎么做 X」「有没有现成技能」时，帮助发现并安装相应 skill
+作用：用户问「怎么做 X」「有没有现成技能」时，帮助发现并安装相应 skill
 
 安装：
 
@@ -235,7 +235,7 @@ npx skills add vercel-labs/skills -g
 
 #### `playwright-cli`
 
-- **作用**：浏览器自动化、测试 Web 页面、编写 Playwright 测试
+作用：浏览器自动化、测试 Web 页面、编写 Playwright 测试
 
 安装：
 
@@ -249,7 +249,7 @@ npx skills add microsoft/playwright-cli --skill playwright-cli
 
 #### `hf-cli`
 
-- **作用**：Hugging Face Hub CLI：下载 / 上传模型、数据集、Spaces、buckets、repos、papers、jobs
+作用：Hugging Face Hub CLI：下载 / 上传模型、数据集、Spaces、buckets、repos、papers、jobs
 
 安装：
 
