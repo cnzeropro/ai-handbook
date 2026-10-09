@@ -315,6 +315,8 @@ codex plugin remove <plugin>
 - IDE 扩展不支持插件；插件的浏览与安装在 Codex CLI 与 ChatGPT 桌面 App 中进行。
 - 以 API key 登录 Codex 时，依赖 OAuth 连接流程的插件不可安装。
 
+Codex 的插件来源分三个市场：`openai-primary-runtime` 随运行时捆绑、默认启用；`openai-curated-remote` 为内置的远程统一目录（ChatGPT 与 Codex 共用），无需添加；`openai-curated` 为可选添加的官方 GitHub 市场仓库，内容与远程目录高度重叠，适用于钉定版本、离线安装或安装目录中未列出的插件。
+
 ### openai-primary-runtime（本地捆绑市场）
 
 - **提供方**：OpenAI
