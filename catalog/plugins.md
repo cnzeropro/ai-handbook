@@ -1,6 +1,6 @@
 # AI 插件清单
 
-> 收录各 AI agent 工具的**插件（Plugin）与插件市场（Marketplace）**。结构约定：一级为 AI agent 工具，二级为插件市场，三级为插件；无插件市场概念的工具，下层级依次上提。目前收录 Claude Code，Codex、Pi 待补充。
+> 收录各 AI agent 工具的**插件（Plugin）与插件市场（Marketplace）**。结构约定：一级为 AI agent 工具，二级为插件市场，三级为插件；无插件市场概念的工具，下层级依次上提。
 
 ## Claude Code
 
@@ -91,7 +91,7 @@ claude plugin marketplace add anthropics/claude-plugins-official
 安装：
 
 ```bash
-claude plugins install superpowers@claude-plugins-official
+claude plugin install superpowers@claude-plugins-official
 ```
 
 #### `mattpocock-skills`
@@ -104,7 +104,7 @@ claude plugins install superpowers@claude-plugins-official
 安装：
 
 ```bash
-claude plugins install mattpocock-skills@claude-plugins-official
+claude plugin install mattpocock-skills@claude-plugins-official
 ```
 
 #### `context7`
@@ -117,7 +117,7 @@ claude plugins install mattpocock-skills@claude-plugins-official
 安装：
 
 ```bash
-claude plugins install context7@claude-plugins-official
+claude plugin install context7@claude-plugins-official
 ```
 
 #### `code-review`
@@ -128,7 +128,7 @@ claude plugins install context7@claude-plugins-official
 安装：
 
 ```bash
-claude plugins install code-review@claude-plugins-official
+claude plugin install code-review@claude-plugins-official
 ```
 
 #### `frontend-design`
@@ -139,7 +139,7 @@ claude plugins install code-review@claude-plugins-official
 安装：
 
 ```bash
-claude plugins install frontend-design@claude-plugins-official
+claude plugin install frontend-design@claude-plugins-official
 ```
 
 #### `skill-creator`
@@ -150,7 +150,7 @@ claude plugins install frontend-design@claude-plugins-official
 安装：
 
 ```bash
-claude plugins install skill-creator@claude-plugins-official
+claude plugin install skill-creator@claude-plugins-official
 ```
 
 #### `code-simplifier`
@@ -161,7 +161,7 @@ claude plugins install skill-creator@claude-plugins-official
 安装：
 
 ```bash
-claude plugins install code-simplifier@claude-plugins-official
+claude plugin install code-simplifier@claude-plugins-official
 ```
 
 ### [affaan-m/ECC](https://github.com/affaan-m/ECC)
@@ -173,7 +173,7 @@ claude plugins install code-simplifier@claude-plugins-official
 添加市场：
 
 ```bash
-claude plugins marketplace add https://github.com/affaan-m/ECC
+claude plugin marketplace add https://github.com/affaan-m/ECC
 ```
 
 #### `ecc`
@@ -184,7 +184,7 @@ claude plugins marketplace add https://github.com/affaan-m/ECC
 安装：
 
 ```bash
-claude plugins install ecc@ecc
+claude plugin install ecc@ecc
 ```
 
 ### [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
@@ -196,7 +196,7 @@ claude plugins install ecc@ecc
 添加市场：
 
 ```bash
-claude plugins marketplace add multica-ai/andrej-karpathy-skills
+claude plugin marketplace add multica-ai/andrej-karpathy-skills
 ```
 
 #### `andrej-karpathy-skills`
@@ -207,7 +207,7 @@ claude plugins marketplace add multica-ai/andrej-karpathy-skills
 安装：
 
 ```bash
-claude plugins install andrej-karpathy-skills@karpathy-skills
+claude plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
 ### [anthropics/skills](https://github.com/anthropics/skills)
@@ -219,7 +219,7 @@ claude plugins install andrej-karpathy-skills@karpathy-skills
 添加市场：
 
 ```bash
-claude plugins marketplace add anthropics/skills
+claude plugin marketplace add anthropics/skills
 ```
 
 #### `document-skills`
@@ -230,7 +230,7 @@ claude plugins marketplace add anthropics/skills
 安装：
 
 ```bash
-claude plugins install document-skills@anthropic-agent-skills
+claude plugin install document-skills@anthropic-agent-skills
 ```
 
 ### [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
@@ -242,7 +242,7 @@ claude plugins install document-skills@anthropic-agent-skills
 添加市场：
 
 ```bash
-claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+claude plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 ```
 
 #### `ui-ux-pro-max`
@@ -253,7 +253,7 @@ claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 安装：
 
 ```bash
-claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
+claude plugin install ui-ux-pro-max@ui-ux-pro-max-skill
 ```
 
 ### [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)
@@ -265,7 +265,7 @@ claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
 添加市场：
 
 ```bash
-claude plugins marketplace add openai/codex-plugin-cc
+claude plugin marketplace add openai/codex-plugin-cc
 ```
 
 #### `codex`
@@ -276,7 +276,7 @@ claude plugins marketplace add openai/codex-plugin-cc
 安装：
 
 ```bash
-claude plugins install codex@openai-codex
+claude plugin install codex@openai-codex
 ```
 
 > `codex` 安装后需先执行 `/reload-plugins`，再运行一次 `/codex:setup` 完成配置。
@@ -409,7 +409,7 @@ codex plugin add notion@openai-curated-remote
 codex plugin add slack@openai-curated-remote
 ```
 
-### [openai/plugins](https://github.com/openai/plugins)（官方市场仓库）
+### [openai/plugins](https://github.com/openai/plugins)
 
 - **提供方**：OpenAI
 - **市场名**：`openai-curated`
