@@ -1,21 +1,17 @@
 # AI Skills 清单
 
-> 通过 [`npx skills`](https://github.com/vercel-labs/skills)（vercel-labs 官方 CLI，latest 1.7.0，需 Node ≥ 22.20）安装外部 Agent Skills。
-> 不带 `-g` 时安装到当前项目（`.claude/skills/`，随仓库提交、团队共享）；带 `-g` 时安装到用户级（`~/.claude/skills/`，所有项目可用）。
-> skill 的**名称与描述会进入每个会话的上下文**，安装数量越多，每轮上下文开销越大。
-
 ## skill 说明
 
 - **Skill**：以 `SKILL.md` 编写的指令文件，由 frontmatter（名称与描述）与指令正文组成；正文在会话中按需加载
 - **格式**：开放的 Agent Skills 格式，同一 skill 可安装到 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手
-- **分发**：以 GitHub 仓库为单位分发，经 `npx skills` 安装到各 agent 的 skills 目录
+- **分发**：以 GitHub 仓库为单位分发，经 [`npx skills`](https://github.com/vercel-labs/skills)（vercel-labs 官方 CLI，latest 1.7.0，需 Node ≥ 22.20）安装到各 agent 的 skills 目录
 
 ## 分层判据
 
-| 层级 | 判据 |
-| --- | --- |
-| **全局（`-g`）** | 元技能或工具型能力，与具体代码库无关 |
-| **项目级** | 绑定具体代码库 / 技术栈，或只有部分项目需要 |
+| 层级 | 判据 | 安装目录 |
+| --- | --- | --- |
+| **全局（`-g`）** | 元技能或工具型能力，与具体代码库无关 | 用户级目录（如 `~/.claude/skills/`），所有项目可用 |
+| **项目级** | 绑定具体代码库 / 技术栈，或只有部分项目需要 | 项目目录（如 `.claude/skills/`），随仓库提交、团队共享 |
 
 ## 常用命令
 
@@ -33,6 +29,7 @@ npx skills find [关键词]                  # 搜索技能
 
 ## 注意事项
 
+- ⚠️ skill 的**名称与描述会进入每个会话的上下文**，安装数量越多，每轮上下文开销越大。
 - ⚠️ **不带 `--skill` 时会全部安装**：仓库仅含 1 个 skill 时、或传入 `-y` 时选择全部；在 AI agent 会话中执行会自动等同于 `-y`（CLI 检测到 agent 运行环境即进入非交互模式）。多 skill 的仓库建议显式列出 `--skill`。
 
 ## Skills 一览
