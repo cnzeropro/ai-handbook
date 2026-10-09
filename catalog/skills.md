@@ -4,6 +4,12 @@
 > 不带 `-g` 时安装到当前项目（`.claude/skills/`，随仓库提交、团队共享）；带 `-g` 时安装到用户级（`~/.claude/skills/`，所有项目可用）。
 > skill 的**名称与描述会进入每个会话的上下文**，安装数量越多，每轮上下文开销越大。
 
+## skill 说明
+
+- **Skill**：以 `SKILL.md` 编写的指令文件，由 frontmatter（名称与描述）与指令正文组成；正文在会话中按需加载
+- **格式**：开放的 Agent Skills 格式，同一 skill 可安装到 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手
+- **分发**：以 GitHub 仓库为单位分发，经 `npx skills` 安装到各 agent 的 skills 目录
+
 ## 分层判据
 
 | 层级 | 判据 |
