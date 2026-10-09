@@ -288,7 +288,7 @@ claude plugins install codex@openai-codex
 **插件说明**
 
 - **Plugin**：把 skills / MCP servers / browser extensions / hooks 打包成的可安装单元；ChatGPT 与 Codex 共用同一个插件目录
-- **Marketplace**：插件来源目录，支持 GitHub 仓库（`owner/repo`，可 `@ref` 钉定版本）、HTTP(S) / SSH Git URL 与本地目录
+- **Marketplace**：插件来源目录，支持 GitHub 仓库（`owner/repo`，可 `@ref` 钉定版本）、HTTP(S) / SSH Git URL 与本地目录；个人与仓库级市场通过 `marketplace.json` 声明（`~/.agents/plugins/` 或 `$REPO_ROOT/.agents/plugins/`），条目可指向本地目录、Git 子目录或 npm 包
 
 **常用命令**
 
