@@ -315,7 +315,29 @@ codex plugin remove <plugin>
 - IDE 扩展不支持插件；插件的浏览与安装在 Codex CLI 与 ChatGPT 桌面 App 中进行。
 - 以 API key 登录 Codex 时，依赖 OAuth 连接流程的插件不可安装。
 
-市场与插件清单待补充。
+### 官方默认市场
+
+- **提供方**：OpenAI
+- **市场名**：未公开，由 `codex plugin marketplace list` 列出，隐式发现、无需添加
+- **规模**：ChatGPT 与 Codex 共用的统一插件目录，含 OpenAI 官方与合作方插件
+
+以下插件均收录在默认市场，经会话内 `/plugins` 浏览器安装（部分需在安装时或首次使用前连接对应服务）。
+
+#### Codex Security
+
+- **作用**：扫描授权代码并确认可疑漏洞，支持深度扫描、代码变更审查、漏洞分级与修复
+
+#### Gmail
+
+- **作用**：处理 Gmail 邮件，如汇总未读会话、检索邮件内容
+
+#### Google Drive
+
+- **作用**：访问 Drive、Docs、Sheets 与 Slides 文件，如拉取指定文档的最新内容
+
+#### Slack
+
+- **作用**：接入 Slack 工作区，如汇总频道消息、起草回复
 
 ## Pi
 
