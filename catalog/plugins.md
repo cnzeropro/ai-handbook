@@ -285,8 +285,66 @@ claude plugins install codex@openai-codex
 
 ## Codex
 
-> 待补充。已知命令：`codex plugin marketplace add <owner/repo>`、`codex plugin add <plugin>@<marketplace>`。
+**插件说明**
+
+- **Plugin**：把 skills / MCP servers / browser extensions / hooks 打包成的可安装单元；ChatGPT 与 Codex 共用同一个插件目录
+- **Marketplace**：插件来源目录，支持 GitHub 仓库（`owner/repo`，可 `@ref` 钉定版本）、HTTP(S) / SSH Git URL 与本地目录
+
+**常用命令**
+
+```bash
+# 市场
+codex plugin marketplace add <owner/repo | Git URL | 本地路径>
+codex plugin marketplace list
+codex plugin marketplace upgrade [name]
+codex plugin marketplace remove <name>
+
+# 插件
+codex plugin add <plugin>@<marketplace>
+codex plugin list [--json]
+codex plugin remove <plugin>
+```
+
+会话内输入 `/plugins` 打开插件浏览器：按市场分组浏览，`Space` 切换已装插件的启用状态。
+
+**注意事项**
+
+- 安装插件后需**开启新会话**，其捆绑的 skills 与工具才会生效。
+- 插件可包含四类组件：Skills（指令）、MCP servers（外部工具连接）、Browser extensions（浏览器能力）、Hooks（生命周期命令）。
+- ⚠️ Hooks 会在 Codex 运行周期的设定时机执行命令，启用前应先审查并信任。
+- IDE 扩展不支持插件；插件的浏览与安装在 Codex CLI 与 ChatGPT 桌面 App 中进行。
+- 以 API key 登录 Codex 时，依赖 OAuth 连接流程的插件不可安装。
+
+市场与插件清单待补充。
 
 ## Pi
 
-> 待补充。已知：Pi 的扩展形态是 **packages**（`pi install npm:<package>`）而非 marketplace——无市场概念，按本页层级约定 packages 直接作为二级；skills 走 `.agents/skills/`（项目级）与 `~/.agents/skills/`（用户级）。
+**插件说明**
+
+- **Package**：Pi 的扩展单元，从 npm、Git 仓库或本地目录安装，可包含 skills、prompts、themes 与扩展工具等资源；Pi 无插件市场概念，按本页层级约定 packages 直接作为二级
+
+**安装层级（scope）**
+
+| scope | 写入的配置 | 生效范围 |
+| --- | --- | --- |
+| 用户级（默认） | `~/.pi/agent/settings.json` | 本机所有项目 |
+| 项目级（`-l`） | `<项目>/.pi/settings.json` | 仅当前项目 |
+
+**常用命令**
+
+```bash
+pi install npm:<package>               # 从 npm 安装
+pi install git:github.com/user/repo    # 从 Git 仓库安装；亦接受 https://、ssh:// 与本地路径
+pi install <source> -l                 # 安装到项目级（.pi/settings.json）
+pi list                                # 列出已安装的扩展
+pi update [source | self | pi]         # 更新扩展、pi 自身或模型目录
+pi remove <source> [-l]                # 移除扩展（uninstall 为别名）
+pi config [-l]                         # 打开 TUI 启用 / 禁用包资源（Tab 切换 scope）
+```
+
+**注意事项**
+
+- Skill 与 package 相互独立：skills 直接放在 `.agents/skills/`（项目级）与 `~/.agents/skills/`（用户级），无需打包为 package。
+- 项目本地（`-l`）文件受信任机制约束，可用 `-a/--approve` 显式信任、`-na/--no-approve` 显式忽略。
+
+packages 清单待补充。
