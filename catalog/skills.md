@@ -68,13 +68,12 @@ npx skills add multica-ai/andrej-karpathy-skills -g
 
 #### [anthropics/skills](https://github.com/anthropics/skills)
 
-- **规模**：19 个 skill，本清单安装 7 个，其余（`webapp-testing`、`web-artifacts-builder`、`theme-factory`、`canvas-design` 等）可按需安装
+- **规模**：19 个 skill，本清单全局安装 6 个，其余（`webapp-testing`、`web-artifacts-builder`、`theme-factory`、`canvas-design` 等）可按需安装
 
 安装：
 
 ```bash
 npx skills add anthropics/skills --skill skill-creator --skill mcp-builder --skill xlsx --skill docx --skill pdf --skill pptx -g
-npx skills add anthropics/skills --skill frontend-design
 ```
 
 - **`skill-creator`**：创建新 skill、改进已有 skill、运行 eval 与方差基准、优化触发描述
@@ -83,6 +82,17 @@ npx skills add anthropics/skills --skill frontend-design
 - **`docx`**：创建 / 编辑 Word（.docx），含目录、页码、页眉、修订、批注、查找替换
 - **`pptx`**：创建 / 解析 / 编辑 PowerPoint（.pptx），模板、版式、演讲者备注
 - **`pdf`**：PDF 读取、合并拆分、旋转、水印、表单填写、加解密、抽图、OCR
+
+#### [anthropics/skills](https://github.com/anthropics/skills)
+
+- **规模**：项目级安装 `frontend-design` 一个 skill
+
+安装：
+
+```bash
+npx skills add anthropics/skills --skill frontend-design
+```
+
 - **`frontend-design`**：新建或重塑 UI 时的视觉设计指导，避免模板化的 AI 味
 
 #### [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
