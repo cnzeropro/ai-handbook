@@ -27,13 +27,7 @@ npx skills find [关键词]                  # 搜索技能
 
 ## 注意事项
 
-- 官方层级口径：
-  - `stablyai/orca` —— 默认全局（原文 "Default scope is **global** (`--global`); pass `--local` for the current project only."）
-  - `mattpocock/skills` —— "once per repo"
-  - `ui-ux-pro-max` —— 推荐项目级（global 为可选项）
-  - `playwright-cli` —— 安装到项目目录
-- ⚠️ **不带 `--skill` 时会全部安装**：仓库仅含 1 个 skill 时、或传入 `-y` 时选择全部；**在 AI agent 会话中执行会自动等同于 `-y`**（CLI 检测到运行环境是 agent 即进入非交互模式）。多 skill 的仓库建议显式列出 `--skill`。
-- `mattpocock/skills` 官方提醒：**插件路线与 `npx skills` 路线二选一**，"installing both leaves you with every skill twice."
+- ⚠️ **不带 `--skill` 时会全部安装**：仓库仅含 1 个 skill 时、或传入 `-y` 时选择全部；在 AI agent 会话中执行会自动等同于 `-y`（CLI 检测到 agent 运行环境即进入非交互模式）。多 skill 的仓库建议显式列出 `--skill`。
 
 ## Skills 一览
 
@@ -48,6 +42,8 @@ npx skills find [关键词]                  # 搜索技能
 ```bash
 npx skills add mattpocock/skills --skill grill-me --skill grill-with-docs --skill improve-codebase-architecture --skill tdd
 ```
+
+> 该仓库同时以官方插件形式发布（`mattpocock-skills`），插件与 `npx skills` 两条安装路线二选一，同时安装会造成 skill 重复。
 
 - **`tdd`**：测试驱动开发（red-green-refactor、集成测试）
 - **`grill-me`**：针对方案或设计持续追问，帮助完善方案
