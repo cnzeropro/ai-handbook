@@ -94,6 +94,32 @@ claude plugin marketplace add anthropics/claude-plugins-official
 claude plugins install superpowers@claude-plugins-official
 ```
 
+#### `mattpocock-skills`
+
+- **提供方**：Matt Pocock
+- **仓库**：[mattpocock/skills](https://github.com/mattpocock/skills)
+- **组件**：Skills
+- **作用**：工程向 skill 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等
+
+安装：
+
+```bash
+claude plugins install mattpocock-skills@claude-plugins-official
+```
+
+#### `context7`
+
+- **提供方**：Upstash
+- **仓库**：[upstash/context7](https://github.com/upstash/context7)
+- **组件**：MCP server
+- **作用**：将版本匹配的官方文档与代码示例注入上下文；连接远程 MCP，无需本地 Node / npx
+
+安装：
+
+```bash
+claude plugins install context7@claude-plugins-official
+```
+
 #### `code-review`
 
 - **组件**：Commands
@@ -114,19 +140,6 @@ claude plugins install code-review@claude-plugins-official
 
 ```bash
 claude plugins install code-simplifier@claude-plugins-official
-```
-
-#### `context7`
-
-- **提供方**：Upstash
-- **仓库**：[upstash/context7](https://github.com/upstash/context7)
-- **组件**：MCP server
-- **作用**：将版本匹配的官方文档与代码示例注入上下文；连接远程 MCP，无需本地 Node / npx
-
-安装：
-
-```bash
-claude plugins install context7@claude-plugins-official
 ```
 
 #### `frontend-design`
@@ -151,40 +164,27 @@ claude plugins install frontend-design@claude-plugins-official
 claude plugins install skill-creator@claude-plugins-official
 ```
 
-#### `mattpocock-skills`
+### [affaan-m/ECC](https://github.com/affaan-m/ECC)
 
-- **提供方**：Matt Pocock
-- **仓库**：[mattpocock/skills](https://github.com/mattpocock/skills)
-- **组件**：Skills
-- **作用**：工程向 skill 合集：追问、spec / 工单流转、TDD、代码审查、领域建模等
-
-安装：
-
-```bash
-claude plugins install mattpocock-skills@claude-plugins-official
-```
-
-### [anthropics/skills](https://github.com/anthropics/skills)
-
-- **提供方**：Anthropic
-- **市场名**：`anthropic-agent-skills`
-- **规模**：5 个插件（`document-skills`、`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）
+- **提供方**：affaan-m
+- **市场名**：`ecc`
+- **规模**：仅 `ecc` 一个插件
 
 添加市场：
 
 ```bash
-claude plugins marketplace add anthropics/skills
+claude plugins marketplace add https://github.com/affaan-m/ECC
 ```
 
-#### `document-skills`
+#### `ecc`
 
-- **组件**：Skills
-- **作用**：文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF
+- **组件**：Skills + Agents + Hooks + Commands
+- **作用**：Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描
 
 安装：
 
 ```bash
-claude plugins install document-skills@anthropic-agent-skills
+claude plugins install ecc@ecc
 ```
 
 ### [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
@@ -210,6 +210,29 @@ claude plugins marketplace add multica-ai/andrej-karpathy-skills
 claude plugins install andrej-karpathy-skills@karpathy-skills
 ```
 
+### [anthropics/skills](https://github.com/anthropics/skills)
+
+- **提供方**：Anthropic
+- **市场名**：`anthropic-agent-skills`
+- **规模**：5 个插件（`document-skills`、`example-skills`、`claude-api`、`academy-guide`、`discernment-nudge`）
+
+添加市场：
+
+```bash
+claude plugins marketplace add anthropics/skills
+```
+
+#### `document-skills`
+
+- **组件**：Skills
+- **作用**：文档处理套件：Excel（xlsx）、Word（docx）、PowerPoint（pptx）、PDF
+
+安装：
+
+```bash
+claude plugins install document-skills@anthropic-agent-skills
+```
+
 ### [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
 
 - **提供方**：nextlevelbuilder
@@ -231,29 +254,6 @@ claude plugins marketplace add nextlevelbuilder/ui-ux-pro-max-skill
 
 ```bash
 claude plugins install ui-ux-pro-max@ui-ux-pro-max-skill
-```
-
-### [affaan-m/ECC](https://github.com/affaan-m/ECC)
-
-- **提供方**：affaan-m
-- **市场名**：`ecc`
-- **规模**：仅 `ecc` 一个插件
-
-添加市场：
-
-```bash
-claude plugins marketplace add https://github.com/affaan-m/ECC
-```
-
-#### `ecc`
-
-- **组件**：Skills + Agents + Hooks + Commands
-- **作用**：Agent harness 性能优化系统：68 个 agent、293 个 skill、hooks 与规则，含 AgentShield 安全扫描
-
-安装：
-
-```bash
-claude plugins install ecc@ecc
 ```
 
 ### [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)
@@ -423,6 +423,17 @@ codex plugin marketplace add openai/plugins
 
 > ⚠️ Windows 上需先启用 git 长路径支持（`git config --global core.longpaths true`），否则仓库内深层资源文件因路径超过 260 字符导致 checkout 失败、市场添加报错。
 
+#### `superpowers`
+
+- **提供方**：obra（第三方作者）
+- **作用**：提供规划、TDD、调试与协作工作流的 agentic skills 框架与开发方法论
+
+安装：
+
+```bash
+codex plugin add superpowers@openai-curated
+```
+
 #### `codex-security`
 
 - **作用**：扫描代码漏洞并确认可疑发现，支持深度扫描与代码变更审查
@@ -453,22 +464,11 @@ codex plugin add figma@openai-curated
 codex plugin add linear@openai-curated
 ```
 
-#### `superpowers`
-
-- **提供方**：obra（第三方作者）
-- **作用**：提供规划、TDD、调试与协作工作流的 agentic skills 框架与开发方法论
-
-安装：
-
-```bash
-codex plugin add superpowers@openai-curated
-```
-
 ## Pi
 
 **插件说明**
 
-- **Package**：Pi 的扩展单元，从 npm、Git 仓库或本地目录安装，可包含 skills、prompts、themes 与扩展工具等资源；Pi 无插件市场概念，按本页层级约定 packages 直接作为二级
+- **Package**：Pi 的扩展单元，从 npm、Git 仓库或本地目录安装，可包含 skills、prompts、themes 与扩展工具等资源；Pi 无插件市场概念，按本页层级约定 packages 直接作为二级，包目录见 [pi.dev/packages](https://pi.dev/packages)
 
 **安装层级（scope）**
 
@@ -496,19 +496,6 @@ pi config [-l]                         # 打开 TUI 启用 / 禁用包资源（T
 
 本清单收录以下 packages。
 
-### `pi-mcp-adapter`
-
-- **提供方**：nicobailon
-- **仓库**：[nicobailon/pi-mcp-adapter](https://github.com/nicobailon/pi-mcp-adapter)
-- **组件**：Skills + Tools
-- **作用**：为 Pi 提供 MCP（Model Context Protocol）适配，接入外部 MCP 服务器
-
-安装：
-
-```bash
-pi install npm:pi-mcp-adapter
-```
-
 ### `pi-subagents`
 
 - **提供方**：nicobailon
@@ -520,6 +507,19 @@ pi install npm:pi-mcp-adapter
 
 ```bash
 pi install npm:pi-subagents
+```
+
+### `pi-mcp-adapter`
+
+- **提供方**：nicobailon
+- **仓库**：[nicobailon/pi-mcp-adapter](https://github.com/nicobailon/pi-mcp-adapter)
+- **组件**：Skills + Tools
+- **作用**：为 Pi 提供 MCP（Model Context Protocol）适配，接入外部 MCP 服务器
+
+安装：
+
+```bash
+pi install npm:pi-mcp-adapter
 ```
 
 ### `@juicesharp/rpiv-ask-user-question`
@@ -548,6 +548,19 @@ pi install npm:@juicesharp/rpiv-ask-user-question
 pi install npm:@juicesharp/rpiv-todo
 ```
 
+### `pi-lens`
+
+- **提供方**：apmantza
+- **仓库**：[apmantza/pi-lens](https://github.com/apmantza/pi-lens)
+- **组件**：Skills + Tools
+- **作用**：实时代码反馈——LSP、linter、formatter、类型检查与结构分析
+
+安装：
+
+```bash
+pi install npm:pi-lens
+```
+
 ### `pi-goal-x`
 
 - **提供方**：tmonk
@@ -572,19 +585,6 @@ pi install npm:pi-goal-x
 
 ```bash
 pi install npm:pi-background-tasks
-```
-
-### `pi-lens`
-
-- **提供方**：apmantza
-- **仓库**：[apmantza/pi-lens](https://github.com/apmantza/pi-lens)
-- **组件**：Skills + Tools
-- **作用**：实时代码反馈——LSP、linter、formatter、类型检查与结构分析
-
-安装：
-
-```bash
-pi install npm:pi-lens
 ```
 
 ### `@langfuse/pi-observability-plugin`
