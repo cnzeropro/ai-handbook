@@ -318,26 +318,29 @@ codex plugin remove <plugin>
 ### 官方默认市场
 
 - **提供方**：OpenAI
-- **市场名**：未公开，由 `codex plugin marketplace list` 列出，隐式发现、无需添加
+- **市场名**：内置市场由 `codex plugin marketplace list` 列出（隐式发现、无需添加）——`openai-curated`（ChatGPT 登录）、`openai-api-curated`（API key 登录）、`openai-bundled`（随 CLI 捆绑）；统一插件目录以 `openai-curated-remote` 远程市场呈现（名称取自 openai/codex 源码常量）
 - **规模**：ChatGPT 与 Codex 共用的统一插件目录，含 OpenAI 官方与合作方插件
-
-以下插件均收录在默认市场，经会话内 `/plugins` 浏览器安装（部分需在安装时或首次使用前连接对应服务）。
+- **安装**：统一目录插件经会话内 `/plugins` 浏览器搜索安装（官方推荐路径）；CLI 形式为 `codex plugin add <插件ID>@<市场名>`，插件 ID 以 `codex plugin list` 输出为准
 
 #### Codex Security
 
 - **作用**：扫描授权代码并确认可疑漏洞，支持深度扫描、代码变更审查、漏洞分级与修复
+- **安装**：会话内 `/plugins` 搜索 **Codex Security** 并选择 Install plugin；装后 `/new` 开新会话生效
 
 #### Gmail
 
 - **作用**：处理 Gmail 邮件，如汇总未读会话、检索邮件内容
+- **安装**：会话内 `/plugins` 搜索 **Gmail** 安装；安装或首次使用时按提示连接 Google 账号
 
 #### Google Drive
 
 - **作用**：访问 Drive、Docs、Sheets 与 Slides 文件，如拉取指定文档的最新内容
+- **安装**：会话内 `/plugins` 搜索 **Google Drive** 安装；安装或首次使用时按提示连接 Google 账号
 
 #### Slack
 
 - **作用**：接入 Slack 工作区，如汇总频道消息、起草回复
+- **安装**：会话内 `/plugins` 搜索 **Slack** 安装；安装或首次使用时按提示连接 Slack 工作区
 
 ## Pi
 
