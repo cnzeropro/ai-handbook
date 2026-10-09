@@ -494,4 +494,108 @@ pi config [-l]                         # 打开 TUI 启用 / 禁用包资源（T
 - Skill 与 package 相互独立：skills 直接放在 `.agents/skills/`（项目级）与 `~/.agents/skills/`（用户级），无需打包为 package。
 - 项目本地（`-l`）文件受信任机制约束，可用 `-a/--approve` 显式信任、`-na/--no-approve` 显式忽略。
 
-packages 清单待补充。
+本清单收录以下 packages。
+
+### `pi-mcp-adapter`
+
+- **提供方**：nicobailon
+- **仓库**：[nicobailon/pi-mcp-adapter](https://github.com/nicobailon/pi-mcp-adapter)
+- **组件**：Skills + Tools
+- **作用**：为 Pi 提供 MCP（Model Context Protocol）适配，接入外部 MCP 服务器
+
+安装：
+
+```bash
+pi install npm:pi-mcp-adapter
+```
+
+### `pi-subagents`
+
+- **提供方**：nicobailon
+- **仓库**：[nicobailon/pi-subagents](https://github.com/nicobailon/pi-subagents)
+- **组件**：Skills + Prompts + Tools
+- **作用**：单代理委派与脚本化多代理工作流
+
+安装：
+
+```bash
+pi install npm:pi-subagents
+```
+
+### `@juicesharp/rpiv-ask-user-question`
+
+- **提供方**：juicesharp
+- **仓库**：[juicesharp/rpiv-mono](https://github.com/juicesharp/rpiv-mono)
+- **组件**：Tools
+- **作用**：结构化提问工具，模型在需要猜测时向用户发出带选项的问卷，代替自由回复
+
+安装：
+
+```bash
+pi install npm:@juicesharp/rpiv-ask-user-question
+```
+
+### `@juicesharp/rpiv-todo`
+
+- **提供方**：juicesharp
+- **仓库**：[juicesharp/rpiv-mono](https://github.com/juicesharp/rpiv-mono)
+- **组件**：Tools
+- **作用**：为模型提供 todo 列表，以实时悬浮层展示，`/reload` 与上下文压缩后仍保留
+
+安装：
+
+```bash
+pi install npm:@juicesharp/rpiv-todo
+```
+
+### `pi-goal-x`
+
+- **提供方**：tmonk
+- **仓库**：[tmonk/pi-goal-x](https://github.com/tmonk/pi-goal-x)
+- **组件**：Tools
+- **作用**：为 Pi 增加 `/goal`，支持会话式目标规划、持久进度与独立完成审计
+
+安装：
+
+```bash
+pi install npm:pi-goal-x
+```
+
+### `pi-background-tasks`
+
+- **提供方**：ismailsaleekh
+- **仓库**：[ismailsaleekh/pi-background-tasks](https://github.com/ismailsaleekh/pi-background-tasks)
+- **组件**：Tools
+- **作用**：持久后台 shell 任务、只读委派代理与子 Pi 进程工作流
+
+安装：
+
+```bash
+pi install npm:pi-background-tasks
+```
+
+### `pi-lens`
+
+- **提供方**：apmantza
+- **仓库**：[apmantza/pi-lens](https://github.com/apmantza/pi-lens)
+- **组件**：Skills + Tools
+- **作用**：实时代码反馈——LSP、linter、formatter、类型检查与结构分析
+
+安装：
+
+```bash
+pi install npm:pi-lens
+```
+
+### `@langfuse/pi-observability-plugin`
+
+- **提供方**：Langfuse
+- **仓库**：[langfuse/pi-observability-plugin](https://github.com/langfuse/pi-observability-plugin)
+- **组件**：Tools
+- **作用**：将 prompt、agent 轮次、模型生成与工具调用追踪至 Langfuse
+
+安装：
+
+```bash
+pi install npm:@langfuse/pi-observability-plugin
+```
