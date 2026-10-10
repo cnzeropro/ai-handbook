@@ -8,21 +8,21 @@
 
 本仓库收录了一套面向 AI 编程助手的**行为约束规范**与**可复用技能（Skills）**，目标是让 AI 助手在软件开发任务中输出稳定、规范、安全的结果。
 
-- **行为规范**：[`rules.md`](rules.md) — 定义 AI 助手的语言要求、环境变量管理、文件系统边界、依赖管理、隐私与安全底线等行为准则。
-- **通用开发规范**：[`dev-rules.md`](dev-rules.md) — 跨语言通用开发规范：异常信息、日志记录、提示语及代码输出等原则上使用英文；代码注释以中文为主，保留专业英文术语；支持文档注释的语言优先采用标准文档注释格式。
+- **通用行为规范**：[`behavior-rules.md`](behavior-rules.md) — 定义 AI 助手的语言要求、环境变量管理、软件与工具安装、隐私与安全底线、沟通与执行等行为准则。
+- **通用开发规范**：[`dev-rules.md`](dev-rules.md) — 通用开发规范：异常信息、日志记录、提示语及代码输出等原则上使用英文；代码注释以中文为主，保留专业英文术语；支持文档注释的语言优先采用标准文档注释格式；并约定文件系统边界、依赖管理、脚本管理、版本控制、交付验证与密钥管理。
 - **资源清单**：[`catalog/`](catalog/) — 收录外部生态的「有哪些、怎么装」类清单，与本仓库自有的规则、技能包相区分：
   - **工具清单**：[`tools.md`](catalog/tools.md) — 收录 **Windows / macOS / Linux** 三平台下各 AI 编程工具的官方安装命令、依赖环境与默认安装路径。一级按「本地模型运行时 / 编程工具 / 编排与网关」分类，二级为出品方，三级为发行形态（Agent CLI / IDE 插件 / Desktop App / Web / 移动端 / 服务网关 / 容器镜像 / SDK）；命令与路径均取自官方文档或官方安装脚本原文。
   - **技能清单**：[`skills.md`](catalog/skills.md) — 外部 Agent Skills 的安装清单：`npx skills` 命令、全局 / 项目级的层级建议，以及每个 skill 的作用。注意与下方 `skills/`（本仓库自带的技能包）区分。
   - **插件清单**：[`plugins.md`](catalog/plugins.md) — 各 AI agent 工具的插件与插件市场。一级为 AI agent 工具，二级为插件市场（无市场概念的工具层级上提），三级为插件；目前收录 Claude Code，Codex、Pi 待补充。
-- **指令文件模板**：[`references/`](references/) — `AGENTS.md` 与 `CLAUDE.md` 两份等效模板，写入 agent 的指令文件后，AI 助手会在行动前获取最新规范。推荐装到全局（用户级），安装命令见[应用行为规范](#应用行为规范)。
+- **指令文件模板**：[`references/`](references/) — `AGENTS.md` 与 `CLAUDE.md` 两份等效模板，写入 agent 的指令文件后，AI 助手会在行动前获取最新规范。推荐装到全局（用户级），安装命令见[应用通用行为规范](#应用通用行为规范)。
 - **Skills**：[`skills/`](skills/) — 可复用技能包，以开放的 Agent Skills（`SKILL.md`）格式组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手，覆盖代码审查、数据库设计、功能编码等高频开发场景。
 
 ## 目录结构
 
 ```text
 .
-├── rules.md                         # AI 助手行为约束规范（全局规则）
-├── dev-rules.md                     # 通用开发规范（跨语言：输出语言 / 注释 / 文档注释）
+├── behavior-rules.md                # 通用行为规范（全局规则）
+├── dev-rules.md                     # 通用开发规范（输出语言 / 注释 / 文件系统 / 依赖 / 脚本 / 版本控制 / 交付验证 / 密钥）
 ├── catalog/                         # 外部资源清单（工具 / 技能 / 插件）
 │   ├── tools.md                     # AI 编程工具清单（三平台官方安装命令 / 依赖环境 / 安装路径）
 │   ├── skills.md                    # 外部 Agent Skills 安装清单（npx skills）
@@ -93,9 +93,9 @@ cp -r <本仓库路径>/skills/* ~/.codex/skills/
 
 > 未直接支持 skills 机制的 AI 助手（如 Copilot Chat 等）可将各 SKILL.md 的内容作为规范文档，配置到对应的规则（Rules）机制中使用。
 
-### 应用行为规范
+### 应用通用行为规范
 
-[`references/`](references/) 下的 `AGENTS.md` 与 `CLAUDE.md` 内容等效（前者为跨 agent 通用格式），写入 agent 的指令文件后，AI 助手会在行动前获取最新 [`rules.md`](rules.md) 并遵守。也可以直接把 [`rules.md`](rules.md) 合并进现有指令文件（完全离线，但规范更新后需手动重新合并）。
+[`references/`](references/) 下的 `AGENTS.md` 与 `CLAUDE.md` 内容等效（前者为跨 agent 通用格式），写入 agent 的指令文件后，AI 助手会在行动前获取最新规范（一级 [`behavior-rules.md`](behavior-rules.md)，二级 [`dev-rules.md`](dev-rules.md)）并遵守。也可以直接把 [`behavior-rules.md`](behavior-rules.md) 合并进现有指令文件（完全离线，但规范更新后需手动重新合并）。
 
 **推荐装到全局（用户级）配置**，一次配置对所有项目生效；也可以只放进单个项目：
 
