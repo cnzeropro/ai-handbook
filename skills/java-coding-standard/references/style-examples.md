@@ -1,8 +1,19 @@
 # 编码风格完整示例
 
-> 本文件为 `../SKILL.md` 的补充示例。核心规则见主文件“二、注释规范”至“九、工具类使用”。
+> 本文件为 `../SKILL.md` 的补充示例。核心规则见主文件"二、注释规范"至"九、工具类使用"。
 > 示例业务名（Model 等）为占位，实际开发替换为项目自身业务名。
 
+
+## 目录
+
+- 1. 注释规范完整示例
+- 2. 导入顺序完整示例
+- 3. 代码格式完整示例
+- 4. 枚举与常量完整示例
+- 5. 异常处理完整示例
+- 6. 日志完整示例
+- 7. 工具类使用示例
+- 8. 常见正反例速查 —— 循环拼接、equals/==、BigDecimal、遍历删除、空集合、魔法值、卫语句、switch fall-through、吞异常、finally return、资源关闭、日期 API、懒加载、防御性拷贝
 ## 1. 注释规范完整示例
 
 ```java
@@ -465,4 +476,291 @@ List<Long> ids = CollectionUtil.mapDistinct(models, ModelGetWithUserVO::getId);
 
 // 任务调度客户端
 JobClientUtil.sendRunRequest(jobCode);
+```
+
+## 8. 常见正反例速查
+
+> 收录主流规范（Alibaba Java 开发手册、Google Style、Sonar 等）与 Code Review 高频问题，供审查时快速对照。规则详见 `general-quality.md`。
+
+### 8.1 字符串与拼接
+
+循环内拼接字符串：
+
+```java
+// ❌ 每次循环都新建 StringBuilder
+String result = "";
+for (String item : items) {
+    result += item;
+}
+
+// ✅
+StringBuilder sb = new StringBuilder();
+for (String item : items) {
+    sb.append(item);
+}
+String result = sb.toString();
+```
+
+equals 常量在前（防 NPE）：
+
+```java
+// ❌ name 为 null 时抛 NPE
+if (name.equals("test")) { }
+
+// ✅
+if ("test".equals(name)) { }
+// ✅ 或
+if (Objects.equals(name, "test")) { }
+```
+
+包装类型比较用 equals（Integer 缓存陷阱）：
+
+```java
+// ❌ 缓存区间（-128~127）外恒为 false
+Integer a = 130;
+Integer b = 130;
+if (a == b) { }              // false
+
+// ✅
+if (a.equals(b)) { }
+```
+
+金额等精确计算用 BigDecimal：
+
+```java
+// ❌ 浮点误差
+double total = 0.1 + 0.2;    // 0.30000000000000004
+
+// ✅
+BigDecimal total = new BigDecimal("0.1").add(new BigDecimal("0.2"));
+```
+
+### 8.2 集合
+
+遍历时删除元素（ConcurrentModificationException）：
+
+```java
+// ❌ 增强 for 中直接 remove
+for (Model model : models) {
+    if (model.isExpired()) {
+        models.remove(model);
+    }
+}
+
+// ✅
+models.removeIf(Model::isExpired);
+// ✅ 或迭代器删除
+Iterator<Model> it = models.iterator();
+while (it.hasNext()) {
+    if (it.next().isExpired()) {
+        it.remove();
+    }
+}
+```
+
+返回空集合而非 null：
+
+```java
+// ❌ 调用方必须判 null，否则 NPE
+public List<Model> findModels() {
+    return null;
+}
+
+// ✅
+public List<Model> findModels() {
+    return Collections.emptyList();
+}
+```
+
+初始化容量：
+
+```java
+// ❌ 大数据量时频繁扩容
+Map<Long, Model> modelMap = new HashMap<>();
+
+// ✅ 已知元素量 n
+Map<Long, Model> modelMap = new HashMap<>((int) (n / 0.75f) + 1);
+```
+
+### 8.3 控制语句
+
+魔法值：
+
+```java
+// ❌
+if (model.getType() == 3) { }
+
+// ✅
+private static final int TYPE_STAGED = 3;
+
+if (model.getType() == TYPE_STAGED) { }
+```
+
+深嵌套改卫语句：
+
+```java
+// ❌ 三层嵌套
+public void handle(Model model) {
+    if (model != null) {
+        if (model.isActive()) {
+            if (model.getOwner() != null) {
+                deploy(model);
+            }
+        }
+    }
+}
+
+// ✅
+public void handle(Model model) {
+    if (model == null || !model.isActive() || model.getOwner() == null) {
+        return;
+    }
+    deploy(model);
+}
+```
+
+switch 漏 break（fall-through）：
+
+```java
+// ❌ A 分支穿透到 B
+switch (type) {
+    case A:
+        handleA();
+    case B:
+        handleB();
+        break;
+    default:
+        break;
+}
+
+// ✅ 每个分支 break（或用 switch 表达式，Java 14+）
+switch (type) {
+    case A:
+        handleA();
+        break;
+    case B:
+        handleB();
+        break;
+    default:
+        break;
+}
+```
+
+### 8.4 异常与资源
+
+吞异常与丢堆栈：
+
+```java
+// ❌ 什么都不做
+try {
+    deploy(model);
+} catch (Exception e) {
+}
+
+// ❌ 仅打 message，丢失堆栈
+} catch (Exception e) {
+    log.error("Deploy failed: {}", e.getMessage());
+}
+
+// ✅ 占位符 + 堆栈
+} catch (Exception e) {
+    log.error("Deploy model failed: modelId={}", model.getId(), e);
+}
+```
+
+finally 中 return（吞掉异常、覆盖返回值）：
+
+```java
+// ❌ 永远返回 fallback，try 中的异常被吞
+try {
+    return doWork();
+} finally {
+    return fallback;
+}
+
+// ✅ finally 只做清理，不放 return
+```
+
+资源未关闭：
+
+```java
+// ❌ 抛异常时连接泄漏
+Connection conn = dataSource.getConnection();
+try {
+    // ...
+} finally {
+    conn.close();
+}
+
+// ✅ try-with-resources（JDK 7+）
+try (Connection conn = dataSource.getConnection()) {
+    // ...
+}
+```
+
+catch (Exception) 一把抓：
+
+```java
+// ❌ 掩盖真实问题，连 Error/运行时异常一并吞
+try {
+    parse(input);
+} catch (Exception e) {
+    log.error("failed", e);
+}
+
+// ✅ 捕获具体异常
+} catch (ParseException e) {
+    log.error("Parse input failed: input={}", input, e);
+}
+```
+
+### 8.5 日期与简单并发
+
+遗留日期 API：
+
+```java
+// ❌
+SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");   // 线程不安全
+
+// ✅ java.time 不可变线程安全（Java 8+）
+DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+```
+
+不同步的懒加载：
+
+```java
+// ❌ 多线程下可能创建多个实例
+private static Config instance;
+
+public static Config getInstance() {
+    if (instance == null) {
+        instance = loadConfig();
+    }
+    return instance;
+}
+
+// ✅ 静态内部类 Holder（懒加载 + 线程安全）
+private static class Holder {
+    private static final Config INSTANCE = loadConfig();
+}
+
+public static Config getInstance() {
+    return Holder.INSTANCE;
+}
+```
+
+### 8.6 对象边界
+
+可变对象跨边界（防御性拷贝）：
+
+```java
+// ❌ 外部可直接修改内部状态
+public List<Tag> getTags() {
+    return this.tags;
+}
+
+// ✅
+public List<Tag> getTags() {
+    return Collections.unmodifiableList(this.tags);
+}
 ```
