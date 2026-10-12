@@ -1,6 +1,6 @@
 ---
 name: "java-feature-standard"
-description: "提供 Java 后端功能模块开发规范：分层架构、命名约定、对象模型、注解与事务、接口设计、二方库与依赖管理。适用于 Spring Boot/MyBatis(-Plus)/JPA/Dubbo/Feign/MQ 等技术栈；当需要新建功能或模块、重构旧代码、统一模块结构与命名时使用。语言级编码规范见 `java-coding-standard`。"
+description: "提供 Java 后端功能模块开发规范：分层架构、命名约定、对象模型、注解与事务、接口设计、二方库与依赖管理。适用于 Spring Boot/MyBatis(-Plus)/JPA/Dubbo/Feign/MQ 等技术栈；当需要新建功能或模块、重构旧代码、统一模块结构与命名时使用。凡涉及 Java 功能模块开发与重构的任务均应主动使用。语言级编码规范见 `java-coding-standard`。"
 ---
 
 # 功能模块开发规范

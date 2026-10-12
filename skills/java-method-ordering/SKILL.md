@@ -1,6 +1,6 @@
 ---
 name: "java-method-ordering"
-description: "统一接口/端点/契约方法的排序规则（Controller/Service/Mapper/Feign/@HttpExchange/Dubbo/gRPC 等）。当需要新建接口、重排方法顺序、统一各层代码结构、向现有接口添加方法或检查方法排序是否符合规范时使用。"
+description: "统一接口/端点/契约方法的排序规则（Controller/Service/Mapper/Feign/@HttpExchange/Dubbo/gRPC 等）。当需要新建接口、重排方法顺序、统一各层代码结构、向现有接口添加方法或检查方法排序是否符合规范时使用；凡涉及接口/方法组织与排序的任务均应主动使用。"
 ---
 
 # 方法（接口）排序规则
