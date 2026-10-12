@@ -103,7 +103,7 @@ const { firstName, lastName } = user;
 const { address: { city = 'unknown' } = {} } = user;
 ```
 
-函数签名解构（Airbnb 5.1"best"形态）：
+函数签名解构（Airbnb 5.1“best”形态）：
 
 ```js
 // ❌

@@ -40,7 +40,7 @@ List<String> names = models.stream()
 
 ## 三、Optional 与 null 处理
 
-- 详见通用规范 `general-quality.md`"六、异常处理规范 → Optional 使用规范"：仅用于方法返回值、`map` / `flatMap` / `orElseThrow` 链式调用、禁返回 null 的 Optional
+- 详见通用规范 `general-quality.md`“六、异常处理规范 → Optional 使用规范”：仅用于方法返回值、`map` / `flatMap` / `orElseThrow` 链式调用、禁返回 null 的 Optional
 
 ## 四、日期时间 API（java.time）
 

@@ -5,7 +5,7 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 
 # React 编码规范
 
-本 skill 提供 React 框架层编码规范，以 **函数组件 + Hooks（React 18/19）为基线**，规则主干来自 React 官方 Rules of React（react.dev，"rules not guidelines"——违反即 bug）与官方文档惯用法。标记结构与样式分别见 `html-coding-standard` / `css-coding-standard`。
+本 skill 提供 React 框架层编码规范，以 **函数组件 + Hooks（React 18/19）为基线**，规则主干来自 React 官方 Rules of React（react.dev，“rules not guidelines”——违反即 bug）与官方文档惯用法。标记结构与样式分别见 `html-coding-standard` / `css-coding-standard`。
 
 > 结构说明：本文件为精要版与索引；各主题完整规则与代码示例见 `references/`，按需加载。
 >
@@ -46,7 +46,7 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 
 > React 19 变化点：函数组件 `defaultProps` 已废弃（用参数默认值）；`forwardRef` 不再需要（`ref` 作为普通 prop）；Actions / `useActionState` 可用。
 
-## 二、Rules of React 精要（官方"规则而非指南"）
+## 二、Rules of React 精要（官方“规则而非指南”）
 
 完整规则与正反例见 `references/general-quality.md`，完整示例见 `references/style-examples.md`：
 
@@ -70,7 +70,7 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 ## 三、Hooks 使用约定
 
 - 派生数据在渲染期计算，**不为派生值建 state**；昂贵计算用 `useMemo`
-- "你可能不需要 Effect"：响应事件用事件处理器；prop 变化重置状态用 `key`；数据链式同步改为派生/事件——Effect 只做与 React 外部系统同步
+- “你可能不需要 Effect”：响应事件用事件处理器；prop 变化重置状态用 `key`；数据链式同步改为派生/事件——Effect 只做与 React 外部系统同步
 - Effect 必须有完整依赖数组（`exhaustive-deps`）；需要清理的副作用（订阅、定时器、AbortController）配对返回清理函数
 - 状态按需选型：局部 `useState`、复杂迁移逻辑 `useReducer`、跨组件就近提升或状态库；`useContext` 传递低频全局上下文
 - `useCallback` / `useMemo` 不预防性滥用：仅用于确认瓶颈、引用相等性有语义、或文档要求的场景（React Compiler 启用的项目可省略）
@@ -87,7 +87,7 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 ## 五、渲染性能与安全
 
 - 列表 `key` 用稳定业务 id，禁 index（可重排/过滤列表尤其）
-- 条件渲染注意 `&&` 数字陷阱（`count && <List />` 在 count 为 0 时渲染 "0"）
+- 条件渲染注意 `&&` 数字陷阱（`count && <List />` 在 count 为 0 时渲染 “0”）
 - 避免渲染期创建新数组/对象/函数传给 memo 子组件（确认瓶颈后 `useMemo`/`useCallback`）
 - 大列表虚拟滚动（react-window 等，按项目选型）
 - `dangerouslySetInnerHTML` 等同 Vue 的 `v-html`：仅限完全可信内容，用户输入必须消毒（XSS）
@@ -95,5 +95,5 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 ## References（完整规范与代码示例）
 
 - `references/general-quality.md` — Rules of React 完整版、Hooks 使用约定（Effect 正确场景）、组件设计与状态、渲染性能与安全
-- `references/style-examples.md` — 组件骨架正反例、Rules 正反例、Effect 误用高频案例（含"你可能不需要 Effect"）、速查表
+- `references/style-examples.md` — 组件骨架正反例、Rules 正反例、Effect 误用高频案例（含“你可能不需要 Effect”）、速查表
 - `references/react-legacy.md` — class 组件遗留环境：写法基线、Hooks 对照、最小侵入原则

@@ -1,6 +1,6 @@
 # React 通用质量规范
 
-> 本文件为 react-coding-standard 的通用质量规范，基线 **函数组件 + Hooks（React 18/19）**。一～二章来自 React 官方 Rules of React（"rules not guidelines"，违反即 bug），三～六章为官方文档惯用法。完整示例见 `style-examples.md`（同目录）。
+> 本文件为 react-coding-standard 的通用质量规范，基线 **函数组件 + Hooks（React 18/19）**。一～二章来自 React 官方 Rules of React（“rules not guidelines”，违反即 bug），三～六章为官方文档惯用法。完整示例见 `style-examples.md`（同目录）。
 
 ## 目录
 
@@ -79,7 +79,7 @@ if (!expanded) return null;
 
 ## 二、Hooks 使用约定
 
-### 1. 派生数据不建 state（官方"你可能不需要 Effect"）
+### 1. 派生数据不建 state（官方“你可能不需要 Effect”）
 
 ```tsx
 // ❌ state 冗余 + Effect 同步，易失步
@@ -101,10 +101,10 @@ const sorted = useMemo(
 );
 ```
 
-### 2. Effect 只做"与外部系统同步"
+### 2. Effect 只做“与外部系统同步”
 
 - 适用：订阅、定时器、非 React 组件操作、日志上报
-- 事件驱动的逻辑放事件处理器，不放 Effect（"响应提交"是事件不是 Effect）
+- 事件驱动的逻辑放事件处理器，不放 Effect（“响应提交”是事件不是 Effect）
 - prop 变化需要重置内部状态时，优先用 `key` 重挂载而非 Effect 监听
 
 ```tsx
@@ -148,7 +148,7 @@ useEffect(() => {
 
 - **组合优于继承**：`children`、组合组件、Render Props/自定义 Hook 复用逻辑
 - **状态就近**：放实际使用的最低层级；共享时提升到最近公共父级
-- **单一数据源**：同一数据只存一处，其余派生；避免 `useEffect` 把 props 同步进 state（反模式；确需"随 prop 重置"用 `key`）
+- **单一数据源**：同一数据只存一处，其余派生；避免 `useEffect` 把 props 同步进 state（反模式；确需“随 prop 重置”用 `key`）
 
 ```tsx
 // ❌ props 同步进 state 的反模式

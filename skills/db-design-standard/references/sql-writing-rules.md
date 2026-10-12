@@ -1,6 +1,6 @@
 # SQL 编写规约
 
-> 本文件为 `../SKILL.md` 的补充规范。示例以 MySQL 语法呈现；其他数据库按"数据库适配说明"对应替换（如 `ISNULL()` 对应 PostgreSQL 的 `IS NULL` / `COALESCE`，`IFNULL()` 对应 `COALESCE`）。
+> 本文件为 `../SKILL.md` 的补充规范。示例以 MySQL 语法呈现；其他数据库按“数据库适配说明”对应替换（如 `ISNULL()` 对应 PostgreSQL 的 `IS NULL` / `COALESCE`，`IFNULL()` 对应 `COALESCE`）。
 
 1. **禁止 `SELECT *`**：明确列出所需字段。理由：增加查询分析器解析成本；表增减字段易与 resultMap 配置不一致；无用字段增加网络消耗（尤其 `text` 类型字段）
 2. **统计行数使用 `count(*)`**：不使用 `count(列名)` 或 `count(常量)`。`count(*)` 是 SQL92 标准语法，与数据库无关，统计含 NULL 的行；`count(列名)` 不统计该列 NULL 行

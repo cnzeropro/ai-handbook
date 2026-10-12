@@ -30,7 +30,7 @@ if (obj instanceof Point(int x, _)) {
 }
 ```
 
-> 注意：捕获到的异常对象**不得**用 `_` 丢弃——要么按日志规范携带堆栈记录（`log.error("...", e)`），要么按"记录与抛出择一"包装重抛（见 `general-quality.md`"六、异常处理规范"）。`_` 只适用于真正无需使用的变量。
+> 注意：捕获到的异常对象**不得**用 `_` 丢弃——要么按日志规范携带堆栈记录（`log.error("...", e)`），要么按“记录与抛出择一”包装重抛（见 `general-quality.md`“六、异常处理规范”）。`_` 只适用于真正无需使用的变量。
 
 ## 二、Markdown 文档注释（Java 23）
 
@@ -39,7 +39,7 @@ if (obj instanceof Point(int x, _)) {
 
 ## 三、Stream Gatherers（Java 24）
 
-- 定制中间操作用 `Stream.gather(Gatherer)` 表达（滑动窗口、去重、自定义聚合等），替代"collect 后循环再包回 Stream"的断裂写法
+- 定制中间操作用 `Stream.gather(Gatherer)` 表达（滑动窗口、去重、自定义聚合等），替代“collect 后循环再包回 Stream”的断裂写法
 - 自定义 Gatherer 复杂度过高时，仍优先拆分具名方法保证可读性
 
 ## 四、紧凑源文件与实例 main 方法（Java 25）
@@ -80,4 +80,4 @@ public ModelView(Model model) {
 
 ## 八、预览特性
 
-- primitive type patterns（JEP 507）、Structured Concurrency（JEP 505）等仍处预览：默认不使用，除非项目明确开启 `--enable-preview` 并接受变更风险（与 `SKILL.md`"一、版本判定与总则"第 4 条一致）
+- primitive type patterns（JEP 507）、Structured Concurrency（JEP 505）等仍处预览：默认不使用，除非项目明确开启 `--enable-preview` 并接受变更风险（与 `SKILL.md`“一、版本判定与总则”第 4 条一致）

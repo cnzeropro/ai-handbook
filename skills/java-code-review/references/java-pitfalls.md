@@ -25,7 +25,7 @@
 ## 3. 日期时间
 
 - 禁止使用 `java.sql.Date` / `java.sql.Time` / `java.sql.Timestamp`（getHours/getYear 抛异常、与 `java.util.Date` 比较存在 JDK BUG）
-- 日期格式化年份用小写 `yyyy`（大写 `YYYY` 是"周所在年"，跨年周会多算一年）
+- 日期格式化年份用小写 `yyyy`（大写 `YYYY` 是“周所在年”，跨年周会多算一年）
 - 禁止硬编码一年 365 天（闰年问题；用 `LocalDate.lengthOfYear` 等）
 
 ## 4. 并发与锁
@@ -38,7 +38,7 @@
 - 单例获取与其中方法必须线程安全
 - 禁止应用内显式创建线程（用线程池）；线程池禁止 `Executors` 创建（用 `ThreadPoolExecutor`，防无界队列 OOM）；线程必须命名
 - 并发更新同一记录需加锁或乐观锁（version），避免更新丢失；资金类场景用悲观锁
-- 高并发场景避免"等于"判断作为中断/退出条件（等值被击穿，用区间判断）
+- 高并发场景避免“等于”判断作为中断/退出条件（等值被击穿，用区间判断）
 - 双重检查锁（DCL）的目标字段必须 `volatile`
 - `HashMap` 并发写入导致数据不一致（JDK 7 的 resize 死链问题为历史版本），并发场景用 `ConcurrentHashMap`
 

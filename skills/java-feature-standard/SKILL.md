@@ -7,7 +7,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 此 skill 提供 Java 后端功能模块开发规范。核心规则见本文件；各层完整代码示例见 `references/`（按需读取，不默认加载）。语言级编码规范（注释、格式、常量枚举、异常、日志等）见 `java-coding-standard`。
 
-> 示例说明：本文及 `references/` 中的所有示例以"模型管理平台"业务域（Model + Job 任务调度 + Deployment 部署）演示语法与结构，`Model`/`Job` 均为占位业务名，实际开发时替换为项目自身的业务域。
+> 示例说明：本文及 `references/` 中的所有示例以“模型管理平台”业务域（Model + Job 任务调度 + Deployment 部署）演示语法与结构，`Model`/`Job` 均为占位业务名，实际开发时替换为项目自身的业务域。
 
 ## 何时使用
 

@@ -20,7 +20,7 @@
 // ❌ private final ModelService ms;         private String mid;
 ```
 
-> 常量与枚举的命名及使用规范见"五、常量与枚举规范"。
+> 常量与枚举的命名及使用规范见“五、常量与枚举规范”。
 
 ## 二、注释规范
 
@@ -154,7 +154,7 @@ if (ModelConstants.MODEL_TYPE_PREDICTION.equals(model.getType())) { ... }
 - `Optional` 仅用于方法返回值，禁止用作字段、方法参数、集合元素
 - 禁止返回 `null` 的 Optional（应使用 `Optional.empty()`）
 - 链式调用使用 `map` / `flatMap` / `orElseThrow`，避免 `get()` 直接取值（无值抛异常）
-- 查询无结果可 `orElse(null)` 表达"无数据"语义（与"禁止返回 null 的 Optional"不冲突，需在方法 Javadoc 说明）
+- 查询无结果可 `orElse(null)` 表达“无数据”语义（与“禁止返回 null 的 Optional”不冲突，需在方法 Javadoc 说明）
 
 ### 4. 错误码
 

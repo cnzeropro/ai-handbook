@@ -45,7 +45,7 @@
 
 ## 三、属性顺序与书写
 
-- 属性按"影响范围从大到小"分组书写（团队可用 Stylelint 插件强制）：
+- 属性按“影响范围从大到小”分组书写（团队可用 Stylelint 插件强制）：
   1. 布局：`display` / `position` / `top` / `flex` / `grid` / `gap`
   2. 盒模型：`width` / `height` / `margin` / `padding` / `border`
   3. 排版：`font` / `line-height` / `color` / `text-align`
@@ -144,4 +144,4 @@
 - 谨慎高开销效果：大面积 `box-shadow` 动画、`filter: blur` 连续动画、无限 `transition: all`（明确列出属性：`transition: opacity 0.2s`）
 - 布局抖动：动画优先用 `transform` / `opacity`（合成层），避免动画 `width` / `top`
 - 组件级隔离按项目选型：Vue scoped / CSS Modules / Shadow DOM；全局样式只放真正全局的（reset、令牌、工具类）
-- 删除死样式：重构时同步清理无引用样式（可用工具扫描），不留"以后可能用"
+- 删除死样式：重构时同步清理无引用样式（可用工具扫描），不留“以后可能用”

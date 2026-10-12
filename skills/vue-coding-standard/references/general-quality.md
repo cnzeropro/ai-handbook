@@ -1,6 +1,6 @@
 # Vue 通用质量规范
 
-> 本文件为 vue-coding-standard 的通用质量规范，基线 **Vue 3 + `<script setup>`**。一～四章主干来自 Vue 官方 Style Guide（按 Priority A/B/C/D 分级，标注"官方 A/B/C/D"），五～七章为组合式 API 开发约定。完整示例见 `style-examples.md`（同目录）。
+> 本文件为 vue-coding-standard 的通用质量规范，基线 **Vue 3 + `<script setup>`**。一～四章主干来自 Vue 官方 Style Guide（按 Priority A/B/C/D 分级，标注“官方 A/B/C/D”），五～七章为组合式 API 开发约定。完整示例见 `style-examples.md`（同目录）。
 
 ## 目录
 

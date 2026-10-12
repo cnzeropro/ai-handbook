@@ -1,6 +1,6 @@
 # Java 17（LTS）规范
 
-> 适用：项目构建目标达到 Java 17 时使用。覆盖 Java 12 ~ 17 增量；须同时适用此前全部分册与通用规范。正反例对照见 `SKILL.md`"一、版本判定与总则"。
+> 适用：项目构建目标达到 Java 17 时使用。覆盖 Java 12 ~ 17 增量；须同时适用此前全部分册与通用规范。正反例对照见 `SKILL.md`“一、版本判定与总则”。
 
 ## 一、record（Java 16）
 
@@ -76,6 +76,6 @@ String sql = """
 
 ## 五、其他
 
-- `instanceof` 模式匹配（Java 16）：`if (obj instanceof String s)` 替代"判断 + 强转"两步写法
+- `instanceof` 模式匹配（Java 16）：`if (obj instanceof String s)` 替代“判断 + 强转”两步写法
 - `Stream.toList()`（Java 16）替代 `collect(Collectors.toList())`；注意返回**不可变**列表，调用方需要可变列表时仍用 `collect(Collectors.toCollection(ArrayList::new))`
 - Helpful NullPointerException（Java 15 起默认开启）：可依赖精确 NPE 提示定位链式调用断点，但仍应按通用规范用 `Optional` 减少链式 NPE

@@ -20,7 +20,7 @@ String describe(Shape shape) {
 
 ## 二、虚拟线程（Java 21）
 
-- 适用：高并发 IO 密集任务（HTTP 调用、DB 访问）；"每任务一线程"模型，创建成本极低
+- 适用：高并发 IO 密集任务（HTTP 调用、DB 访问）；“每任务一线程”模型，创建成本极低
 - 用 `Executors.newVirtualThreadPerTaskExecutor()` 或 `Thread.ofVirtual().start(...)`；**不要池化虚拟线程**
 - 注意：`synchronized` 块内的阻塞 IO 会导致载体线程 pin，热点路径改用 `ReentrantLock` 或缩小同步块
 - `ThreadLocal` 在海量虚拟线程下内存放大，慎用；跨任务传递上下文优先 Scoped Values（Java 25 正式，见 `java-25.md`）

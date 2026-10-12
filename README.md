@@ -79,7 +79,7 @@ npx skills add cnzeropro/ai-handbook
 | `vue-coding-standard` | Vue 编码规范（Vue 3 Composition API 基线）：SFC 结构与命名、props/emits 约定、指令使用、组合式 API、组件通信与 Pinia、性能与安全（以官方 Style Guide 四级分级为纲） |
 | `react-coding-standard` | React 编码规范（函数组件 + Hooks 基线）：Rules of React、Hooks 与 Effect 正确场景、组件设计与状态、渲染性能与安全（以 react.dev 官方规则为纲） |
 
-> 以上十个 skill 按"语言层 → 框架层"分层各司其职：语言层 `java-coding-standard`、`js-coding-standard`、`html-coding-standard`、`css-coding-standard` 分别约束 Java / JavaScript / HTML / CSS 代码风格；框架层 `vue-coding-standard` 与 `react-coding-standard` 约束框架约定并引用语言层；`java-feature-standard` 约束模块级结构设计，`java-method-ordering` 约束方法组织顺序，`java-code-review` 提供系统化的审查清单，`db-design-standard` 规范库表设计与 SQL 编写。
+> 以上十个 skill 按“语言层 → 框架层”分层各司其职：语言层 `java-coding-standard`、`js-coding-standard`、`html-coding-standard`、`css-coding-standard` 分别约束 Java / JavaScript / HTML / CSS 代码风格；框架层 `vue-coding-standard` 与 `react-coding-standard` 约束框架约定并引用语言层；`java-feature-standard` 约束模块级结构设计，`java-method-ordering` 约束方法组织顺序，`java-code-review` 提供系统化的审查清单，`db-design-standard` 规范库表设计与 SQL 编写。
 
 ## 使用方法
 

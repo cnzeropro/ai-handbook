@@ -39,7 +39,7 @@ class ModelList extends React.Component {
 | `componentWillUnmount` | `useEffect` 返回清理函数 |
 | `shouldComponentUpdate` / `PureComponent` | `React.memo` |
 | 实例字段 / 方法 | `useRef` / 函数（或 `useCallback`） |
-| 生命周期分散的同域逻辑 | 按"关注点"聚合的自定义 Hook（`useXxx`） |
+| 生命周期分散的同域逻辑 | 按“关注点”聚合的自定义 Hook（`useXxx`） |
 
 ## 三、遗留代码最小侵入
 

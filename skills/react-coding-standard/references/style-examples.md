@@ -6,7 +6,7 @@
 
 - 1. 组件骨架正反例
 - 2. Rules of React 正反例（纯粹性/不可变/直接调用/Hooks 规则）
-- 3. Effect 误用高频案例（"你可能不需要 Effect"）
+- 3. Effect 误用高频案例（“你可能不需要 Effect”）
 - 4. 列表 key 与条件渲染陷阱
 - 5. 数据获取与竞态
 - 6. 命名约定完整示例
@@ -113,7 +113,7 @@ function ModelList({ expanded }: Props) {
 }
 ```
 
-## 3. Effect 误用高频案例（"你可能不需要 Effect"）
+## 3. Effect 误用高频案例（“你可能不需要 Effect”）
 
 派生数据不建 state：
 
