@@ -2,7 +2,26 @@
 
 > 本文件为 `../SKILL.md` 的补充规范：Controller 接口设计的详细规则与示例。核心条目见主文件“一、分层架构与职责 → Controller 层规范”。
 
-## 1. 参数校验
+## 1. 参数与响应类型
+
+- 接口参数与响应禁止使用 `Map` 及类似 Map 的弱类型实体（如 `Map<String, Object>`、`JSONObject`、Spring MVC 的 `Model` / `ModelMap`），统一使用具名 PO(Param)（请求参数对象）与 VO（响应视图对象）
+- 原因：弱类型无字段契约，无法配合注解校验、无法生成接口文档，字段名易拼错且前后端难以追溯
+- 确因动态字段等特殊场景必须使用时，先向用户明确提示（说明原因、影响与替代方案），经确认后方可使用
+
+```java
+// ❌ 错误：参数与响应使用 Map，无字段契约
+@PostMapping("save")
+public Result<Map<String, Object>> save(@RequestBody Map<String, Object> param) { ... }
+
+// ✅ 正确：具名 PO(Param) / VO，字段明确、可校验、可生成文档
+@PostMapping("save")
+public Result<Void> save(@Valid @RequestBody ModelSavePO modelSaveParam) { ... }
+
+@GetMapping("get")
+public Result<ModelGetByIdVO> getById(@RequestParam Long id) { ... }
+```
+
+## 2. 参数校验
 
 - 请求参数使用 Jakarta Validation 注解校验：`@NotNull` / `@NotBlank` / `@Size` / `@Min` / `@Max` 等
 - 校验入口：Controller 方法参数上加 `@Valid`（或类上加 `@Validated`），校验失败由全局异常处理器统一转错误响应
@@ -25,7 +44,7 @@ public Result<Void> save(@Valid @RequestBody ModelSavePO modelSaveParam) {
 }
 ```
 
-## 2. 幂等设计
+## 3. 幂等设计
 
 写接口（新增/更新/删除）需要幂等设计，防止重复提交与网络重试导致重复数据：
 
@@ -33,7 +52,7 @@ public Result<Void> save(@Valid @RequestBody ModelSavePO modelSaveParam) {
 - 防重复提交 token：表单/关键操作先获取 token，提交时携带并校验一次性
 - 状态机校验：更新类接口校验当前状态，非法状态转换直接拒绝（天然幂等）
 
-## 3. 空列表返回
+## 4. 空列表返回
 
 列表查询接口返回空集合 `[]`（而非 null），减少前端 null 判断：
 
@@ -45,7 +64,7 @@ return Result.ok(Collections.emptyList());
 return Result.ok(null);
 ```
 
-## 4. 错误响应结构
+## 5. 错误响应结构
 
 服务端错误响应包含四要素，各司其职：
 
@@ -56,19 +75,19 @@ return Result.ok(null);
 | `errorMessage` | 排查人员 | 后端出错原因，不含敏感数据 |
 | `userTip` | 用户 | 简短友好、引导下一步操作 |
 
-## 5. 路径风格
+## 6. 路径风格
 
 - 路径风格按项目统一（示例默认 camelCase 动作式路径，如 `getWithUserById`；跨团队项目可统一为小写下划线）；路径必须小写
 - 路径禁止携带表示内容类型的后缀（如 `.json` / `.xml`，通过 Accept 头表达）
 - 路径中不加入版本号（版本控制在请求头中体现）
 - URL 携带参数不超过 2048 字节（浏览器最小限制），大批量参数走 body
 
-## 6. 分页参数边界
+## 7. 分页参数边界
 
 - 前端传入 pageSize 小于 1 时按第 1 页处理；服务端限制 pageSize 上限（防超大分页拖垮查询）
 - 请求页码大于总页数时返回最后一页（或空页，按项目约定统一）
 
-## 7. 序列化细节
+## 8. 序列化细节
 
 - 时间字段统一 `@JsonFormat`（如 `yyyy-MM-dd HH:mm:ss`），避免默认时间戳/纳秒格式
 - 敏感字段（密码、token 等）返回 VO 中加 `@JsonIgnore` 或使用脱敏序列化器

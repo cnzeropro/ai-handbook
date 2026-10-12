@@ -91,7 +91,8 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 6. 方法顺序遵循 `java-method-ordering` skill（查询 → 新增 → 更新 → 删除 → 其他）
 7. 异常交由全局异常处理器统一处理，不逐接口堆叠 try-catch（异常书写规范见 `java-coding-standard`）
 8. 响应 JSON 的 key 使用 lowerCamelCase（如 `errorCode` / `menuList`），禁止全大写或下划线命名
-9. 接口设计（参数校验、幂等、空列表返回、错误响应、路径风格）遵循 `references/interface-design.md`
+9. 接口设计（参数与响应类型、参数校验、幂等、空列表返回、错误响应、路径风格）遵循 `references/interface-design.md`
+10. 接口参数与响应禁止使用 `Map` 及类似 Map 的弱类型实体（如 Spring MVC 的 `Model` / `ModelMap`），统一使用具名 PO(Param) / VO；确因特殊场景必须使用时，先向用户明确提示（详见 `references/interface-design.md`）
 
 ### 2. Service 层规范
 
