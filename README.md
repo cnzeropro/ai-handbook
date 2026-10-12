@@ -28,7 +28,7 @@
 | 技能清单 | [`catalog/skills.md`](catalog/skills.md) | 收录外部 Agent Skills 的安装清单，含 `npx skills` 安装命令、全局 / 项目级部署层级建议及各 skill 功能说明 |
 | 插件清单 | [`catalog/plugins.md`](catalog/plugins.md) | 收录各 AI agent 工具的插件与插件市场；目前已收录 Claude Code，Codex 与 Pi 待补充 |
 | 指令文件模板 | [`references/`](references/) | 提供 `AGENTS.md` 与 `CLAUDE.md` 两份等效模板；写入 agent 指令文件后，AI 助手将在执行任务前自动获取并遵循最新规范（见[应用通用规范](#应用通用规范)） |
-| Skills 技能包 | [`skills/`](skills/) | 本仓库提供的 6 个可复用技能，遵循开放的 Agent Skills（`SKILL.md`）规范组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手（见[Skills 一览](#skills-一览)） |
+| Skills 技能包 | [`skills/`](skills/) | 本仓库提供的 10 个可复用技能，遵循开放的 Agent Skills（`SKILL.md`）规范组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手（见[Skills 一览](#skills-一览)） |
 
 > [`catalog/`](catalog/) 收录外部生态资源的用途与安装方式等信息，与本仓库自有的规则、技能包相区分；其中 `catalog/skills.md` 与 [`skills/`](skills/) 目录名称相近，使用时请注意区分。
 
@@ -74,8 +74,12 @@ npx skills add cnzeropro/ai-handbook
 | `java-code-review` | Java 代码审查：安全（含深度清单）、框架最佳实践、代码质量、性能、并发、持久层、日志 + Java 语言陷阱清单，附三级问题输出模板 |
 | `db-design-standard` | 关系型数据库表设计与 SQL 脚本规范：10 条设计规则、SQL 编写规约、辅助索引设计指南、DDL 变更规范、多库适配映射与验收清单 |
 | `js-coding-standard` | JavaScript 语言级编码规范：变量声明、字符串、解构、对象、数组、函数、相等比较与类型判断、迭代、异步、Class、模块、命名、注释与安全禁区，按项目语言版本适配最佳实践（含 ES5 遗留环境写法对照表） |
+| `html-coding-standard` | HTML 编码规范：文档结构、语义化标签、属性规范、可访问性（a11y）、表单、媒体与 SEO 元信息（含 Vue/React 模板中的标记结构） |
+| `css-coding-standard` | CSS 编码规范：命名与组织（BEM 默认）、选择器与优先级、属性顺序、Flex/Grid 布局、响应式、主题变量与性能 |
+| `vue-coding-standard` | Vue 编码规范（Vue 3 Composition API 基线）：SFC 结构与命名、props/emits 约定、指令使用、组合式 API、组件通信与 Pinia、性能与安全（以官方 Style Guide 四级分级为纲） |
+| `react-coding-standard` | React 编码规范（函数组件 + Hooks 基线）：Rules of React、Hooks 与 Effect 正确场景、组件设计与状态、渲染性能与安全（以 react.dev 官方规则为纲） |
 
-> 以上六个 skill 各司其职：`java-coding-standard` 与 `js-coding-standard` 分别约束 Java / JavaScript 语言级编码风格，`java-feature-standard` 约束模块级结构设计，`java-method-ordering` 约束方法组织顺序，`java-code-review` 提供系统化的审查清单，`db-design-standard` 规范库表设计与 SQL 编写。
+> 以上十个 skill 按"语言层 → 框架层"分层各司其职：语言层 `java-coding-standard`、`js-coding-standard`、`html-coding-standard`、`css-coding-standard` 分别约束 Java / JavaScript / HTML / CSS 代码风格；框架层 `vue-coding-standard` 与 `react-coding-standard` 约束框架约定并引用语言层；`java-feature-standard` 约束模块级结构设计，`java-method-ordering` 约束方法组织顺序，`java-code-review` 提供系统化的审查清单，`db-design-standard` 规范库表设计与 SQL 编写。
 
 ## 使用方法
 
