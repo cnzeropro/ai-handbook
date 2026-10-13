@@ -42,7 +42,7 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 | 版本 | 写法体系 | 详细规范 |
 | --- | --- | --- |
 | React ≤16 class（遗留） | class 组件 + 生命周期 | `references/react-legacy.md` |
-| React 18/19（基线） | 函数组件 + Hooks | `references/general-quality.md` |
+| React 18/19（当前主版本） | 函数组件 + Hooks | `references/general-quality.md`（通用）+ `references/react18-19.md`（版本特性） |
 
 > React 19 变化点：函数组件 `defaultProps` 已废弃（用参数默认值）；`forwardRef` 不再需要（`ref` 作为普通 prop）；Actions / `useActionState` 可用。
 
@@ -94,6 +94,7 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 
 ## References（完整规范与代码示例）
 
-- `references/general-quality.md` — Rules of React 完整版、Hooks 使用约定（Effect 正确场景）、组件设计与状态、渲染性能与安全
+- `references/general-quality.md` — 版本通用规范：核心原则、组件设计与状态、列表与条件渲染、安全
+- `references/react18-19.md` — React 18/19 版本特性：Rules of React、Hooks 使用约定（Effect 正确场景）、渲染性能、数据获取原则
 - `references/style-examples.md` — 组件骨架正反例、Rules 正反例、Effect 误用高频案例（含“你可能不需要 Effect”）、速查表
 - `references/react-legacy.md` — class 组件遗留环境：写法基线、Hooks 对照、最小侵入原则
