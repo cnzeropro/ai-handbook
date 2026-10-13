@@ -88,7 +88,7 @@ type ModelStatus = (typeof MODEL_STATUS)[keyof typeof MODEL_STATUS];
 if (model.status === MODEL_STATUS.Draft) { … }
 ```
 
-需要"由值反查名"时，as const 对象天然支持：
+需要“由值反查名”时，as const 对象天然支持：
 
 ```ts
 function statusName(value: ModelStatus): string {
