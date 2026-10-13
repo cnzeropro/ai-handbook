@@ -54,5 +54,5 @@ description: "Next.js 编码规范，按版本组织（App Router 当前主推 /
 
 - `references/general-quality.md` — 版本通用规范：文件约定、Server/Client 边界、数据获取与变更、缓存语义、环境变量、性能、安全
 - `references/app-router.md` — App Router 写法规约：RSC 边界细则、Server Actions、metadata API、params 异步化、middleware
-- `references/pages-router.md` — Pages Router（仍在用）：数据获取函数、API Routes、迁移提示
+- `references/pages-router.md` — Pages Router（仍在用）：数据获取函数与 API Routes 写法规约、与 App Router 对照
 - `references/style-examples.md` — 编码风格完整示例与常见正反例速查
