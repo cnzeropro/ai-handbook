@@ -61,6 +61,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 - Java 语言层面的编码规范（命名、注释、格式、常量枚举、异常、日志、工具类等，参见 `java-coding-standard` skill）
 - 数据库表设计与 SQL 脚本规范（参见 `db-design-standard` skill）
 - 接口方法排序规则（参见 `java-method-ordering` skill）
+- Spring Boot 框架工程化细节（配置管理、条件装配、全局异常处理、Actuator 等，参见 `springboot-coding-standard` skill）
 - 代码安全审查流程（参见 `java-code-review` skill）
 
 ## 核心工作流
