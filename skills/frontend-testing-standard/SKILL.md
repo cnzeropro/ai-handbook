@@ -1,5 +1,5 @@
 ---
-name: "frontend-testing-coding-standard"
+name: "frontend-testing-standard"
 description: "前端测试编码规范（Vitest/Jest 单测与组件测试 + Testing Library + Playwright E2E）：测试策略与金字塔、用例设计（FIRST/AAA）、Testing Library 查询优先级、mock 边界、异步稳定性与 E2E 选择器。当编写、重构或审查前端测试代码时使用。凡涉及前端测试代码编写与修改的任务均应主动使用。"
 ---
 
