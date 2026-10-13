@@ -1,6 +1,6 @@
 # 前端测试通用质量规范
 
-> 本文件为 frontend-testing-coding-standard 的**版本通用**质量规范（Vitest/Jest、Playwright/Cypress 通用部分）。来源：Testing Library 官方指导原则、Vitest 与 Playwright 官方文档。完整正反例见 `style-examples.md`（同目录）。被测代码写法规约见各语言/框架 skill。
+> 本文件为 frontend-testing-standard 的**版本通用**质量规范（Vitest/Jest、Playwright/Cypress 通用部分）。来源：Testing Library 官方指导原则、Vitest 与 Playwright 官方文档。完整正反例见 `style-examples.md`（同目录）。被测代码写法规约见各语言/框架 skill。
 
 ## 目录
 
