@@ -11,7 +11,7 @@
 
 ## 一、Rules of React
 
-官方定性为"规则而非指南"——违反即 bug。配合 StrictMode 与 `eslint-plugin-react-hooks` 使用。
+官方定性为“规则而非指南”——违反即 bug。配合 StrictMode 与 `eslint-plugin-react-hooks` 使用。
 
 ### 1. 组件与 Hooks 必须纯粹
 
@@ -82,7 +82,7 @@ function ModelList({ expanded }: Props) {
 
 ## 二、Hooks 使用约定
 
-### 1. 派生数据不建 state（官方"你可能不需要 Effect"）
+### 1. 派生数据不建 state（官方“你可能不需要 Effect”）
 
 ```tsx
 // ❌ state 冗余 + Effect 同步，易失步
@@ -104,10 +104,10 @@ const sorted = useMemo(
 );
 ```
 
-### 2. Effect 只做"与外部系统同步"
+### 2. Effect 只做“与外部系统同步”
 
 - 适用：订阅、定时器、非 React 组件操作、日志上报
-- 事件驱动的逻辑放事件处理器，不放 Effect（"响应提交"是事件不是 Effect）
+- 事件驱动的逻辑放事件处理器，不放 Effect（“响应提交”是事件不是 Effect）
 - prop 变化需要重置内部状态时，优先用 `key` 重挂载而非 Effect 监听
 
 ```tsx
