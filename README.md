@@ -76,7 +76,7 @@ npx skills add cnzeropro/ai-handbook
 | `js-coding-standard` | JavaScript 语言级编码规范：变量声明、字符串、解构、对象、数组、函数、相等比较与类型判断、迭代、异步、Class、模块、命名、注释与安全禁区，按项目语言版本适配最佳实践（含 ES5 遗留环境写法对照表） |
 | `html-coding-standard` | HTML 编码规范：文档结构、语义化标签、属性规范、可访问性（a11y）、表单、媒体与 SEO 元信息（含 Vue/React 模板中的标记结构） |
 | `css-coding-standard` | CSS 编码规范：命名与组织（BEM 默认）、选择器与优先级、属性顺序、Flex/Grid 布局、响应式、主题变量与性能 |
-| `ts-coding-standard` | TypeScript 编码规范（TS 5.x 基线）：类型设计原则、any 与 unknown 策略、类型收窄与守卫、泛型、枚举替代方案、断言与工具类型、模块与命名 |
+| `ts-coding-standard` | TypeScript 编码规范，按版本组织（TS 5.x 基线 / 4.x 遗留）：类型设计原则、any 与 unknown 策略、类型收窄与守卫、泛型、枚举替代方案、断言与工具类型、模块与命名（含 TS 6/7 原生编译器方向） |
 | `vue-coding-standard` | Vue 编码规范（Vue 3 Composition API 基线）：SFC 结构与命名、props/emits 约定、指令使用、组合式 API、组件通信与 Pinia、性能与安全（以官方 Style Guide 四级分级为纲） |
 | `react-coding-standard` | React 编码规范（函数组件 + Hooks 基线）：Rules of React、Hooks 与 Effect 正确场景、组件设计与状态、渲染性能与安全（以 react.dev 官方规则为纲） |
 
@@ -98,7 +98,7 @@ npx skills add cnzeropro/ai-handbook
 npx skills add <本仓库路径>
 
 # 仅安装指定 skill / 安装到用户级（跨项目）
-npx skills add cnzeropro/ai-handbook --skill db-design-standard
+npx skills add cnzeropro/ai-handbook --skill java-design-standard
 npx skills add cnzeropro/ai-handbook -g
 
 # 指定目标 agent（默认全装到检测到的 agent；支持 claude-code / codex / cursor / pi / opencode 等 25+ 种）
