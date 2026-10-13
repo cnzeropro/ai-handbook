@@ -46,6 +46,7 @@ description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA
 - 编码规范本身（参见 `java-coding-standard` skill）
 - 模块结构、对象模型与命名约定本身（参见 `java-feature-standard` skill）
 - 接口方法排序检查（参见 `java-method-ordering` skill）
+- 测试代码写法规约（参见 `java-testing-standard` skill）
 - 运行时故障排查（线上问题定位、JVM 调优）
 
 ## 核心工作流
