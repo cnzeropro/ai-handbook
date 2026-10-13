@@ -1,6 +1,6 @@
 ---
 name: "vue-coding-standard"
-description: "Vue 编码规范（Vue 3 Composition API 基线）：SFC 结构与命名、props/emits 约定、v-for/v-if 使用、响应式与 computed、组件通信与 Pinia 状态、性能与 XSS 安全。当编写、重构或审查 Vue 代码、设计 Vue 组件时使用。凡涉及 Vue 代码编写与修改的任务均应主动使用。"
+description: "Vue 编码规范，按版本组织（Vue 3 Composition API 基线 / Vue 2 遗留分册）：SFC 结构与命名、props/emits 约定、v-for/v-if 使用、组合式 API 与 computed、组件通信与 Pinia 状态、性能与 XSS 安全。当编写、重构或审查 Vue 代码、设计 Vue 组件时使用。凡涉及 Vue 代码编写与修改的任务均应主动使用。"
 ---
 
 # Vue 编码规范
@@ -15,6 +15,7 @@ description: "Vue 编码规范（Vue 3 Composition API 基线）：SFC 结构与
 
 - 编写、重构或审查 Vue 3 组件（SFC、组合式函数、指令）
 - 设计组件 API（props/emits/v-model/expose）或组织组件通信与状态
+- 维护 Vue 2 遗留项目（写法基线见 `vue-legacy.md`）
 - 代码审查时作为 Vue 规范检查依据
 
 ## 适用范围

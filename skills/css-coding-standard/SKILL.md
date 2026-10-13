@@ -27,6 +27,8 @@ description: "CSS 编码规范：命名与组织（BEM 默认）、选择器与�
 ### 不适用（边界）
 
 - 标记结构（参见 `html-coding-standard` skill）
+- 交互逻辑与脚本行为（参见 `js-coding-standard` skill）
+- 组件设计与状态（参见 `vue-coding-standard` / `react-coding-standard` skill）
 - 工具类框架（Tailwind 等）的类名组合约定——使用此类框架时**从其官方约定**，本 skill 的命名/属性规则仅约束自写样式
 - 缩进、换行、属性行序强制化等纯排版格式，遵循项目工具链（Stylelint/Prettier）配置
 

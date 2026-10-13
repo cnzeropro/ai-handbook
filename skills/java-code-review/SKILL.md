@@ -1,6 +1,6 @@
 ---
 name: "java-code-review"
-description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA、Lombok、Hutool 等技术栈）的安全性、框架最佳实践、代码质量与性能。当用户请求审查、分析或审计代码、检查最佳实践时使用；凡涉及 Java 代码审查的任务均应主动使用。"
+description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA、Lombok、Hutool 等技术栈）的安全性、框架最佳实践、代码质量与性能。当用户请求审查、分析或审计代码、检查最佳实践时使用。凡涉及 Java 代码审查的任务均应主动使用。"
 ---
 
 # 代码审查
@@ -21,7 +21,7 @@ description: "审查 Java 代码（Spring Boot/Spring MVC、MyBatis(-Plus)、JPA
 
 **技术栈**
 
-- Java 8 / 11 / 17 / 21 / 25（按项目版本评估语法使用是否得当，见 `java-coding-standard`）
+- Java 8 / 11 / 17 / 21 / 25 及 Java 7 及以下遗留代码（按项目版本评估语法使用是否得当，见 `java-coding-standard`）
 - Spring Boot / Spring MVC
 - 持久层：MyBatis / MyBatis-Plus / MyBatis-Flex、Spring Data JPA / Hibernate
 - Lombok、Hutool / Guava 等常用工具库

@@ -1,6 +1,6 @@
 ---
 name: "js-coding-standard"
-description: "JavaScript 编码规范，按 ES 版本（ES5 遗留 / ES2015 / ES2016~2019 / ES2020~2022）组织最佳实践：变量声明、异步、模块、相等比较、命名注释与安全禁区。当编写、重构或审查 JavaScript 代码、按项目语言版本选择写法时使用。。凡涉及 JavaScript 代码编写与修改的任务均应主动使用"
+description: "JavaScript 语言级编码规范，按 ES 版本（ES5 遗留 / ES2015 / ES2016~2019 / ES2020~2022 / ES2023~2025）组织最佳实践：变量声明、字符串、解构、对象、数组、函数、相等比较与类型判断、迭代、异步、Class、模块、命名、注释、安全禁区与语言版本适配。当编写、重构或审查 JavaScript 代码、按项目语言版本选择写法时使用。凡涉及 JavaScript 代码编写与修改的任务均应主动使用。"
 ---
 
 # JavaScript 编码规范
@@ -14,6 +14,7 @@ description: "JavaScript 编码规范，按 ES 版本（ES5 遗留 / ES2015 / ES
 - 确定项目语言版本后，选择该版本可用的最佳实践写法
 - 编写、重构或审查任意 JavaScript 代码（相等比较、异步、迭代、命名、注释、模块等）
 - 维护 ES5 遗留代码，或将旧代码升级到更高版本写法
+- 代码审查时作为编码规范检查依据
 
 ## 适用范围
 
@@ -25,7 +26,7 @@ description: "JavaScript 编码规范，按 ES 版本（ES5 遗留 / ES2015 / ES
 ### 不适用（边界）
 
 - TypeScript 类型层规范（本 skill 仅约束运行时写法，类型写法遵循项目约定）
-- 框架级规范（React/Vue 组件结构、状态管理等），遵循对应框架的官方约定
+- 框架级规范（React/Vue 组件结构、状态管理等，参见 `vue-coding-standard` / `react-coding-standard` skill）
 - 分号、缩进、换行等纯排版格式，遵循项目工具链（ESLint/Prettier）配置，本 skill 不作规定
 
 ## 一、版本判定与总则

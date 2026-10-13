@@ -1,6 +1,6 @@
 ---
 name: "react-coding-standard"
-description: "React 编码规范（函数组件 + Hooks 基线）：Rules of React、Hooks 使用约定、Effect 正确场景、组件设计与状态管理、渲染性能与 XSS 安全。当编写、重构或审查 React 代码、设计 React 组件与 Hooks 时使用。凡涉及 React 代码编写与修改的任务均应主动使用。"
+description: "React 编码规范，按版本组织（函数组件 + Hooks 基线 / class 组件遗留分册）：Rules of React、Hooks 使用约定、Effect 正确场景、组件设计与状态管理、渲染性能与 XSS 安全。当编写、重构或审查 React 代码、设计 React 组件与 Hooks 时使用。凡涉及 React 代码编写与修改的任务均应主动使用。"
 ---
 
 # React 编码规范
@@ -15,6 +15,7 @@ description: "React 编码规范（函数组件 + Hooks 基线）：Rules of Rea
 
 - 编写、重构或审查 React 组件（函数组件、自定义 Hooks）
 - 设计组件状态与数据流、判断 Effect 使用场景、优化渲染性能
+- 维护 class 组件遗留代码（写法基线见 `react-legacy.md`）
 - 代码审查时作为 React 规范检查依据
 
 ## 适用范围

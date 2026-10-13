@@ -23,7 +23,7 @@ description: "提供 Java 后端功能模块开发规范：分层架构、命名
 
 **技术栈**
 
-- 语言与基础库：Java 8 / 11 / 17 / 21（按项目版本使用最佳实践语法，见 `java-coding-standard`）、Lombok、Hutool / Guava
+- 语言与基础库：Java 8 / 11 / 17 / 21 / 25（按项目版本使用最佳实践语法，见 `java-coding-standard`）、Lombok、Hutool / Guava
 - Web / 接口层：Spring Boot / Spring MVC / Spring WebFlux、Jakarta Validation
 - 持久层：MyBatis / MyBatis-Plus / MyBatis-Flex、Spring Data JPA / Hibernate、jOOQ、Spring JDBC
 - 远程调用：Spring Cloud OpenFeign、Spring 6 HTTP Interface（`@HttpExchange`）、Dubbo、gRPC、RestTemplate / WebClient

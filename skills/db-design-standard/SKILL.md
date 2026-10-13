@@ -1,6 +1,6 @@
 ---
 name: "db-design-standard"
-description: "关系型数据库（MySQL、PostgreSQL、Oracle、SQL Server、GaussDB、达梦等）表设计与 SQL 脚本规范：建表设计规则、SQL 编写规约、辅助索引设计指南、DDL 变更规范与验收清单。当需要设计新表、修改表结构、生成或审查 DDL/DML 脚本时使用；凡涉及数据库表设计与 SQL 脚本的任务均应主动使用。"
+description: "关系型数据库（MySQL、PostgreSQL、Oracle、SQL Server、GaussDB、达梦等）表设计与 SQL 脚本规范：建表设计规则、SQL 编写规约、辅助索引设计指南、DDL 变更规范与验收清单。当需要设计新表、修改表结构、生成或审查 DDL/DML 脚本时使用。凡涉及数据库表设计与 SQL 脚本的任务均应主动使用。"
 ---
 
 # 数据库脚本设计规范与工作流
