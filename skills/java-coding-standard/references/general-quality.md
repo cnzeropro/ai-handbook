@@ -254,3 +254,4 @@ log.error("Model job failed: jobId={}", id, e);
 - `equals` 使用常量或确定非空的对象调用（`"test".equals(param)`）或 `Objects.equals(a, b)`，防 NPE
 - 循环内字符串拼接使用 `StringBuilder.append`（每次 `s += x` 都会新建 StringBuilder）
 - Map 遍历使用 `entrySet` 或 `Map.forEach`（JDK 8），避免 `keySet` 二次取值
+- 金额等精确计算用 `BigDecimal`（字符串构造），禁 `double` / `float`（浮点误差）；比较用 `compareTo` 而非 `equals`（示例见 `style-examples.md` 速查表）

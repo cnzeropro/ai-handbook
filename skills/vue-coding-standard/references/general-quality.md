@@ -1,6 +1,6 @@
 # Vue 通用质量规范
 
-> 本文件为 vue-coding-standard 的**版本通用**质量规范，同时适用于 Vue 2 与 Vue 3（示例以 Vue 3 语法呈现，规则本身对 Options API 同样适用）。版本特有约定见分册：Vue 3 见 `vue3.md`，Vue 2 遗留见 `vue-legacy.md`。一～四章主干来自 Vue 官方 Style Guide（按 Priority A/B/C/D 分级，标注“官方 A/B/C/D”）。完整示例见 `style-examples.md`（同目录）。
+> 本文件为 vue-coding-standard 的**版本通用**质量规范，同时适用于 Vue 2 与 Vue 3（示例以 Vue 3 语法呈现，规则本身对 Options API 同样适用）。写法规约见分册：Vue 3 见 `vue3.md`，Vue 2 遗留见 `vue-legacy.md`。一～四章主干来自 Vue 官方 Style Guide（按 Priority A/B/C/D 分级，标注“官方 A/B/C/D”）。完整示例见 `style-examples.md`（同目录）。
 
 ## 目录
 

@@ -46,12 +46,12 @@ description: "Svelte 编码规范（Svelte 5 Runes 基线）：组件结构与�
 
 | 版本 | 说明 | 详细规范 |
 | --- | --- | --- |
-| Svelte 5（当前主版本） | Runes 体系：`$state` / `$derived` / `$effect` / snippet / 事件属性 | `references/general-quality.md`（通用）+ `references/svelte5.md`（版本特性）+ `references/style-examples.md`（正反例） |
+| Svelte 5（当前主版本） | Runes 体系：`$state` / `$derived` / `$effect` / snippet / 事件属性 | `references/general-quality.md`（通用）+ `references/svelte5.md`（写法规约）+ `references/style-examples.md`（正反例） |
 | Svelte 4（遗留） | `let` 响应式、`$:` 语句、`on:` 指令、slot、createEventDispatcher | `references/svelte-legacy.md` |
 
 ## References（完整规范与代码示例）
 
 - `references/general-quality.md` — 版本通用规范：组件结构与命名、a11y、模板块（each/await/key）、样式作用域、通用约定
-- `references/svelte5.md` — Svelte 5 版本特性：Runes 全解、snippet、事件属性、effect 边界
+- `references/svelte5.md` — Svelte 5 写法规约：Runes 全解、snippet、事件属性、effect 边界
 - `references/svelte-legacy.md` — Svelte 4 遗留环境：写法基线与最小侵入原则
 - `references/style-examples.md` — 编码风格完整示例与常见正反例速查

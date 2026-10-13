@@ -1,6 +1,6 @@
 # Tailwind v3 规范（配置驱动）
 
-> 本文件为 **Tailwind v3** 版本特有约定（JS 配置驱动），须与版本通用的 `general-quality.md` 配合使用。v4（CSS-first）见 `tailwind4.md`。
+> 本文件为 **Tailwind v3** 写法规约（JS 配置驱动），须与版本通用的 `general-quality.md` 配合使用。v4（CSS-first）见 `tailwind4.md`。
 
 ## 一、配置文件
 
@@ -40,7 +40,7 @@ module.exports = {
 - 自定义工具类用插件 `addUtilities` / `matchUtilities`（带值参数），集中注册；业务组件内禁 `@apply`
 - 第三方组件深度覆盖可用重要修饰符 `!` 前缀（如 `!text-primary`）——极少数场景，注释原因
 
-## 五、v3 → v4 迁移提示
+## 五、升级规约
 
-- 迁移工具：`npx @tailwindcss/upgrade`；主要差异是**配置方式**（JS → CSS-first）而非工具类写法
-- 迁移清单与 v4 写法见 `tailwind4.md`
+- 升级用官方迁移工具 `npx @tailwindcss/upgrade`，禁手工零散迁移；迁移后人工复核视觉（v4 刻度改名，如 `shadow-sm` → `shadow-xs`）
+- 升级属于独立任务，不与功能变更混杂

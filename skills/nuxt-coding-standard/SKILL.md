@@ -46,12 +46,12 @@ description: "Nuxt 编码规范（Nuxt 3/4 当前 / Nuxt 2 遗留）：目录约
 
 | 版本 | 说明 | 详细规范 |
 | --- | --- | --- |
-| Nuxt 3 / 4（当前） | Nitro、自动导入、`app/` 目录（Nuxt 4）、`useFetch` 体系 | `references/general-quality.md`（通用）+ `references/nuxt3-4.md`（版本特性）+ `references/style-examples.md`（正反例） |
+| Nuxt 3 / 4（当前） | Nitro、自动导入、`app/` 目录（Nuxt 4）、`useFetch` 体系 | `references/general-quality.md`（通用）+ `references/nuxt3-4.md`（写法规约）+ `references/style-examples.md`（正反例） |
 | Nuxt 2（遗留） | Options API、asyncData/fetch 钩子、Vuex | `references/nuxt-legacy.md` |
 
 ## References（完整规范与代码示例）
 
 - `references/general-quality.md` — 版本通用规范：目录约定、自动导入、数据获取、状态、服务端能力、渲染模式、安全
-- `references/nuxt3-4.md` — Nuxt 3/4 版本特性：app/ 目录、useFetch 选项、routeRules、Nitro 细节、Nuxt 4 变更
+- `references/nuxt3-4.md` — Nuxt 3/4 写法规约：app/ 目录、useFetch 选项、routeRules、Nitro 细节、Nuxt 4 变更
 - `references/nuxt-legacy.md` — Nuxt 2 遗留环境：写法基线、与 Nuxt 3 差异对照、最小侵入原则
 - `references/style-examples.md` — 编码风格完整示例与常见正反例速查

@@ -1,6 +1,6 @@
 # React 通用质量规范
 
-> 本文件为 react-coding-standard 的**版本通用**质量规范，同时适用于函数组件与 class 组件遗留代码。版本特有约定见分册：现行体系（函数组件 + Hooks）见 `react-modern.md`，class 组件遗留见 `react-legacy.md`。来源：react.dev Rules of React 与官方文档惯用法。完整示例见 `style-examples.md`（同目录）。
+> 本文件为 react-coding-standard 的**版本通用**质量规范，同时适用于函数组件与 class 组件遗留代码。写法规约见分册：现行体系（函数组件 + Hooks）见 `react-modern.md`，class 组件遗留见 `react-legacy.md`。来源：react.dev Rules of React 与官方文档惯用法。完整示例见 `style-examples.md`（同目录）。
 
 ## 目录
 

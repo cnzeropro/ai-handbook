@@ -75,6 +75,22 @@ if (a || (b && c)) {
 }
 ```
 
+### 7. void 0 代替字面量 undefined
+
+代码中显式书写的 `undefined` 字面量（占位、比较）统一用 `void 0`：`undefined` 在历史非严格环境可被覆盖，`void 0` 恒等于 undefined 且不可写（打包器产物即此惯例）：
+
+```js
+// ❌ 字面量 undefined 可靠性依赖环境
+let cache = undefined;
+if (value === undefined) {}
+
+// ✅
+let cache = void 0;
+if (value === void 0) {}
+```
+
+> 说明：函数未写 return 产生的 undefined 是运行时值，不受本条约束；本条约束的是代码中显式书写的字面量。
+
 ## 二、迭代与高阶函数
 
 ### 1. 数组优先用高阶函数而非循环

@@ -1,6 +1,6 @@
 # Nuxt 通用质量规范
 
-> 本文件为 nuxt-coding-standard 的**版本通用**质量规范（Nuxt 2 与 3/4 通用部分）。版本特有约定见分册：Nuxt 3/4 见 `nuxt3-4.md`，Nuxt 2 遗留见 `nuxt-legacy.md`。来源：nuxt.com 官方文档。完整正反例见 `style-examples.md`（同目录）。Vue 组件层规则遵循 `vue-coding-standard`。
+> 本文件为 nuxt-coding-standard 的**版本通用**质量规范（Nuxt 2 与 3/4 通用部分）。写法规约见分册：Nuxt 3/4 见 `nuxt3-4.md`，Nuxt 2 遗留见 `nuxt-legacy.md`。来源：nuxt.com 官方文档。完整正反例见 `style-examples.md`（同目录）。Vue 组件层规则遵循 `vue-coding-standard`。
 
 ## 目录
 

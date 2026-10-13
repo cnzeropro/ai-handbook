@@ -47,12 +47,12 @@ description: "Next.js 编码规范，按版本组织（App Router 当前主推 /
 
 | 版本 | 说明 | 详细规范 |
 | --- | --- | --- |
-| App Router（当前主推，13.4+ 稳定 / 15 起 params 异步化） | RSC、文件约定、Server Actions、Metadata API | `references/general-quality.md`（通用）+ `references/app-router.md`（版本特性）+ `references/style-examples.md`（正反例） |
+| App Router（当前主推，13.4+ 稳定 / 15 起 params 异步化） | RSC、文件约定、Server Actions、Metadata API | `references/general-quality.md`（通用）+ `references/app-router.md`（写法规约）+ `references/style-examples.md`（正反例） |
 | Pages Router（仍在用） | `getServerSideProps` / `getStaticProps` / `pages/api` | `references/pages-router.md` |
 
 ## References（完整规范与代码示例）
 
 - `references/general-quality.md` — 版本通用规范：文件约定、Server/Client 边界、数据获取与变更、缓存语义、环境变量、性能、安全
-- `references/app-router.md` — App Router 版本特性：RSC 边界细则、Server Actions、metadata API、params 异步化、middleware
+- `references/app-router.md` — App Router 写法规约：RSC 边界细则、Server Actions、metadata API、params 异步化、middleware
 - `references/pages-router.md` — Pages Router（仍在用）：数据获取函数、API Routes、迁移提示
 - `references/style-examples.md` — 编码风格完整示例与常见正反例速查

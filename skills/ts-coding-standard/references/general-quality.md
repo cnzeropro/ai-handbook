@@ -1,6 +1,6 @@
 # TypeScript 通用质量规范
 
-> 本文件为 ts-coding-standard 的**版本通用**质量规范，适用于 TS 4.x 至 5.x（示例以 TS 5.x 语法呈现）。版本特有约定见分册：TS 5.x 见 `ts5.md`，TS 4.x 及以下遗留见 `ts-legacy.md`。规则来源：TypeScript 官方 Handbook（含 Do's & Don'ts）、Google TypeScript Style Guide、TSConfig Reference。完整正反例见 `style-examples.md`（同目录）。JS 运行时语法规则遵循 `js-coding-standard`。
+> 本文件为 ts-coding-standard 的**版本通用**质量规范，适用于 TS 4.x 至 5.x（示例以 TS 5.x 语法呈现）。写法规约见分册：TS 5.x 见 `ts5.md`，TS 4.x 及以下遗留见 `ts-legacy.md`。规则来源：TypeScript 官方 Handbook（含 Do's & Don'ts）、Google TypeScript Style Guide、TSConfig Reference。完整正反例见 `style-examples.md`（同目录）。JS 运行时语法规则遵循 `js-coding-standard`。
 
 ## 目录
 
@@ -22,7 +22,7 @@
 - `strict: true` 为默认起点（含 `noImplicitAny` / `strictNullChecks` / `strictFunctionTypes` 等全家桶）；禁为图省事关闭 strict
 - 推荐补充：`noUncheckedIndexedAccess`（索引访问追加 undefined）、`noImplicitOverride`、`noFallthroughCasesInSwitch`、`isolatedModules`
 - `skipLibCheck: true` 推荐开启（跳过第三方 .d.ts 检查，提速且不受三方类型质量拖累）
-- 新项目建议 `erasableSyntaxOnly: true`：禁 enum / namespace / 参数属性等非可擦除语法，与 TS 7 原生编译器方向对齐（见 `ts5.md`“二、TS 6/7 展望”）
+- 新项目建议 `erasableSyntaxOnly: true`：禁 enum / namespace / 参数属性等非可擦除语法，与 TS 7 原生编译器方向对齐（见 `ts5.md`）
 - `allowJs` 按迁移策略；`module` / `moduleResolution` 跟随构建链（bundler/tsc/nodenext），不自造组合
 
 ## 二、类型设计原则
@@ -177,7 +177,7 @@ import { parseV1 } from 'legacy-lib';
 
 ## 六、枚举替代方案
 
-**禁用 enum**（Google TS Guide 限制使用；社区主流放弃；TS 7 原生编译器的 erasable-only 方向亦不支持，见 `ts5.md`）：数值枚举可隐式转换为 number（首个成员还是 falsy 值），const enum 在隔离编译下有问题，运行时对象也与类型系统割裂。
+**禁用 enum**（Google TS Guide 限制使用；社区主流放弃；TS 7 原生编译器的 erasable-only 方向亦不支持，见 `ts5.md`“TS 6/7 方向规约”）：数值枚举可隐式转换为 number（首个成员还是 falsy 值），const enum 在隔离编译下有问题，运行时对象也与类型系统割裂。
 
 替代写法：`as const` 对象 + 字面量联合：
 

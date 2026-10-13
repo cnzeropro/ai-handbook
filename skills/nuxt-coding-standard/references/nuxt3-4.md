@@ -1,6 +1,6 @@
 # Nuxt 3/4 规范（当前版本）
 
-> 本文件为 **Nuxt 3/4** 版本特有约定（Nitro 引擎、自动导入、`app/` 目录），须与版本通用的 `general-quality.md` 配合使用。Nuxt 2 遗留环境见 `nuxt-legacy.md`。
+> 本文件为 **Nuxt 3/4** 写法规约（Nitro 引擎、自动导入、`app/` 目录），须与版本通用的 `general-quality.md` 配合使用。Nuxt 2 遗留环境见 `nuxt-legacy.md`。
 
 ## 目录
 

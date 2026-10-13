@@ -52,13 +52,13 @@ description: "TypeScript 编码规范，按版本组织（TS 5.x 基线 / 4.x �
 | 版本 | 说明 | 详细规范 |
 | --- | --- | --- |
 | TS 4.x 及以下（遗留） | 实验性 decorators、无 satisfies 等能力差异 | `references/ts-legacy.md` |
-| TS 5.x（当前主版本） | 本 skill 全部规则以 5.x 为准 | `references/general-quality.md`（通用）+ `references/ts5.md`（版本特性）+ `references/style-examples.md`（正反例） |
+| TS 5.x（当前主版本） | 本 skill 全部规则以 5.x 为准 | `references/general-quality.md`（通用）+ `references/ts5.md`（写法规约）+ `references/style-examples.md`（正反例） |
 
 > TS 7（原生编译器，Go 重写）处于预览阶段：生产以 5.x 稳定版为准；erasable-only 方向与迁移注意见 `ts5.md`“二、TS 6/7 展望”。
 
 ## References（完整规范与代码示例）
 
 - `references/general-quality.md` — 版本通用质量规范：tsconfig 原则、类型设计、any/unknown、收窄与守卫、断言、枚举替代、interface/type、泛型、模块与命名、工具类型
-- `references/ts5.md` — TS 5.x 版本特性：satisfies、const 类型参数、标准化 decorators、bundler 解析、using 声明、推断类型谓词、erasableSyntaxOnly、TS 6/7 展望
+- `references/ts5.md` — TS 5.x 写法规约：satisfies、const 类型参数、标准化 decorators、bundler 解析、using 声明、推断类型谓词、erasableSyntaxOnly、TS 6/7 展望
 - `references/ts-legacy.md` — TS 4.x 及以下遗留环境：实验性 decorators、能力差异、最小侵入原则
 - `references/style-examples.md` — 编码风格完整示例与市面常见正反例速查（判别联合建模、枚举替代、断言克制、泛型设计等）

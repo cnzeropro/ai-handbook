@@ -1,6 +1,6 @@
 # Next.js 通用质量规范
 
-> 本文件为 nextjs-coding-standard 的**版本通用**质量规范（App Router 与 Pages Router 通用部分）。版本特有约定见分册：App Router 见 `app-router.md`，Pages Router 见 `pages-router.md`。来源：nextjs.org 官方文档与 react.dev Rules of React。完整正反例见 `style-examples.md`（同目录）。React 组件层规则遵循 `react-coding-standard`。
+> 本文件为 nextjs-coding-standard 的**版本通用**质量规范（App Router 与 Pages Router 通用部分）。写法规约见分册：App Router 见 `app-router.md`，Pages Router 见 `pages-router.md`。来源：nextjs.org 官方文档与 react.dev Rules of React。完整正反例见 `style-examples.md`（同目录）。React 组件层规则遵循 `react-coding-standard`。
 
 ## 目录
 

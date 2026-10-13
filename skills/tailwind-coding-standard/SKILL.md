@@ -55,6 +55,6 @@ description: "Tailwind CSS 编码规范，按版本组织（v4 CSS-first / v3 �
 ## References（完整规范与代码示例）
 
 - `references/general-quality.md` — 版本通用规范：类名组织与排序、抽取边界、任意值克制、动态类名安全、变体顺序、可访问性
-- `references/tailwind4.md` — v4 版本特性：CSS-first 配置、@theme 令牌、自动内容检测、迁移工具
-- `references/tailwind3.md` — v3 版本特性：JS 配置、content 扫描、darkMode 策略、插件扩展
+- `references/tailwind4.md` — v4 写法规约：CSS-first 配置、@theme 令牌、自动内容检测、迁移工具
+- `references/tailwind3.md` — v3 写法规约：JS 配置、content 扫描、darkMode 策略、插件扩展
 - `references/style-examples.md` — 编码风格完整示例与市面常见正反例速查（组件抽取、动态类名、响应式暗色、@apply 边界）

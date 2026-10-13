@@ -1,6 +1,6 @@
 # Svelte 5 规范（Runes，当前主版本）
 
-> 本文件为 **Svelte 5** 版本特有约定（Runes 体系），须与版本通用的 `general-quality.md` 配合使用。Svelte 4 遗留环境见 `svelte-legacy.md`。
+> 本文件为 **Svelte 5** 写法规约（Runes 体系），须与版本通用的 `general-quality.md` 配合使用。Svelte 4 遗留环境见 `svelte-legacy.md`。
 
 ## 目录
 

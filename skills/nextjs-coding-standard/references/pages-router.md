@@ -1,6 +1,6 @@
 # Next.js Pages Router 规范（仍在用）
 
-> 本文件为 **Pages Router** 版本特有约定，须与版本通用的 `general-quality.md` 配合使用。Pages Router 仍在大量项目中使用，但新项目主推 App Router（见 `app-router.md`）；迁移按官方增量指南逐页进行。
+> 本文件为 **Pages Router** 写法规约，须与版本通用的 `general-quality.md` 配合使用。Pages Router 仍在大量项目中使用，但新项目主推 App Router（见 `app-router.md`）；迁移按官方增量指南逐页进行。
 
 ## 一、文件约定
 

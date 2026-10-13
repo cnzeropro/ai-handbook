@@ -1,6 +1,6 @@
 # Svelte 通用质量规范
 
-> 本文件为 svelte-coding-standard 的**版本通用**质量规范，同时适用于 Svelte 4 与 Svelte 5（示例以 Svelte 5 语法呈现）。版本特有约定见分册：Svelte 5 见 `svelte5.md`，Svelte 4 遗留见 `svelte-legacy.md`。来源：Svelte 官方文档与编译器内置 a11y 警告体系。完整正反例见 `style-examples.md`（同目录）。
+> 本文件为 svelte-coding-standard 的**版本通用**质量规范，同时适用于 Svelte 4 与 Svelte 5（示例以 Svelte 5 语法呈现）。写法规约见分册：Svelte 5 见 `svelte5.md`，Svelte 4 遗留见 `svelte-legacy.md`。来源：Svelte 官方文档与编译器内置 a11y 警告体系。完整正反例见 `style-examples.md`（同目录）。
 
 ## 目录
 

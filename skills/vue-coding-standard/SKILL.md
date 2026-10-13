@@ -43,7 +43,7 @@ description: "Vue 编码规范，按版本组织（Vue 3 Composition API 基线 
 | 版本 | 写法体系 | 详细规范 |
 | --- | --- | --- |
 | Vue 2（遗留，已 EOL） | Options API、data 函数、Vuex | `references/vue-legacy.md` |
-| Vue 3（当前主版本） | Composition API + `<script setup>`、Pinia | `references/general-quality.md`（通用）+ `references/vue3.md`（版本特性） |
+| Vue 3（当前主版本） | Composition API + `<script setup>`、Pinia | `references/general-quality.md`（通用）+ `references/vue3.md`（写法规约） |
 
 ## 二、官方 Style Guide 规则精要（Priority A/B/C/D）
 
@@ -101,6 +101,6 @@ description: "Vue 编码规范，按版本组织（Vue 3 Composition API 基线 
 ## References（完整规范与代码示例）
 
 - `references/general-quality.md` — 官方 Style Guide 四级规则完整版（A/B/C/D），版本通用（Vue 2/3 均适用）
-- `references/vue3.md` — Vue 3 版本特性：组合式 API 约定、defineModel、Pinia、性能与安全
+- `references/vue3.md` — Vue 3 写法规约：组合式 API 约定、defineModel、Pinia、性能与安全
 - `references/style-examples.md` — SFC 完整骨架正反例、A 级五规则示例、属性顺序、命名体系、常见正反例速查
 - `references/vue-legacy.md` — Vue 2 遗留环境：Options API 基线、Vue 3 差异对照、最小侵入原则

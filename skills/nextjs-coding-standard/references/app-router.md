@@ -1,6 +1,6 @@
 # Next.js App Router 规范（当前主推）
 
-> 本文件为 **App Router**（RSC 体系）版本特有约定，须与版本通用的 `general-quality.md` 配合使用。Pages Router 见 `pages-router.md`。适用 Next 13.4+；Next 15 起 `params` / `searchParams` 为 Promise 需 await。
+> 本文件为 **App Router**（RSC 体系）写法规约，须与版本通用的 `general-quality.md` 配合使用。Pages Router 见 `pages-router.md`。适用 Next 13.4+；Next 15 起 `params` / `searchParams` 为 Promise 需 await。
 
 ## 目录
 

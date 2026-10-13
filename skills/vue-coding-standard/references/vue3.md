@@ -1,6 +1,6 @@
 # Vue 3 规范（当前主版本）
 
-> 本文件为 **Vue 3** 版本特有约定（Composition API、`<script setup>`、Pinia 等），须与版本通用的 `general-quality.md`（官方 Style Guide A-D）配合使用。Vue 2 遗留环境见 `vue-legacy.md`。
+> 本文件为 **Vue 3** 写法规约（Composition API、`<script setup>`、Pinia 等），须与版本通用的 `general-quality.md`（官方 Style Guide A-D）配合使用。Vue 2 遗留环境见 `vue-legacy.md`。
 
 ## 目录
 

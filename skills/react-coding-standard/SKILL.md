@@ -43,7 +43,7 @@ description: "React 编码规范，按版本组织（现行 Hooks 写法 / class
 | 版本 | 写法体系 | 详细规范 |
 | --- | --- | --- |
 | React ≤16 class（遗留） | class 组件 + 生命周期 | `references/react-legacy.md` |
-| React（现行体系，17 ~ 19） | 函数组件 + Hooks | `references/general-quality.md`（通用）+ `references/react-modern.md`（版本特性） |
+| React（现行体系，17 ~ 19） | 函数组件 + Hooks | `references/general-quality.md`（通用）+ `references/react-modern.md`（写法规约） |
 
 > React 19 变化点：函数组件 `defaultProps` 已废弃（用参数默认值）；`forwardRef` 不再需要（`ref` 作为普通 prop）；Actions / `useActionState` 可用。
 

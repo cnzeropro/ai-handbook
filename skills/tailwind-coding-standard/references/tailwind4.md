@@ -1,6 +1,6 @@
 # Tailwind v4 规范（CSS-first，当前主版本）
 
-> 本文件为 **Tailwind v4** 版本特有约定（CSS-first 配置、Oxide 引擎），须与版本通用的 `general-quality.md` 配合使用。v3 配置驱动见 `tailwind3.md`。
+> 本文件为 **Tailwind v4** 写法规约（CSS-first 配置、Oxide 引擎），须与版本通用的 `general-quality.md` 配合使用。v3 配置驱动见 `tailwind3.md`。
 
 ## 一、CSS-first 配置
 
@@ -34,9 +34,7 @@
 - Oxide 引擎：全量构建速度大幅提升；`lightningcss` 承担前缀与压缩，无需另配 autoprefixer
 - 新增原生变体与单位支持：容器查询（`@container` / `@min-*`）、`size-*`、`text-nowrap` 等，优先用原生工具类替代自写 CSS
 
-## 五、v3 → v4 迁移清单
+## 五、升级规约
 
-1. 执行官方迁移工具：`npx @tailwindcss/upgrade`
-2. 配置迁移：`tailwind.config.js` 的 `theme.extend` → `@theme`；`darkMode: 'class'` → `@custom-variant dark`
-3. CSS 变量形态：令牌即 `var(--…)`，检查 JS 中读取 Tailwind 配置值的代码改为读取 CSS 变量
-4. 边缘差异：`shadow-sm` → `shadow-xs` 等刻度改名（迁移工具自动处理，人工复核视觉）
+- 升级用官方迁移工具 `npx @tailwindcss/upgrade`（自动处理配置迁移与刻度改名）；迁移后人工复核视觉与 JS 中读取 Tailwind 配置值的代码
+- 升级属于独立任务，不与功能变更混杂
