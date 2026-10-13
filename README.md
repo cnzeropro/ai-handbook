@@ -83,9 +83,9 @@ npx skills add cnzeropro/ai-handbook
 | `nextjs-coding-standard` | Next.js 编码规范，按版本组织（App Router 当前主推 / Pages Router 仍在用）：Server 与 Client 组件边界、数据获取与缓存语义、Server Actions、文件约定与 metadata、环境变量与安全 |
 | `nuxt-coding-standard` | Nuxt 编码规范，按版本组织（Nuxt 3/4 当前 / Nuxt 2 遗留）：目录约定与自动导入、数据获取（useFetch/useAsyncData）、server/ API 与 Nitro、useState 状态、渲染模式与性能、runtimeConfig 与安全 |
 | `miniprogram-coding-standard` | 微信小程序原生编码规范：项目结构与文件约定、Page 与 Component 构造器、setData 性能与路径更新、WXML 指令与 WXSS 样式（rpx）、分包与启动性能、网络封装、缓存与安全合规 |
-| `uniapp-coding-standard` | uni-app 编码规范（Vue 3 语系基线，多端条件编译）：pages.json 与页面路由、三层生命周期、条件编译集中隔离、API 封装（uni.xxx）、样式与 rpx/安全区、easycom 组件、状态管理与分包包体优化 |
+| `uniapp-coding-standard` | uni-app 编码规范（Vue 3 语系，多端条件编译）：pages.json 与页面路由、三层生命周期、条件编译集中隔离、API 封装（uni.xxx）、样式与 rpx/安全区、easycom 组件、状态管理与分包包体优化 |
 | `vue-coding-standard` | Vue 编码规范（Vue 3 组合式 API 现行 / Vue 2 Options 遗留）：SFC 结构与命名、props/emits 约定、指令使用、组合式 API、组件通信与 Pinia、性能与安全（以官方 Style Guide 四级分级为纲） |
-| `react-coding-standard` | React 编码规范（函数组件 + Hooks 基线）：Rules of React、Hooks 与 Effect 正确场景、组件设计与状态、渲染性能与安全（以 react.dev 官方规则为纲） |
+| `react-coding-standard` | React 编码规范（现行 Hooks 写法 / class 组件遗留分册）：Rules of React、Hooks 与 Effect 正确场景、组件设计与状态、渲染性能与安全（以 react.dev 官方规则为纲） |
 
 > 以上十八个 skill 按“语言层 → 样式生态 → 框架层 → 领域专项”分层各司其职：语言层 `java-coding-standard`、`js-coding-standard`、`ts-coding-standard`、`html-coding-standard`、`css-coding-standard` 分别约束 Java / JavaScript / TypeScript / HTML / CSS；样式生态 `tailwind-coding-standard` 约束 Tailwind 工具类写法；框架层 `vue-coding-standard`、`react-coding-standard`、`angular-coding-standard`、`svelte-coding-standard`、`nextjs-coding-standard`、`nuxt-coding-standard`、`miniprogram-coding-standard`、`uniapp-coding-standard` 约束对应框架 / 平台的约定并引用语言层；领域专项 `java-feature-standard` 约束模块级结构设计，`java-method-ordering` 约束方法组织顺序，`java-code-review` 提供系统化的审查清单，`db-design-standard` 规范库表设计与 SQL 编写。
 

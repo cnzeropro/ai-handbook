@@ -1,11 +1,11 @@
 ---
 name: "uniapp-coding-standard"
-description: "uni-app 编码规范（Vue 3 语系基线，多端条件编译）：pages.json 与页面路由、三层生命周期、条件编译集中隔离、API 封装（uni.xxx）、样式与 rpx/安全区、easycom 组件、状态管理与分包包体优化。当编写、重构或审查 uni-app 代码时使用。凡涉及 uni-app 代码编写与修改的任务均应主动使用。"
+description: "uni-app 编码规范（Vue 3 语系，多端条件编译）：pages.json 与页面路由、三层生命周期、条件编译集中隔离、API 封装（uni.xxx）、样式与 rpx/安全区、easycom 组件、状态管理与分包包体优化。当编写、重构或审查 uni-app 代码时使用。凡涉及 uni-app 代码编写与修改的任务均应主动使用。"
 ---
 
 # uni-app 编码规范
 
-本 skill 提供 uni-app 框架层编码规范（**Vue 3 语系基线**，多端条件编译：H5 / 微信等各家小程序 / App），规则来源为 uni-app 官方文档（uniapp.dcloud.net.cn）。Vue 组件层规则见 `vue-coding-standard`（Runes 等无关概念不适用），微信原生小程序项目见 `miniprogram-coding-standard`。
+本 skill 提供 uni-app 框架层编码规范（**Vue 3 语系**，多端条件编译：H5 / 微信等各家小程序 / App），规则来源为 uni-app 官方文档（uniapp.dcloud.net.cn）。Vue 组件层规则见 `vue-coding-standard`（Runes 等无关概念不适用），微信原生小程序项目见 `miniprogram-coding-standard`。
 
 > 结构说明：本文件为精要版与索引；各主题完整规则与代码示例见 `references/`，按需加载。
 
