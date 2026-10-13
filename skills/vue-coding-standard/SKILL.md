@@ -30,6 +30,7 @@ description: "Vue 编码规范，按版本组织（Vue 3 Composition API 基线 
 - 模板中的标记语义与属性写法（参见 `html-coding-standard` skill）
 - 样式写法（参见 `css-coding-standard` skill；scoped 方案本 skill 另有约束）
 - JS 语言级风格（参见 `js-coding-standard` skill）
+- TypeScript 类型层规范（参见 `ts-coding-standard` skill；组件级类型约定见 `vue3.md`）
 - React 组件（参见 `react-coding-standard` skill）
 
 ## 一、版本与基线

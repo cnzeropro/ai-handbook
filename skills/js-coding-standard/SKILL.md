@@ -25,7 +25,7 @@ description: "JavaScript 语言级编码规范，按 ES 版本（ES5 遗留 / ES
 
 ### 不适用（边界）
 
-- TypeScript 类型层规范（本 skill 仅约束运行时写法，类型写法遵循项目约定）
+- TypeScript 类型层规范（参见 `ts-coding-standard` skill；本 skill 仅约束运行时写法）
 - 框架级规范（React/Vue 组件结构、状态管理等，参见 `vue-coding-standard` / `react-coding-standard` skill）
 - 分号、缩进、换行等纯排版格式，遵循项目工具链（ESLint/Prettier）配置，本 skill 不作规定
 

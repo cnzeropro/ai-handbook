@@ -31,7 +31,7 @@ description: "React 编码规范，按版本组织（函数组件 + Hooks 基线
 - 样式写法（参见 `css-coding-standard` skill）
 - JS 语言级风格（参见 `js-coding-standard` skill）
 - Vue 组件（参见 `vue-coding-standard` skill）
-- TypeScript 类型层规范：props/事件类型在本 skill 各章随附提示，系统性类型设计暂不入库
+- TypeScript 类型层规范：props/事件类型在本 skill 各章随附提示，系统性类型设计参见 `ts-coding-standard` skill
 
 ## 一、基线
 
