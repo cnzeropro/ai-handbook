@@ -1,6 +1,6 @@
 # React 通用质量规范
 
-> 本文件为 react-coding-standard 的**版本通用**质量规范，同时适用于函数组件与 class 组件遗留代码。版本特有约定见分册：React 18/19（函数组件 + Hooks）见 `react18-19.md`，class 组件遗留见 `react-legacy.md`。来源：react.dev Rules of React 与官方文档惯用法。完整示例见 `style-examples.md`（同目录）。
+> 本文件为 react-coding-standard 的**版本通用**质量规范，同时适用于函数组件与 class 组件遗留代码。版本特有约定见分册：现行体系（函数组件 + Hooks）见 `react-modern.md`，class 组件遗留见 `react-legacy.md`。来源：react.dev Rules of React 与官方文档惯用法。完整示例见 `style-examples.md`（同目录）。
 
 ## 目录
 
@@ -29,7 +29,7 @@ useEffect(() => setList(props.items), [props.items]);
 
 - **状态就近放置**：放实际使用的最低层级；多组件共享时提升至最近公共父级
 - **受控组件为默认**；`<input type="file">` 等简单场景可用非受控（`defaultValue` + ref）
-- **命名约定**：组件 PascalCase（`ModelCard.tsx`）；回调 props `onXxx`（`onSelect`），内部处理器 `handleXxx`（`handleSelect`）；布尔 props `is` / `has` / `can` 前缀（`isCompact`）；自定义 Hook `useXxx`（Hooks 形态见 `react18-19.md`）
+- **命名约定**：组件 PascalCase（`ModelCard.tsx`）；回调 props `onXxx`（`onSelect`），内部处理器 `handleXxx`（`handleSelect`）；布尔 props `is` / `has` / `can` 前缀（`isCompact`）；自定义 Hook `useXxx`（Hooks 形态见 `react-modern.md`）
 - **Props 只读**：不得变异 props（含深层）；函数组件默认值用参数默认值（`{ page = 1 }`；`defaultProps` 已废弃）
 
 ```tsx

@@ -1,6 +1,6 @@
-# React 18/19 规范（当前主版本）
+# React 现行规范（函数组件 + Hooks）
 
-> 本文件为 **React 18/19** 版本特有约定（函数组件 + Hooks），须与版本通用的 `general-quality.md` 配合使用。class 组件遗留环境见 `react-legacy.md`。
+> 本文件为 React **现行体系**（函数组件 + Hooks，React 17 ~ 19 同写法）的特有约定，须与版本通用的 `general-quality.md` 配合使用。class 组件遗留环境见 `react-legacy.md`。
 
 ## 目录
 
