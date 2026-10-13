@@ -1,11 +1,11 @@
 ---
 name: "vue-coding-standard"
-description: "Vue 编码规范，按版本组织（Vue 3 Composition API 基线 / Vue 2 遗留分册）：SFC 结构与命名、props/emits 约定、v-for/v-if 使用、组合式 API 与 computed、组件通信与 Pinia 状态、性能与 XSS 安全。当编写、重构或审查 Vue 代码、设计 Vue 组件时使用。凡涉及 Vue 代码编写与修改的任务均应主动使用。"
+description: "Vue 编码规范，按版本组织（Vue 3 组合式 API 现行 / Vue 2 Options 遗留分册）：SFC 结构与命名、props/emits 约定、v-for/v-if 使用、组合式 API 与 computed、组件通信与 Pinia 状态、性能与 XSS 安全。当编写、重构或审查 Vue 代码、设计 Vue 组件时使用。凡涉及 Vue 代码编写与修改的任务均应主动使用。"
 ---
 
 # Vue 编码规范
 
-本 skill 提供 Vue 框架层编码规范，以 **Vue 3 Composition API（`<script setup>`）为基线**，规则主干来自 Vue 官方 Style Guide（Priority A/B/C/D 四级）并补充组合式 API 开发约定。标记结构与样式分别见 `html-coding-standard` / `css-coding-standard`。
+本 skill 提供 Vue 框架层编码规范，覆盖 Vue 3 组合式与 Vue 2 Options 两代写法体系，规则主干来自 Vue 官方 Style Guide（Priority A/B/C/D 四级）并补充组合式 API 开发约定。标记结构与样式分别见 `html-coding-standard` / `css-coding-standard`。
 
 > 结构说明：本文件为精要版与索引；各主题完整规则与代码示例见 `references/`，按需加载。
 >

@@ -1,11 +1,11 @@
 ---
 name: "svelte-coding-standard"
-description: "Svelte 编码规范（Svelte 5 Runes 基线）：组件结构与命名、Runes 状态体系（$state/$derived/$effect）、props 与双向绑定、事件属性、a11y 编译器警告修复、Snippet 与副作用边界。当编写、重构或审查 Svelte 代码时使用。凡涉及 Svelte 代码编写与修改的任务均应主动使用。"
+description: "Svelte 编码规范（Svelte 5 Runes 现行 / Svelte 4 遗留分册）：组件结构与命名、Runes 状态体系（$state/$derived/$effect）、props 与双向绑定、事件属性、a11y 编译器警告修复、Snippet 与副作用边界。当编写、重构或审查 Svelte 代码时使用。凡涉及 Svelte 代码编写与修改的任务均应主动使用。"
 ---
 
 # Svelte 编码规范
 
-本 skill 提供 Svelte 框架层编码规范，以 **Svelte 5 Runes** 为基线，规则来源为 Svelte 官方文档与编译器 a11y 警告体系。标记语义见 `html-coding-standard`，TS 类型层见 `ts-coding-standard`。
+本 skill 提供 Svelte 框架层编码规范，覆盖 Svelte 5 Runes 与 Svelte 4 两代写法体系，规则来源为 Svelte 官方文档与编译器 a11y 警告体系。标记语义见 `html-coding-standard`，TS 类型层见 `ts-coding-standard`。
 
 > 结构说明：本文件为精要版与索引；各主题完整规则与代码示例见 `references/`，按需加载。
 

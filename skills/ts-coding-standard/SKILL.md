@@ -1,11 +1,11 @@
 ---
 name: "ts-coding-standard"
-description: "TypeScript 编码规范，按版本组织（TS 5.x 基线 / 4.x 遗留分册）：类型设计原则、any 与 unknown 策略、类型收窄与守卫、泛型、枚举替代方案、类型断言与工具类型、模块与命名。当编写、重构或审查 TypeScript 代码、设计类型与泛型时使用。凡涉及 TypeScript 代码编写与修改的任务均应主动使用。"
+description: "TypeScript 编码规范，按版本组织（TS 5.x 现行 / 4.x 遗留分册）：类型设计原则、any 与 unknown 策略、类型收窄与守卫、泛型、枚举替代方案、类型断言与工具类型、模块与命名。当编写、重构或审查 TypeScript 代码、设计类型与泛型时使用。凡涉及 TypeScript 代码编写与修改的任务均应主动使用。"
 ---
 
 # TypeScript 编码规范
 
-本 skill 提供 TypeScript 类型层编码规范（**TS 5.x 基线**），融合 TypeScript 官方 Handbook（Do's & Don'ts）、Google TypeScript Style Guide 与 TSConfig Reference，适用于任意 TypeScript 代码（前端框架、Node 后端、类库）。JS 运行时语法规则见 `js-coding-standard`，两者配合使用。
+本 skill 提供 TypeScript 类型层编码规范，覆盖 TS 4.x 遗留至 TS 5.x 现行全部在用版本，融合 TypeScript 官方 Handbook（Do's & Don'ts）、Google TypeScript Style Guide 与 TSConfig Reference，适用于任意 TypeScript 代码（前端框架、Node 后端、类库）。JS 运行时语法规则见 `js-coding-standard`，两者配合使用。
 
 > 结构说明：本文件为精要版与索引；各主题完整规则与代码示例见 `references/`，按需加载。
 >
@@ -52,9 +52,9 @@ description: "TypeScript 编码规范，按版本组织（TS 5.x 基线 / 4.x �
 | 版本 | 说明 | 详细规范 |
 | --- | --- | --- |
 | TS 4.x 及以下（遗留） | 实验性 decorators、无 satisfies 等能力差异 | `references/ts-legacy.md` |
-| TS 5.x（当前主版本） | 本 skill 全部规则以 5.x 为准 | `references/general-quality.md`（通用）+ `references/ts5.md`（写法规约）+ `references/style-examples.md`（正反例） |
+| TS 5.x（当前主版本） | 通用规则与写法规约均适用 | `references/general-quality.md`（通用）+ `references/ts5.md`（写法规约）+ `references/style-examples.md`（正反例） |
 
-> TS 7（原生编译器，Go 重写）处于预览阶段：生产以 5.x 稳定版为准；erasable-only 方向与迁移注意见 `ts5.md`“二、TS 6/7 展望”。
+> TS 7（原生编译器，Go 重写）处于预览阶段：生产以 5.x 稳定版为准；erasable-only 方向与迁移注意见 `ts5.md`“二、TS 6/7 方向规约”。
 
 ## References（完整规范与代码示例）
 

@@ -76,15 +76,15 @@ npx skills add cnzeropro/ai-handbook
 | `js-coding-standard` | JavaScript 语言级编码规范：变量声明、字符串、解构、对象、数组、函数、相等比较与类型判断、迭代、异步、Class、模块、命名、注释与安全禁区，按项目语言版本适配最佳实践（含 ES5 遗留环境写法对照表） |
 | `html-coding-standard` | HTML 编码规范：文档结构、语义化标签、属性规范、可访问性（a11y）、表单、媒体与 SEO 元信息（含 Vue/React 模板中的标记结构） |
 | `css-coding-standard` | CSS 编码规范：命名与组织（BEM 默认）、选择器与优先级、属性顺序、Flex/Grid 布局、响应式、主题变量与性能 |
-| `ts-coding-standard` | TypeScript 编码规范，按版本组织（TS 5.x 基线 / 4.x 遗留）：类型设计原则、any 与 unknown 策略、类型收窄与守卫、泛型、枚举替代方案、断言与工具类型、模块与命名（含 TS 6/7 原生编译器方向） |
+| `ts-coding-standard` | TypeScript 编码规范，按版本组织（TS 5.x 现行 / 4.x 遗留）：类型设计原则、any 与 unknown 策略、类型收窄与守卫、泛型、枚举替代方案、断言与工具类型、模块与命名（含 TS 6/7 原生编译器方向） |
 | `tailwind-coding-standard` | Tailwind CSS 编码规范，按版本组织（v4 CSS-first / v3 配置驱动）：类名组织与排序、组件抽取边界、动态类名安全、响应式与暗色变体、设计令牌 |
 | `angular-coding-standard` | Angular 编码规范（现代 Angular，v17+ 控制流与 Signals 方向）：单一职责与命名、独立组件、依赖注入（inject）、Signals 与 RxJS 边界、生命周期、路由懒加载与性能（以官方 Style Guide 为纲） |
-| `svelte-coding-standard` | Svelte 编码规范（Svelte 5 Runes 基线）：组件结构与命名、Runes 状态体系、props 与双向绑定、事件属性、snippet 复用、a11y 编译器警告修复（含 Svelte 4 遗留分册） |
+| `svelte-coding-standard` | Svelte 编码规范（Svelte 5 Runes 现行 / Svelte 4 遗留分册）：组件结构与命名、Runes 状态体系、props 与双向绑定、事件属性、snippet 复用、a11y 编译器警告修复（含 Svelte 4 遗留分册） |
 | `nextjs-coding-standard` | Next.js 编码规范，按版本组织（App Router 当前主推 / Pages Router 仍在用）：Server 与 Client 组件边界、数据获取与缓存语义、Server Actions、文件约定与 metadata、环境变量与安全 |
 | `nuxt-coding-standard` | Nuxt 编码规范，按版本组织（Nuxt 3/4 当前 / Nuxt 2 遗留）：目录约定与自动导入、数据获取（useFetch/useAsyncData）、server/ API 与 Nitro、useState 状态、渲染模式与性能、runtimeConfig 与安全 |
 | `miniprogram-coding-standard` | 微信小程序原生编码规范：项目结构与文件约定、Page 与 Component 构造器、setData 性能与路径更新、WXML 指令与 WXSS 样式（rpx）、分包与启动性能、网络封装、缓存与安全合规 |
 | `uniapp-coding-standard` | uni-app 编码规范（Vue 3 语系基线，多端条件编译）：pages.json 与页面路由、三层生命周期、条件编译集中隔离、API 封装（uni.xxx）、样式与 rpx/安全区、easycom 组件、状态管理与分包包体优化 |
-| `vue-coding-standard` | Vue 编码规范（Vue 3 Composition API 基线）：SFC 结构与命名、props/emits 约定、指令使用、组合式 API、组件通信与 Pinia、性能与安全（以官方 Style Guide 四级分级为纲） |
+| `vue-coding-standard` | Vue 编码规范（Vue 3 组合式 API 现行 / Vue 2 Options 遗留）：SFC 结构与命名、props/emits 约定、指令使用、组合式 API、组件通信与 Pinia、性能与安全（以官方 Style Guide 四级分级为纲） |
 | `react-coding-standard` | React 编码规范（函数组件 + Hooks 基线）：Rules of React、Hooks 与 Effect 正确场景、组件设计与状态、渲染性能与安全（以 react.dev 官方规则为纲） |
 
 > 以上十八个 skill 按“语言层 → 样式生态 → 框架层 → 领域专项”分层各司其职：语言层 `java-coding-standard`、`js-coding-standard`、`ts-coding-standard`、`html-coding-standard`、`css-coding-standard` 分别约束 Java / JavaScript / TypeScript / HTML / CSS；样式生态 `tailwind-coding-standard` 约束 Tailwind 工具类写法；框架层 `vue-coding-standard`、`react-coding-standard`、`angular-coding-standard`、`svelte-coding-standard`、`nextjs-coding-standard`、`nuxt-coding-standard`、`miniprogram-coding-standard`、`uniapp-coding-standard` 约束对应框架 / 平台的约定并引用语言层；领域专项 `java-feature-standard` 约束模块级结构设计，`java-method-ordering` 约束方法组织顺序，`java-code-review` 提供系统化的审查清单，`db-design-standard` 规范库表设计与 SQL 编写。
