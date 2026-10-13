@@ -28,7 +28,7 @@
 | 技能清单 | [`catalog/skills.md`](catalog/skills.md) | 收录外部 Agent Skills 的安装清单，含 `npx skills` 安装命令、全局 / 项目级部署层级建议及各 skill 功能说明 |
 | 插件清单 | [`catalog/plugins.md`](catalog/plugins.md) | 收录各 AI agent 工具的插件与插件市场；目前已收录 Claude Code，Codex 与 Pi 待补充 |
 | 指令文件模板 | [`references/`](references/) | 提供 `AGENTS.md` 与 `CLAUDE.md` 两份等效模板；写入 agent 指令文件后，AI 助手将在执行任务前自动获取并遵循最新规范（见[应用通用规范](#应用通用规范)） |
-| Skills 技能包 | [`skills/`](skills/) | 本仓库提供的 16 个可复用技能，遵循开放的 Agent Skills（`SKILL.md`）规范组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手（见[Skills 一览](#skills-一览)） |
+| Skills 技能包 | [`skills/`](skills/) | 本仓库提供的 17 个可复用技能，遵循开放的 Agent Skills（`SKILL.md`）规范组织，兼容 Claude Code、Codex、Cursor、Pi 等主流 AI 编程助手（见[Skills 一览](#skills-一览)） |
 
 > [`catalog/`](catalog/) 收录外部生态资源的用途与安装方式等信息，与本仓库自有的规则、技能包相区分；其中 `catalog/skills.md` 与 [`skills/`](skills/) 目录名称相近，使用时请注意区分。
 
@@ -82,6 +82,7 @@ npx skills add cnzeropro/ai-handbook
 | `svelte-coding-standard` | Svelte 编码规范（Svelte 5 Runes 基线）：组件结构与命名、Runes 状态体系、props 与双向绑定、事件属性、snippet 复用、a11y 编译器警告修复（含 Svelte 4 遗留分册） |
 | `nextjs-coding-standard` | Next.js 编码规范，按版本组织（App Router 当前主推 / Pages Router 仍在用）：Server 与 Client 组件边界、数据获取与缓存语义、Server Actions、文件约定与 metadata、环境变量与安全 |
 | `nuxt-coding-standard` | Nuxt 编码规范，按版本组织（Nuxt 3/4 当前 / Nuxt 2 遗留）：目录约定与自动导入、数据获取（useFetch/useAsyncData）、server/ API 与 Nitro、useState 状态、渲染模式与性能、runtimeConfig 与安全 |
+| `miniprogram-coding-standard` | 微信小程序原生编码规范：项目结构与文件约定、Page 与 Component 构造器、setData 性能与路径更新、WXML 指令与 WXSS 样式（rpx）、分包与启动性能、网络封装、缓存与安全合规 |
 | `vue-coding-standard` | Vue 编码规范（Vue 3 Composition API 基线）：SFC 结构与命名、props/emits 约定、指令使用、组合式 API、组件通信与 Pinia、性能与安全（以官方 Style Guide 四级分级为纲） |
 | `react-coding-standard` | React 编码规范（函数组件 + Hooks 基线）：Rules of React、Hooks 与 Effect 正确场景、组件设计与状态、渲染性能与安全（以 react.dev 官方规则为纲） |
 
